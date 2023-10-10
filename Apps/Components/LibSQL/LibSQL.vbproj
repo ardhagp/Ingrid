@@ -1,0 +1,126 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <OutputType>Library</OutputType>
+    <MyType>Windows</MyType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UpdateAssemblyVersion>False</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+    <AssemblyInfoVersionSettings>
+    </AssemblyInfoVersionSettings>
+    <PrimaryVersionType>AssemblyVersionAttribute</PrimaryVersionType>
+    <ShouldCreateLogs>True</ShouldCreateLogs>
+    <AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
+    <UpdatePackageVersion>False</UpdatePackageVersion>
+    <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+    <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+    <AssemblyVersion>2.10.20167.1127</AssemblyVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <AssemblyTitle>LibSQL</AssemblyTitle>
+    <Description>SQL Library for Ingrid</Description>
+    <Company>ArdhaGp</Company>
+    <Product>LibSQL</Product>
+    <Copyright>ArdhaGp©2023</Copyright>
+    <FileVersion>2.10.20167.1127</FileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DocumentationFile>LibSQL.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineDebug>True</DefineDebug>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineDebug>False</DefineDebug>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="030. Form\010. System\001. DB Integrity Check\NativeModuleSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NativeModuleSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="030. Form\010. System\001. DB Integrity Check\NativeModuleSet.xsc">
+      <DependentUpon>NativeModuleSet.xsd</DependentUpon>
+    </None>
+    <None Update="030. Form\010. System\001. DB Integrity Check\NativeModuleSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NativeModuleSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Update="030. Form\010. System\001. DB Integrity Check\NativeModuleSet.xss">
+      <DependentUpon>NativeModuleSet.xsd</DependentUpon>
+    </None>
+    <None Update="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="030. Form\020. Commands\001. Logistics\01. Dashboard\" />
+    <Folder Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMIT - Material Inventory Table\" />
+    <Folder Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMSI - Material Stock Info\" />
+    <Folder Include="030. Form\020. Commands\001. Logistics\04. Transaction\MMTP - Transaction Posting\" />
+    <Folder Include="030. Form\020. Commands\002. Administration\" />
+    <Folder Include="030. Form\020. Commands\003. Accounting\01. Dashboard\" />
+    <Folder Include="030. Form\020. Commands\003. Accounting\03. Transaction\ACTP - Transaction Posting\" />
+    <Folder Include="030. Form\020. Commands\004. Management\01. Dashboard\" />
+    <Folder Include="030. Form\020. Commands\005. Procurement\02. Master\VDLS - Vendor List\" />
+    <Folder Include="030. Form\020. Commands\006. Transportation\01. Dashboard\" />
+    <Folder Include="030. Form\020. Commands\006. Transportation\02. Master\VHCL - Vehicle List\" />
+    <Folder Include="030. Form\020. Commands\006. Transportation\02. Master\VHCT - Vehicle Type\" />
+    <Folder Include="030. Form\020. Commands\100. Personal Folder\PINF - Personal Information\" />
+    <Folder Include="030. Form\020. Commands\990. Tools\" />
+    <Folder Include="Apps\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MALE_001_512_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\FEMALE_001_512_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CMC\CMCv.vbproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="7.0.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Management" Version="7.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="030. Form\020. Commands\00. Globals\sqlAuth.vb" />
+    <Compile Remove="030. Form\020. Commands\001. Logistics\01. Material Master Data\sqlCatalog.vb" />
+    <Compile Remove="030. Form\020. Commands\001. Logistics\01. Material Master Data\sqlMaterialGroup.vb" />
+    <Compile Remove="030. Form\020. Commands\001. Logistics\01. Material Master Data\sqlMaterialType.vb" />
+    <Compile Remove="030. Form\020. Commands\003. Accounting\Master\ACBK - Accounting Book\sqlAccountingBook.vb" />
+    <Compile Remove="030. Form\020. Commands\003. Accounting\Master\ACGR - Account Group\sqlAccountGroup.vb" />
+    <Compile Remove="030. Form\020. Commands\04. Personal Folder\sqlDailyActivityReports.vb" />
+    <Compile Remove="030. Form\020. Commands\06. Company Properties\Structure\CCIN - Company List\sqlCompany.vb" />
+    <Compile Remove="Class1.vb" />
+  </ItemGroup>
+</Project>

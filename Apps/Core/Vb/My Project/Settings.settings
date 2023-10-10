@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="SLFBackground" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="URL_Paypal" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.paypal.me/ardhagp</Value>
+    </Setting>
+    <Setting Name="URL_Wiki" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://cagakmelon.visualstudio.com/Ingrid/_wiki/wikis/Ingrid.wiki/1/Selamat-Datang-Di-Halaman-Wiki-Aplikasi-INGRID</Value>
+    </Setting>
+    <Setting Name="PRODUCTIONMODE" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
