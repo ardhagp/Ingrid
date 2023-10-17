@@ -511,12 +511,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
-    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.17" />
-    <PackageReference Include="Syncfusion.Grid.Windows" Version="21.2.9" />
-    <PackageReference Include="Syncfusion.Licensing" Version="21.2.9" />
-    <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="21.2.9" />
-    <PackageReference Include="Syncfusion.Shared.Base" Version="21.2.9" />
-    <PackageReference Include="Syncfusion.Tools.Windows" Version="21.2.9" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.18" />
+    <PackageReference Include="Syncfusion.Grid.Windows" Version="23.1.41" />
+    <PackageReference Include="Syncfusion.Licensing" Version="23.1.41" />
+    <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="23.1.41" />
+    <PackageReference Include="Syncfusion.Shared.Base" Version="23.1.41" />
+    <PackageReference Include="Syncfusion.Tools.Windows" Version="23.1.41" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.ComponentModel.Composition" Version="7.0.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
@@ -524,7 +524,7 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
     <PackageReference Include="System.Management" Version="7.0.2" />
-    <PackageReference Include="WinForms.DataVisualization" Version="1.8.0" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="2002 - System\000 - Security\mdlSecurity.vb" />

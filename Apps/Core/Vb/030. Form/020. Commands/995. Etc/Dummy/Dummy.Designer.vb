@@ -19,29 +19,32 @@ Partial Class Dummy
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnl_.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'SLFSubNamaForm
-        '
-        Me.SLFSubNamaForm.Size = New System.Drawing.Size(523, 23)
-        '
-        'SLFNamaForm
-        '
-        Me.SLFNamaForm.Size = New System.Drawing.Size(546, 46)
-        '
-        'Dummy
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(784, 561)
-        Me.Name = "Dummy"
-        Me.Text = "Nama Form"
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnl_.ResumeLayout(False)
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
-
+        CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
+        pnl_.SuspendLayout()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' SLFSubNamaForm
+        ' 
+        SLFSubNamaForm.Margin = New Padding(5, 0, 5, 0)
+        ' 
+        ' SLFNamaForm
+        ' 
+        SLFNamaForm.Margin = New Padding(5, 0, 5, 0)
+        ' 
+        ' Dummy
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 15F)
+        ClientSize = New Size(915, 647)
+        KeyPreview = True
+        Margin = New Padding(6, 3, 6, 3)
+        Name = "Dummy"
+        Text = "Nama Form"
+        CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
+        pnl_.ResumeLayout(False)
+        pnl_.PerformLayout()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
+        PerformLayout()
     End Sub
-
 End Class

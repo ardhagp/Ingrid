@@ -218,7 +218,7 @@ Partial Class DAR
         ' 
         DgnDARDate.AllowUserToAddRows = False
         DgnDARDate.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(242), CByte(220), CByte(155))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(235), CByte(209), CByte(127))
         DgnDARDate.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DgnDARDate.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DgnDARDate.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
@@ -348,7 +348,7 @@ Partial Class DAR
         ' 
         DgnDARActivity.AllowUserToAddRows = False
         DgnDARActivity.AllowUserToDeleteRows = False
-        DataGridViewCellStyle6.BackColor = Color.FromArgb(CByte(226), CByte(222), CByte(99))
+        DataGridViewCellStyle6.BackColor = Color.FromArgb(CByte(254), CByte(196), CByte(138))
         DgnDARActivity.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
         DgnDARActivity.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DgnDARActivity.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
@@ -526,7 +526,7 @@ Partial Class DAR
         ' 
         DgnPhoto.AllowUserToAddRows = False
         DgnPhoto.AllowUserToDeleteRows = False
-        DataGridViewCellStyle14.BackColor = Color.FromArgb(CByte(214), CByte(206), CByte(93))
+        DataGridViewCellStyle14.BackColor = Color.FromArgb(CByte(201), CByte(243), CByte(184))
         DgnPhoto.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle14
         DgnPhoto.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnPhoto.BorderStyle = BorderStyle.None
@@ -715,16 +715,17 @@ Partial Class DAR
         ' 
         ' BtnCopyPhoto
         ' 
-        BtnCopyPhoto.BackColor = Color.OrangeRed
+        BtnCopyPhoto.BackColor = Color.Black
         BtnCopyPhoto.Cursor = Cursors.Hand
         BtnCopyPhoto.Dock = DockStyle.Fill
-        BtnCopyPhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(9), CByte(0))
+        BtnCopyPhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
         BtnCopyPhoto.FlatAppearance.BorderSize = 2
-        BtnCopyPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(89), CByte(20))
+        BtnCopyPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnCopyPhoto.FlatStyle = FlatStyle.Flat
         BtnCopyPhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCopyPhoto.ForeColor = Color.White
-        BtnCopyPhoto.Image = CType(resources.GetObject("BtnCopyPhoto.Image"), Image)
+        BtnCopyPhoto.Image = My.Resources.Resources.COPY_001_16_ICON
+        BtnCopyPhoto.ImageAlign = ContentAlignment.MiddleRight
         BtnCopyPhoto.Location = New Point(4, 3)
         BtnCopyPhoto.Margin = New Padding(4, 3, 4, 3)
         BtnCopyPhoto.Name = "BtnCopyPhoto"
@@ -738,16 +739,17 @@ Partial Class DAR
         ' 
         ' BtnSave
         ' 
-        BtnSave.BackColor = Color.DarkOrange
+        BtnSave.BackColor = Color.Black
         BtnSave.Cursor = Cursors.Hand
         BtnSave.Dock = DockStyle.Fill
-        BtnSave.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(80), CByte(0))
+        BtnSave.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
         BtnSave.FlatAppearance.BorderSize = 2
-        BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(160), CByte(20))
+        BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnSave.FlatStyle = FlatStyle.Flat
         BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnSave.ForeColor = Color.White
-        BtnSave.Image = CType(resources.GetObject("BtnSave.Image"), Image)
+        BtnSave.Image = My.Resources.Resources.DOWNLOAD_001_16_ICON
+        BtnSave.ImageAlign = ContentAlignment.MiddleLeft
         BtnSave.Location = New Point(248, 3)
         BtnSave.Margin = New Padding(4, 3, 4, 3)
         BtnSave.Name = "BtnSave"
@@ -770,7 +772,7 @@ Partial Class DAR
         BtnLike.FlatStyle = FlatStyle.Flat
         BtnLike.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnLike.ForeColor = Color.White
-        BtnLike.Image = CType(resources.GetObject("BtnLike.Image"), Image)
+        BtnLike.Image = My.Resources.Resources.LIKE_001_16_ICON
         BtnLike.Location = New Point(208, 3)
         BtnLike.Margin = New Padding(4, 3, 4, 3)
         BtnLike.Name = "BtnLike"
@@ -798,7 +800,7 @@ Partial Class DAR
         ' 
         DgnFile.AllowUserToAddRows = False
         DgnFile.AllowUserToDeleteRows = False
-        DataGridViewCellStyle18.BackColor = Color.FromArgb(CByte(246), CByte(196), CByte(107))
+        DataGridViewCellStyle18.BackColor = Color.FromArgb(CByte(191), CByte(212), CByte(140))
         DgnFile.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle18
         DgnFile.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnFile.BorderStyle = BorderStyle.None

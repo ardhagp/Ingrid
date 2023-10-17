@@ -169,7 +169,7 @@
     <value>True</value>
   </metadata>
   <metadata name="SttActivity.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>245, 17</value>
+    <value>17, 91</value>
   </metadata>
   <metadata name="SttActivity.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -707,34 +707,6 @@
         ICh3d3cuZXZhbm9sZHMuY29tKQAh/hdNb2RpZmllZCBAIEdpZk1hZ2ljLmNvbQA7
 </value>
   </data>
-  <data name="BtnCopyPhoto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAALRJREFUOE9joAr4//+/w79//z4D8X00fBwoJwFVhhtADZgP5cIBULwBKH4bSGtA
-        hbADPAYkAMX3A/F5IFsAKowJcBkAAyA5oBoFKBcTYDMAajMMPwfi40C8G6gW0zs4DAAFoAIyBoqVADEo
-        TFADFiiA1QVQJhwA1SUA8X+g3HUUQ4g1AAaA6huAOAHKhRuwGkgjO5ckAwxAGpAwKMCINwAdACVJcwE6
-        GBwGADEhgNsA4gEDAwC73kQILukpMAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="BtnSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAJxJREFUOE/tj70RQEAUhK8IgVAhilCCIgRCmUCgBKEylKAEnRy7Yx3GjZ8ZMjuz
-        s+ftu++GeUXW2m6cFfFMq3JixwV0g0ardKlHH8A5rcqJHXYauNJoFQFYKJCtziGyprXipI4PthrtAAOS
-        evYrXwBiOJF5YWt2l4BL/YAjoMYsXQDIjN8+oyuRe8CiDYDAwmd0DfIccEdewHMZMwEZ1HRQLVIWgAAA
-        AABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="BtnLike.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAOJJREFUOE+tki0OwkAQhZ+oRCKQFQgER+BIHAGPQCA5AqKiB0AgeoBKJBKBQCBK
-        +Ul5U6aELrM0IfuSlzQz35tOd4tgqoD4BqzvwJ7OrsCMtUh6fJ6yttVeWgLjOtSIYJ/hI5uV4+QBLN06
-        2XMBDDUOEFq4UJdlW40DLOQu0GUOOGm8HmBCXdZ4gA3+OQM60TggJ8qJhQF5zaudaPwlbjG3QMutG2jE
-        E+mxmbmw4R3Zgcbakh9KACfwNt98IBMrbkumE/4aIuELMFLst/RzNh8Dcu/aPjEQ8WBXDKcyUMuhBTwB
-        nwsnXnwY/KQAAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="DgnFile.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -769,15 +741,15 @@
     <value>True</value>
   </metadata>
   <metadata name="miniToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>121, 17</value>
+    <value>17, 54</value>
   </metadata>
   <metadata name="miniToolStrip.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="SfdPhoto.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>353, 17</value>
+    <value>17, 128</value>
   </metadata>
   <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>456, 17</value>
+    <value>17, 165</value>
   </metadata>
 </root>

@@ -439,20 +439,20 @@ Partial Class DAR_Editor
         ' 
         ' BtnBrowsePhoto
         ' 
-        BtnBrowsePhoto.BackColor = Color.RoyalBlue
+        BtnBrowsePhoto.BackColor = Color.Black
         BtnBrowsePhoto.Cursor = Cursors.Hand
-        BtnBrowsePhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
+        BtnBrowsePhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
         BtnBrowsePhoto.FlatAppearance.BorderSize = 2
-        BtnBrowsePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
+        BtnBrowsePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnBrowsePhoto.FlatStyle = FlatStyle.Flat
         BtnBrowsePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnBrowsePhoto.ForeColor = Color.White
-        BtnBrowsePhoto.Image = My.Resources.Resources.Bullets_001_16_FFFFFFFF_
+        BtnBrowsePhoto.Image = My.Resources.Resources.FOLDER_001_16_ICON
         BtnBrowsePhoto.Location = New Point(4, 3)
         BtnBrowsePhoto.Margin = New Padding(4, 3, 4, 3)
         BtnBrowsePhoto.Name = "BtnBrowsePhoto"
         BtnBrowsePhoto.Size = New Size(38, 33)
-        BtnBrowsePhoto.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Default
+        BtnBrowsePhoto.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
         BtnBrowsePhoto.SLFTampilkanFocusBorder = False
         BtnBrowsePhoto.SLFValidasiSemuaInput = False
         BtnBrowsePhoto.SLFValidasiSemuaInputTag = Nothing
@@ -482,7 +482,7 @@ Partial Class DAR_Editor
         DgnPictureList.AllowUserToAddRows = False
         DgnPictureList.AllowUserToDeleteRows = False
         DgnPictureList.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(225), CByte(211), CByte(144))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(212), CByte(224), CByte(176))
         DgnPictureList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DgnPictureList.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DgnPictureList.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
@@ -583,15 +583,15 @@ Partial Class DAR_Editor
         ' 
         ' BtnPeekPhoto
         ' 
-        BtnPeekPhoto.BackColor = Color.Crimson
+        BtnPeekPhoto.BackColor = Color.Black
         BtnPeekPhoto.Cursor = Cursors.Hand
-        BtnPeekPhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(160), CByte(20), CByte(0))
+        BtnPeekPhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
         BtnPeekPhoto.FlatAppearance.BorderSize = 2
-        BtnPeekPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(240), CByte(40), CByte(80))
+        BtnPeekPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnPeekPhoto.FlatStyle = FlatStyle.Flat
         BtnPeekPhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnPeekPhoto.ForeColor = Color.White
-        BtnPeekPhoto.Image = My.Resources.Resources.Peek_001_16_FFFFFFFF_
+        BtnPeekPhoto.Image = My.Resources.Resources.ZOOMNORMAL_001_16_ICON
         BtnPeekPhoto.Location = New Point(338, 3)
         BtnPeekPhoto.Margin = New Padding(4, 3, 4, 3)
         BtnPeekPhoto.Name = "BtnPeekPhoto"
@@ -636,20 +636,20 @@ Partial Class DAR_Editor
         ' 
         ' BtnAddPhoto
         ' 
-        BtnAddPhoto.BackColor = Color.LimeGreen
+        BtnAddPhoto.BackColor = Color.Black
         BtnAddPhoto.Cursor = Cursors.Hand
-        BtnAddPhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(50), CByte(145), CByte(50))
+        BtnAddPhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
         BtnAddPhoto.FlatAppearance.BorderSize = 2
-        BtnAddPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
+        BtnAddPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnAddPhoto.FlatStyle = FlatStyle.Flat
         BtnAddPhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnAddPhoto.ForeColor = Color.White
-        BtnAddPhoto.Image = My.Resources.Resources.Plus_001_16_FFFFFFFF_
+        BtnAddPhoto.Image = My.Resources.Resources.ADD_001_16_ICON
         BtnAddPhoto.Location = New Point(384, 3)
         BtnAddPhoto.Margin = New Padding(4, 3, 4, 3)
         BtnAddPhoto.Name = "BtnAddPhoto"
         BtnAddPhoto.Size = New Size(38, 33)
-        BtnAddPhoto.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Yes
+        BtnAddPhoto.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
         BtnAddPhoto.SLFTampilkanFocusBorder = False
         BtnAddPhoto.SLFValidasiSemuaInput = False
         BtnAddPhoto.SLFValidasiSemuaInputTag = Nothing
@@ -685,20 +685,20 @@ Partial Class DAR_Editor
         ' 
         ' BtnBrowseFile
         ' 
-        BtnBrowseFile.BackColor = Color.RoyalBlue
+        BtnBrowseFile.BackColor = Color.Black
         BtnBrowseFile.Cursor = Cursors.Hand
-        BtnBrowseFile.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
+        BtnBrowseFile.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
         BtnBrowseFile.FlatAppearance.BorderSize = 2
-        BtnBrowseFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
+        BtnBrowseFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnBrowseFile.FlatStyle = FlatStyle.Flat
         BtnBrowseFile.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnBrowseFile.ForeColor = Color.White
-        BtnBrowseFile.Image = My.Resources.Resources.Bullets_001_16_FFFFFFFF_
+        BtnBrowseFile.Image = My.Resources.Resources.FOLDER_001_16_ICON
         BtnBrowseFile.Location = New Point(4, 3)
         BtnBrowseFile.Margin = New Padding(4, 3, 4, 3)
         BtnBrowseFile.Name = "BtnBrowseFile"
         BtnBrowseFile.Size = New Size(38, 33)
-        BtnBrowseFile.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Default
+        BtnBrowseFile.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
         BtnBrowseFile.SLFTampilkanFocusBorder = False
         BtnBrowseFile.SLFValidasiSemuaInput = False
         BtnBrowseFile.SLFValidasiSemuaInputTag = Nothing
@@ -710,7 +710,7 @@ Partial Class DAR_Editor
         DgnFileList.AllowUserToAddRows = False
         DgnFileList.AllowUserToDeleteRows = False
         DgnFileList.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(192), CByte(225), CByte(137))
+        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(223), CByte(192), CByte(105))
         DgnFileList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         DgnFileList.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DgnFileList.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
@@ -865,20 +865,20 @@ Partial Class DAR_Editor
         ' 
         ' BtnAddFile
         ' 
-        BtnAddFile.BackColor = Color.LimeGreen
+        BtnAddFile.BackColor = Color.Black
         BtnAddFile.Cursor = Cursors.Hand
-        BtnAddFile.FlatAppearance.BorderColor = Color.FromArgb(CByte(50), CByte(145), CByte(50))
+        BtnAddFile.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
         BtnAddFile.FlatAppearance.BorderSize = 2
-        BtnAddFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
+        BtnAddFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnAddFile.FlatStyle = FlatStyle.Flat
         BtnAddFile.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnAddFile.ForeColor = Color.White
-        BtnAddFile.Image = My.Resources.Resources.Plus_001_16_FFFFFFFF_
+        BtnAddFile.Image = My.Resources.Resources.ADD_001_16_ICON
         BtnAddFile.Location = New Point(579, 3)
         BtnAddFile.Margin = New Padding(4, 3, 4, 3)
         BtnAddFile.Name = "BtnAddFile"
         BtnAddFile.Size = New Size(38, 33)
-        BtnAddFile.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Yes
+        BtnAddFile.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
         BtnAddFile.SLFTampilkanFocusBorder = False
         BtnAddFile.SLFValidasiSemuaInput = False
         BtnAddFile.SLFValidasiSemuaInputTag = Nothing
@@ -887,15 +887,15 @@ Partial Class DAR_Editor
         ' 
         ' BtnPeekFile
         ' 
-        BtnPeekFile.BackColor = Color.Crimson
+        BtnPeekFile.BackColor = Color.Black
         BtnPeekFile.Cursor = Cursors.Hand
-        BtnPeekFile.FlatAppearance.BorderColor = Color.FromArgb(CByte(160), CByte(20), CByte(0))
+        BtnPeekFile.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
         BtnPeekFile.FlatAppearance.BorderSize = 2
-        BtnPeekFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(240), CByte(40), CByte(80))
+        BtnPeekFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnPeekFile.FlatStyle = FlatStyle.Flat
         BtnPeekFile.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnPeekFile.ForeColor = Color.White
-        BtnPeekFile.Image = My.Resources.Resources.Peek_001_16_FFFFFFFF_
+        BtnPeekFile.Image = My.Resources.Resources.ZOOMNORMAL_001_16_ICON
         BtnPeekFile.Location = New Point(533, 3)
         BtnPeekFile.Margin = New Padding(4, 3, 4, 3)
         BtnPeekFile.Name = "BtnPeekFile"
