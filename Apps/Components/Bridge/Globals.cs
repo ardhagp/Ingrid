@@ -5,6 +5,8 @@ using BetterStack.Logs;
 using Bridge.Security;
 using Microsoft.Extensions.Configuration;
 using Serilog;
+using System.Reflection.Metadata;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Bridge.Security
 {
@@ -31,17 +33,8 @@ namespace Bridge.Security
 
             return V_KEY;
         }
-    }
-    
-    public class WRITELOG
-    {
-        public enum LogType
-        {
-            Information,
-                Error
-        }
 
-        public static async void SENDLOG(string Messages, LogType TypeOfLog)
+        public string BETTERSTACK_LOG()
         {
             ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
 
@@ -49,8 +42,25 @@ namespace Bridge.Security
             string? v = configuration.GetSection("KEYS")["BETTERSTACK_LOG"];
             string V_KEY = v;
 
+            return V_KEY;
+        }
+    }
+    
+    public class WRITELOG
+    {
+
+        public enum LogType
+        {
+            Information,
+            Error
+        }
+
+        public static async void SENDLOG(string Messages, LogType TypeOfLog)
+        {
+            Bridge.Security.GETKEY KEYLOG = new Bridge.Security.GETKEY();
+
             Serilog.Log.Logger = new LoggerConfiguration()
-                .WriteTo.BetterStack(sourceToken: V_KEY)
+                .WriteTo.BetterStack(sourceToken: KEYLOG.BETTERSTACK_LOG())
                 .MinimumLevel.Information()
                 .CreateLogger();
 
