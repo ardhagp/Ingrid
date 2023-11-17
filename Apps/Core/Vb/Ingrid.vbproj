@@ -568,6 +568,7 @@
     <EmbeddedResource Include="Resources\UAC_001_90_FFFFFFFF_.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Components\Bridge\Bridge.csproj" />
     <ProjectReference Include="..\..\Components\CMC\CMCv.vbproj" />
     <ProjectReference Include="..\..\Components\Connect\Connect.vbproj" />
     <ProjectReference Include="..\..\Components\LibSQL\LibSQL.vbproj" />

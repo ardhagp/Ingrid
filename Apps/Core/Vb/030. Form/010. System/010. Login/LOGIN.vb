@@ -37,6 +37,7 @@
             _WrongLogin += 1
             SLFStatus.Items(0).Text = "Login Failed"
             V_LOGUser.LoginFailed(TxtUsername.SLFSQLText)
+            V_BRIDGE_LOG.SENDLOG(TxtUsername.SLFSQLText & " failed to login.", Bridge.Security.WRITELOG.LogType.Error)
             tmr_status.Enabled = True
             If _WrongLogin = 3 Then
                 tmr_control.Enabled = True
@@ -49,6 +50,7 @@
             V_USERAttrib.Position = _SQL.GETPosition(V_USERAttrib.UID)
             V_USERAttrib.IsAdministrator = _SQL.GETAdministrator(V_USERAttrib.UID)
             V_LOGUser.LoginSuccess(V_USERAttrib.EID)
+            V_BRIDGE_LOG.SENDLOG(V_USERAttrib.FirstName & " is login.", Bridge.Security.WRITELOG.LogType.Information)
             RaiseEvent LoginSuccess()
             Me.Close()
         End If

@@ -7,9 +7,10 @@
 #End Region
 
 #Region "Security Globals"
-    Public V_BRIDGE_KEY As New Bridge.GETKEY
-    Public V_SALT As String = V_BRIDGE_KEY.Salt()
-    Public V_SyncfusionKey As String = V_BRIDGE_KEY.Syncfusion()
+    Public V_BRIDGE_KEY As New Bridge.Security.GETKEY
+    Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
+    Public V_SALT As String = V_BRIDGE_KEY.SALT()
+    Public V_SyncfusionKey As String = V_BRIDGE_KEY.SYNCFUSION()
     Public V_SECEncrypt As New Security.Encrypt
     Public V_SECDecrypt As New Security.Decrypt
 #End Region

@@ -51,8 +51,9 @@ Public Class CONN
 #End Region
 
     Private Sub CONN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        '_DBE_LocalDB.Open(_IsProduction)
-        v_DBE_SQLite.Open(v_IsProduction)
+        V_BRIDGE_LOG.SENDLOG("Connection Settings is opened.", Bridge.Security.WRITELOG.LogType.Information)
+
+        V_DBE_SQLite.Open(v_IsProduction)
 
         Call LoadMenu()
 
@@ -71,6 +72,9 @@ Public Class CONN
             '_DBE_LocalDB.Close()
             v_DBE_SQLite.Close()
         End If
+
+        V_BRIDGE_LOG.SENDLOG("Connection Settings is closed.", Bridge.Security.WRITELOG.LogType.Information)
+
         RaiseEvent ConnectFrameClose()
     End Sub
 

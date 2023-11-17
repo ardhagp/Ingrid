@@ -1,13 +1,16 @@
 ﻿//using System;
 //using Sentry;
 //using System.Windows.Forms;
+using BetterStack.Logs;
+using Bridge.Security;
 using Microsoft.Extensions.Configuration;
+using Serilog;
 
-namespace Bridge
+namespace Bridge.Security
 {
     public class GETKEY
     {
-        public string Salt()
+        public string SALT()
         {
             ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
 
@@ -18,7 +21,7 @@ namespace Bridge
             return V_KEY;
         }
 
-        public string Syncfusion()
+        public string SYNCFUSION()
         {
             ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
 
@@ -30,29 +33,46 @@ namespace Bridge
         }
     }
     
-    //public class APP
-    //{
-        //[STAThread]
-        //static void Run()
-        //{
-            // Init the Sentry SDK
-            //SentrySdk.Init(o =>
-            //{
-                // Tells which project in Sentry to send events to:
-                //o.Dsn = "https://15ec113790e44bc4788549ca549bf2c9@o4506037577777152.ingest.sentry.io/4506037581512704";
-                // When configuring for the first time, to see what the SDK is doing:
-                //o.Debug = true;
-                // Set TracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
-                // We recommend adjusting this value in production.
-                //o.TracesSampleRate = 1.0;
-            //});
+    public class WRITELOG
+    {
+        public enum LogType
+        {
+            Information,
+                Error
+        }
 
-            // Configure WinForms to throw exceptions so Sentry can capture them.
-            //Application.SetUnhandledExceptionMode(UnhandledExceptionMode.ThrowException);
+        public static async void SENDLOG(string Messages, LogType TypeOfLog)
+        {
+            ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
 
-            // Any other configuration you might have goes here...
-            //Application.Run(new Form1());
-        //}
-    //} 
-    
+            IConfiguration configuration = configurationBuilder.AddUserSecrets<GETKEY>().Build();
+            string? v = configuration.GetSection("KEYS")["BETTERSTACK_LOG"];
+            string V_KEY = v;
+
+            Serilog.Log.Logger = new LoggerConfiguration()
+                .WriteTo.BetterStack(sourceToken: V_KEY)
+                .MinimumLevel.Information()
+                .CreateLogger();
+
+            TimeZone localZone   = TimeZone.CurrentTimeZone;
+            DateTime currentDate = DateTime.Now;
+        
+            DateTime currentUTC  = localZone.ToUniversalTime(currentDate);
+            TimeSpan currentOffset = localZone.GetUtcOffset(currentDate);
+
+            string OccuredAt = string.Format(Environment.NewLine + "--- Occured at: ---" + Environment.NewLine + "UTC: {0}" + Environment.NewLine + "Offset: {1}" + Environment.NewLine + "Device DateTime: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), currentUTC.ToString("yyyy-MM-dd HH:mm:ss"), currentOffset);
+
+            Messages += OccuredAt;
+
+            if (TypeOfLog == LogType.Information) {
+                Serilog.Log.Information(Messages);
+            }
+            else {
+                Serilog.Log.Error(Messages);
+            }
+
+            Serilog.Log.CloseAndFlush();
+        }
+    }
 }
+

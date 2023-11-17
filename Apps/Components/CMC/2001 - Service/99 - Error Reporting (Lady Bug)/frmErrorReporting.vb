@@ -22,6 +22,11 @@
         TxtAppBuild.Text = ErrorCatcher.AppVersion
         ChkErrorReporting.Enabled = ErrorCatcher.EnableErrorReporting
         ResumeNext = ErrorCatcher.ResumeNext
+
+        'Send Error to Ingrid Log Center
+        V_BRIDGE_LOG.SENDLOG(TxtErrorMessage.Text & Environment.NewLine & "Error Number: " & TxtErrorNumber.Text & Environment.NewLine & "Error Type: " & TxtErrorType.Text & Environment.NewLine & "App Build: " & TxtAppBuild.Text, Bridge.Security.WRITELOG.LogType.Error)
+
+        'Record Error into local database
         If (ErrorCatcher.SaveError) Then
             If DBEngine Is Nothing Then
                 Return

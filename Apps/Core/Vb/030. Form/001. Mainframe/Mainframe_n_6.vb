@@ -122,14 +122,22 @@ Public Class Mainframe_n_6
             Return
         ElseIf (V_SYSAPP.IsModuleLocked(TCode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "[" & TCode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
+            V_BRIDGE_LOG.SENDLOG(V_USERAttrib.FirstName & " trying to open Under Maintenance Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Error)
             Decision("[" & TCode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf Not (V_USERAccess.User(TCode.ToUpper.Trim, V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then
+
             St_mainframe.Items(0).Text = "You are not authorized to access : " & TCode.ToUpper.Trim
-            Beep()
+
+            V_BRIDGE_LOG.SENDLOG(V_USERAttrib.FirstName & " trying to open Restricted Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Error)
+
+            If OperatingSystem.IsWindows Then
+                Beep()
+            End If
             Return
         Else
             'tmdi_.AttachedTo = Me
+            V_BRIDGE_LOG.SENDLOG(V_USERAttrib.FirstName & " opening Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Information)
             Globals.Workspace.Open(Me, TCode.ToUpper.Trim, St_mainframe)
             Txt_shortcut.Clear()
         End If
@@ -164,6 +172,7 @@ Public Class Mainframe_n_6
 
     Private Sub LogoutClicked()
         If Decision("Are you sure want to logout from system?", "Logout", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+            V_BRIDGE_LOG.SENDLOG(V_USERAttrib.FirstName & " is logout.", Bridge.Security.WRITELOG.LogType.Information)
             Call SystemLogout()
             V_LOGUser.Logout(V_USERAttrib.EID)
             Call ClearLoginData()
@@ -218,6 +227,8 @@ Public Class Mainframe_n_6
 
 #Region "Form Events"
     Private Sub mainframe_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        V_BRIDGE_LOG.SENDLOG("Ingrid Main App is opened.", Bridge.Security.WRITELOG.LogType.Information)
+
         Call ActivateLicenses()
 
         Try
@@ -226,6 +237,7 @@ Public Class Mainframe_n_6
             _GetNotifCounter = 58
             V_ForceRefreshMainframeData = False
             TmrStatus.Interval = _STATUSTIMEWAIT * 1000
+
 
             'splash.Show()
             Call SystemLogout()
@@ -298,8 +310,8 @@ Public Class Mainframe_n_6
             Call GetStorage()
             Call GetSettings()
         Else
-            v_USERAttrib.UID = String.Empty
-            ms_start_Login.Visible = True
+            V_USERAttrib.UID = String.Empty
+            Ms_start_Login.Visible = True
             ms_start_Login.Enabled = True
             ms_start_Logout.Visible = False
             ms_start_Logout.Enabled = False
@@ -578,6 +590,7 @@ Public Class Mainframe_n_6
     End Sub
 
     Private Sub Mainframe_n_6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        V_BRIDGE_LOG.SENDLOG("Ingrid Main App is closed.", Bridge.Security.WRITELOG.LogType.Information)
         RaiseEvent IngridFrameClose()
     End Sub
 

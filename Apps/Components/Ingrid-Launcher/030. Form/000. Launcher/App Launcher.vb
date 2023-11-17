@@ -4,10 +4,13 @@ Imports Connect
 Public Class App_Launcher
     Private WithEvents IngridMainframe As New Mainframe_n_6
     Private WithEvents ConnectMainframe As New CONN
+    Private V_BRIDGE As New Bridge.Security.WRITELOG
 
     Private Var_Second As Integer
 
     Private Sub App_Launcher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        V_BRIDGE.SENDLOG("Ingrid Launcher started." & Environment.NewLine & "--- App Ver. " & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision & " --", Bridge.Security.WRITELOG.LogType.Information)
+
         Call ActivateLicenses()
         LblBuild.Text = String.Format("Build {0}" & Environment.NewLine & "Rev. {1}", My.Application.Info.Version.Build, My.Application.Info.Version.Revision)
         Var_Second = 4

@@ -42,6 +42,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Vb\Ingrid.vbproj" />
+    <ProjectReference Include="..\Bridge\Bridge.csproj" />
     <ProjectReference Include="..\Connect\Connect.vbproj" />
   </ItemGroup>
 
