@@ -23,16 +23,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net7.0-windows"
         ],
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://cagakmelon.pkgs.visualstudio.com/Ingrid/_packaging/ingrid-pre-build/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net7.0-windows7.0": {
+            "targetAlias": "net7.0-windows",
             "projectReferences": {}
           }
         },
@@ -43,16 +42,24 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
           "dependencies": {
-            "Microsoft.Extensions.Configuration": {
+            "BetterStack.Logs.Serilog": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[1.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Microsoft.Extensions.Configuration.UserSecrets": {
               "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[8.0.0, )"
+            },
+            "Serilog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -71,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -94,16 +101,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows"
+          "net7.0-windows"
         ],
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://cagakmelon.pkgs.visualstudio.com/Ingrid/_packaging/ingrid-pre-build/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0-windows7.0": {
-            "targetAlias": "net6.0-windows",
+          "net7.0-windows7.0": {
+            "targetAlias": "net7.0-windows",
             "projectReferences": {
               "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj": {
                 "projectPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj"
@@ -118,56 +124,44 @@
         }
       },
       "frameworks": {
-        "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows",
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
           "dependencies": {
             "Microsoft.CSharp": {
               "target": "Package",
               "version": "[4.7.0, )"
             },
-            "Microsoft.Extensions.Configuration.UserSecrets": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
             "ReportViewerCore.WinForms": {
               "target": "Package",
-              "version": "[15.1.17, )"
+              "version": "[15.1.19, )"
             },
             "Syncfusion.Grid.Windows": {
               "target": "Package",
-              "version": "[21.2.9, )"
+              "version": "[23.1.41, )"
             },
             "Syncfusion.Licensing": {
               "target": "Package",
-              "version": "[21.2.9, )"
+              "version": "[23.1.41, )"
             },
             "Syncfusion.PdfViewer.Windows": {
               "target": "Package",
-              "version": "[21.2.9, )"
+              "version": "[23.1.41, )"
             },
             "Syncfusion.Shared.Base": {
               "target": "Package",
-              "version": "[21.2.9, )"
+              "version": "[23.1.41, )"
             },
             "Syncfusion.Tools.Windows": {
               "target": "Package",
-              "version": "[21.2.9, )"
-            },
-            "System.ComponentModel.Annotations": {
-              "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[23.1.41, )"
             },
             "System.ComponentModel.Composition": {
               "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "System.Data.DataSetExtensions": {
-              "target": "Package",
-              "version": "[4.5.0, )"
+              "version": "[8.0.0, )"
             },
             "System.Data.OleDb": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[8.0.0, )"
             },
             "System.Data.SQLite.Core": {
               "target": "Package",
@@ -179,11 +173,11 @@
             },
             "System.Management": {
               "target": "Package",
-              "version": "[7.0.2, )"
+              "version": "[8.0.0, )"
             },
             "WinForms.DataVisualization": {
               "target": "Package",
-              "version": "[1.8.0, )"
+              "version": "[1.9.1, )"
             }
           },
           "imports": [
@@ -205,7 +199,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -228,16 +222,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows"
+          "net7.0-windows"
         ],
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://cagakmelon.pkgs.visualstudio.com/Ingrid/_packaging/ingrid-pre-build/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0-windows7.0": {
-            "targetAlias": "net6.0-windows",
+          "net7.0-windows7.0": {
+            "targetAlias": "net7.0-windows",
             "projectReferences": {
               "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
                 "projectPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj"
@@ -252,8 +245,8 @@
         }
       },
       "frameworks": {
-        "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows",
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
           "dependencies": {
             "System.Data.DataSetExtensions": {
               "target": "Package",
@@ -261,7 +254,7 @@
             },
             "System.Management": {
               "target": "Package",
-              "version": "[7.0.2, )"
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -283,7 +276,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

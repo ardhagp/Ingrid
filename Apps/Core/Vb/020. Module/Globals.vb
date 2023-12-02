@@ -6,7 +6,7 @@ Module Globals
 #Region "Activate Licenses"
     Public Sub ActivateLicenses()
         Dim V_BRIDGE_KEY As New Bridge.Security.GETKEY
-        Dim V_SyncfusionKey As String = V_BRIDGE_KEY.Syncfusion()
+        Dim V_SyncfusionKey As String = V_BRIDGE_KEY.SYNCFUSION()
 
         'License for Syncfusion
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(V_SyncfusionKey)
@@ -27,7 +27,7 @@ Module Globals
     Public V_LOGUser As New LibSQL.SystemLog.Activity.User
     Public V_LOGApp As New LibSQL.SystemLog.Activity.Application
     Public V_ForceRefreshMainframeData As Boolean
-    Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
+    'Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
 
     Public ErrorCatcher As New Catcher.Error.Fields
 

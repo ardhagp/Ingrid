@@ -1,8 +1,14 @@
-﻿Module Globals
+﻿Imports System.Runtime.Versioning
+
+Module Globals
 #Region "Font Globals"
+    <SupportedOSPlatform("windows")>
     Public globalFontBtn As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+    <SupportedOSPlatform("windows")>
     Public globalFontTxt As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+    <SupportedOSPlatform("windows")>
     Public globalFontLbl As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+    <SupportedOSPlatform("windows")>
     Public globalFontDgn As New System.Drawing.Font("Verdana", 8, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
 #End Region
 
@@ -10,7 +16,7 @@
     Public V_BRIDGE_KEY As New Bridge.Security.GETKEY
     Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
     Public V_SALT As String = V_BRIDGE_KEY.SALT()
-    Public V_SyncfusionKey As String = V_BRIDGE_KEY.SYNCFUSION()
+    Public V_SyncfusionKey As String = V_BRIDGE_KEY.SYNCFUSION
     Public V_SECEncrypt As New Security.Encrypt
     Public V_SECDecrypt As New Security.Decrypt
 #End Region

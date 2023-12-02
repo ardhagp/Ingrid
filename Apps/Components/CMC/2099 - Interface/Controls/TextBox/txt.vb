@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Management
+Imports System.Runtime.InteropServices
 Imports System.Text.RegularExpressions
 
 ''' <project>Mainframe : txt (Textbox Custom Component)</project>

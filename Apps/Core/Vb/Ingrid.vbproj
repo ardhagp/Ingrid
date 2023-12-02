@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <OutputType>WinExe</OutputType>
     <StartupObject>Ingrid.Mainframe_n_6</StartupObject>
@@ -579,10 +579,10 @@
     <PackageReference Include="Syncfusion.Shared.Base" Version="23.1.41" />
     <PackageReference Include="Syncfusion.Tools.Windows" Version="23.1.41" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-    <PackageReference Include="System.ComponentModel.Composition" Version="7.0.0" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="8.0.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="System.Management" Version="7.0.2" />
-    <PackageReference Include="WinForms.DataVisualization" Version="1.9.0" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="030. Form\001. Mainframe\Mainframe_nf_4.8.Designer.vb" />

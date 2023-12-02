@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
@@ -65,6 +65,8 @@
     <FileVersion>2.10.20167.1127</FileVersion>
     <ImportedNamespaces>Syncfusion=False,System.Windows.Forms.DataVisualization=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,CMCv=True</ImportedNamespaces>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <AnalysisLevel>6.0-recommended</AnalysisLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>portable</DebugType>
@@ -290,6 +292,9 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Update="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
     <EmbeddedResource Include="2002 - System\000 - Security\Manual+Source\Security Engine Source.pdf" />
     <EmbeddedResource Include="2001 - Service\01 - Database\01 - Connection\Manual+Source\MSSQL2008 Manual.pdf" />
   </ItemGroup>
@@ -509,22 +514,19 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
-    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.18" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.19" />
     <PackageReference Include="Syncfusion.Grid.Windows" Version="23.1.41" />
     <PackageReference Include="Syncfusion.Licensing" Version="23.1.41" />
     <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="23.1.41" />
     <PackageReference Include="Syncfusion.Shared.Base" Version="23.1.41" />
     <PackageReference Include="Syncfusion.Tools.Windows" Version="23.1.41" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-    <PackageReference Include="System.ComponentModel.Composition" Version="7.0.0" />
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="System.Data.OleDb" Version="7.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
-    <PackageReference Include="System.Management" Version="7.0.2" />
-    <PackageReference Include="WinForms.DataVisualization" Version="1.9.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="8.0.0" />
+    <PackageReference Include="System.Data.OleDb" Version="8.0.0" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="2002 - System\000 - Security\mdlSecurity.vb" />

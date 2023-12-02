@@ -9,7 +9,7 @@ Public Class App_Launcher
     Private Var_Second As Integer
 
     Private Sub App_Launcher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        V_BRIDGE.SENDLOG("Ingrid Launcher started." & Environment.NewLine & "--- App Ver. " & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision & " --", Bridge.Security.WRITELOG.LogType.Information)
+        V_BRIDGE.SENDLOG("Ingrid Launcher started." & Environment.NewLine & "--- App Ver. " & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision & " ---", Bridge.Security.WRITELOG.LogType.Information)
 
         Call ActivateLicenses()
         LblBuild.Text = String.Format("Build {0}" & Environment.NewLine & "Rev. {1}", My.Application.Info.Version.Build, My.Application.Info.Version.Revision)
@@ -46,15 +46,19 @@ Public Class App_Launcher
         End If
     End Sub
 
-    Private Sub OpenApp(ByVal AppNameIndex As String)
-        If AppNameIndex = 0 Then
-            ConnectMainframe.Show()
-        ElseIf AppNameIndex = 1 Then
-            IngridMainframe.Show()
-        End If
-        My.Settings.DefaultApp = AppNameIndex
-        My.Settings.Save()
-        Me.Hide()
+    Private Sub OpenApp(ByVal AppNameIndex As Integer)
+        Try
+            If AppNameIndex = 0 Then
+                ConnectMainframe.Show()
+            ElseIf AppNameIndex = 1 Then
+                IngridMainframe.Show()
+            End If
+            My.Settings.DefaultApp = AppNameIndex
+            My.Settings.Save()
+            Me.Hide()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Private Sub ConnectMainframe_ConnectFrameClose() Handles ConnectMainframe.ConnectFrameClose

@@ -118,26 +118,32 @@ Public Class Mainframe_n_6
 
         'For Module That Required Login
         If Not (V_SYSAPP.IsModuleReady(TCode.ToUpper.Trim)) Then
-            St_mainframe.Items(0).Text = "Module " & TCode.ToUpper.Trim & " not ready"
+            St_mainframe.Items(0).Text = "Module " & TCode.ToUpper.Trim & " not found."
             Return
         ElseIf (V_SYSAPP.IsModuleLocked(TCode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "[" & TCode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
-            V_BRIDGE_LOG.SENDLOG(V_USERAttrib.FirstName & " trying to open Under Maintenance Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Error)
+            Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " trying to open Under Maintenance Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Error)
             Decision("[" & TCode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
+
+            If OperatingSystem.IsWindows Then
+                Console.Beep()
+            End If
+
             Return
         ElseIf Not (V_USERAccess.User(TCode.ToUpper.Trim, V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then
 
             St_mainframe.Items(0).Text = "You are not authorized to access : " & TCode.ToUpper.Trim
 
-            V_BRIDGE_LOG.SENDLOG(V_USERAttrib.FirstName & " trying to open Restricted Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Error)
+            Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " trying to open Restricted Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Error)
 
             If OperatingSystem.IsWindows Then
-                Beep()
+                Console.Beep()
             End If
+
             Return
         Else
             'tmdi_.AttachedTo = Me
-            V_BRIDGE_LOG.SENDLOG(V_USERAttrib.FirstName & " opening Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Information)
+            Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " opening Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Information)
             Globals.Workspace.Open(Me, TCode.ToUpper.Trim, St_mainframe)
             Txt_shortcut.Clear()
         End If
@@ -172,7 +178,7 @@ Public Class Mainframe_n_6
 
     Private Sub LogoutClicked()
         If Decision("Are you sure want to logout from system?", "Logout", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
-            V_BRIDGE_LOG.SENDLOG(V_USERAttrib.FirstName & " is logout.", Bridge.Security.WRITELOG.LogType.Information)
+            Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " is logout.", Bridge.Security.WRITELOG.LogType.Information)
             Call SystemLogout()
             V_LOGUser.Logout(V_USERAttrib.EID)
             Call ClearLoginData()
@@ -227,11 +233,11 @@ Public Class Mainframe_n_6
 
 #Region "Form Events"
     Private Sub mainframe_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        V_BRIDGE_LOG.SENDLOG("Ingrid Main App is opened.", Bridge.Security.WRITELOG.LogType.Information)
-
-        Call ActivateLicenses()
-
         Try
+            Bridge.Security.WRITELOG.SENDLOG("Ingrid Main App is opened.", Bridge.Security.WRITELOG.LogType.Information)
+
+            Call ActivateLicenses()
+
             'tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererIE7)
             Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererVS2010)
             _GetNotifCounter = 58
@@ -242,13 +248,13 @@ Public Class Mainframe_n_6
             'splash.Show()
             Call SystemLogout()
             Call FirstLoad()
-            v_USERAttrib.UID = String.Empty
+            V_USERAttrib.UID = String.Empty
 
             If (_SQL.Connect(_PRODUCTIONMODE)) Then
-                ts_connection.Text = "Connected"
-                v_LOGApp.Run()
+                Ts_connection.Text = "Connected"
+                V_LOGApp.Run()
             Else
-                ts_connection.Text = "Disconnected"
+                Ts_connection.Text = "Disconnected"
                 Decision("Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "<b>Restart</b> Ingrid after you made any changes!", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                 Return
             End If
@@ -590,7 +596,7 @@ Public Class Mainframe_n_6
     End Sub
 
     Private Sub Mainframe_n_6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        V_BRIDGE_LOG.SENDLOG("Ingrid Main App is closed.", Bridge.Security.WRITELOG.LogType.Information)
+        Bridge.Security.WRITELOG.SENDLOG("Ingrid Main App is closed.", Bridge.Security.WRITELOG.LogType.Information)
         RaiseEvent IngridFrameClose()
     End Sub
 

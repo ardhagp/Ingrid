@@ -33,7 +33,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.IngridLauncher.Form1
+            Me.MainForm = Global.IngridLauncher.App_Launcher
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
