@@ -6,7 +6,7 @@ Multi purpose application
 
 #   <span style="color:darkorange">**Project Status**</span>
 ---
-| <span style="color:darkcyan">Information</span> | <span style="color:darkcyan">Value</span> |
+| <span style="color:darkorange">_Information_</span> | <span style="color:darkorange">_Value_</span> |
 |--:|--|
 |License| [![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) |
 |Last Check In| [![Build status](https://cagakmelon.visualstudio.com/Ingrid/_apis/build/status/www.iupdt.my.id/scheduled/CI-Build)](https://cagakmelon.visualstudio.com/Ingrid/_build/latest?definitionId=8) |
@@ -23,7 +23,7 @@ Multi purpose application
 <span style="color:orange">1.</span>	Visual Studio Community Edition ([Download](https://visualstudio.microsoft.com/downloads/)) <br/>
 <span style="color:orange">2.</span>	.NET 6 ([Download](https://dotnet.microsoft.com/en-us/download/dotnet/6.0))<br/>
 <span style="color:orange">3.</span>  SQL Server 2022 Express / Developer Edition ([Download](https://www.microsoft.com/en-us/sql-server/sql-server-downloads))<br/>
-| <span style="color:darkcyan">**Instruction For Database**</span> |
+| <span style="color:darkorange">_Instruction For Database_</span> |
 | -- |
 | 1. Download [Data](https://cagakmelon.visualstudio.com/Ingrid/_versionControl?version=T&path=%24/Ingrid/Database/SQL%20Server/DatabaseSchema_Data/File/db_universe_erp.mdf) and [File](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/_apis/tfvc/items?path=%24/Ingrid/Database/SQL%20Server/DatabaseSchema_File/File/db_universe_erp_file.mdf&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=5&versionDescriptor%5Bversion%5D=&%24format=octetStream&api-version=5.0&download=true) as your database attachments. <br/>2. Synchronize two database above by using this file inside Ingrid repository : [db_universe_erp.scmp](https://cagakmelon.visualstudio.com/Ingrid/_versionControl?path=%24/Ingrid/Database/SQL%20Server/DatabaseSchema_Data/db_universe_erp.scmp) and [db_universe_erp_file.scmp](https://cagakmelon.visualstudio.com/Ingrid/_versionControl?path=%24/Ingrid/Database/SQL%20Server/DatabaseSchema_File/db_universe_erp_file.scmp) <br/>3. Create user <span style="color:orange">**mvu_admin**</span> with password <span style="color:orange">**admin**</span> <br/>4. Set <span style="color:orange">**db_universe_erp.mdf**</span> and <span style="color:orange">**db_universe_erp_file.mdf**</span> ownership to <span style="color:orange">**mvu_admin**</span> |
 
@@ -40,6 +40,25 @@ Then type this json structure.
     "SYNCFUSION": "<input your Syncfusion Key>"
   }
 }
+```
+
+What if Manage User Secrets context menu doesn't show up?
+
+![Missing User Secrets context menu](https://res.cloudinary.com/cagakmelon/image/upload/v1711475296/apps/ingrid-assets/readme.md/2024-03-27_002550.png)
+
+No worries, you are still able to manage by using Dev PowerShell with this command :
+
+| <span style="color:darkorange">_Dev PowerShell Commands_</span> | <span style="color:darkorange">_Function_</span> |
+| -- | -- |
+| dotnet user-secrets clear | Delete all KeyName |
+| dotnet user-secrets list | Displaying KeyName and its values |
+| dotnet user-secrets set KeyName "KeyValue" | Set KeyName and KeyValue |
+| dotnet user-secrets remove KeyName | Remove specified KeyName |
+
+
+or simply by accessing this directory:
+```
+%APPDATA%\Microsoft\UserSecrets\{guid}\secrets.json
 ```
 
 To obtain Syncfusion Key, please sign up with <span style="color:orange">**Community License**</span> and visit this page : [Syncfusion](https://www.syncfusion.com/account/downloads)
