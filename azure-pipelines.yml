@@ -19,11 +19,11 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      git remote add vstsg ssh://tito.ardha@dev.azure.com:22/Ingrid/_git/Ingrid  2>&1 | Write-Host
+      git remote add master ssh://tito.ardha@dev.azure.com:22/Ingrid/_git/Ingrid  2>&1 | Write-Host
       
       git checkout -b master  2>&1 | Write-Host
       
-      git push vstsg master  2>&1 | Write-Host
+      git push master master  2>&1 | Write-Host
 
 - task: NuGetToolInstaller@1
 
