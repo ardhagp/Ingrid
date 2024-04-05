@@ -24,7 +24,7 @@ steps:
       git branch -r | findstr /v "\->" |  ForEach-Object {$br=$_.TrimStart(); git branch --track $br.TrimStart("master/") $br}
       $repoName = "$env:BUILD_REPOSITORY_NAME".split('/')[1]
       $repoUri = "$env:SYSTEM_TEAMFOUNDATIONCOLLECTIONURI".Substring(8)+ "_git/$repoName"
-      git remote add vsts "$(System.AccessToken)@dev.azure.com$repoUri"
+      git remote add vsts "$(System.AccessToken)$repoUri"
       git branch -r | findstr /v "\->" |  ForEach-Object { $br=$_.TrimStart("  master/"); git push -u vsts $br }
 
 - task: NuGetToolInstaller@1
