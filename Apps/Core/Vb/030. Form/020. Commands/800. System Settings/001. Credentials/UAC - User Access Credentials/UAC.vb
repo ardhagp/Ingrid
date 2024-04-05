@@ -1,4 +1,5 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Public Class UAC
 #Region "Variables"
@@ -32,7 +33,7 @@ Public Class UAC
 
         V_FORMAttrib.IsNew = True
         V_FORMAttrib.RowID = "-1"
-        V_FORMAttrib.Hash = V_SECEncrypt.MD5
+        V_FORMAttrib.Hash = CMCv.Security.Encrypt.MD5()
         _UAC_Editor = New UAC_Editor
         Display(_UAC_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new credential data", True)
     End Sub
@@ -71,9 +72,9 @@ Public Class UAC
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
-                    Mainframe_n_6.ts_status.Text = "Success"
+                    Mainframe_n_6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.ts_status.Text = "Delete failed"
+                    Mainframe_n_6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If
@@ -93,7 +94,7 @@ Public Class UAC
     End Sub
 #End Region
 
-
+    <SupportedOSPlatform("windows")>
     Private Sub UAC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
         _MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
@@ -108,6 +109,7 @@ Public Class UAC
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
         Call GETDATA(True)

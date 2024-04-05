@@ -1,5 +1,6 @@
 ﻿Imports System.Windows.Forms
 Imports System.Data
+Imports System.Runtime.Versioning
 
 Namespace Database.Engine
     Public Class SQLite_v3
@@ -12,6 +13,7 @@ Namespace Database.Engine
 
         Private v_SQLite As New Connect.SQLiteConnection
 
+        <SupportedOSPlatform("windows")>
         Public Function CheckDBCatalog() As Boolean
             Try
                 Dim v_DBPath As String = Nothing
@@ -69,6 +71,7 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Sub Open(Optional ByVal IsProductionMode As Boolean = False)
             Try
                 Dim v_Location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
@@ -124,6 +127,7 @@ Namespace Database.Engine
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Function GetDatabaseProperties(ByVal Fields As Properties.Fields) As Database.Properties.Fields
             Try
                 v_DR(1) = GETDATAROW("Select SERVERADDRESS, USERNAME, PASSWORD, SERVERPORT, DBFORDATA, DBFORFILE FROM serverlist WHERE DEFAULTCONNECTION =1;")
@@ -131,7 +135,8 @@ Namespace Database.Engine
                 If v_DR(1).HasRows Then
                     Fields.ServerAddress = v_DR(1).GetString(0)
                     Fields.Username = v_DR(1).GetString(1)
-                    Fields.Password = V_SECDecrypt.Rijndael(v_DR(1).GetString(2))
+                    'Fields.Password = V_SECDecrypt.Rijndael(v_DR(1).GetString(2))
+                    Fields.Password = CMCv.Security.Decrypt.AES(v_DR(1).GetString(2))
                     Fields.Port = v_DR(1).GetValue(3)
                     Fields.DataStorage = v_DR(1).GetString(4)
                     Fields.FileStorage = v_DR(1).GetString(5)
@@ -152,6 +157,7 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Sub SaveErrorData(ByVal ErrorCatcher As Catcher.Error.Fields)
             Try
                 Dim NowDateTime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
@@ -162,7 +168,7 @@ Namespace Database.Engine
             End Try
         End Sub
 
-
+        <SupportedOSPlatform("windows")>
         Private Function GETDATAROW(ByVal Query As String) As SQLite.SQLiteDataReader
             Try
                 v_CMD(1) = New SQLite.SQLiteCommand With {
@@ -185,6 +191,7 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function GETVALUE(ByVal Query As String) As Object
             Try
                 Dim v_ROWValue As Object
@@ -209,6 +216,7 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Sub GETDATATABLE(ByVal DBR As Adapter.SQLite.Display.Request, ByVal TableName As String)
 
             Dim v_DA(1) As SQLite.SQLiteDataAdapter
@@ -263,6 +271,7 @@ Namespace Database.Engine
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Sub PUSHDATA(ByVal Query As String)
             Try
                 Using TX = v_CONN(1).BeginTransaction

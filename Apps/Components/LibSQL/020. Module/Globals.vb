@@ -6,7 +6,12 @@
 
     Public _DBR_MSSQL2008(1) As CMCv.Database.Adapter.MSSQL2008.Display.Request
     Public _DBP_MSSQL2008 As New CMCv.Database.Adapter.MSSQL2008.Execute
+
     Public V_SECEncrypt As New CMCv.Security.Encrypt
+
+    Public V_SEC_AES As Security.Cryptography.Aes
+    Public V_SEC_MD5 As Security.Cryptography.MD5
+    Public V_SEC_CRC32 As New System.IO.Hashing.Crc32
 
     Public V_Major As Integer = My.Application.Info.Version.Major
     Public V_Minor As Integer = My.Application.Info.Version.Minor

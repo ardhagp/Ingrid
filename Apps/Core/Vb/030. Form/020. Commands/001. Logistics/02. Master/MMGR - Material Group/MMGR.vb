@@ -1,4 +1,6 @@
-﻿Public Class MMGR
+﻿Imports System.Runtime.Versioning
+
+Public Class MMGR
     Private _SQL As New LibSQL.Commands.MMGR.View
 
     Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
@@ -9,6 +11,7 @@
         Call GETDATA(True)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
         Call GETDATA(True)

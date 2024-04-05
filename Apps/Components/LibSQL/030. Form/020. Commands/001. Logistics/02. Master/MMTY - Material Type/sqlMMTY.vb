@@ -1,9 +1,11 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Namespace Commands.MMTY
     Public Class View
         Private _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayData(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             If (Find.SLFSQLText = String.Empty) Or (ForceRefresh = True) Then
                 _DBR_MSSQL2008(0).Query = "select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from dbo.[[log]]material] m where " &

@@ -1,5 +1,8 @@
-﻿Public Class frmStandard
+﻿Imports System.Runtime.Versioning
 
+Public Class frmStandard
+
+    <SupportedOSPlatform("windows")>
     Private Sub frmStandard_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             Call ActivateLicenses()

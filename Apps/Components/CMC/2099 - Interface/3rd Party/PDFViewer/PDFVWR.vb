@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Runtime.Versioning
 
 Public Class PDFVWR
 
@@ -12,6 +13,7 @@ Public Class PDFVWR
         End Set
     End Property
 
+    <SupportedOSPlatform("windows")>
     Private Sub PDFVWR_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call ActivateLicenses()
     End Sub

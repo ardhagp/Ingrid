@@ -1,8 +1,10 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Namespace Commands.ACBK
     Public Class View
 
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayData(ByVal Datagrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             Dim _Where As String = "where "
 

@@ -1,4 +1,5 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Public Class ACBK
 #Region "Variables"
@@ -7,6 +8,7 @@ Public Class ACBK
 #End Region
 
 #Region "Sub Collections"
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA()
         _SQL.DisplayData(DgnACBK, SLFStatus, TxtFind, True)
     End Sub
@@ -27,12 +29,14 @@ Public Class ACBK
 #End Region
 
 #Region "Upper Form Bar"
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
         Call GETDATA()
@@ -40,6 +44,7 @@ Public Class ACBK
 #End Region
 
 #Region "Form Events"
+    <SupportedOSPlatform("windows")>
     Private Sub frmACBK_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
         _MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)

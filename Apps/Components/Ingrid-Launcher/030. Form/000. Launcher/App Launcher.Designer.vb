@@ -23,7 +23,7 @@ Partial Class App_Launcher
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(App_Launcher))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(App_Launcher))
         Lbl1 = New CMCv.lbl(components)
         LblBuild = New CMCv.lbl(components)
         BtnLaunch = New CMCv.btn(components)
@@ -38,7 +38,7 @@ Partial Class App_Launcher
         ' Lbl1
         ' 
         Lbl1.BackColor = Color.Transparent
-        Lbl1.Font = New Font("Segoe UI", 72F, FontStyle.Bold, GraphicsUnit.Point)
+        Lbl1.Font = New Font("Segoe UI", 72.0F, FontStyle.Bold, GraphicsUnit.Point)
         Lbl1.ForeColor = Color.White
         Lbl1.Location = New Point(9, -5)
         Lbl1.Name = "Lbl1"
@@ -51,7 +51,7 @@ Partial Class App_Launcher
         ' LblBuild
         ' 
         LblBuild.BackColor = Color.Transparent
-        LblBuild.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LblBuild.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         LblBuild.ForeColor = Color.White
         LblBuild.Location = New Point(205, 112)
         LblBuild.Name = "LblBuild"
@@ -68,7 +68,7 @@ Partial Class App_Launcher
         BtnLaunch.FlatAppearance.BorderSize = 2
         BtnLaunch.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
         BtnLaunch.FlatStyle = FlatStyle.Flat
-        BtnLaunch.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnLaunch.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnLaunch.ForeColor = Color.White
         BtnLaunch.Location = New Point(138, 381)
         BtnLaunch.Name = "BtnLaunch"

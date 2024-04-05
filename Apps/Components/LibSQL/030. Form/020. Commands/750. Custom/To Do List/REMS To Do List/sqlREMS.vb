@@ -1,9 +1,11 @@
 ﻿Imports System
+Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 Imports CMCv
 
 Namespace Commands.REMS
     Public Class View
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayGrid(ByVal ProgressGrid As DataGridView, ByVal DoneGrid As DataGridView, ByVal VerifiedGrid As DataGridView, ByVal TodoStatusBar As stt, Optional ByVal ShowAll As Boolean = False)
 
             Try
@@ -24,8 +26,6 @@ Namespace Commands.REMS
             Catch ex As Exception
 
             End Try
-
-
         End Sub
     End Class
 

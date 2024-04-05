@@ -1,4 +1,6 @@
-﻿Public Class ACGR
+﻿Imports System.Runtime.Versioning
+
+Public Class ACGR
 
 #Region "Variables"
     Private _SQL As New LibSQL.Commands.ACGR.View
@@ -102,9 +104,9 @@
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
                     Call GETDATAGRID(True)
-                    Mainframe_n_6.ts_status.Text = "Success"
+                    Mainframe_n_6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.ts_status.Text = "Delete failed"
+                    Mainframe_n_6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If
@@ -123,6 +125,7 @@
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
         Call GETDATA()

@@ -1,6 +1,8 @@
-﻿Imports System.Windows.Forms
+﻿Imports System.Runtime.Versioning
+Imports System.Windows.Forms
 
 Namespace UI.View
+    <SupportedOSPlatform("windows")>
     Public Class MenuStrip
         Private _MMSMenu As New CMCv.mnu
         Private _item As ToolStripMenuItem()

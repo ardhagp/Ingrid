@@ -1,4 +1,6 @@
-﻿Public Class MODS
+﻿Imports System.Runtime.Versioning
+
+Public Class MODS
 #Region "Variables"
     Private _SQL As New LibSQL.Commands.MODS.View
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
@@ -30,7 +32,7 @@
 
         V_FORMAttrib.IsNew = True
         V_FORMAttrib.RowID = "-1"
-        V_FORMAttrib.Hash = V_SECEncrypt.MD5
+        V_FORMAttrib.Hash = CMCv.Security.Encrypt.MD5()
         _MODS_Editor = New MODS_Editor
         Display(_MODS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new module", True)
     End Sub
@@ -68,14 +70,15 @@
                 If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     RaiseEvent DATACHANGED()
-                    Mainframe_n_6.ts_status.Text = "Success"
+                    Mainframe_n_6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.ts_status.Text = "Delete failed"
+                    Mainframe_n_6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
@@ -92,6 +95,7 @@
 #End Region
 
 #Region "Form Events"
+    <SupportedOSPlatform("windows")>
     Private Sub MODS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
         _MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
@@ -107,6 +111,7 @@
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
         Call GETDATA(True)

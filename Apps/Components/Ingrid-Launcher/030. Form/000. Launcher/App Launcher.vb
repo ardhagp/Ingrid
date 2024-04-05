@@ -9,7 +9,7 @@ Public Class App_Launcher
     Private Var_Second As Integer
 
     Private Sub App_Launcher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        V_BRIDGE.SENDLOG("Ingrid Launcher started." & Environment.NewLine & "--- App Ver. " & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision & " ---", Bridge.Security.WRITELOG.LogType.Information)
+        Bridge.Security.WRITELOG.SENDLOG("Ingrid Launcher started." & Environment.NewLine & "--- App Ver. " & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision & " ---", Bridge.Security.WRITELOG.LogType.Information)
 
         Call ActivateLicenses()
         LblBuild.Text = String.Format("Build {0}" & Environment.NewLine & "Rev. {1}", My.Application.Info.Version.Build, My.Application.Info.Version.Revision)
@@ -65,5 +65,9 @@ Public Class App_Launcher
         ConnectMainframe.Dispose()
         LblCountdown.Text = "by clicking Launch button"
         Me.Show()
+    End Sub
+
+    Private Sub IngridMainframe_IngridFrameOpen() Handles IngridMainframe.IngridFrameOpen
+        Me.Close()
     End Sub
 End Class

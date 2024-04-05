@@ -1,4 +1,6 @@
-﻿''' <summary>
+﻿Imports System.Runtime.Versioning
+
+''' <summary>
 ''' Module : DRAA View
 ''' </summary>
 Public Class DRAA
@@ -67,12 +69,14 @@ Public Class DRAA
     ''' <summary>
     ''' Clearing filters and load default data
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub ClearFind()
         TxtFind.Clear()
         TxtFind.ClearSearch()
         Call GETDATA(True)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub DRAA_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Memuat Menu
         Call LoadMenu()

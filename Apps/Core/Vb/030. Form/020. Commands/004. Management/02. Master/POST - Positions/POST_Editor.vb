@@ -1,4 +1,5 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Public Class POST_Editor
 #Region "Variables"
@@ -18,7 +19,7 @@ Public Class POST_Editor
     End Sub
 #End Region
 
-
+    <SupportedOSPlatform("windows")>
     Private Sub POST_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _FirstLoad = True
         _SQL.FILLCompany(CboCompany)
@@ -43,6 +44,7 @@ Public Class POST_Editor
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub CboCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
         If Not (_FirstLoad) Then
             _SQL.FILLDepartement(CboDepartement, CboCompany)
@@ -62,7 +64,7 @@ Public Class POST_Editor
         End If
 
         If (_SQL.PUSHData(CboDepartement.SelectedValue, TxtPositionCode.SLFSQLText, TxtPositionName.SLFSQLText, TxtPositionDescription.SLFSQLText, V_FORMAttrib.RowID)) Then
-            Mainframe_n_6.ts_status.Text = "Success"
+            Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else
             Mainframe_n_6.ts_status.Text = "Failed to save"

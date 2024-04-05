@@ -1,5 +1,7 @@
 ﻿Imports System.Reflection
+Imports System.Runtime.Versioning
 
+<SupportedOSPlatform("windows")>
 Module Globals
     Public V_DBE_MSSQL2008 As New Database.Engine.MSSQL2008
     Public V_DBE_SQLite As New Database.Engine.SQLite_v3
@@ -101,7 +103,7 @@ Module Globals
         Catch ex As Exception
             PUSHERRORDATA("[GETAPPVERSION] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, "0.0.0", False, True, True)
             PUSHERRORDATASHOW()
-            v_APPVer = "0.0.0"
+            V_APPVer = "0.0.0"
             Return v_APPVer
         End Try
     End Function

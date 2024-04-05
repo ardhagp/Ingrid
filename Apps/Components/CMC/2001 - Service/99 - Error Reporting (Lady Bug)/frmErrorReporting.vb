@@ -1,4 +1,6 @@
-﻿Public Class frmErrorReporting
+﻿Imports System.Runtime.Versioning
+
+Public Class frmErrorReporting
     'Private Catcher As New Catcher.Error.Fields
     Public ResumeNext As Boolean
 
@@ -14,6 +16,7 @@
 
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Public Sub New(ByVal ErrorCatcher As Catcher.Error.Fields, Optional ByVal DBEngine As Database.Engine.SQLite_v3 = Nothing)
         InitializeComponent()
         TxtErrorType.Text = TypeOfFaultiesConverter(ErrorCatcher)
@@ -24,7 +27,7 @@
         ResumeNext = ErrorCatcher.ResumeNext
 
         'Send Error to Ingrid Log Center
-        V_BRIDGE_LOG.SENDLOG(TxtErrorMessage.Text & Environment.NewLine & "Error Number: " & TxtErrorNumber.Text & Environment.NewLine & "Error Type: " & TxtErrorType.Text & Environment.NewLine & "App Build: " & TxtAppBuild.Text, Bridge.Security.WRITELOG.LogType.Error)
+        Bridge.Security.WRITELOG.SENDLOG(TxtErrorMessage.Text & Environment.NewLine & "Error Number: " & TxtErrorNumber.Text & Environment.NewLine & "Error Type: " & TxtErrorType.Text & Environment.NewLine & "App Build: " & TxtAppBuild.Text, Bridge.Security.WRITELOG.LogType.Error)
 
         'Record Error into local database
         If (ErrorCatcher.SaveError) Then

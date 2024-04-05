@@ -1,4 +1,5 @@
 ﻿Imports System.Media
+Imports System.Runtime.Versioning
 Imports CMCv
 Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
@@ -6,6 +7,7 @@ Namespace Application
     Public Class Access
         Dim _SQL As New LibSQL.Application.Access
 
+        <SupportedOSPlatform("windows")>
         Public Function User(ByVal TCODE As String, ByVal UID As String, ByVal TypeOfAccess As LibSQL.Application.Access.TypeOfAccess, Optional ByVal Status As stt = Nothing) As Boolean
             Dim _AccessValue As Integer = 0
 

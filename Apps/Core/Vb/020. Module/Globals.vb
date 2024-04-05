@@ -1,9 +1,11 @@
 ﻿Imports System.IO
 Imports System.Reflection
+Imports System.Runtime.Versioning
 'Imports System.Deployment.application
 
 Module Globals
 #Region "Activate Licenses"
+    <SupportedOSPlatform("windows")>
     Public Sub ActivateLicenses()
         Dim V_BRIDGE_KEY As New Bridge.Security.GETKEY
         Dim V_SyncfusionKey As String = V_BRIDGE_KEY.SYNCFUSION()
@@ -18,16 +20,18 @@ Module Globals
     Public Workspace As New WorkspaceClass
     Public V_FileInfo As New CMCv.OperatingSystem.File.Info
     Public FolderHandler As New CMCv.OperatingSystem.Folder
-    Public SecurityEngine As New Security.Engine
+    'Public SecurityEngine As New Security.Engine
     Public V_IMG_COMPRESS As New CMCv.ImageEditor.Proccessor.Compress
     Public V_IMG_EDITOR As New CMCv.ImageEditor.Proccessor.Editor
-    Public V_SECEncrypt As New CMCv.Security.Encrypt
     Public V_USERAccess As New Application.Access
     Public V_SYSAPP As New Application.Modules
     Public V_LOGUser As New LibSQL.SystemLog.Activity.User
     Public V_LOGApp As New LibSQL.SystemLog.Activity.Application
     Public V_ForceRefreshMainframeData As Boolean
     'Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
+
+
+    Public V_SECEncrypt As New CMCv.Security.Encrypt
 
     Public ErrorCatcher As New Catcher.Error.Fields
 

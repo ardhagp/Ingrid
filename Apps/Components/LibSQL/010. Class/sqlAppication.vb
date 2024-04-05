@@ -1,4 +1,5 @@
 ﻿Imports System.Data
+Imports System.Runtime.Versioning
 Imports CMCv
 
 Namespace Application
@@ -15,20 +16,20 @@ Namespace Application
         Private _DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         Public Function User(ByVal TCode As String, ByVal UID As String, ByVal TypeOfAccess As TypeOfAccess) As Boolean
-            Dim _View As Integer = 0
-            Dim _TypeOfAccess As String = String.Empty
+            Dim V_View As Integer
+            Dim V_TypeOfAccess As String = String.Empty
 
             Select Case TypeOfAccess
                 Case Access.TypeOfAccess.View
-                    _TypeOfAccess = "uac.useraccess_view"
+                    V_TypeOfAccess = "uac.useraccess_view"
                 Case Access.TypeOfAccess.Add
-                    _TypeOfAccess = "uac.useraccess_add"
+                    V_TypeOfAccess = "uac.useraccess_add"
                 Case Access.TypeOfAccess.Edit
-                    _TypeOfAccess = "uac.useraccess_edit"
+                    V_TypeOfAccess = "uac.useraccess_edit"
                 Case Access.TypeOfAccess.Delete
-                    _TypeOfAccess = "uac.useraccess_delete"
+                    V_TypeOfAccess = "uac.useraccess_delete"
                 Case Access.TypeOfAccess.Report
-                    _TypeOfAccess = "uac.useraccess_reports"
+                    V_TypeOfAccess = "uac.useraccess_reports"
             End Select
 
             Try
@@ -40,10 +41,10 @@ Namespace Application
                 If _IsRoot = 1 Then
                     Return True
                 Else
-                    _DBR_MSSQL2008(1).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from dbo.[[sys]]useraccess] uac inner join dbo.[[sys]]module] mo on mo.module_id = uac.useraccess_module where (mo.module_code = '{0}') and (uac.useraccess_user = '{1}') and ({2} = 1)", TCode, UID, _TypeOfAccess)
-                    _View = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+                    _DBR_MSSQL2008(1).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from dbo.[[sys]]useraccess] uac inner join dbo.[[sys]]module] mo on mo.module_id = uac.useraccess_module where (mo.module_code = '{0}') and (uac.useraccess_user = '{1}') and ({2} = 1)", TCode, UID, V_TypeOfAccess)
+                    V_View = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
 
-                    If _View = 0 Then
+                    If V_View = 0 Then
                         Return False
                     Else
                         Return True
@@ -61,26 +62,26 @@ Namespace Application
         Private _DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         Public Function Exist(ByVal TCODE As String) As Boolean
-            Dim _isExist As Boolean = False
+            Dim V_isExist As Boolean
 
             Try
                 _DBR_MSSQL2008(1).Query = String.Format("select count(mo.module_id) from dbo.[[sys]]module] mo where mo.module_code = '{0}'", TCODE)
-                _isExist = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+                V_isExist = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
 
-                Return _isExist
+                Return V_isExist
             Catch ex As Exception
                 Return False
             End Try
         End Function
 
         Public Function Locked(ByVal TCODE As String) As Boolean
-            Dim _isLocked As Boolean = False
+            Dim V_isLocked As Boolean
 
             Try
                 _DBR_MSSQL2008(1).Query = String.Format("select count(mo.module_id) from dbo.[[sys]]module] mo where mo.module_code = '{0}' and mo.module_ismaintenance = 'true'", TCODE)
-                _isLocked = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+                V_isLocked = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
 
-                Return _isLocked
+                Return V_isLocked
             Catch ex As Exception
                 Return False
             End Try
@@ -100,82 +101,87 @@ Namespace Application
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function MaxPDFAllowed() As Decimal
-            Dim _SettingValue As Decimal = 0
+            Dim V_SettingValue As Decimal
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_uploadpdf from db_universe_erp.dbo.[[sys]]settings] s")
 
-                _SettingValue = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_SettingValue = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
             Catch ex As Exception
-                _SettingValue = 0.9
+                V_SettingValue = 0.9
             End Try
 
-            Return _SettingValue
+            Return V_SettingValue
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function MaxPhotoAllowed() As Decimal
-            Dim _SettingValue As Decimal = 0
+            Dim V_SettingValue As Decimal
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_uploadphoto from db_universe_erp.dbo.[[sys]]settings] s")
 
-                _SettingValue = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_SettingValue = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
             Catch ex As Exception
-                _SettingValue = 0.9
+                V_SettingValue = 0.9
             End Try
 
-            Return _SettingValue
+            Return V_SettingValue
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function MinPasswordLength() As Integer
-            Dim _MinPasswordLength As Integer = 0
+            Dim V_MinPasswordLength As Integer
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_minpasswordlength from db_universe_erp.dbo.[[sys]]settings] s")
 
-                _MinPasswordLength = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_MinPasswordLength = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
             Catch ex As Exception
-                _MinPasswordLength = 8
+                V_MinPasswordLength = 8
             End Try
 
-            Return _MinPasswordLength
+            Return V_MinPasswordLength
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function TextMark(ByVal IsAdministrator As Boolean) As String
-            Dim _Value As Integer = 0
-            Dim _SettingValue As String = String.Empty
+            Dim V_Value As Integer
+            Dim V_SettingValue As String
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("select s.settings_showwatermark from dbo.[[sys]]settings] s where s.settings_id = 1")
-                _Value = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_Value = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
 
                 _DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_textmark from db_universe_erp.dbo.[[sys]]settings] s")
 
-                If (_Value = 1 AndAlso (IsAdministrator)) OrElse (_Value = 2 AndAlso Not (IsAdministrator)) OrElse (_Value = 3) Then
-                    _SettingValue = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                If (V_Value = 1 AndAlso (IsAdministrator)) OrElse (V_Value = 2 AndAlso Not (IsAdministrator)) OrElse (V_Value = 3) Then
+                    V_SettingValue = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
                 Else
-                    _SettingValue = String.Empty
+                    V_SettingValue = String.Empty
                 End If
             Catch ex As Exception
-                _SettingValue = String.Empty
+                V_SettingValue = String.Empty
             End Try
 
-            Return _SettingValue
+            Return V_SettingValue
         End Function
     End Class
 
     Public Class Notification
         Private _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
+        <SupportedOSPlatform("windows")>
         Public Function Exist(ByVal EmployeeID As String) As Integer
-            Dim _isExist As Integer = 0
+            Dim V_isExist As Integer
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("select count(nt.notification_id) as [new_notification] from dbo.[[sys]]notification] nt where (nt.notification_employee = '{0}') and (nt.notification_isread = 0)", EmployeeID)
-                _isExist = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_isExist = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
 
-                Return _isExist
+                Return V_isExist
             Catch ex As Exception
                 Return 0
             End Try
@@ -185,18 +191,19 @@ Namespace Application
     Public Class RunningText
         Private _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
+        <SupportedOSPlatform("windows")>
         Public Function Show(Optional ByVal IsAdministrator As Boolean = False) As Integer
-            Dim _Value As Integer = 0
+            Dim V_Value As Integer
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("select s.settings_showrunningtext from dbo.[[sys]]settings] s where s.settings_id = 1")
-                _Value = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_Value = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
 
-                If _Value = 1 AndAlso (IsAdministrator) Then
+                If V_Value = 1 AndAlso (IsAdministrator) Then
                     Return True
-                ElseIf _Value = 2 AndAlso (Not (IsAdministrator)) Then
+                ElseIf V_Value = 2 AndAlso (Not (IsAdministrator)) Then
                     Return True
-                ElseIf _Value = 3 Then
+                ElseIf V_Value = 3 Then
                     Return True
                 Else
                     Return False
@@ -211,18 +218,19 @@ Namespace Application
     Public Class StorageSense
         Private _DBR_MSSQL2008(0) As Database.Adapter.MSSQL2008.Display.Request
 
+        <SupportedOSPlatform("windows")>
         Public Function Show(Optional ByVal IsAdmininstrator As Boolean = False) As Boolean
-            Dim _Value As Integer = 0
+            Dim V_Value As Integer
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_showstorage from dbo.[[sys]]settings] s")
-                _Value = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_Value = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
 
-                If _Value = 1 AndAlso (IsAdmininstrator) Then
+                If V_Value = 1 AndAlso (IsAdmininstrator) Then
                     Return True
-                ElseIf _Value = 2 AndAlso (Not (IsAdmininstrator)) Then
+                ElseIf V_Value = 2 AndAlso (Not (IsAdmininstrator)) Then
                     Return True
-                ElseIf _Value = 3 Then
+                ElseIf V_Value = 3 Then
                     Return True
                 Else
                     Return False
@@ -233,27 +241,29 @@ Namespace Application
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function DataCurrentSize() As Double
-            Dim _Size As Double = 0
+            Dim V_Size As Double
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp'")
-                _Size = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_Size = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
 
-                Return _Size
+                Return V_Size
             Catch ex As Exception
                 Return 0
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function FileCurrentSize() As Double
-            Dim _Size As Double = 0
+            Dim V_Size As Double
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp_file'")
-                _Size = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query, "db_universe_erp_file")
+                V_Size = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query, "db_universe_erp_file")
 
-                Return _Size
+                Return V_Size
             Catch ex As Exception
                 Return 0
             End Try
@@ -264,8 +274,9 @@ Namespace Application
             FreeSpace = 2
         End Enum
 
+        <SupportedOSPlatform("windows")>
         Public Function MaxSize(ByVal SizeType As DBSizeType, Optional ByVal DBName As String = "") As String
-            Dim _Size As String = "999"
+            Dim V_Size As String
             If DBName = String.Empty Then
                 DBName = "db_universe_erp"
             End If
@@ -274,10 +285,10 @@ Namespace Application
                 'Line 1 For Production
                 If SizeType = 1 Then
                     _DBR_MSSQL2008(0).Query = String.Format("SELECT max_db_size_in_gb = CASE WHEN engine_edition = 4 THEN CASE WHEN d.sversion_name LIKE '%203%' THEN (10 * 1024)  WHEN d.sversion_name LIKE '%202%' THEN (10 * 1024)  WHEN d.sversion_name LIKE '%201%' THEN (10 * 1024) WHEN d.sversion_name LIKE '%2008 R2%' THEN (10 * 1024) WHEN d.sversion_name LIKE '%2008%' THEN (4 * 1024) WHEN d.sversion_name LIKE '%2005%' THEN (4 * 1024) END ELSE '0' END FROM (SELECT sversion_name = v.ver, engine_edition = SERVERPROPERTY('EngineEdition'), edition = SERVERPROPERTY('Edition'), server_name = SERVERPROPERTY('ServerName') FROM (SELECT ver = @@VERSION) v) d")
-                    _Size = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query, DBName)
+                    V_Size = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query, DBName)
                 Else
                     _DBR_MSSQL2008(0).Query = "select sv.var_value from [dbo].[[sys]]variables] sv where sv.var_name = 'drive_free_space'"
-                    _Size = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query, DBName)
+                    V_Size = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query, DBName)
                 End If
 
 
@@ -285,7 +296,7 @@ Namespace Application
                 '_Size = "0"
                 'Please refer to actual remaining disk space. code : https://stackoverflow.com/questions/2243121/determine-available-disk-size-with-a-sql-query
 
-                Return _Size
+                Return V_Size
             Catch ex As Exception
                 Return "0"
             End Try
@@ -296,43 +307,45 @@ Namespace Application
         Private _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
         Private _IMG As New CMCv.ImageEditor.Proccessor.Compress
 
+        <SupportedOSPlatform("windows")>
         Public Function GETPhoto(ByVal EmployeeID As String, ByVal Gender As String) As System.Drawing.Image
-            Dim _Photo As System.Drawing.Image = Nothing
-            Dim _Bytes As Byte() = Nothing
+            Dim V_Photo As System.Drawing.Image
+            Dim V_Bytes As Byte()
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("select f.file_content from db_universe_erp_file.dbo.[[sto]]file] f where f.file_parent = '{0}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'", EmployeeID)
-                _Bytes = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_Bytes = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
 
-                If Not IsNothing(_Bytes) Then
-                    _Photo = _IMG.OutputAsImage(_Bytes)
+                If Not IsNothing(V_Bytes) Then
+                    V_Photo = _IMG.OutputAsImage(V_Bytes)
                 Else
                     If (Gender = "MALE") OrElse (Gender = "") Then
-                        _Photo = My.Resources.MALE_001_512_icon
+                        V_Photo = My.Resources.MALE_001_512_icon
 
                     Else
-                        _Photo = My.Resources.FEMALE_001_512_icon
+                        V_Photo = My.Resources.FEMALE_001_512_icon
                     End If
                 End If
 
-                Return _Photo
+                Return V_Photo
             Catch ex As Exception
                 Return Nothing
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function Show(Optional ByVal IsAdministrator As Boolean = False) As Boolean
-            Dim _Value As Integer = 0
+            Dim V_Value As Integer
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_showprofile from dbo.[[sys]]settings] s")
-                _Value = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_Value = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
 
-                If _Value = 1 AndAlso (IsAdministrator) Then
+                If V_Value = 1 AndAlso (IsAdministrator) Then
                     Return True
-                ElseIf _Value = 2 AndAlso (Not (IsAdministrator)) Then
+                ElseIf V_Value = 2 AndAlso (Not (IsAdministrator)) Then
                     Return True
-                ElseIf _Value = 3 Then
+                ElseIf V_Value = 3 Then
                     Return True
                 Else
                     Return False
@@ -343,15 +356,15 @@ Namespace Application
             End Try
         End Function
 
-
+        <SupportedOSPlatform("windows")>
         Public Function Welcome() As String
-            Dim _Welcome As String = String.Empty
+            Dim V_Welcome As String
 
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("select top 1 t.template_text1 from dbo.[[doc]]template] t where t.template_module = 'F2887E94E365C068D1CCB3FF03DB7969' and t.template_title = 'PROFILE' order by newid()")
-                _Welcome = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_Welcome = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
 
-                Return _Welcome
+                Return V_Welcome
             Catch ex As Exception
                 Return "Welcome,"
             End Try

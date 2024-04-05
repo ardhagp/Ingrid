@@ -1,4 +1,5 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Public Class MODS_Editor
 #Region "Variables"
@@ -7,6 +8,7 @@ Public Class MODS_Editor
 #End Region
 
 #Region "Subs Collection"
+    <SupportedOSPlatform("windows")>
     Private Sub FILLGroup(ByVal ModuleGroup As cbo)
         _SQL.FILLModuleGroup(ModuleGroup)
     End Sub
@@ -20,6 +22,7 @@ Public Class MODS_Editor
     End Sub
 #End Region
 
+    <SupportedOSPlatform("windows")>
     Private Sub MODS_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DgnUserRoles.SLF_GETNewColor()
 
@@ -59,7 +62,7 @@ Public Class MODS_Editor
 
         If (_SQL.PUSHData(TxtID.SLFSQLText, CboGroup.SelectedValue, TxtCode.SLFSQLText, TxtName.SLFSQLText, TxtDescription.SLFSQLText, ChkSystem.Checked, ChkLocked.Checked, V_FORMAttrib.RowID)) Then
             RaiseEvent RecordSaved()
-            Mainframe_n_6.ts_status.Text = "Success"
+            Mainframe_n_6.Ts_status.Text = "Success"
         Else
             Mainframe_n_6.ts_status.Text = "Failed to save"
             Return
@@ -90,7 +93,7 @@ Public Class MODS_Editor
 
     Private Sub TxtCode_TextChanged(sender As Object, e As EventArgs) Handles TxtCode.TextChanged
         If (V_FORMAttrib.IsNew) Then
-            TxtID.Text = V_SECEncrypt.MD5(TxtCode.SLFSQLText.ToUpper)
+            TxtID.Text = CMCv.Security.Encrypt.MD5(TxtCode.SLFSQLText.ToUpper)
         End If
     End Sub
 End Class

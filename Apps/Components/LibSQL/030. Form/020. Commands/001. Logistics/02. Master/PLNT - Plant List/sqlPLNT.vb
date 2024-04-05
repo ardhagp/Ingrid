@@ -1,10 +1,12 @@
 ﻿Imports System
+Imports System.Runtime.Versioning
 Imports CMCv
 
 Namespace Commands.PLNT
     Public Class View
         Private _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayData(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             Dim _Where As String = "where "
 
@@ -23,24 +25,26 @@ Namespace Commands.PLNT
 
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Function DELETEData(ByVal RowID As String) As Boolean
-            Dim _Success As Boolean = False
+            Dim V_Success As Boolean
             Try
                 _DBR_MSSQL2008(1).Query = String.Format("delete from dbo.[[doc]]employeeactivity] where employeeactivity_id = '{0}';delete from db_universe_erp_file.dbo.[[sto]]file] where file_parent = '{0}';", RowID)
                 _DBE_MSSQL2008.PUSHDATA(_DBR_MSSQL2008(1).Query)
-                _Success = True
+                V_Success = True
             Catch ex As Exception
-                _Success = False
+                V_Success = False
             End Try
-            Return _Success
+            Return V_Success
         End Function
 
     End Class
 
     Public Class Editor
+        <SupportedOSPlatform("windows")>
         Public Function IsDuplicate(ByVal CompanyCode As String, ByVal PlantCode As String, Optional ByVal RowID As String = "") As Boolean
             RowID = 0
-            Dim _IsDuplicate As Boolean = False
+            Dim V_IsDuplicate As Boolean
 
             Try
                 If RowID = String.Empty Then
@@ -49,14 +53,15 @@ Namespace Commands.PLNT
                     _DBR_MSSQL2008(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.[[sys]]module] mods where mods.module_code = '{0}' and mods.module_id <> '{1}'")
                 End If
 
-                _IsDuplicate = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_IsDuplicate = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
 
-                Return _IsDuplicate
+                Return V_IsDuplicate
             Catch ex As Exception
                 Return False
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Sub GETCompany(ByVal ListOfCompany As CMCv.cbo)
             _DBR_MSSQL2008(1).Query = "select com.company_id, '[' + com.company_code + '] - ' + com.company_name as [company_name] from dbo.[[man]]company] com order by com.company_code"
             _DBR_MSSQL2008(1).Dropdown = ListOfCompany

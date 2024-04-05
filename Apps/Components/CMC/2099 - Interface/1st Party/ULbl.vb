@@ -1,10 +1,11 @@
-﻿Imports System.Windows.Forms
+﻿Imports System.Runtime.Versioning
+Imports System.Windows.Forms
 
 Public Class ULbl
     Private iLoop As Integer = 0
 
+    <SupportedOSPlatform("windows")>
     Public Sub New()
-
         ' This call is required by the designer.
         InitializeComponent()
         Call ActivateLicenses()

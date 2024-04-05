@@ -1,4 +1,6 @@
-﻿Public Class EPLS_Position
+﻿Imports System.Runtime.Versioning
+
+Public Class EPLS_Position
 #Region "Variables"
     Private _SQL As New LibSQL.Commands.EPLS.Addins.Browse.Position
     Public Event RecordSelected()
@@ -12,6 +14,7 @@
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
         _SQL.DisplayData(DgnAddinPosition, SLFStatus, TxtFind, ForceRefresh)
     End Sub
@@ -32,6 +35,7 @@
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EPLS_Position_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call GETDATA()
     End Sub
@@ -40,6 +44,7 @@
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()
@@ -50,6 +55,7 @@
 
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
         Call GETDATA(True)

@@ -1,7 +1,9 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Namespace Commands.MMGR
     Public Class View
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayData(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             If (Find.SLFSQLText = String.Empty) Or (ForceRefresh = True) Then
                 _DBR_MSSQL2008(0).Query = "select mg.materialgroup_id, mg.materialgroup_description, mg.materialgroup_description2, mg.materialgroup_language from dbo.[[log]]materialgroup] mg order by mg.materialgroup_id"

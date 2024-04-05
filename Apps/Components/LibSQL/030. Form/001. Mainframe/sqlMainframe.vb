@@ -1,10 +1,11 @@
-﻿Imports System
+﻿Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Namespace Mainframe
     Public Class Database
+        <SupportedOSPlatform("windows")>
         Public Function Connect(Optional ByVal IsProduction As Boolean = False, Optional ByVal SplashScreen As Form = Nothing) As Boolean
-            Dim _Success As Boolean = False
+            Dim V_Success As Boolean
             Try
                 'Using MS Access Connection Properties
                 '_DBE_MSACCESS2003.Open(IsProduction)
@@ -20,22 +21,24 @@ Namespace Mainframe
                 _DB_Properties(1) = _DBE_SQLite.GetDatabaseProperties(_DB_Properties(1))
 
                 If (_DBE_MSSQL2008.Open(_DB_Properties(1), SplashScreen)) Then
-                    _Success = True
+                    V_Success = True
                 Else
-                    If SplashScreen IsNot Nothing Then
-                        SplashScreen.Close()
-                    End If
-                    _Success = False
+                    'If SplashScreen IsNot Nothing Then
+                    '    SplashScreen.Close()
+                    'End If
+                    SplashScreen?.Close()
+                    V_Success = False
                 End If
                 _DBE_SQLite.Close()
             Catch ex As Exception
                 MsgBox(ex.ToString)
-                If SplashScreen IsNot Nothing Then
-                    SplashScreen.Close()
-                End If
-                _Success = False
+                'If SplashScreen IsNot Nothing Then
+                '    SplashScreen.Close()
+                'End If
+                SplashScreen?.Close()
+                V_Success = False
             End Try
-            Return _Success
+            Return V_Success
         End Function
     End Class
 End Namespace

@@ -1,8 +1,10 @@
 ﻿Imports System
+Imports System.Runtime.Versioning
 Imports CMCv
 
 Namespace Commands.DRAA
     Public Class View
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayMainGrid(ByVal Find As txt, ByVal ContentGrid As dgn, ContentStatusBar As stt, Optional ByVal ForceRefresh As Boolean = False)
             Try
                 Dim _Where As String = String.Format("where ")

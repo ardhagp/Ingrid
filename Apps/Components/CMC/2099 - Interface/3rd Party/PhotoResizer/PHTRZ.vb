@@ -1,4 +1,6 @@
-﻿Public Class PHTRZ
+﻿Imports System.Runtime.Versioning
+
+Public Class PHTRZ
     Private _IMG_Compressor As New CMCv.ImageEditor.Proccessor.Compress
     Private _FILEHandler As New CMCv.OperatingSystem.File.Info
     Public Event Done()
@@ -75,6 +77,7 @@
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub PHTRZ_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call ActivateLicenses()
         ChkSaveAsACopy.Checked = True

@@ -1,12 +1,14 @@
 ﻿Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.IO
+Imports System.Runtime.Versioning
 
 Namespace ImageEditor.Proccessor
     Public Class Compress
+        <SupportedOSPlatform("windows")>
         Public Function OutputAsFile(ByVal File As String, ByVal SaveAs As String) As Boolean
             ' Get a bitmap.
-            Dim _Success As Boolean = False
+            Dim _Success As Boolean
             Try
                 Dim _Photo As New Bitmap(File)
                 Dim _TmpPhoto As New Bitmap(_Photo)
@@ -53,6 +55,7 @@ Namespace ImageEditor.Proccessor
         ''' </summary>
         ''' <param name="File"></param>
         ''' <returns></returns>
+        <SupportedOSPlatform("windows")>
         Public Function OutputAsImage(ByVal File As String) As System.Drawing.Image
             ' Get a bitmap.
             Try
@@ -96,6 +99,7 @@ Namespace ImageEditor.Proccessor
         ''' </summary>
         ''' <param name="File"></param>
         ''' <returns></returns>
+        <SupportedOSPlatform("windows")>
         Public Function OutputAsImage(ByVal File As FileStream) As System.Drawing.Image
             ' Get a bitmap.
             Try
@@ -126,6 +130,7 @@ Namespace ImageEditor.Proccessor
         ''' </summary>
         ''' <param name="File"></param>
         ''' <returns></returns>
+        <SupportedOSPlatform("windows")>
         Public Function OutputAsImage(ByVal File() As Byte) As System.Drawing.Image
             ' Get a bitmap.
             Try
@@ -147,6 +152,7 @@ Namespace ImageEditor.Proccessor
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function OutputAsByte(ByVal File As String) As Byte()
             ' Get a bitmap.
             Dim _Photo As New Bitmap(File)
@@ -175,6 +181,7 @@ Namespace ImageEditor.Proccessor
             Return _Byte
         End Function
 
+        <SupportedOSPlatform("windows")>
         Private Function GetEncoder(ByVal format As ImageFormat) As ImageCodecInfo
             Dim codecs As ImageCodecInfo() = ImageCodecInfo.GetImageDecoders()
 
@@ -189,9 +196,10 @@ Namespace ImageEditor.Proccessor
     End Class
 
     Public Class Editor
+        <SupportedOSPlatform("windows")>
         Public Function Watermarker(ByVal Picture As System.Drawing.Image, ByVal Text As String) As System.Drawing.Image
             Try
-                Dim bmp As Bitmap = New Bitmap(Picture)
+                Dim bmp As New Bitmap(Picture)
                 Dim _WaterText As String = Text
                 Dim canvas As Graphics = Graphics.FromImage(bmp)
                 Dim StringSizeF As SizeF,

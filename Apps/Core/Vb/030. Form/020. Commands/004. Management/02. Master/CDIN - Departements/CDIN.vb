@@ -1,4 +1,6 @@
-﻿Public Class CDIN
+﻿Imports System.Runtime.Versioning
+
+Public Class CDIN
 
 #Region "Variables"
     Private _SQL As New LibSQL.Commands.CDIN.View
@@ -71,6 +73,7 @@
 #End Region
 
 #Region "Form Events"
+    <SupportedOSPlatform("windows")>
     Private Sub CDIN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
         _MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
@@ -86,6 +89,7 @@
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
         Call GETDATA(True)

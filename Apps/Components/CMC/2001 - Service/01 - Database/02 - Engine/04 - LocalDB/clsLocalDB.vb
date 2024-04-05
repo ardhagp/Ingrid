@@ -1,4 +1,5 @@
 ﻿Imports System.Data
+Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Namespace Database.Engine
@@ -8,10 +9,11 @@ Namespace Database.Engine
 
         Private v_CONN(2) As SqlClient.SqlConnection
         Private v_CMD(2) As SqlClient.SqlCommand
-        Private v_DR(2) As SqlClient.SqlDataReader
+        Private ReadOnly v_DR(2) As SqlClient.SqlDataReader
 
         Private v_LocalDB As New Connect.LocalDBConnection
 
+        <SupportedOSPlatform("windows")>
         Public Function CheckDBCatalog() As Boolean
             Try
                 Dim v_DBPath As String = Nothing
@@ -69,6 +71,7 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Sub Open(Optional ByVal IsProductionMode As Boolean = False)
             Try
                 Dim v_Location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
@@ -115,13 +118,15 @@ Namespace Database.Engine
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Function GetDatabaseProperties(ByVal Fields As Properties.Fields) As Database.Properties.Fields
             Try
                 v_DR(1) = GETDATAROW("Select LIST.SERVERADDRESS, LIST.USERNAME, LIST.PASSWORD, LIST.SERVERPORT, LIST.DBFORDATA, LIST.DBFORFILE FROM LIST WHERE LIST.DEFAULTCONNECTION =1;")
 
                 Fields.ServerAddress = v_DR(1).GetString(0)
                 Fields.Username = v_DR(1).GetString(1)
-                Fields.Password = V_SECDecrypt.Rijndael(v_DR(1).GetString(2))
+                'Fields.Password = V_SECDecrypt.Rijndael(v_DR(1).GetString(2))
+                Fields.Password = CMCv.Security.Decrypt.AES(v_DR(1).GetString(2))
                 Fields.Port = v_DR(1).GetValue(3)
                 Fields.DataStorage = v_DR(1).GetString(4)
                 Fields.FileStorage = v_DR(1).GetString(5)
@@ -134,6 +139,7 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Sub SaveErrorData(ByVal ErrorCatcher As Catcher.Error.Fields)
             Try
                 Dim NowDateTime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
@@ -144,6 +150,7 @@ Namespace Database.Engine
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Function GETDATAROW(ByVal Query As String) As SqlClient.SqlDataReader
             Try
                 v_CMD(1) = New SqlClient.SqlCommand With {
@@ -166,6 +173,7 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function GETVALUE(ByVal Query As String) As Object
             Try
                 Dim v_ROWValue As Object
@@ -187,6 +195,7 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Sub GETDATATABLE(ByVal DBR As Adapter.LocalDB.Display.Request, ByVal TableName As String)
 
             Dim v_DA(1) As SqlClient.SqlDataAdapter
@@ -246,6 +255,7 @@ Namespace Database.Engine
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Sub PUSHDATA(ByVal Query As String)
             Try
                 v_CMD(1) = New SqlClient.SqlCommand With {

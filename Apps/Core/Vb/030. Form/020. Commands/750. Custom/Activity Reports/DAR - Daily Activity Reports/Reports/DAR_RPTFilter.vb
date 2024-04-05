@@ -1,18 +1,23 @@
-﻿Public Class DAR_RPTFilter
+﻿Imports System.Runtime.Versioning
+
+Public Class DAR_RPTFilter
     Private _SQLview As New LibSQL.Commands.DAR.View
     Private _SQLeditor As New LibSQL.Commands.DAR.Editor
     Private _SQL As New LibSQL.Commands.DAR.Reports
     Private _DS As DAR_RDS
     Private WithEvents _DAR_RPTContainer As DAR_RPTContainer
 
+    <SupportedOSPlatform("windows")>
     Private Sub FillEmployee()
         _SQLview.FillEmployee(CboBy)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub GETAffectedArea()
         _SQLeditor.GETAffectedArea(CboArea)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub GETActivity()
         _SQLeditor.GETTemplateTitle(CboActivity)
     End Sub
@@ -64,6 +69,7 @@
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub DAR_RPTFilter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call ResetComponents()
         Call GETAffectedArea()

@@ -1,4 +1,5 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Public Class CDIN_Editor
 
@@ -8,6 +9,7 @@ Public Class CDIN_Editor
 #End Region
 
 #Region "Subs Collections"
+    <SupportedOSPlatform("windows")>
     Private Sub FILLCompany(ByVal Company As cbo)
         _SQL.FILLCompany(Company)
     End Sub
@@ -21,6 +23,7 @@ Public Class CDIN_Editor
     End Sub
 #End Region
 
+    <SupportedOSPlatform("windows")>
     Private Sub CDIN_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call FILLCompany(CboCompany)
         If V_FORMAttrib.RowID = "-1" Then
@@ -52,7 +55,7 @@ Public Class CDIN_Editor
 
         If (_SQL.PUSHData(CboCompany.SelectedValue, TxtDeptCode.SLFSQLText, TxtDeptName.SLFSQLText, TxtDescription.SLFSQLText, V_FORMAttrib.RowID)) Then
             RaiseEvent RecordSaved()
-            Mainframe_n_6.ts_status.Text = "Success"
+            Mainframe_n_6.Ts_status.Text = "Success"
         Else
             Mainframe_n_6.ts_status.Text = "Failed to save"
             Return

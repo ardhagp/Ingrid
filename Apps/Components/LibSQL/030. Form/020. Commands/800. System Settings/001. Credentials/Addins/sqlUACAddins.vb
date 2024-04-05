@@ -1,7 +1,9 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Namespace Commands.UAC.Addins.Browse
     Public Class Employee
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayData(ByVal Grid As dgn, ByVal Status As CMCv.stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             ReDim _DBR_MSSQL2008(2)
 

@@ -1,4 +1,6 @@
-﻿Public Class Blank
+﻿Imports System.Runtime.Versioning
+
+Public Class Blank
 
     Private Sub Blank_FormClosed(sender As Object, e As Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         Me.Dispose()
@@ -15,6 +17,7 @@
         End Try
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub Blank_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             Call ActivateLicenses()

@@ -1,4 +1,6 @@
-﻿Public Class MCTG
+﻿Imports System.Runtime.Versioning
+
+Public Class MCTG
 
 #Region "Variables"
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
@@ -55,6 +57,7 @@
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles TxtFind.Click
         TxtFind.Clear()
         Call GETDATA(True)
@@ -63,6 +66,7 @@
 #End Region
 
 #Region "Form Events"
+    <SupportedOSPlatform("windows")>
     Private Sub MCTG_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call LoadMenu()
 
@@ -96,6 +100,7 @@
         DgnMCTG.SLF_GETNewColor()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub ClearFind()
         TxtFind.Clear()
         TxtFind.ClearSearch()

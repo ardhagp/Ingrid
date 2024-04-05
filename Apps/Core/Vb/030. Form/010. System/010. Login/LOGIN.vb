@@ -1,4 +1,6 @@
-﻿Public Class LOGIN
+﻿Imports System.Runtime.Versioning
+
+Public Class LOGIN
 #Region "Variables"
     Private _SQL As New LibSQL.Commands.UAC.Login
     Public Event LoginSuccess()
@@ -21,10 +23,12 @@
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
         Call ExecLogin()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub ExecLogin()
         If (TxtUsername.SLFSQLText = String.Empty) OrElse (TxtPassword.SLFSQLText = String.Empty) Then
             Return
@@ -65,6 +69,7 @@
         TxtUsername.Focus()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub TxtPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtPassword.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call ExecLogin()

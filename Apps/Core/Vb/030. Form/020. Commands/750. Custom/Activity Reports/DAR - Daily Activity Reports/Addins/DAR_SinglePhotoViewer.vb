@@ -1,4 +1,6 @@
-﻿Public Class DAR_SinglePhotoViewer
+﻿Imports System.Runtime.Versioning
+
+Public Class DAR_SinglePhotoViewer
     Private _FILE As String
     Private _IMAGE As Image
     Private _Type As String
@@ -23,6 +25,7 @@
         _Type = "Image"
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub DAR_SinglePhotoViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If _Type = "String" Then
             PctbxPhoto.ImageLocation = _FILE

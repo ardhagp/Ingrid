@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Management
 Imports System.Runtime.InteropServices
+Imports System.Runtime.Versioning
 Imports System.Text.RegularExpressions
 
 ''' <project>Mainframe : txt (Textbox Custom Component)</project>
@@ -12,6 +13,7 @@ Imports System.Text.RegularExpressions
 Public Class txt
     Inherits System.Windows.Forms.TextBox
 
+    <SupportedOSPlatform("windows")>
     Public Sub New()
         InitializeComponent()
         Call ActivateLicenses()
@@ -300,7 +302,7 @@ Public Class txt
     End Sub
 #End Region
 
-#Region "Password Strenght Indicator"
+#Region "Password Strength Indicator"
     Private _Password As String
     Private _ChrPassword() As Char
     Private _MinPasswordLength As Integer = 8
@@ -382,7 +384,7 @@ Public Class txt
         If _Password.Trim = "" Then
             _Result = "Password must not be empty"
         ElseIf _Password.Length < _MinPasswordLength Then
-            _Result = "At leaset " & _MinPasswordLength & " characters please!"
+            _Result = "At least " & _MinPasswordLength & " characters please!"
         ElseIf _Score < 50 Then
             _Result = "Weak!"
         ElseIf (_Score >= 50 AndAlso _Score < 75) Then
@@ -397,6 +399,8 @@ Public Class txt
 #End Region
 
     Private _varFlagAutoSelect As Boolean
+
+    <SupportedOSPlatform("windows")>
     Private Sub txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
         Call FontSearchBox(True)
 
@@ -436,6 +440,7 @@ Public Class txt
         _varFlagAutoSelect = False
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub txt_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
         If Me.SLFAutoTrim Then
             Me.Text = Me.Text.Trim()
@@ -490,6 +495,7 @@ Public Class txt
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Public Sub FontSearchBox(ByVal OnFocus As Boolean)
         Try
             If Me.SLFIsSearchBox = True Then
@@ -520,6 +526,7 @@ Public Class txt
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Function HasKeyboard()
         Dim searcher As New ManagementObjectSearcher("root\CIMV2", "SELECT * FROM Win32_Keyboard")
         Dim result = From mobj In searcher.Get()
@@ -527,6 +534,7 @@ Public Class txt
         Return Not IsNothing(result)
     End Function
 
+    <SupportedOSPlatform("windows")>
     Public Sub ClearSearch()
         Call FontSearchBox(False)
     End Sub

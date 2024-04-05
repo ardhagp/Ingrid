@@ -1,4 +1,5 @@
 ﻿Imports System.Data
+Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Namespace Database.Engine
@@ -12,7 +13,8 @@ Namespace Database.Engine
 
         Private _MSA2003C As New Connect.MSAccess2003Connection
 
-        Public Function CheckDBCatalog() As Boolean
+        <SupportedOSPlatform("windows")>
+        Public Shared Function CheckDBCatalog() As Boolean
             Try
                 Dim _DBPath As String = Nothing
                 Dim _DBExists(2) As Boolean
@@ -56,6 +58,7 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Sub Open(Optional ByVal IsProductionMode As Boolean = False)
             Try
                 CheckDBCatalog()
@@ -90,13 +93,15 @@ Namespace Database.Engine
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Function GetDatabaseProperties(ByVal Fields As Database.Properties.Fields) As Database.Properties.Fields
             Try
                 _DR(0) = GETDATAROW("SELECT LIST.SERVERADDRESS, LIST.USERNAME, LIST.PASSWORD, LIST.ACCEPTEDLINECONNECTION FROM LIST WHERE LIST.ID =1;", _CONN(0), _CMD(0))
 
                 Fields.ServerAddress = _DR(0).GetString(0)
                 Fields.Username = _DR(0).GetString(1)
-                Fields.Password = V_SECDecrypt.Rijndael(_DR(0).GetString(2))
+                'Fields.Password = V_SECDecrypt.Rijndael(_DR(0).GetString(2))
+                Fields.Password = CMCv.Security.Decrypt.AES(_DR(0).GetString(2))
                 Fields.Port = _DR(0).GetValue(3)
                 Fields.DataStorage = _DR(0).GetString(4)
                 Fields.FileStorage = _DR(0).GetString(5)
@@ -109,19 +114,21 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Sub SaveErrorData(ByVal ErrorCatcher As Catcher.Error.Fields)
             Dim NowDateTime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
             Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & ErrorCatcher.Type & "','" & ErrorCatcher.Message & "'," & ErrorCatcher.Number & ",'" & ErrorCatcher.InternalStackTrace & "'," & ErrorCatcher.EnableErrorReporting & ",'" & NowDateTime & "');", _CONN(1), _CMD(1))
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Function GETDATAROW(ByVal Query As String, ByVal MyConnection As OleDb.OleDbConnection, ByVal MyCommand As OleDb.OleDbCommand) As OleDb.OleDbDataReader
             Try
                 Dim _DR As OleDb.OleDbDataReader
 
-                MyCommand = New OleDb.OleDbCommand
-                MyCommand.Connection = MyConnection
-                MyCommand.CommandType = CommandType.Text
-                MyCommand.CommandText = Query
+                MyCommand = New OleDb.OleDbCommand With {
+                .Connection = MyConnection,
+                .CommandType = CommandType.Text,
+                .CommandText = Query}
 
                 MyCommand = New System.Data.OleDb.OleDbCommand(Query, MyConnection)
                 _DR = MyCommand.ExecuteReader
@@ -138,12 +145,13 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Private Sub PUSHDATA(ByVal Query As String, ByVal MyConnection As OleDb.OleDbConnection, ByVal MyCommand As OleDb.OleDbCommand)
             Try
-                MyCommand = New OleDb.OleDbCommand
-                MyCommand.Connection = MyConnection
-                MyCommand.CommandType = CommandType.Text.Text
-                MyCommand.CommandText = Query
+                MyCommand = New OleDb.OleDbCommand With {
+                .Connection = MyConnection,
+                .CommandType = CommandType.Text,
+                .CommandText = Query}
                 MyCommand.ExecuteNonQuery()
             Catch ex As System.Data.OleDb.OleDbException
                 Call PUSHERRORDATA("[PUSHDATA] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.ErrorCode, ex.StackTrace, GETAPPVERSION, False, False, False)
@@ -151,6 +159,7 @@ Namespace Database.Engine
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Sub Close()
             _CONN(1).Close()
             _CONN(2).Close()

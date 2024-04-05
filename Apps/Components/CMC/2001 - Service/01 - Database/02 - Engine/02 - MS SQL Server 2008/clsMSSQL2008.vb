@@ -1,4 +1,5 @@
 ﻿Imports System.Data
+Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Namespace Database.Engine
@@ -17,30 +18,33 @@ Namespace Database.Engine
             DbCustom
         End Enum
 
+        <SupportedOSPlatform("windows")>
         Public Function Open(ByVal Fields As Properties.Fields, Optional ByVal Splash As Form = Nothing) As Boolean
-            Dim _Success As Boolean = False
+            Dim V_Success As Boolean
             Try
                 _CONN(1) = New SqlClient.SqlConnection(_MSSQL2008.MS_SQL2008_Standard(Fields.ServerAddress, Fields.Port, Fields.DataStorage, Fields.Username, Fields.Password))
                 _CONN(1).Open()
-                _Success = True
+                V_Success = True
                 'Catch ex As Exception
                 '    If Splash IsNot Nothing Then
                 '        Splash.Close()
                 '    End If
-                '    _Success = False
+                '    V_Success = False
                 '    Call PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, True)
                 '    Call PUSHERRORDATASHOW()
             Catch ex As SqlClient.SqlException
-                If Splash IsNot Nothing Then
-                    Splash.Close()
-                End If
-                _Success = False
+                'If Splash IsNot Nothing Then
+                '    Splash.Close()
+                'End If
+                Splash?.Close()
+                V_Success = False
                 Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.ErrorCode, ex.StackTrace, GETAPPVERSION, False, True, True)
                 Call PUSHERRORDATASHOW()
             End Try
-            Return _Success
+            Return V_Success
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function GETDATAROW(ByVal Query As String, Optional ByVal DatabaseName As String = "db_universe_erp") As SqlClient.SqlDataReader ', ByVal MyConnection As SqlClient.SqlConnection, ByVal MyCommand As SqlClient.SqlCommand) As SqlClient.SqlDataReader
             Dim _DR(1) As SqlClient.SqlDataReader
 
@@ -72,14 +76,15 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function GETVALUE(ByVal Query As String, Optional ByVal DatabaseName As String = "db_universe_erp") As Object
             Try
                 Dim _ROWValue As Object
 
-                _CMD(1) = New SqlClient.SqlCommand
-                _CMD(1).Connection = _CONN(1)
-                _CMD(1).CommandType = CommandType.Text
-                _CMD(1).CommandTimeout = 30
+                _CMD(1) = New SqlClient.SqlCommand With {
+                .Connection = _CONN(1),
+                .CommandType = CommandType.Text,
+                .CommandTimeout = 30}
 
                 Query = "USE " & DatabaseName & "; " & Query
 
@@ -134,6 +139,7 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Sub GETDATATABLE(ByVal DBR As Adapter.MSSQL2008.Display.Request, ByVal TableName As String, Optional ByVal DatabaseName As String = "db_universe_erp")
 
             Dim _DA(1) As SqlClient.SqlDataAdapter
@@ -192,11 +198,12 @@ Namespace Database.Engine
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Sub PUSHDATA(ByVal Query As String, Optional ByVal DatabaseName As String = "db_universe_erp")
             Try
-                _CMD(1) = New SqlClient.SqlCommand
-                _CMD(1).Connection = _CONN(1)
-                _CMD(1).CommandType = CommandType.Text
+                _CMD(1) = New SqlClient.SqlCommand With {
+                .Connection = _CONN(1),
+                .CommandType = CommandType.Text}
 
                 Query = "USE " & DatabaseName & "; " & Query
 
@@ -208,8 +215,9 @@ Namespace Database.Engine
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Function PUSHIMAGE(ByVal CMD As SqlClient.SqlCommand) As Boolean
-            Dim _Success As Boolean = False
+            Dim V_Success As Boolean
 
             Try
                 _CMD(1) = New SqlClient.SqlCommand
@@ -223,23 +231,23 @@ Namespace Database.Engine
 
                 _CMD(1).ExecuteNonQuery()
 
-                _Success = True
+                V_Success = True
             Catch ex As Exception
-                _Success = False
+                V_Success = False
                 Call PUSHERRORDATA("[PUSHIMAGE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, False, False)
                 Call PUSHERRORDATASHOW()
             End Try
 
-            Return _Success
+            Return V_Success
         End Function
 
         Public Function FILLDATASET(ByVal Query As String, ByVal DataSetName As DataSet, ByVal TableName As String, Optional ByVal DatabaseName As String = "db_universe_erp") As DataSet
             GC.Collect()
 
             Try
-                _CMD(1) = New SqlClient.SqlCommand
-                _CMD(1).Connection = _CONN(1)
-                _CMD(1).CommandType = CommandType.Text
+                _CMD(1) = New SqlClient.SqlCommand With {
+                .Connection = _CONN(1),
+                .CommandType = CommandType.Text}
 
                 Query = "USE " & DatabaseName & "; " & Query
 

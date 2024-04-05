@@ -1,4 +1,6 @@
-﻿''' <summary>
+﻿Imports System.Runtime.Versioning
+
+''' <summary>
 ''' Module : DAR View
 ''' </summary>
 Public Class DAR
@@ -37,6 +39,7 @@ Public Class DAR
     ''' Menampilkan data awal
     ''' </summary>
     ''' <param name="ForceRefresh">Boolean</param>
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
         'Menyatakan bahwa datagrid belum selesai memuat data
         _LoadDGDateFinished = False
@@ -59,6 +62,7 @@ Public Class DAR
     ''' <summary>
     ''' Menyisipkan menu pada form saat pertama kali dimuat.
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
         'Sisipkan ke dalam form
         _MMSMenu.LoadIn(Me)
@@ -102,6 +106,7 @@ Public Class DAR
     ''' <summary>
     ''' 
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub OnDgnDateChange()
         If DgnDARDate.RowCount <> 0 Then
             _CurrentDate = DgnDARDate.CurrentRow.Cells("employeeactivity_datetime").Value
@@ -120,6 +125,7 @@ Public Class DAR
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
+    <SupportedOSPlatform("windows")>
     Private Sub DgnDARActivity_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnDARActivity.CellClick
         Call OnDgnActivityChange()
     End Sub
@@ -127,6 +133,7 @@ Public Class DAR
     ''' <summary>
     ''' Menampilkan foto pada picture box
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Public Sub PhotoPlugin(ByVal IsTabAttachmentVisible As Boolean)
         If (IsTabAttachmentVisible) Then
             If DgnPhoto.RowCount = 0 Then
@@ -170,6 +177,7 @@ Public Class DAR
     ''' <summary>
     ''' Clearing filters and load default data
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub ClearFind()
         TxtFind.Clear()
         TxtFind.ClearSearch()
@@ -185,6 +193,7 @@ Public Class DAR
     ''' <summary>
     ''' Load attachment
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub LoadAttachment(ByVal IsTabAttachmentVisible As Boolean)
         If (IsTabAttachmentVisible) Then
             DblBuffer(DgnPhoto)
@@ -202,6 +211,7 @@ Public Class DAR
     ''' <summary>
     ''' Add new data
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
         If Not (V_USERAccess.User("DAR", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -211,12 +221,13 @@ Public Class DAR
         V_FORMAttrib.RowID = "-1"
         _DAR_Editor = New DAR_Editor
         Display(_DAR_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new activity", True)
-        Mainframe_n_6.ts_status.Text = String.Empty
+        Mainframe_n_6.Ts_status.Text = String.Empty
     End Sub
 
     ''' <summary>
     ''' Edit existing data
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Public Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
         If Not (V_USERAccess.User("DAR", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -232,12 +243,13 @@ Public Class DAR
             _DAR_Editor = New DAR_Editor
             Display(_DAR_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "update activity", True)
         End If
-        Mainframe_n_6.ts_status.Text = String.Empty
+        Mainframe_n_6.Ts_status.Text = String.Empty
     End Sub
 
     ''' <summary>
     ''' Delete selected data
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
         If Not (V_USERAccess.User("DAR", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -252,9 +264,9 @@ Public Class DAR
                 If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     Call FillEmployee()
-                    Mainframe_n_6.ts_status.Text = "Success"
+                    Mainframe_n_6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.ts_status.Text = "Delete failed"
+                    Mainframe_n_6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If
@@ -263,6 +275,7 @@ Public Class DAR
     ''' <summary>
     ''' Load data with filter applied
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
         TxtFind.Clear()
         ChkEnableDateFilter.Checked = False
@@ -286,6 +299,7 @@ Public Class DAR
     ''' <summary>
     ''' Toogle view photo menu
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub EventToolsViewAttachment() Handles _MMSMenu.EventToolsViewAttachment
         If (_MMSMenu.Checked("EventToolsViewAttachment")) Then
             _MMSMenu.Checked("EventToolsViewAttachment", False)
@@ -313,18 +327,21 @@ Public Class DAR
 #End Region
 
 #Region "Upper Form Bar"
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA(False)
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub DtpMonth_KeyDown(sender As Object, e As KeyEventArgs) Handles DtpMonth.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA(False)
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         Call ClearFind()
     End Sub
@@ -335,6 +352,7 @@ Public Class DAR
 #End Region
 
 #Region "Main Form Events"
+    <SupportedOSPlatform("windows")>
     Private Sub frmDailyActivityReports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Memuat Menu
         Call LoadMenu()
@@ -364,6 +382,7 @@ Public Class DAR
 #End Region
 
 #Region "Component Events : Cbo"
+    <SupportedOSPlatform("windows")>
     Private Sub CboBy_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboBy.SelectedIndexChanged
         If (ChkEnableByFilter.Checked) Then
             Call GETDATA(False)
@@ -372,6 +391,7 @@ Public Class DAR
 #End Region
 
 #Region "Component Events : Chk"
+    <SupportedOSPlatform("windows")>
     Private Sub ByFilterChkEnableBy_CheckedChanged(sender As Object, e As EventArgs) Handles ChkEnableByFilter.CheckedChanged
         CboBy.Enabled = ChkEnableByFilter.Checked
         If (ChkEnableByFilter.Checked) Then
@@ -381,18 +401,21 @@ Public Class DAR
 #End Region
 
 #Region "Component Events : Dgn"
+    <SupportedOSPlatform("windows")>
     Private Sub DgnDARDate_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnDARDate.CellClick
         If DgnDARDate.RowCount <> 0 Then
             Call OnDgnDateChange()
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub DgnDARDate_KeyUp(sender As Object, e As KeyEventArgs) Handles DgnDARDate.KeyUp
         If ((e.KeyCode = Keys.Up) OrElse (e.KeyCode = Keys.Down)) AndAlso (DgnDARDate.RowCount > 1) Then
             Call OnDgnDateChange()
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub OnDgnActivityChange()
         If DgnDARActivity.RowCount <> 0 Then
             _ContentID = DgnDARActivity.CurrentRow.Cells("employeeactivity_id").Value
@@ -403,6 +426,7 @@ Public Class DAR
         Call LoadAttachment(_ShowAttachment)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub DgnDARActivity_KeyUp(sender As Object, e As KeyEventArgs) Handles DgnDARActivity.KeyUp
         If ((e.KeyCode = Keys.Up) OrElse (e.KeyCode = Keys.Down)) AndAlso (DgnDARActivity.RowCount > 1) Then
             Call OnDgnActivityChange()
@@ -415,14 +439,16 @@ Public Class DAR
         If TypeOf sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
             _DAR_SinglePhotoViewer = New DAR_SinglePhotoViewer(PctbxActivityPhoto.Image)
             Display(_DAR_SinglePhotoViewer, IMAGEDB.Main.ImageLibrary.PCTPRV_ICON, "Photo Viewer", "Preview your photo", True)
-            Mainframe_n_6.ts_status.Text = String.Empty
+            Mainframe_n_6.Ts_status.Text = String.Empty
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub DgnPhoto_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnPhoto.CellClick
         Call PhotoPlugin(_ShowAttachment)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub DgnPhoto_KeyUp(sender As Object, e As KeyEventArgs) Handles DgnPhoto.KeyUp
         If ((e.KeyCode = Keys.Up) OrElse (e.KeyCode = Keys.Down)) AndAlso (DgnPhoto.RowCount > 1) Then
             Call PhotoPlugin(_ShowAttachment)
@@ -451,7 +477,7 @@ Public Class DAR
 
                 _DAR_SinglePDFViewer = New DAR_SinglePDFViewer(_FullPath, _FileName, True)
                 Display(_DAR_SinglePDFViewer, IMAGEDB.Main.ImageLibrary.PDFPRV_ICON, "PDF Viewer", "Preview your file", True)
-                Mainframe_n_6.ts_status.Text = String.Empty
+                Mainframe_n_6.Ts_status.Text = String.Empty
 
                 _Bytes = Nothing
             End If
@@ -478,6 +504,7 @@ Public Class DAR
         CopyPicture = Nothing
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Dim SavePicture As System.Drawing.Image = Nothing
 
@@ -516,6 +543,7 @@ Public Class DAR
 #End Region
 
 #Region "WithEvents"
+    <SupportedOSPlatform("windows")>
     Private Sub _DAR_Editor_RecordSaved() Handles _DAR_Editor.RecordSaved
         Call GETDATA(True)
         Call FillEmployee()
@@ -525,6 +553,7 @@ Public Class DAR
         Me.Focus()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventReportShow() Handles _MMSMenu.EventReportShow
         If Not (V_USERAccess.User("DAR", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Report)) Then
             Decision("You are not authorized to : Generate Report", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)

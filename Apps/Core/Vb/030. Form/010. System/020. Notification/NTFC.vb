@@ -1,10 +1,13 @@
-﻿Public Class NTFC
+﻿Imports System.Runtime.Versioning
+
+Public Class NTFC
 
 #Region "Variables"
     Private _SQL As New LibSQL.Commands.NTFC.View
 #End Region
 
 #Region "Subs Collections"
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA()
         DblBuffer(DgnNotification)
         _SQL.Display(DgnNotification, V_USERAttrib.EID)
@@ -17,6 +20,7 @@
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub NTFC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DgnNotification.SLF_GETNewColor()
         Call GETDATA()

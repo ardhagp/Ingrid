@@ -1,7 +1,9 @@
 ﻿Imports System.Management
+Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Namespace Sys.Hardware
+    <SupportedOSPlatform("windows")>
     Public Class Keyboard
         Public Function Installed() As Integer
 

@@ -111,16 +111,16 @@ Public Class UAC_Editor
 
         Call CheckPWDChange()
 
-        If (_SQL.PUSHData(V_FORMAttrib.Field01, TxtUsername.SLFSQLText, V_SECEncrypt.MD5(TxtPassword.SLFSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, V_FORMAttrib.RowID, V_FORMAttrib.Hash, _PWDChange)) Then
+        If (_SQL.PUSHData(V_FORMAttrib.Field01, TxtUsername.SLFSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.SLFSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, V_FORMAttrib.RowID, V_FORMAttrib.Hash, _PWDChange)) Then
             RaiseEvent RecordSaved()
-            Mainframe_n_6.ts_status.Text = "Success"
+            Mainframe_n_6.Ts_status.Text = "Success"
         Else
             Mainframe_n_6.ts_status.Text = "Failed to save"
             Return
         End If
 
         If (ChkAddNew.Checked) Then
-            V_FORMAttrib.Hash = V_SECEncrypt.MD5
+            V_FORMAttrib.Hash = CMCv.Security.Encrypt.MD5()
             TxtEmployeeNumber.Clear()
             TxtEmployeeFullName.Clear()
             TxtUsername.Clear()

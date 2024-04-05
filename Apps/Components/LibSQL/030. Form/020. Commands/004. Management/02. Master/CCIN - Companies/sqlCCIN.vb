@@ -1,10 +1,12 @@
 ﻿Imports System
+Imports System.Runtime.Versioning
 Imports CMCv
 
 Namespace Commands.CCIN
     Public Class View
         Private _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayData(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             Dim _Where As String = "where "
 
@@ -23,48 +25,51 @@ Namespace Commands.CCIN
             _DBE_MSSQL2008.GETDATATABLE(_DBR_MSSQL2008(0), "TCompany")
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Function DELETEData(ByVal RowID As String) As Boolean
-            Dim _Success As Boolean = False
+            Dim V_Success As Boolean
             Try
                 _DBR_MSSQL2008(0).Query = String.Format("delete from dbo.[[man]]company] where company_id='{0}'", RowID)
                 _DBE_MSSQL2008.PUSHDATA(_DBR_MSSQL2008(0).Query)
-                _Success = True
+                V_Success = True
             Catch ex As Exception
-                _Success = False
+                V_Success = False
             End Try
-            Return _Success
+            Return V_Success
         End Function
 
     End Class
 
     Public Class Editor
+        <SupportedOSPlatform("windows")>
         Public Function IsDuplicate(ByVal Code As String, Optional ByVal RowID As String = "-1") As Boolean
-            Dim _IsDuplicate As Integer = 0
-            Dim _Where As String = "where "
+            Dim V_IsDuplicate As Integer
+            Dim V_Where As String = "where "
             If RowID = "-1" Then
-                _Where += String.Format(" c.company_code = '{0}'", Code)
+                V_Where += String.Format(" c.company_code = '{0}'", Code)
             Else
-                _Where += String.Format(" c.company_code = '{0}' and c.company_id <> '{1}'", Code, RowID)
+                V_Where += String.Format(" c.company_code = '{0}' and c.company_id <> '{1}'", Code, RowID)
             End If
 
-            _DBR_MSSQL2008(1).Query = String.Format("select count(c.company_id) as [isduplicate] from dbo.[[man]]company] c {0}", _Where)
+            _DBR_MSSQL2008(1).Query = String.Format("select count(c.company_id) as [isduplicate] from dbo.[[man]]company] c {0}", V_Where)
 
 
-            _IsDuplicate = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_IsDuplicate = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
 
-            If _IsDuplicate = 0 Then
+            If V_IsDuplicate = 0 Then
                 Return False
             Else
                 Return True
             End If
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function PUSHData(ByVal CompanyCode As String, ByVal CompanyName As String, ByVal SearchTerm1 As String, ByVal SearchTerm2 As String, ByVal Description As String, Optional ByVal RowID As String = "-1") As Boolean
-            Dim _Success As Boolean = False
+            Dim V_Success As Boolean
 
             Try
                 If RowID = "-1" Then
-                    Dim Hash As String = V_SECEncrypt.MD5
+                    Dim Hash As String = CMCv.Security.Encrypt.MD5()
                     _DBR_MSSQL2008(1).Query = String.Format("insert into dbo.[[man]]company](company_id,company_code,company_name,company_searchterm1,company_searchterm2,company_description) " &
                                                             "values('{0}', '{1}','{2}','{3}','{4}','{5}')", Hash, CompanyCode, CompanyName, SearchTerm1, SearchTerm2, Description)
                 Else
@@ -72,12 +77,12 @@ Namespace Commands.CCIN
                                                             "where company_id='{5}'", CompanyCode, CompanyName, SearchTerm1, SearchTerm2, Description, RowID)
                 End If
                 _DBE_MSSQL2008.PUSHDATA(_DBR_MSSQL2008(1).Query)
-                _Success = True
+                V_Success = True
             Catch ex As Exception
-                _Success = False
+                V_Success = False
             End Try
 
-            Return _Success
+            Return V_Success
         End Function
 
         Public Function GETCompanyCode(ByVal RowID As String) As String

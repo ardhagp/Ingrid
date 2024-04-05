@@ -1,4 +1,5 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Public Class EPLS_Editor
 #Region "Variables"
@@ -81,6 +82,7 @@ Public Class EPLS_Editor
         BtnSave.Focus()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Call CheckAllInputs()
 
@@ -106,7 +108,7 @@ Public Class EPLS_Editor
         End If
 
         If (_SQL.PUSHData(TxtPersonalID.SLFSQLText, _PositionID, TxtEmployeeNumber.SLFSQLText, TxtFullName.SLFSQLText, DtpBirthDate, TxtBirthPlace.SLFSQLText, TxtAddress.SLFSQLText, TxtEmployeeNickname.SLFSQLText, ChkActiveEmployee.Checked, CboGender.SelectedItem, _Photo, _ChangePhoto, V_USERAttrib.EID, V_FORMAttrib.RowID)) Then
-            Mainframe_n_6.ts_status.Text = "Success"
+            Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else
             Mainframe_n_6.ts_status.Text = "Failed to save"

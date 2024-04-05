@@ -1,8 +1,10 @@
 ﻿Imports System
+Imports System.Runtime.Versioning
 Imports System.Windows.Forms.DataVisualization.Charting
 
 Namespace Commands.DARD
     Public Class View
+        <SupportedOSPlatform("windows")>
         Public Sub GETDailyStatistic(ByVal Chrt As Chart)
             Try
                 'ReDim _DBR_MSSQL2008(4)
@@ -22,6 +24,7 @@ Namespace Commands.DARD
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Sub GETYearlyStatistic(ByVal Chrt As Chart)
             Try
                 'ReDim _DBR_MSSQL2008(4)
@@ -41,6 +44,7 @@ Namespace Commands.DARD
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Sub GETMonthlyStatistic(ByVal Chrt As Chart)
             Try
                 'ReDim _DBR_MSSQL2008(4)

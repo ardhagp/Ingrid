@@ -1,4 +1,5 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Public Class ACGR_Editor
 
@@ -20,6 +21,7 @@ Public Class ACGR_Editor
 #End Region
 
 #Region "Form Events"
+    <SupportedOSPlatform("windows")>
     Private Sub frmACGR_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Size = _Size
         Me.MinimumSize = Me.Size
@@ -58,6 +60,7 @@ Public Class ACGR_Editor
 #End Region
 
 #Region "Component Events"
+    <SupportedOSPlatform("windows")>
     Private Sub CboPlant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
         If Not (_FirstLoad) Then
             _SQL.FILLAccountingBook(CboAccountingBook, CboCompany)

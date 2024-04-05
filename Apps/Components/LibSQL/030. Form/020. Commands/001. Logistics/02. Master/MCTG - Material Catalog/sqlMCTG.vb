@@ -1,7 +1,9 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Namespace Commands.MCTG
     Public Class View
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayData(ByVal Datagrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             If (Find.SLFSQLText = String.Empty) OrElse (ForceRefresh) Then
                 _DBR_MSSQL2008(0).Query = "select m.material_id, m.material_number, m.material_name, m.material_longtext, mg.materialgroup_code, mt.materialtype_code, m.material_isidentifier, m.material_iscarrier from " &

@@ -1,4 +1,6 @@
-﻿Public Class UAC_Employee
+﻿Imports System.Runtime.Versioning
+
+Public Class UAC_Employee
 #Region "Variables"
     Private _SQL As New LibSQL.Commands.UAC.Addins.Browse.Employee
     Public Event RecordSelected()
@@ -50,6 +52,7 @@
 
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
         Call GETDATA(True)

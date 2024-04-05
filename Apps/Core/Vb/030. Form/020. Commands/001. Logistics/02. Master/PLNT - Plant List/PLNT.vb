@@ -1,4 +1,6 @@
-﻿Public Class PLNT
+﻿Imports System.Runtime.Versioning
+
+Public Class PLNT
     Private _SQL As New LibSQL.Commands.PLNT.View
     Private WithEvents _PLNT_Editor As New PLNT_Editor
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
@@ -39,7 +41,7 @@
         V_FORMAttrib.RowID = "-1"
         _PLNT_Editor = New PLNT_Editor
         Display(_PLNT_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new plant", True)
-        Mainframe_n_6.ts_status.Text = String.Empty
+        Mainframe_n_6.Ts_status.Text = String.Empty
     End Sub
 
     Private Sub _MMSMenu_EventDataEdit() Handles _MMSMenu.EventDataEdit
@@ -55,7 +57,7 @@
             _PLNT_Editor = New PLNT_Editor
             Display(_PLNT_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update plant data", True)
         End If
-        Mainframe_n_6.ts_status.Text = String.Empty
+        Mainframe_n_6.Ts_status.Text = String.Empty
     End Sub
 
     Private Sub _MMSMenu_EventDataDelete() Handles _MMSMenu.EventDataDelete
@@ -71,9 +73,9 @@
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If _SQL.DELETEData(V_FORMAttrib.RowID) = True Then
                     Call GETDATA(True)
-                    Mainframe_n_6.ts_status.Text = "Success"
+                    Mainframe_n_6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.ts_status.Text = "Delete failed"
+                    Mainframe_n_6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If
@@ -100,6 +102,7 @@
         Call ClearFind()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         Call ClearFind()
         TxtFind.ClearSearch()

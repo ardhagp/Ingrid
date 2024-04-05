@@ -1,4 +1,5 @@
 ﻿Imports System
+Imports System.Runtime.Versioning
 Imports CMCv
 
 Namespace Commands.DRTM
@@ -7,6 +8,7 @@ Namespace Commands.DRTM
         Public _EID As String
         Public _ContentID As String
 
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayGrid(ByVal Find As txt, ByVal DateGrid As dgn, ByVal ContentStatusBar As stt, Optional ByVal ForceRefresh As Boolean = False)
             Try
                 Dim _Where As String = String.Format("where ")

@@ -1,7 +1,10 @@
 ﻿
+Imports System.Runtime.Versioning
+
 Public Class DARD
     Private _SQL As New LibSQL.Commands.DARD.View
 
+    <SupportedOSPlatform("windows")>
     Private Sub DARD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call GETChart()
     End Sub
@@ -9,6 +12,7 @@ Public Class DARD
     ''' <summary>
     ''' Load chart data
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub GETChart()
         _SQL.GETDailyStatistic(chrtDaily)
         chrtDaily.Series("Series1").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line

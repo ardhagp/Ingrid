@@ -1,5 +1,7 @@
-﻿Public Class PhotoViewer
+﻿Imports System.Runtime.Versioning
 
+Public Class PhotoViewer
+    <SupportedOSPlatform("windows")>
     Private Sub PhotoViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call ActivateLicenses()
     End Sub

@@ -1,4 +1,6 @@
-﻿Public Class REMS
+﻿Imports System.Runtime.Versioning
+
+Public Class REMS
 
 #Region "Variables"
     Private _SQL As New LibSQL.Commands.REMS.View
@@ -7,6 +9,7 @@
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
     Private WithEvents _REMS_Switch As REMS_Editor_Switch
 
+    <SupportedOSPlatform("windows")>
     Private Sub REMS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call LoadMenu()
         TxtFind.ClearSearch()

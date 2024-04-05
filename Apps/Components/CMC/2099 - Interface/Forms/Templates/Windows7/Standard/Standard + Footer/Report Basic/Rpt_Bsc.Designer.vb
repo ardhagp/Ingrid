@@ -98,6 +98,7 @@ Partial Class Rpt_Bsc
         PerformLayout()
     End Sub
     Friend WithEvents BtnClose As btn
-    ' TODO: Microsoft.Reporting.WinForms.ReportViewer no longer supported.
-    Public WithEvents Rv_ As ReportViewer 'Microsoft.Reporting.WinForms.ReportViewer
+    'TODO: Microsoft.Reporting.WinForms.ReportViewer no longer supported.
+    'Microsoft.Reporting.WinForms.ReportViewer
+    Public WithEvents Rv_ As ReportViewer
 End Class

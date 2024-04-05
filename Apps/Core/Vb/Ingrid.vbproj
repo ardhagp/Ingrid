@@ -353,7 +353,7 @@
     <Compile Update="030. Form\030. Tools\100. Communications\001. SAY - Chat Room\SAY.Designer.vb">
       <DependentUpon>SAY.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\030. Tools\999. Tutorial\frmFistGuide.Designer.vb">
+    <Compile Update="030. Form\030. Tools\999. First Guide\frmFistGuide.Designer.vb">
       <DependentUpon>frmFistGuide.vb</DependentUpon>
     </Compile>
     <Compile Update="902. Settings\General.Designer.vb">
@@ -582,7 +582,7 @@
     <PackageReference Include="System.ComponentModel.Composition" Version="8.0.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
     <PackageReference Include="System.Management" Version="8.0.0" />
-    <PackageReference Include="WinForms.DataVisualization" Version="1.9.1" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="030. Form\001. Mainframe\Mainframe_nf_4.8.Designer.vb" />

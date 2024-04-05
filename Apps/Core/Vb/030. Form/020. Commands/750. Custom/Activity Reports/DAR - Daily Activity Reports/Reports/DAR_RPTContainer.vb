@@ -1,5 +1,6 @@
 ﻿Imports Microsoft.Reporting.WinForms.ReportViewer
 Imports Microsoft.Reporting.WinForms
+Imports System.Runtime.Versioning
 
 Public Class DAR_RPTContainer
     Public Event ReportClosed()
@@ -33,6 +34,7 @@ Public Class DAR_RPTContainer
         RaiseEvent ReportClosed()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub DAR_RPTContainer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Dim _DSo = New ReportDataSource("employeeactivity", _DS.Tables(0))

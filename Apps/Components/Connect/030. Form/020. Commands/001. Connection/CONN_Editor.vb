@@ -1,37 +1,42 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Public Class CONN_Editor
 
     Public Event RecordSaved()
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
+    Private WithEvents C_MMSMenu As New CMCv.UI.View.MenuStrip
     Private _SQL As New Commands.CONN.Editor
     Private _PWDChange As Boolean
     Private _OldPassword As String
 
+    <SupportedOSPlatform("windows")>
     Private Sub CONN_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _MMSMenu.LoadIn(Me, True)
-        _MMSMenu.ShowMenuFILE(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        C_MMSMenu.LoadIn(Me, True)
+        C_MMSMenu.ShowMenuFILE(CMCv.UI.View.MenuStrip.ShowItem.Yes)
         _PWDChange = False
 
-        If (v_FORMAttrib.IsNew) Then
-            v_FORMAttrib.RowID = v_SECEncrypt.MD5
+        If (V_FORMAttrib.IsNew) Then
+            V_FORMAttrib.RowID = CMCv.Security.Encrypt.MD5()
         Else
             Call LoadData()
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub LoadData()
-        _SQL.GETRowValue(v_FORMAttrib.RowID, Txt_ConnectionName, Txt_Address, Txt_Port, Txt_Username, Txt_Password, _OldPassword, Txt_DataStorage, Txt_FileStorage, Chk_Default)
+        _SQL.GETRowValue(V_FORMAttrib.RowID, Txt_ConnectionName, Txt_Address, Txt_Port, Txt_Username, Txt_Password, _OldPassword, Txt_DataStorage, Txt_FileStorage, Chk_Default)
     End Sub
 
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Call Save()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub Save()
         Call CheckAllInput()
 
@@ -71,17 +76,19 @@ Public Class CONN_Editor
         Call CheckPWDChange()
     End Sub
 
-    Private Sub _MMSMenu_EventFileSave() Handles _MMSMenu.EventFileSave
+    <SupportedOSPlatform("windows")>
+    Private Sub C_MMSMenu_EventFileSave() Handles C_MMSMenu.EventFileSave
         Call Save()
     End Sub
 
-    Private Sub _MMSMenu_EventFileCancel() Handles _MMSMenu.EventFileCancel
+    Private Sub C_MMSMenu_EventFileCancel() Handles C_MMSMenu.EventFileCancel
         Me.Close()
     End Sub
 
-    Private Sub _MMSMenu_EventFileUndoAll() Handles _MMSMenu.EventFileUndoAll
+    <SupportedOSPlatform("windows")>
+    Private Sub C_MMSMenu_EventFileUndoAll() Handles C_MMSMenu.EventFileUndoAll
         If Decision("Do you want to undo all changes?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
-            If (v_FORMAttrib.IsNew) Then
+            If (V_FORMAttrib.IsNew) Then
                 Txt_ConnectionName.Clear()
                 Txt_Address.Clear()
                 Txt_Port.Clear()

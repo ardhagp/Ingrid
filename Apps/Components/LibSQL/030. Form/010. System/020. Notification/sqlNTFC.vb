@@ -1,5 +1,8 @@
-﻿Namespace Commands.NTFC
+﻿Imports System.Runtime.Versioning
+
+Namespace Commands.NTFC
     Public Class View
+        <SupportedOSPlatform("windows")>
         Public Sub Display(ByVal NotificationGrid As CMCv.dgn, ByVal EID As String)
             _DBR_MSSQL2008(0).Query = String.Format("select top 100 ((case nt.notification_isread when 0 then '*NEW* ' else '' end) + convert(varchar(max), " &
                                                     "nt.notification_message)) as [notification_message], nt.notification_datetime " &

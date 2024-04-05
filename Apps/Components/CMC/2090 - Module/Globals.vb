@@ -13,12 +13,33 @@ Module Globals
 #End Region
 
 #Region "Security Globals"
+    <SupportedOSPlatform("windows")>
     Public V_BRIDGE_KEY As New Bridge.Security.GETKEY
+
+    <SupportedOSPlatform("windows")>
     Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
+
+    <SupportedOSPlatform("windows")>
     Public V_SALT As String = V_BRIDGE_KEY.SALT()
+
+    <SupportedOSPlatform("windows")>
     Public V_SyncfusionKey As String = V_BRIDGE_KEY.SYNCFUSION
+
+    ''' <summary>
+    ''' This security will be retired
+    ''' </summary>
     Public V_SECEncrypt As New Security.Encrypt
+
+    ''' <summary>
+    ''' This security will be retired
+    ''' </summary>
     Public V_SECDecrypt As New Security.Decrypt
+
+    'new security
+    Public V_SEC_AES As System.Security.Cryptography.Aes
+    Public V_SEC_MD5 As System.Security.Cryptography.MD5
+    Public V_SEC_CRC32 As New System.IO.Hashing.Crc32
+
 #End Region
 
 #Region "Class Globals"
@@ -32,7 +53,7 @@ Module Globals
     Public _varAutoTrim As Boolean
     Public _varHarusDiisi As Boolean
 
-    Public SEC As New Security.Engine
+    'Public SEC As New Security.Engine
 
     Public ERC As New frmErrorReporting
     Public ERL As New Database.Engine.LocalDB
@@ -51,6 +72,7 @@ Module Globals
         Return _APPVer
     End Function
 
+    <SupportedOSPlatform("windows")>
     Public Sub ActivateLicenses()
         'License for Syncfusion
 
@@ -58,35 +80,35 @@ Module Globals
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(V_SyncfusionKey)
     End Sub
 
-    Public Function CREATESECURITY(ByVal IsEncrypt As Boolean, ByVal Message As String)
-        Try
-            SEC = New Security.Engine
-            Dim SECAlgorithm As Security.Engine.Algorithm = Security.Engine.Algorithm.Rijndael
-            Security.Engine.EncryptionAlgorithm = SECAlgorithm
-            Security.Engine.Key = ""
+    'Public Function CREATESECURITY(ByVal IsEncrypt As Boolean, ByVal Message As String)
+    '    Try
+    '        SEC = New Security.Engine
+    '        Dim SECAlgorithm As Security.Engine.Algorithm = Security.Engine.Algorithm.Rijndael
+    '        Security.Engine.EncryptionAlgorithm = SECAlgorithm
+    '        Security.Engine.Key = ""
 
-            If (IsEncrypt) Then
-                If Security.Engine.EncryptString(Message) Then
-                    Message = Security.Engine.Content
-                Else
-                    Message = Security.Engine.CryptoException.Message
-                End If
-            Else
-                Security.Engine.Content = Message
-                If Security.Engine.DecryptString Then
-                    Message = Security.Engine.Content
-                Else
-                    Message = Security.Engine.CryptoException.Message
-                End If
-            End If
+    '        If (IsEncrypt) Then
+    '            If Security.Engine.EncryptString(Message) Then
+    '                Message = Security.Engine.Content
+    '            Else
+    '                Message = Security.Engine.CryptoException.Message
+    '            End If
+    '        Else
+    '            Security.Engine.Content = Message
+    '            If Security.Engine.DecryptString Then
+    '                Message = Security.Engine.Content
+    '            Else
+    '                Message = Security.Engine.CryptoException.Message
+    '            End If
+    '        End If
 
-            Return Message
-        Catch ex As Exception
-            Call PUSHERRORDATA("[CREATESECURITY] $\Ingrid\Apps\Components\CMC\2090 - Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
-            PUSHERRORDATASHOW()
-            Return Nothing
-        End Try
-    End Function
+    '        Return Message
+    '    Catch ex As Exception
+    '        Call PUSHERRORDATA("[CREATESECURITY] $\Ingrid\Apps\Components\CMC\2090 - Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+    '        PUSHERRORDATASHOW()
+    '        Return Nothing
+    '    End Try
+    'End Function
 
     Public Sub GETMACHINENAME()
         'GET Machinge Name
@@ -106,6 +128,7 @@ Module Globals
         End With
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Public Sub PUSHERRORDATASHOW()
         ERC = New frmErrorReporting(ErrorCatcher, )
         ERC.SLFNamaForm.Text = "Lady Bug (Error Catcher)"

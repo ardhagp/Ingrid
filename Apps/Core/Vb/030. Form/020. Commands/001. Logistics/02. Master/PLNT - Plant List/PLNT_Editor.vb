@@ -1,4 +1,6 @@
-﻿Public Class PLNT_Editor
+﻿Imports System.Runtime.Versioning
+
+Public Class PLNT_Editor
 #Region "Variables"
     Public Event RecordSaved()
     Private _SQL As New LibSQL.Commands.PLNT.Editor
@@ -6,6 +8,7 @@
 #End Region
 
 #Region "Sub Collections"
+    <SupportedOSPlatform("windows")>
     Private Sub GETCompany()
         Call _SQL.GETCompany(CboCompany)
     End Sub
@@ -25,10 +28,9 @@
 #End Region
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Call CheckAllInput()
-
-
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub PLNT_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         IsLoad = True
         Call GETCompany()

@@ -1,4 +1,5 @@
 ﻿Imports System
+Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 Imports CMCv
 
@@ -24,13 +25,13 @@ Namespace Commands.UAC
             Dim _UID As String = String.Empty
             Dim _Exist As Integer
             Try
-                _DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", Username, V_SECEncrypt.MD5(Password))
+                _DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", Username, CMCv.Security.Encrypt.MD5(Password))
                 _Exist = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
 
                 If _Exist = 0 Then
                     _UID = String.Empty
                 Else
-                    _DBR_MSSQL2008(1).Query = String.Format("select usr.user_id from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", Username, V_SECEncrypt.MD5(Password))
+                    _DBR_MSSQL2008(1).Query = String.Format("select usr.user_id from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", Username, CMCv.Security.Encrypt.MD5(Password))
                     _UID = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
 
                     _DBR_MSSQL2008(1).Query = String.Format("update dbo.[[sys]]user] set user_lastlogin = getdate() where user_id = '{0}'", _UID)
@@ -174,6 +175,7 @@ Namespace Commands.UAC
         ''' </summary>
         ''' <param name="UID"></param>
         ''' <returns></returns>
+        <SupportedOSPlatform("windows")>
         Public Function GETPhoto(ByVal UID As String) As System.Drawing.Image
             Dim _UID As String = UID
             Dim _Photo As System.Drawing.Image = Nothing
@@ -226,6 +228,7 @@ Namespace Commands.UAC
         ''' <param name="StatusBar"></param>
         ''' <param name="Find"></param>
         ''' <param name="ForceRefresh"></param>
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayData(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             If (Find.SLFSQLText = String.Empty) OrElse (ForceRefresh) Then
                 _DBR_MSSQL2008(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as [user_root], usr.user_lastlogin, " &
@@ -263,6 +266,7 @@ Namespace Commands.UAC
     ''' Editor Class
     ''' </summary>
     Public Class Editor
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayData(ByVal Grid As dgn, Optional ByVal RowID As String = "-1")
             ReDim _DBR_MSSQL2008(2)
 
@@ -419,7 +423,7 @@ Namespace Commands.UAC
                     For Each Row As DataGridViewRow In UAC.Rows
                         _EQuery = String.Format("insert into dbo.[[sys]]useraccess](useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &
                                                 "values('{0}', '{1}', (select mo.module_id from dbo.[[sys]]module] mo " &
-                                                "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", V_SECEncrypt.MD5, Hash, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
+                                                "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", CMCv.Security.Encrypt.MD5(), Hash, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
                         _DBR_MSSQL2008(1).Query += _EQuery
                     Next
 
@@ -439,7 +443,7 @@ Namespace Commands.UAC
                         If _Exist = 0 Then
                             _EQuery = String.Format("insert into dbo.[[sys]]useraccess](useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &
                                                     "values('{0}', '{1}', (select mo.module_id from dbo.[[sys]]module] mo " &
-                                                    "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", V_SECEncrypt.MD5, RowID, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
+                                                    "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", CMCv.Security.Encrypt.MD5(), RowID, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
                         Else
                             _EQuery = String.Format("update dbo.[[sys]]useraccess] set useraccess_view = '{0}', useraccess_add = '{1}', useraccess_edit = '{2}', useraccess_delete = '{3}', useraccess_reports = '{5}' " &
                                                     "where useraccess_id = '{4}';", Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_id").Value, Row.Cells("useraccess_reports").Value)

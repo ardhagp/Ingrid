@@ -1,10 +1,12 @@
 ﻿Imports System
+Imports System.Runtime.Versioning
 Imports CMCv
 
 Namespace Commands.CDIN
     Public Class View
         Private _DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
+        <SupportedOSPlatform("windows")>
         Public Sub DisplayData(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             Dim _Where As String = "where "
 
@@ -61,6 +63,7 @@ Namespace Commands.CDIN
             End If
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Sub FILLCompany(ByVal Company As cbo)
             _DBR_MSSQL2008(0).Query = "select c.company_id, (c.company_code + ' - ' + c.company_name) as [company_code] from dbo.[[man]]company] c order by c.company_code"
             _DBR_MSSQL2008(0).Dropdown = Company
@@ -101,7 +104,7 @@ Namespace Commands.CDIN
             Dim _Success As Boolean = False
             Try
                 If RowID = "-1" Then
-                    Dim Hash As String = V_SECEncrypt.MD5
+                    Dim Hash As String = CMCv.Security.Encrypt.MD5()
                     _DBR_MSSQL2008(1).Query = String.Format("insert into dbo.[[man]]departement](departement_id, departement_company, departement_code, departement_name, departement_description) " &
                                                             "values('{0}', '{1}', '{2}', '{3}', '{4}')", Hash, Company, DepartementCode, DepartementName, DepartementDescription)
                 Else

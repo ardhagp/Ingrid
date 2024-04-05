@@ -20,7 +20,7 @@ Public Class frmImports
         _varOriginalSourceFile = String.Empty
     End Sub
 
-
+    <Obsolete>
     Private Sub BtnBrowse_Click(sender As Object, e As EventArgs) Handles BtnBrowse.Click
         Dim FileLoaded As Integer = 0
 
@@ -35,6 +35,7 @@ Public Class frmImports
         End If
     End Sub
 
+    <Obsolete>
     Private Function CompactString(ByVal MyString As String, ByVal Width As Integer,
 ByVal Font As Drawing.Font,
 ByVal FormatFlags As Windows.Forms.TextFormatFlags) As String

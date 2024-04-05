@@ -1,4 +1,6 @@
-﻿Public Class MMTY
+﻿Imports System.Runtime.Versioning
+
+Public Class MMTY
     Private _SQL As New LibSQL.Commands.MMTY.View
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
 
@@ -15,6 +17,7 @@
         Call GETDATA(True)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
         Call GETDATA(True)

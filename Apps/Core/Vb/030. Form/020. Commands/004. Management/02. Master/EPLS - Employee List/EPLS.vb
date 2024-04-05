@@ -1,4 +1,5 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Public Class EPLS
 #Region "Variables"
@@ -22,6 +23,7 @@ Public Class EPLS
 #End Region
 
 #Region "Menu Strip Functions"
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
         If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -35,6 +37,7 @@ Public Class EPLS
         Display(_EPLS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new employee data", True)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
         If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -52,6 +55,7 @@ Public Class EPLS
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
         If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -65,9 +69,9 @@ Public Class EPLS
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
-                    Mainframe_n_6.ts_status.Text = "Success"
+                    Mainframe_n_6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.ts_status.Text = "Delete failed"
+                    Mainframe_n_6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If
@@ -87,6 +91,7 @@ Public Class EPLS
     End Sub
 #End Region
 
+    <SupportedOSPlatform("windows")>
     Private Sub EPLS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
         _MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
@@ -104,6 +109,7 @@ Public Class EPLS
         Call GETDATA()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
         Call GETDATA(True)

@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Data
 Imports System.ComponentModel
+Imports System.Runtime.Versioning
 
 Public Class Mainframe_n_6
 
@@ -15,6 +16,7 @@ Public Class Mainframe_n_6
 #End Region
 
 #Region "Variables"
+    Public Event IngridFrameOpen()
     Public Event IngridFrameClose()
 
     Private WithEvents V_LOGIN As New LOGIN
@@ -24,6 +26,7 @@ Public Class Mainframe_n_6
     'Private WithEvents _CSETTINGS As New Connect.CONN
     Private _SYSS As SYSS
     Private _SQL As New LibSQL.Mainframe.Database
+    Private _SQL_DBCheck As New LibSQL.Commands.DBIC.Applications
     Private _SQL_Notification As New LibSQL.Application.Notification
     Private _SQL_RunningText As New LibSQL.Application.RunningText
     Private _SQL_Modules As New LibSQL.Application.Modules
@@ -59,18 +62,20 @@ Public Class Mainframe_n_6
         End Try
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub GetRunningText()
-        TxtRunning.Visible = _SQL_RunningText.Show(v_USERAttrib.IsAdministrator)
+        TxtRunning.Visible = _SQL_RunningText.Show(V_USERAttrib.IsAdministrator)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub GetNotification()
-        _TotalNotification = _SQL_Notification.Exist(v_USERAttrib.EID)
+        _TotalNotification = _SQL_Notification.Exist(V_USERAttrib.EID)
         If _TotalNotification > 0 Then
-            USERMENU.Text = v_USERAttrib.FirstName & "*"
+            USERMENU.Text = V_USERAttrib.FirstName & "*"
             USERMENU.BackColor = Global.System.Drawing.Color.LightPink
             USERMENU.ForeColor = Global.System.Drawing.Color.Black
         Else
-            USERMENU.Text = v_USERAttrib.FirstName
+            USERMENU.Text = V_USERAttrib.FirstName
             USERMENU.BackColor = Global.System.Drawing.Color.Yellow
             USERMENU.ForeColor = Global.System.Drawing.Color.Black
         End If
@@ -79,7 +84,7 @@ Public Class Mainframe_n_6
     End Sub
 
     Private Sub ClearStatus()
-        ts_status.Text = String.Empty
+        Ts_status.Text = String.Empty
         _ClearStatus = 0
     End Sub
 
@@ -105,6 +110,7 @@ Public Class Mainframe_n_6
         End Try
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EnterCommand(ByVal TCode As String)
 
         'For Modules That Not Required Login
@@ -125,9 +131,7 @@ Public Class Mainframe_n_6
             Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " trying to open Under Maintenance Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Error)
             Decision("[" & TCode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
 
-            If OperatingSystem.IsWindows Then
-                Console.Beep()
-            End If
+            System.Media.SystemSounds.Beep.Play()
 
             Return
         ElseIf Not (V_USERAccess.User(TCode.ToUpper.Trim, V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then
@@ -136,9 +140,7 @@ Public Class Mainframe_n_6
 
             Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " trying to open Restricted Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Error)
 
-            If OperatingSystem.IsWindows Then
-                Console.Beep()
-            End If
+            System.Media.SystemSounds.Beep.Play()
 
             Return
         Else
@@ -153,16 +155,18 @@ Public Class Mainframe_n_6
 
 #Region "Application Menu"
     'Start Menu
-    Private Sub Ms_start_Login_Click(sender As Object, e As EventArgs) Handles ms_start_Login.Click
+    <SupportedOSPlatform("windows")>
+    Private Sub Ms_start_Login_Click(sender As Object, e As EventArgs) Handles Ms_start_Login.Click
         Call LoginClicked()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Function LoginClicked() As Boolean
-        If v_USERAttrib.UID = String.Empty Then
+        If V_USERAttrib.UID = String.Empty Then
             V_LOGIN = New LOGIN
             Display(V_LOGIN, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, "Login Screen", "Please enter your credential to access continue", True)
         End If
-        If v_USERAttrib.UID = String.Empty Then
+        If V_USERAttrib.UID = String.Empty Then
             _Session = False
             Call SystemLogout(True)
         Else
@@ -172,10 +176,12 @@ Public Class Mainframe_n_6
         Return _Session
     End Function
 
-    Private Sub Ms_start_Logout_Click(sender As Object, e As EventArgs) Handles ms_start_Logout.Click
+    <SupportedOSPlatform("windows")>
+    Private Sub Ms_start_Logout_Click(sender As Object, e As EventArgs) Handles Ms_start_Logout.Click
         Call LogoutClicked()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub LogoutClicked()
         If Decision("Are you sure want to logout from system?", "Logout", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
             Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " is logout.", Bridge.Security.WRITELOG.LogType.Information)
@@ -218,9 +224,9 @@ Public Class Mainframe_n_6
 
     Private Sub ChangePasswordToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangePasswordToolStripMenuItem.Click
         Try
-            v_FORMAttrib.RowID = v_USERAttrib.UID
-            v_FORMAttrib.IsNew = False
-            v_FORMAttrib.IsChangePasswordForm = True
+            V_FORMAttrib.RowID = V_USERAttrib.UID
+            V_FORMAttrib.IsNew = False
+            V_FORMAttrib.IsChangePasswordForm = True
             V_UAC_Editor = New UAC_Editor
             Display(V_UAC_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Change My Account", "Update your account username or password", True)
 
@@ -232,8 +238,11 @@ Public Class Mainframe_n_6
 #End Region
 
 #Region "Form Events"
+    <SupportedOSPlatform("windows")>
     Private Sub mainframe_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            RaiseEvent IngridFrameOpen()
+
             Bridge.Security.WRITELOG.SENDLOG("Ingrid Main App is opened.", Bridge.Security.WRITELOG.LogType.Information)
 
             Call ActivateLicenses()
@@ -262,6 +271,10 @@ Public Class Mainframe_n_6
             Call CommandAutoComplete()
             V_APPVer = GETAPPVERSION()
             Text += " - Ver. " & V_APPVer
+
+            If Not (LibSQL.Commands.DBIC.Applications.IsCompanyExist) OrElse Not (LibSQL.Commands.DBIC.Applications.IsDepartmentExist) Then
+                Display(frmFistGuide,, "First Guide", "", True, Me)
+            End If
         Catch ex As Exception
             PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
             PUSHERRORDATASHOW()
@@ -271,6 +284,7 @@ Public Class Mainframe_n_6
 #End Region
 
 #Region "Components Events"
+    <SupportedOSPlatform("windows")>
     Private Sub Tv_mainframe_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles Tv_mainframe.NodeMouseDoubleClick
         Try
             With Tv_mainframe.SelectedNode
@@ -283,6 +297,7 @@ Public Class Mainframe_n_6
         End Try
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub TxtShortcut_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_shortcut.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call EnterCommand(Txt_shortcut.Text.Trim)
@@ -290,12 +305,14 @@ Public Class Mainframe_n_6
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnExecute_Click(sender As Object, e As EventArgs) Handles BtnExecute.Click
         Call EnterCommand(Txt_shortcut.Text)
         Txt_shortcut.AutoCompleteCustomSource.Add(Txt_shortcut.Text.Trim)
     End Sub
 #End Region
 
+    <SupportedOSPlatform("windows")>
     Private Sub SystemLogout(Optional ByVal IsLogout As Boolean = True)
         If Not (IsLogout) Then
             ms_start_Login.Visible = False
@@ -365,6 +382,7 @@ Public Class Mainframe_n_6
 
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub PhotoResizerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PhotoResizerToolStripMenuItem.Click
         Call EnterCommand("PHTRZ")
     End Sub
@@ -385,6 +403,7 @@ Public Class Mainframe_n_6
         End Try
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub TmrNotif_Tick(sender As Object, e As EventArgs) Handles TmrNotif.Tick
         _GetNotifCounter += 1
 
@@ -399,6 +418,7 @@ Public Class Mainframe_n_6
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub GetProfile()
         PnlProfile.Visible = _SQL_Profiles.Show(v_USERAttrib.IsAdministrator)
         If (PnlProfile.Visible) Then
@@ -421,6 +441,7 @@ Public Class Mainframe_n_6
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub GetStorage()
         Dim V_DataCurrentSize As Double
         Dim V_FileCurrentSize As Double
@@ -474,6 +495,7 @@ Public Class Mainframe_n_6
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub V_LOGIN_LoginSuccess() Handles V_LOGIN.LoginSuccess
         Call GetNotification()
         PnlProfile.Visible = True
@@ -507,10 +529,12 @@ Public Class Mainframe_n_6
         End Try
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
         Call LogoutClicked()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub LoginToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem.Click
         Call LoginClicked()
     End Sub
@@ -541,10 +565,12 @@ Public Class Mainframe_n_6
         End Try
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub ms_start_Settings_Click(sender As Object, e As EventArgs) Handles ms_start_Settings.Click
         Call EnterCommand("SYSS")
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub V_LOGIN_LoginFailed() Handles V_LOGIN.LoginFailed
         Call ClearLoginData()
         Call SystemLogout(True)
@@ -562,6 +588,7 @@ Public Class Mainframe_n_6
         V_USERAttrib.IsAdministrator = False
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Public Sub GetSettings()
         _MAXUPLOADSIZE_PDF = _SQL_Modules.MaxPDFAllowed
         _MAXUPLOADSIZE_PHOTO = _SQL_Modules.MaxPhotoAllowed
@@ -569,6 +596,7 @@ Public Class Mainframe_n_6
         _TEXTMARK = _SQL_Modules.TextMark(V_USERAttrib.IsAdministrator)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub ms_start_Exit_Click(sender As Object, e As EventArgs) Handles ms_start_Exit.Click
         If (_Session) Then
             Call SystemLogout()
@@ -581,6 +609,7 @@ Public Class Mainframe_n_6
         End
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub ms_start_connection_app_Click(sender As Object, e As EventArgs) Handles ms_start_connection_app.Click 'uncomment this when add Connect to library
         V_CONN = New Connect.CONN(_PRODUCTIONMODE, True)
 
@@ -595,6 +624,7 @@ Public Class Mainframe_n_6
         End Try
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub Mainframe_n_6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Bridge.Security.WRITELOG.SENDLOG("Ingrid Main App is closed.", Bridge.Security.WRITELOG.LogType.Information)
         RaiseEvent IngridFrameClose()

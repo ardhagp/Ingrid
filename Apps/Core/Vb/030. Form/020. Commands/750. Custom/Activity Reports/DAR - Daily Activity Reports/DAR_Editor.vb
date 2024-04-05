@@ -1,5 +1,6 @@
 ﻿Imports System.Data
 Imports System.IO
+Imports System.Runtime.Versioning
 Imports CMCv
 
 Public Class DAR_Editor
@@ -15,10 +16,12 @@ Public Class DAR_Editor
 #End Region
 
 #Region "Sub Collections"
+    <SupportedOSPlatform("windows")>
     Private Sub GETAffectedArea()
         _SQL.GETAffectedArea(CboArea)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub GETTemplateTitle()
         _SQL.GETTemplateTitle(CboTemplate)
     End Sub
@@ -79,6 +82,7 @@ Public Class DAR_Editor
 
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub frmDailyActivityReports_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call GETAffectedArea()
         Call GETTemplateTitle()
@@ -89,7 +93,7 @@ Public Class DAR_Editor
         DgnPictureList.SLF_GETNewColor()
 
         If (V_FORMAttrib.IsNew) Then
-            V_FORMAttrib.RowID = V_SECEncrypt.MD5
+            V_FORMAttrib.RowID = CMCv.Security.Encrypt.MD5()
             MebStart.Text = If(Convert.ToString(Now.Hour).Length = 0, "00", If(Convert.ToString(Now.Hour).Length = 1, "0" & Now.Hour, Now.Hour)) & ":" & If(Convert.ToString(Now.Minute).Length = 0, "00", If(Convert.ToString(Now.Minute).Length = 1, "0" & Now.Minute, Now.Minute))
             MebEnd.Text = MebStart.Text
             TxtContent.Text = String.Empty
@@ -125,6 +129,7 @@ Public Class DAR_Editor
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Call Save()
     End Sub
@@ -133,6 +138,7 @@ Public Class DAR_Editor
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub Save()
         Dim _ActivityStart_S As String = String.Empty
         Dim _ActivityEnd_S As String = String.Empty
@@ -158,7 +164,7 @@ Public Class DAR_Editor
 
         If (_SQL.PUSHData(CboArea.SelectedValue, CboTemplate.SelectedValue, DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, MebStart.Text.Replace(".", ":"), DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, MebEnd.Text.Replace(".", ":"), TxtContent.SLFSQLText, TxtFeedback.SLFSQLText, V_USERAttrib.UID, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, _ExtQuery)) Then
             _ExtQuery = String.Empty
-            Mainframe_n_6.ts_status.Text = "Success"
+            Mainframe_n_6.Ts_status.Text = "Success"
 
             Dim _NewPhotoAdded As Integer = 0
             For Each _Row As DataGridViewRow In DgnPictureList.Rows
@@ -169,9 +175,9 @@ Public Class DAR_Editor
 
             If _NewPhotoAdded > 0 Then
                 If (_SQL.PUSHPhoto(DgnPictureList, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, DtpStart.Value)) Then
-                    Mainframe_n_6.ts_status.Text = "Success + All pictures has been added"
+                    Mainframe_n_6.Ts_status.Text = "Success + All pictures has been added"
                 Else
-                    Mainframe_n_6.ts_status.Text = "Success + With errors while adding pictures"
+                    Mainframe_n_6.Ts_status.Text = "Success + With errors while adding pictures"
                 End If
 
                 DgnPictureList.Rows.Clear()
@@ -188,9 +194,9 @@ Public Class DAR_Editor
 
             If _NewFileAdded > 0 Then
                 If (_SQL.PUSHFile(DgnFileList, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, DtpStart.Value)) Then
-                    Mainframe_n_6.ts_status.Text = "Success + All file has been added"
+                    Mainframe_n_6.Ts_status.Text = "Success + All file has been added"
                 Else
-                    Mainframe_n_6.ts_status.Text = "Success + With errors while adding files"
+                    Mainframe_n_6.Ts_status.Text = "Success + With errors while adding files"
                 End If
 
                 DgnFileList.Rows.Clear()
@@ -200,7 +206,7 @@ Public Class DAR_Editor
 
             RaiseEvent RecordSaved()
         Else
-            Mainframe_n_6.ts_status.Text = "Failed to save"
+            Mainframe_n_6.Ts_status.Text = "Failed to save"
             Return
         End If
 
@@ -209,7 +215,7 @@ Public Class DAR_Editor
         If Not (ChkAddNew.Checked) Then
             Me.Close()
         Else
-            V_FORMAttrib.RowID = V_SECEncrypt.MD5()
+            V_FORMAttrib.RowID = CMCv.Security.Encrypt.MD5()
         End If
     End Sub
 
@@ -239,6 +245,7 @@ Public Class DAR_Editor
         DtpStart.MaxDate = DtpEnd.Value
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnAddPhoto_Click(sender As Object, e As EventArgs) Handles BtnAddPhoto.Click
         Try
             If TxtPhotoPath.Text.Trim = String.Empty Then
@@ -255,7 +262,7 @@ Public Class DAR_Editor
             Dim _Date As Date = Now
             Dim _Photo As System.Drawing.Image = V_IMG_COMPRESS.OutputAsImage(TxtPhotoPath.Text) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
 
-            Row = New Object() {V_SECEncrypt.MD5(), _Date, _Photo, "Add", V_USERAttrib.EID}
+            Row = New Object() {CMCv.Security.Encrypt.MD5(), _Date, _Photo, "Add", V_USERAttrib.EID}
 
             With DgnPictureList.Rows
                 .Add(Row)
@@ -309,6 +316,7 @@ Public Class DAR_Editor
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub DgnPictureList_SLF_Selected() Handles DgnPictureList.SLF_Selected
         If DgnPictureList.RowCount <> 0 Then
             If DgnPictureList.CurrentRow.Cells("photo_status").Value = "Add" Then
@@ -361,7 +369,7 @@ Public Class DAR_Editor
             Dim V_Date As Date = Now
             'Dim _PDFFile As Object = New IO.FileStream(TxtFilePath.Text, FileMode.Open, FileAccess.Read) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
 
-            Row = New Object() {V_SECEncrypt.MD5(), CboFileTag.Text, V_Date, TxtFilePath.Text, "Add", V_USERAttrib.EID}
+            Row = New Object() {CMCv.Security.Encrypt.MD5(), CboFileTag.Text, V_Date, TxtFilePath.Text, "Add", V_USERAttrib.EID}
 
             With DgnFileList.Rows
                 .Add(Row)
@@ -388,6 +396,7 @@ Public Class DAR_Editor
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventFileSave() Handles _MMSMenu.EventFileSave
         Call Save()
     End Sub
