@@ -22,7 +22,7 @@ steps:
       git branch -r | findstr /v "\->" |  ForEach-Object {$br=$_.TrimStart(); git branch --track $br.TrimStart("master/") $br}
       $repoName = "$env:BUILD_REPOSITORY_NAME".split('/')[1]
       $repoUri = "$env:SYSTEM_TEAMFOUNDATIONCOLLECTIONURI".Substring(8)+ "_git/$repoName"
-      git remote add vsts "https://$env:SYSTEM_ACCESSTOKEN@$repoUri"
+      git remote add vsts "https://$env:hi4h56cqjnmjfwehngs5m744qmrsg7whx5w5dfludn732owyzw5a@$repoUri"
       git branch -r | findstr /v "\->" |  ForEach-Object { $br=$_.TrimStart("  master/"); git push -u vsts $br }
 
 - task: NuGetToolInstaller@1
