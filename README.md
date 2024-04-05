@@ -13,6 +13,10 @@ Multi purpose application
 |Midnight Build| [![Build status](https://cagakmelon.visualstudio.com/Ingrid/_apis/build/status/www.iupdt.my.id/scheduled/Midnight-Build-Beta)](https://cagakmelon.visualstudio.com/Ingrid/_build/latest?definitionId=1) |
 |Beta Version| ![Deployment](https://cagakmelon.vsrm.visualstudio.com/_apis/public/Release/badge/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/1/2) |
 |Stable Release| ![Deployment](https://cagakmelon.vsrm.visualstudio.com/_apis/public/Release/badge/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/2/3) |
+
+| <span style="color:darkorange">_Information_</span> | <span style="color:darkorange">_Value_</span> |
+|--:|--|
+|Azure Build| [![Build Status](https://dev.azure.com/cagakmelon/Ingrid/_apis/build/status%2Ffrom%20Github%2Fardhagp.Ingrid?branchName=master)](https://dev.azure.com/cagakmelon/Ingrid/_build/latest?definitionId=12&branchName=master) |
 |Epics| [![Board Status](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/d8d5eb94-3f20-4331-b741-a71cad549752/_apis/work/boardbadge/618e4563-8610-4e05-baa7-5e30f40ea320?columnOptions=1)](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/_boards/board/t/d8d5eb94-3f20-4331-b741-a71cad549752/Epics/) |
 |Features| [![Board Status](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/d8d5eb94-3f20-4331-b741-a71cad549752/_apis/work/boardbadge/e555542b-4c40-4b49-839c-9f4f3facb8ff?columnOptions=1)](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/_boards/board/t/d8d5eb94-3f20-4331-b741-a71cad549752/Features/) |
 |Stories| [![Board Status](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/d8d5eb94-3f20-4331-b741-a71cad549752/_apis/work/boardbadge/531d42ad-5741-4fbf-b551-86a086c98e7f?columnOptions=1)](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/_boards/board/t/d8d5eb94-3f20-4331-b741-a71cad549752/Stories/) |
@@ -37,11 +41,16 @@ Then type this json structure.
 {
   "KEYS": {
 	  "SALT": "<input random characters including Upper and Lower Case, Symbols and Space>",
-    "SYNCFUSION": "<input your Syncfusion Key>"
+    "SYNCFUSION": "<input your Syncfusion Key>",
+   "BETTERSTACK": "<input your BetterStack Key>"
   }
 }
 ```
-
+by accessing this directory:
+```
+%APPDATA%\Microsoft\UserSecrets\{guid}\secrets.json
+```
+----
 What if Manage User Secrets context menu doesn't show up?
 
 ![Missing User Secrets context menu](https://res.cloudinary.com/cagakmelon/image/upload/v1711475296/apps/ingrid-assets/readme.md/2024-03-27_002550.png)
@@ -55,11 +64,13 @@ No worries, you are still able to manage by using Dev PowerShell with this comma
 | dotnet user-secrets set KeyName "KeyValue" | Set KeyName and KeyValue |
 | dotnet user-secrets remove KeyName | Remove specified KeyName |
 
-
-or simply by accessing this directory:
+then type this command using PowerShell
 ```
-%APPDATA%\Microsoft\UserSecrets\{guid}\secrets.json
+dotnet user-secrets set KEYS:SALT "<input random characters including Upper and Lower Case, Symbols and Space>"
+dotnet user-secrets set KEYS:SYNCFUSION "<input your Syncfusion Key>"
+dotnet user-secrets set KEYS:BETTERSTACK "<input your BetterStack Key>"
 ```
+----
 
 To obtain Syncfusion Key, please sign up with <span style="color:orange">**Community License**</span> and visit this page : [Syncfusion](https://www.syncfusion.com/account/downloads)
 Then follow this steps below :
