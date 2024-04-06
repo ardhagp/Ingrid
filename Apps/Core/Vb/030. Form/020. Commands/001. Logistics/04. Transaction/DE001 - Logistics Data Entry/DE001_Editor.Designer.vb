@@ -68,10 +68,10 @@ Partial Class DE001_Editor
         Me.BtnSave.Location = New System.Drawing.Point(566, 7)
         Me.BtnSave.Name = "BtnSave"
         Me.BtnSave.Size = New System.Drawing.Size(100, 40)
-        Me.BtnSave.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        Me.BtnSave.SLFTampilkanFocusBorder = False
-        Me.BtnSave.SLFValidasiSemuaInput = False
-        Me.BtnSave.SLFValidasiSemuaInputTag = Nothing
+        Me.BtnSave.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
+        Me.BtnSave.XOTampilkanFocusBorder = False
+        Me.BtnSave.XOValidasiSemuaInput = False
+        Me.BtnSave.XOValidasiSemuaInputTag = Nothing
         Me.BtnSave.TabIndex = 1
         Me.BtnSave.Text = "&Save"
         Me.BtnSave.UseVisualStyleBackColor = False
@@ -90,10 +90,10 @@ Partial Class DE001_Editor
         Me.BtnClose.Location = New System.Drawing.Point(672, 7)
         Me.BtnClose.Name = "BtnClose"
         Me.BtnClose.Size = New System.Drawing.Size(100, 40)
-        Me.BtnClose.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        Me.BtnClose.SLFTampilkanFocusBorder = False
-        Me.BtnClose.SLFValidasiSemuaInput = False
-        Me.BtnClose.SLFValidasiSemuaInputTag = Nothing
+        Me.BtnClose.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        Me.BtnClose.XOTampilkanFocusBorder = False
+        Me.BtnClose.XOValidasiSemuaInput = False
+        Me.BtnClose.XOValidasiSemuaInputTag = Nothing
         Me.BtnClose.TabIndex = 2
         Me.BtnClose.Text = "&Close"
         Me.BtnClose.UseVisualStyleBackColor = False
@@ -105,19 +105,19 @@ Partial Class DE001_Editor
         Me.Txt1.MaxLength = 255
         Me.Txt1.Name = "Txt1"
         Me.Txt1.Size = New System.Drawing.Size(206, 29)
-        Me.Txt1.SLFAutoTrim = False
-        Me.Txt1.SLFHarusDiisi = False
-        Me.Txt1.SLFHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
-        Me.Txt1.SLFHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
-        Me.Txt1.SLFHightlightSaatFokus = False
-        Me.Txt1.SLFHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
-        Me.Txt1.SLFIsBlank = True
-        Me.Txt1.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        Me.Txt1.SLFPilihSemuaSaatFokus = False
-        Me.Txt1.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        Me.Txt1.SLFSQLText = ""
-        Me.Txt1.SLFTanpaSpasi = False
-        Me.Txt1.SLFValidasiField = Nothing
+        Me.Txt1.XOAutoTrim = False
+        Me.Txt1.XOHarusDiisi = False
+        Me.Txt1.XOHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
+        Me.Txt1.XOHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
+        Me.Txt1.XOHightlightSaatFokus = False
+        Me.Txt1.XOHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
+        Me.Txt1.XOIsBlank = True
+        Me.Txt1.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
+        Me.Txt1.XOPilihSemuaSaatFokus = False
+        Me.Txt1.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        Me.Txt1.XOSQLText = ""
+        Me.Txt1.XOTanpaSpasi = False
+        Me.Txt1.XOValidasiField = Nothing
         Me.Txt1.TabIndex = 996
         Me.Txt1.Tag = "txt"
         '
@@ -128,7 +128,7 @@ Partial Class DE001_Editor
         Me.LblNumber.Location = New System.Drawing.Point(52, 13)
         Me.LblNumber.Name = "LblNumber"
         Me.LblNumber.Size = New System.Drawing.Size(83, 21)
-        Me.LblNumber.SLFCustomElipsis = False
+        Me.LblNumber.XOCustomElipsis = False
         Me.LblNumber.TabIndex = 997
         Me.LblNumber.Text = "Manifest #"
         '
@@ -150,7 +150,7 @@ Partial Class DE001_Editor
         Me.LblGroup.Location = New System.Drawing.Point(17, 48)
         Me.LblGroup.Name = "LblGroup"
         Me.LblGroup.Size = New System.Drawing.Size(118, 21)
-        Me.LblGroup.SLFCustomElipsis = False
+        Me.LblGroup.XOCustomElipsis = False
         Me.LblGroup.TabIndex = 999
         Me.LblGroup.Text = "Manifest Group"
         '
@@ -161,7 +161,7 @@ Partial Class DE001_Editor
         Me.LblDate.Location = New System.Drawing.Point(378, 13)
         Me.LblDate.Name = "LblDate"
         Me.LblDate.Size = New System.Drawing.Size(102, 21)
-        Me.LblDate.SLFCustomElipsis = False
+        Me.LblDate.XOCustomElipsis = False
         Me.LblDate.TabIndex = 1000
         Me.LblDate.Text = "Start Loading"
         '

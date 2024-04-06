@@ -91,10 +91,10 @@ Partial Class CPDB
         Me.Btn1.Location = New System.Drawing.Point(211, 7)
         Me.Btn1.Name = "Btn1"
         Me.Btn1.Size = New System.Drawing.Size(100, 40)
-        Me.Btn1.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        Me.Btn1.SLFTampilkanFocusBorder = False
-        Me.Btn1.SLFValidasiSemuaInput = False
-        Me.Btn1.SLFValidasiSemuaInputTag = Nothing
+        Me.Btn1.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
+        Me.Btn1.XOTampilkanFocusBorder = False
+        Me.Btn1.XOValidasiSemuaInput = False
+        Me.Btn1.XOValidasiSemuaInputTag = Nothing
         Me.Btn1.TabIndex = 1
         Me.Btn1.Text = "&Save"
         Me.Btn1.UseVisualStyleBackColor = False
@@ -113,10 +113,10 @@ Partial Class CPDB
         Me.Btn2.Location = New System.Drawing.Point(317, 7)
         Me.Btn2.Name = "Btn2"
         Me.Btn2.Size = New System.Drawing.Size(100, 40)
-        Me.Btn2.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        Me.Btn2.SLFTampilkanFocusBorder = False
-        Me.Btn2.SLFValidasiSemuaInput = False
-        Me.Btn2.SLFValidasiSemuaInputTag = Nothing
+        Me.Btn2.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        Me.Btn2.XOTampilkanFocusBorder = False
+        Me.Btn2.XOValidasiSemuaInput = False
+        Me.Btn2.XOValidasiSemuaInputTag = Nothing
         Me.Btn2.TabIndex = 2
         Me.Btn2.Text = "&Cancel"
         Me.Btn2.UseVisualStyleBackColor = False
@@ -128,7 +128,7 @@ Partial Class CPDB
         Me.Lbl1.Location = New System.Drawing.Point(44, 19)
         Me.Lbl1.Name = "Lbl1"
         Me.Lbl1.Size = New System.Drawing.Size(115, 21)
-        Me.Lbl1.SLFCustomElipsis = False
+        Me.Lbl1.XOCustomElipsis = False
         Me.Lbl1.TabIndex = 996
         Me.Lbl1.Text = "Server Address"
         '
@@ -139,19 +139,19 @@ Partial Class CPDB
         Me.Txt1.MaxLength = 255
         Me.Txt1.Name = "Txt1"
         Me.Txt1.Size = New System.Drawing.Size(206, 29)
-        Me.Txt1.SLFAutoTrim = False
-        Me.Txt1.SLFHarusDiisi = False
-        Me.Txt1.SLFHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
-        Me.Txt1.SLFHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
-        Me.Txt1.SLFHightlightSaatFokus = False
-        Me.Txt1.SLFHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
-        Me.Txt1.SLFIsBlank = True
-        Me.Txt1.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        Me.Txt1.SLFPilihSemuaSaatFokus = False
-        Me.Txt1.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        Me.Txt1.SLFSQLText = ""
-        Me.Txt1.SLFTanpaSpasi = False
-        Me.Txt1.SLFValidasiField = Nothing
+        Me.Txt1.XOAutoTrim = False
+        Me.Txt1.XOHarusDiisi = False
+        Me.Txt1.XOHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
+        Me.Txt1.XOHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
+        Me.Txt1.XOHightlightSaatFokus = False
+        Me.Txt1.XOHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
+        Me.Txt1.XOIsBlank = True
+        Me.Txt1.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
+        Me.Txt1.XOPilihSemuaSaatFokus = False
+        Me.Txt1.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        Me.Txt1.XOSQLText = ""
+        Me.Txt1.XOTanpaSpasi = False
+        Me.Txt1.XOValidasiField = Nothing
         Me.Txt1.TabIndex = 997
         Me.Txt1.Tag = "txt"
         '
@@ -162,19 +162,19 @@ Partial Class CPDB
         Me.Txt2.MaxLength = 255
         Me.Txt2.Name = "Txt2"
         Me.Txt2.Size = New System.Drawing.Size(206, 29)
-        Me.Txt2.SLFAutoTrim = False
-        Me.Txt2.SLFHarusDiisi = False
-        Me.Txt2.SLFHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
-        Me.Txt2.SLFHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
-        Me.Txt2.SLFHightlightSaatFokus = False
-        Me.Txt2.SLFHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
-        Me.Txt2.SLFIsBlank = True
-        Me.Txt2.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        Me.Txt2.SLFPilihSemuaSaatFokus = False
-        Me.Txt2.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        Me.Txt2.SLFSQLText = ""
-        Me.Txt2.SLFTanpaSpasi = False
-        Me.Txt2.SLFValidasiField = Nothing
+        Me.Txt2.XOAutoTrim = False
+        Me.Txt2.XOHarusDiisi = False
+        Me.Txt2.XOHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
+        Me.Txt2.XOHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
+        Me.Txt2.XOHightlightSaatFokus = False
+        Me.Txt2.XOHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
+        Me.Txt2.XOIsBlank = True
+        Me.Txt2.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
+        Me.Txt2.XOPilihSemuaSaatFokus = False
+        Me.Txt2.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        Me.Txt2.XOSQLText = ""
+        Me.Txt2.XOTanpaSpasi = False
+        Me.Txt2.XOValidasiField = Nothing
         Me.Txt2.TabIndex = 998
         Me.Txt2.Tag = "txt"
         '
@@ -185,19 +185,19 @@ Partial Class CPDB
         Me.Txt3.MaxLength = 255
         Me.Txt3.Name = "Txt3"
         Me.Txt3.Size = New System.Drawing.Size(206, 29)
-        Me.Txt3.SLFAutoTrim = False
-        Me.Txt3.SLFHarusDiisi = False
-        Me.Txt3.SLFHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
-        Me.Txt3.SLFHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
-        Me.Txt3.SLFHightlightSaatFokus = False
-        Me.Txt3.SLFHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
-        Me.Txt3.SLFIsBlank = True
-        Me.Txt3.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        Me.Txt3.SLFPilihSemuaSaatFokus = False
-        Me.Txt3.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        Me.Txt3.SLFSQLText = ""
-        Me.Txt3.SLFTanpaSpasi = False
-        Me.Txt3.SLFValidasiField = Nothing
+        Me.Txt3.XOAutoTrim = False
+        Me.Txt3.XOHarusDiisi = False
+        Me.Txt3.XOHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
+        Me.Txt3.XOHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
+        Me.Txt3.XOHightlightSaatFokus = False
+        Me.Txt3.XOHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
+        Me.Txt3.XOIsBlank = True
+        Me.Txt3.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
+        Me.Txt3.XOPilihSemuaSaatFokus = False
+        Me.Txt3.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        Me.Txt3.XOSQLText = ""
+        Me.Txt3.XOTanpaSpasi = False
+        Me.Txt3.XOValidasiField = Nothing
         Me.Txt3.TabIndex = 999
         Me.Txt3.Tag = "txt"
         '
@@ -208,7 +208,7 @@ Partial Class CPDB
         Me.Lbl2.Location = New System.Drawing.Point(85, 54)
         Me.Lbl2.Name = "Lbl2"
         Me.Lbl2.Size = New System.Drawing.Size(74, 21)
-        Me.Lbl2.SLFCustomElipsis = False
+        Me.Lbl2.XOCustomElipsis = False
         Me.Lbl2.TabIndex = 1000
         Me.Lbl2.Text = "Database"
         '
@@ -219,7 +219,7 @@ Partial Class CPDB
         Me.Lbl3.Location = New System.Drawing.Point(83, 124)
         Me.Lbl3.Name = "Lbl3"
         Me.Lbl3.Size = New System.Drawing.Size(76, 21)
-        Me.Lbl3.SLFCustomElipsis = False
+        Me.Lbl3.XOCustomElipsis = False
         Me.Lbl3.TabIndex = 1001
         Me.Lbl3.Text = "Password"
         '
@@ -230,19 +230,19 @@ Partial Class CPDB
         Me.Txt4.MaxLength = 255
         Me.Txt4.Name = "Txt4"
         Me.Txt4.Size = New System.Drawing.Size(206, 29)
-        Me.Txt4.SLFAutoTrim = False
-        Me.Txt4.SLFHarusDiisi = False
-        Me.Txt4.SLFHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
-        Me.Txt4.SLFHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
-        Me.Txt4.SLFHightlightSaatFokus = False
-        Me.Txt4.SLFHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
-        Me.Txt4.SLFIsBlank = True
-        Me.Txt4.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        Me.Txt4.SLFPilihSemuaSaatFokus = False
-        Me.Txt4.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        Me.Txt4.SLFSQLText = ""
-        Me.Txt4.SLFTanpaSpasi = False
-        Me.Txt4.SLFValidasiField = Nothing
+        Me.Txt4.XOAutoTrim = False
+        Me.Txt4.XOHarusDiisi = False
+        Me.Txt4.XOHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
+        Me.Txt4.XOHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
+        Me.Txt4.XOHightlightSaatFokus = False
+        Me.Txt4.XOHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
+        Me.Txt4.XOIsBlank = True
+        Me.Txt4.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
+        Me.Txt4.XOPilihSemuaSaatFokus = False
+        Me.Txt4.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        Me.Txt4.XOSQLText = ""
+        Me.Txt4.XOTanpaSpasi = False
+        Me.Txt4.XOValidasiField = Nothing
         Me.Txt4.TabIndex = 1002
         Me.Txt4.Tag = "txt"
         '
@@ -253,7 +253,7 @@ Partial Class CPDB
         Me.Lbl4.Location = New System.Drawing.Point(78, 89)
         Me.Lbl4.Name = "Lbl4"
         Me.Lbl4.Size = New System.Drawing.Size(81, 21)
-        Me.Lbl4.SLFCustomElipsis = False
+        Me.Lbl4.XOCustomElipsis = False
         Me.Lbl4.TabIndex = 1003
         Me.Lbl4.Text = "Username"
         '
@@ -263,11 +263,11 @@ Partial Class CPDB
         Me.Nud1.Location = New System.Drawing.Point(165, 156)
         Me.Nud1.Name = "Nud1"
         Me.Nud1.Size = New System.Drawing.Size(103, 29)
-        Me.Nud1.SLFAutoTrim = False
-        Me.Nud1.SLFHarusDiisi = False
-        Me.Nud1.SLFHightlightSaatFokus = False
-        Me.Nud1.SLFHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
-        Me.Nud1.SLFPilihSemuaSaatFokus = False
+        Me.Nud1.XOAutoTrim = False
+        Me.Nud1.XOHarusDiisi = False
+        Me.Nud1.XOHightlightSaatFokus = False
+        Me.Nud1.XOHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
+        Me.Nud1.XOPilihSemuaSaatFokus = False
         Me.Nud1.TabIndex = 1004
         '
         'Lbl5
@@ -277,7 +277,7 @@ Partial Class CPDB
         Me.Lbl5.Location = New System.Drawing.Point(121, 158)
         Me.Lbl5.Name = "Lbl5"
         Me.Lbl5.Size = New System.Drawing.Size(38, 21)
-        Me.Lbl5.SLFCustomElipsis = False
+        Me.Lbl5.XOCustomElipsis = False
         Me.Lbl5.TabIndex = 1005
         Me.Lbl5.Text = "Port"
         '

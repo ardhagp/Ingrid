@@ -9,16 +9,16 @@ Namespace Commands.DRTM
         Public _ContentID As String
 
         <SupportedOSPlatform("windows")>
-        Public Sub DisplayGrid(ByVal Find As txt, ByVal DateGrid As dgn, ByVal ContentStatusBar As stt, Optional ByVal ForceRefresh As Boolean = False)
+        Public Shared Sub DisplayGrid(ByVal Find As txt, ByVal DateGrid As dgn, ByVal ContentStatusBar As stt, Optional ByVal ForceRefresh As Boolean = False)
             Try
                 Dim _Where As String = String.Format("where ")
 
-                If (Find.SLFSQLText = String.Empty) And (ForceRefresh = True) Then
+                If (Find.XOSQLText = String.Empty) And (ForceRefresh = True) Then
                     _Where += "tpl.template_module = (select mdl.module_id from dbo.[[sys]]module] mdl where mdl.module_code = 'DAR') "
                 Else
                     _Where += "tpl.template_module = (select mdl.module_id from dbo.[[sys]]module] mdl where mdl.module_code = 'DAR') and "
 
-                    Dim _ContainText() As String = Find.SLFSQLText.Split("||")
+                    Dim _ContainText() As String = Find.XOSQLText.Split("||")
                     Dim _Repeater As Integer = 0
 
                     _Where += String.Format("(")
@@ -37,11 +37,11 @@ Namespace Commands.DRTM
                     _Where += String.Format(")")
                 End If
 
-                _DBR_MSSQL2008(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from dbo.[[doc]]template] tpl {0} order by tpl.template_title", _Where)
+                V_DBR_MSSQL2008(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from dbo.[[doc]]template] tpl {0} order by tpl.template_title", _Where)
 
-                _DBR_MSSQL2008(0).DataGrid = DateGrid
-                _DBR_MSSQL2008(0).StatusBar = ContentStatusBar
-                _DBE_MSSQL2008.GETDATATABLE(_DBR_MSSQL2008(0), "TDARTemplate")
+                V_DBR_MSSQL2008(0).DataGrid = DateGrid
+                V_DBR_MSSQL2008(0).StatusBar = ContentStatusBar
+                V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "TDARTemplate")
 
             Catch ex As Exception
                 MsgBox(ex.ToString)

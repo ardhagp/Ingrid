@@ -109,10 +109,10 @@ Partial Class ACGR_Editor
         BtnSave.Margin = New Padding(4, 3, 4, 3)
         BtnSave.Name = "BtnSave"
         BtnSave.Size = New Size(117, 46)
-        BtnSave.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        BtnSave.SLFTampilkanFocusBorder = False
-        BtnSave.SLFValidasiSemuaInput = False
-        BtnSave.SLFValidasiSemuaInputTag = Nothing
+        BtnSave.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
+        BtnSave.XOTampilkanFocusBorder = False
+        BtnSave.XOValidasiSemuaInput = False
+        BtnSave.XOValidasiSemuaInputTag = Nothing
         BtnSave.TabIndex = 6
         BtnSave.Text = "&Save"
         BtnSave.UseVisualStyleBackColor = False
@@ -126,16 +126,16 @@ Partial Class ACGR_Editor
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
         BtnCancel.Location = New Point(511, 8)
         BtnCancel.Margin = New Padding(4, 3, 4, 3)
         BtnCancel.Name = "BtnCancel"
         BtnCancel.Size = New Size(117, 46)
-        BtnCancel.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        BtnCancel.SLFTampilkanFocusBorder = False
-        BtnCancel.SLFValidasiSemuaInput = False
-        BtnCancel.SLFValidasiSemuaInputTag = Nothing
+        BtnCancel.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        BtnCancel.XOTampilkanFocusBorder = False
+        BtnCancel.XOValidasiSemuaInput = False
+        BtnCancel.XOValidasiSemuaInputTag = Nothing
         BtnCancel.TabIndex = 7
         BtnCancel.Text = "&Cancel"
         BtnCancel.UseVisualStyleBackColor = False
@@ -174,19 +174,19 @@ Partial Class ACGR_Editor
         Lbl1.Margin = New Padding(4, 0, 4, 0)
         Lbl1.Name = "Lbl1"
         Lbl1.Size = New Size(77, 21)
-        Lbl1.SLFCustomElipsis = False
+        Lbl1.XOCustomElipsis = False
         Lbl1.TabIndex = 3
         Lbl1.Text = "Company"
         ' 
         ' Lbl2
         ' 
         Lbl2.AutoSize = True
-        Lbl2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl2.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl2.Location = New Point(9, 55)
         Lbl2.Margin = New Padding(4, 0, 4, 0)
         Lbl2.Name = "Lbl2"
         Lbl2.Size = New Size(127, 21)
-        Lbl2.SLFCustomElipsis = False
+        Lbl2.XOCustomElipsis = False
         Lbl2.TabIndex = 4
         Lbl2.Text = "Accounting Book"
         ' 
@@ -194,7 +194,7 @@ Partial Class ACGR_Editor
         ' 
         CboAccountGroup.DropDownStyle = ComboBoxStyle.DropDownList
         CboAccountGroup.FlatStyle = FlatStyle.Flat
-        CboAccountGroup.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CboAccountGroup.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         CboAccountGroup.FormattingEnabled = True
         CboAccountGroup.Location = New Point(164, 92)
         CboAccountGroup.Margin = New Padding(4, 3, 4, 3)
@@ -205,96 +205,96 @@ Partial Class ACGR_Editor
         ' Lbl3
         ' 
         Lbl3.AutoSize = True
-        Lbl3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl3.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl3.Location = New Point(24, 96)
         Lbl3.Margin = New Padding(4, 0, 4, 0)
         Lbl3.Name = "Lbl3"
         Lbl3.Size = New Size(114, 21)
-        Lbl3.SLFCustomElipsis = False
+        Lbl3.XOCustomElipsis = False
         Lbl3.TabIndex = 6
         Lbl3.Text = "Account Group"
         ' 
         ' TxtAccountNumber
         ' 
-        TxtAccountNumber.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtAccountNumber.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtAccountNumber.Location = New Point(164, 133)
         TxtAccountNumber.Margin = New Padding(4, 3, 4, 3)
         TxtAccountNumber.MaxLength = 255
         TxtAccountNumber.Name = "TxtAccountNumber"
         TxtAccountNumber.Size = New Size(240, 29)
-        TxtAccountNumber.SLFAutoTrim = True
-        TxtAccountNumber.SLFHarusDiisi = True
-        TxtAccountNumber.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtAccountNumber.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtAccountNumber.SLFHightlightSaatFokus = True
-        TxtAccountNumber.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtAccountNumber.SLFIsBlank = True
-        TxtAccountNumber.SLFIsSearchBox = False
-        TxtAccountNumber.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtAccountNumber.SLFPilihSemuaSaatFokus = True
-        TxtAccountNumber.SLFPwdLengthMin = 8
-        TxtAccountNumber.SLFPwdStrengthCalculate = False
-        TxtAccountNumber.SLFPwdStrengthScore = 0
-        TxtAccountNumber.SLFPwdStrengthText = Nothing
-        TxtAccountNumber.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtAccountNumber.SLFSearchBoxText = "Type then press Enter"
-        TxtAccountNumber.SLFSQLText = ""
-        TxtAccountNumber.SLFTanpaSpasi = False
-        TxtAccountNumber.SLFValidasiField = Nothing
+        TxtAccountNumber.XOAutoTrim = True
+        TxtAccountNumber.XOHarusDiisi = True
+        TxtAccountNumber.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtAccountNumber.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtAccountNumber.XOHightlightSaatFokus = True
+        TxtAccountNumber.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtAccountNumber.XOIsBlank = True
+        TxtAccountNumber.XOIsSearchBox = False
+        TxtAccountNumber.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtAccountNumber.XOPilihSemuaSaatFokus = True
+        TxtAccountNumber.XOPwdLengthMin = 8
+        TxtAccountNumber.XOPwdStrengthCalculate = False
+        TxtAccountNumber.XOPwdStrengthScore = 0
+        TxtAccountNumber.XOPwdStrengthText = Nothing
+        TxtAccountNumber.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtAccountNumber.XOSearchBoxText = "Type then press Enter"
+        TxtAccountNumber.XOSQLText = ""
+        TxtAccountNumber.XOTanpaSpasi = False
+        TxtAccountNumber.XOValidasiField = Nothing
         TxtAccountNumber.TabIndex = 3
         TxtAccountNumber.Tag = "txt"
         ' 
         ' Lbl4
         ' 
         Lbl4.AutoSize = True
-        Lbl4.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl4.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl4.Location = New Point(8, 136)
         Lbl4.Margin = New Padding(4, 0, 4, 0)
         Lbl4.Name = "Lbl4"
         Lbl4.Size = New Size(128, 21)
-        Lbl4.SLFCustomElipsis = False
+        Lbl4.XOCustomElipsis = False
         Lbl4.TabIndex = 8
         Lbl4.Text = "Account Number"
         ' 
         ' TxtAccountName
         ' 
-        TxtAccountName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtAccountName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtAccountName.Location = New Point(164, 173)
         TxtAccountName.Margin = New Padding(4, 3, 4, 3)
         TxtAccountName.MaxLength = 255
         TxtAccountName.Name = "TxtAccountName"
         TxtAccountName.Size = New Size(465, 29)
-        TxtAccountName.SLFAutoTrim = True
-        TxtAccountName.SLFHarusDiisi = True
-        TxtAccountName.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtAccountName.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtAccountName.SLFHightlightSaatFokus = True
-        TxtAccountName.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtAccountName.SLFIsBlank = True
-        TxtAccountName.SLFIsSearchBox = False
-        TxtAccountName.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtAccountName.SLFPilihSemuaSaatFokus = True
-        TxtAccountName.SLFPwdLengthMin = 8
-        TxtAccountName.SLFPwdStrengthCalculate = False
-        TxtAccountName.SLFPwdStrengthScore = 0
-        TxtAccountName.SLFPwdStrengthText = Nothing
-        TxtAccountName.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtAccountName.SLFSearchBoxText = "Type then press Enter"
-        TxtAccountName.SLFSQLText = ""
-        TxtAccountName.SLFTanpaSpasi = False
-        TxtAccountName.SLFValidasiField = Nothing
+        TxtAccountName.XOAutoTrim = True
+        TxtAccountName.XOHarusDiisi = True
+        TxtAccountName.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtAccountName.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtAccountName.XOHightlightSaatFokus = True
+        TxtAccountName.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtAccountName.XOIsBlank = True
+        TxtAccountName.XOIsSearchBox = False
+        TxtAccountName.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtAccountName.XOPilihSemuaSaatFokus = True
+        TxtAccountName.XOPwdLengthMin = 8
+        TxtAccountName.XOPwdStrengthCalculate = False
+        TxtAccountName.XOPwdStrengthScore = 0
+        TxtAccountName.XOPwdStrengthText = Nothing
+        TxtAccountName.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtAccountName.XOSearchBoxText = "Type then press Enter"
+        TxtAccountName.XOSQLText = ""
+        TxtAccountName.XOTanpaSpasi = False
+        TxtAccountName.XOValidasiField = Nothing
         TxtAccountName.TabIndex = 4
         TxtAccountName.Tag = "txt"
         ' 
         ' Lbl5
         ' 
         Lbl5.AutoSize = True
-        Lbl5.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl5.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl5.Location = New Point(27, 177)
         Lbl5.Margin = New Padding(4, 0, 4, 0)
         Lbl5.Name = "Lbl5"
         Lbl5.Size = New Size(112, 21)
-        Lbl5.SLFCustomElipsis = False
+        Lbl5.XOCustomElipsis = False
         Lbl5.TabIndex = 10
         Lbl5.Text = "Account Name"
         ' 

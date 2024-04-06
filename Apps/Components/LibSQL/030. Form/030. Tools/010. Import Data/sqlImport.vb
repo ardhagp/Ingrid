@@ -1,13 +1,15 @@
 ﻿Imports System
 Imports System.IO
+Imports System.Runtime.Versioning
 Imports CMCv
 
 Namespace Tools.Import.SharedFunction
     Class Calculate
         Private _ROWCOUNT As Integer
 
+        <SupportedOSPlatform("windows")>
         Public Function TotalRows(ByVal Query As String, ByVal Keyword As String) As Integer
-            _ROWCOUNT = _DBE_MSSQL2008.GETVALUE(Query.Replace("%n", Keyword))
+            _ROWCOUNT = V_DBE_MSSQL2008.GETVALUE(Query.Replace("%n", Keyword))
             Return _ROWCOUNT
         End Function
     End Class
@@ -15,13 +17,14 @@ End Namespace
 
 Namespace Tools.Import.MaterialMaster
     Public Class Catalog
-        Private _CAL As New Tools.Import.SharedFunction.Calculate
+        ReadOnly _CAL As New Tools.Import.SharedFunction.Calculate
 
+        <SupportedOSPlatform("windows")>
         Public Function Execute(ByVal DisplayLogs As txt, ByVal FileLocation As String, Optional ByVal HeaderExist As Boolean = True) As Boolean
             Dim IsSuccess As Boolean = True
             Dim CSVValue As String()
-            Dim CSVRow As Integer = 0
-            Dim CSVRowFound As Integer = 0
+            Dim CSVRow As Integer
+            Dim CSVRowFound As Integer
 
             Dim Search As String = "SELECT COUNT(m.material_id) FROM dbo.[[log]]material] m WHERE m.material_id = '%n'"
 
@@ -90,7 +93,7 @@ Namespace Tools.Import.MaterialMaster
                     CSVRow += 1
                 End While
                 Try
-                    _DBE_MSSQL2008.PUSHDATA(_DBP_MSSQL2008.Query)
+                    V_DBE_MSSQL2008.PUSHDATA(_DBP_MSSQL2008.Query)
                 Catch ex As Exception
                     IsSuccess = False
                 End Try

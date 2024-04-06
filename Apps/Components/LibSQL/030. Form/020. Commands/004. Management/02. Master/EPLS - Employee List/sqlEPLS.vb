@@ -8,35 +8,35 @@ Namespace Commands.EPLS
     Public Class View
 
         <SupportedOSPlatform("windows")>
-        Public Sub DisplayData(ByVal Grid As dgn, ByVal Status As CMCv.stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
-            ReDim _DBR_MSSQL2008(2)
-            Dim _Where As String = String.Format("where ")
+        Public Shared Sub DISPLAYDATA(ByVal Grid As dgn, ByVal Status As CMCv.stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
+            ReDim V_DBR_MSSQL2008(2)
+            Dim V_Where As String = String.Format("where ")
 
             If (Find.Text = String.Empty) And (ForceRefresh = True) Then
-                _Where = String.Format("")
+                V_Where = String.Format("")
             Else
-                _Where += String.Format("cm.company_code like '%{0}%' or dp.departement_code like '%{0}%' or ps.position_code like '%{0}%' or em.employee_number = '{0}' or em.employee_fullname like '%{0}%' or " &
-                                        "em.employee_nickname like '%{0}%'", Find.SLFSQLText)
+                V_Where += String.Format("cm.company_code like '%{0}%' or dp.departement_code like '%{0}%' or ps.position_code like '%{0}%' or em.employee_number = '{0}' or em.employee_fullname like '%{0}%' or " &
+                                        "em.employee_nickname like '%{0}%'", Find.XOSQLText)
             End If
 
-            _DBR_MSSQL2008(0).Query = String.Format("select em.employee_id, cm.company_code, dp.departement_code, ps.position_code, (select gd.employeegrade_code from dbo.[[man]]employeegrade] gd " &
+            V_DBR_MSSQL2008(0).Query = String.Format("select em.employee_id, cm.company_code, dp.departement_code, ps.position_code, (select gd.employeegrade_code from dbo.[[man]]employeegrade] gd " &
                                                     "where gd.employeegrade_id = em.employee_grade) as [employee_grade], em.employee_number, em.employee_fullname, em.employee_nickname, (select ct.contracttype_code " &
                                                     "from dbo.[[man]]contracttype] ct where ct.contracttype_id = em.employee_contracttype) as [employee_contracttype], employee_gender, (case em.employee_active when 0 then 'No' " &
                                                     "when 1 then 'Yes' end) as [employee_active] from dbo.[[man]]employee] em inner join dbo.[[man]]position] ps on ps.position_id = em.employee_position " &
                                                     "inner join dbo.[[man]]departement] dp on dp.departement_id = ps.position_departement inner join dbo.[[man]]company] cm on cm.company_id = dp.departement_company {0} " &
-                                                    "order by cm.company_code, dp.departement_code, ps.position_code, em.employee_fullname", _Where)
+                                                    "order by cm.company_code, dp.departement_code, ps.position_code, em.employee_fullname", V_Where)
 
-            _DBR_MSSQL2008(0).DataGrid = Grid
-            _DBR_MSSQL2008(0).StatusBar = Status
-            _DBE_MSSQL2008.GETDATATABLE(_DBR_MSSQL2008(0), "TEmployee")
+            V_DBR_MSSQL2008(0).DataGrid = Grid
+            V_DBR_MSSQL2008(0).StatusBar = Status
+            V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "TEmployee")
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Function DELETEData(ByVal RowID As String) As Boolean
+        Public Shared Function DELETEDATA(ByVal RowID As String) As Boolean
             Dim V_Success As Boolean
             Try
-                _DBR_MSSQL2008(1).Query = String.Format("delete from dbo.[[man]]employee] where (employee_id = '{0}')", RowID)
-                _DBE_MSSQL2008.PUSHDATA(_DBR_MSSQL2008(1).Query)
+                V_DBR_MSSQL2008(1).Query = String.Format("delete from dbo.[[man]]employee] where (employee_id = '{0}')", RowID)
+                V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(1).Query)
 
                 V_Success = True
             Catch ex As Exception
@@ -47,221 +47,221 @@ Namespace Commands.EPLS
     End Class
 
     Public Class Editor
-        Private _IMG As New CMCv.ImageEditor.Proccessor.Compress
+        ReadOnly _IMG As New CMCv.ImageEditor.Proccessor.Compress
 
         <SupportedOSPlatform("windows")>
-        Public Function GETCompany(ByVal RowID As String, Optional ByVal PositionID As String = "-1") As String
+        Public Shared Function GETCompany(ByVal RowID As String, Optional ByVal PositionID As String = "-1") As String
             Dim V_Company As String
 
             If PositionID = "-1" Then
-                _DBR_MSSQL2008(1).Query = String.Format("select cm.company_name from dbo.[[man]]employee] em inner join dbo.[[man]]position] ps on ps.position_id = em.employee_position " &
+                V_DBR_MSSQL2008(1).Query = String.Format("select cm.company_name from dbo.[[man]]employee] em inner join dbo.[[man]]position] ps on ps.position_id = em.employee_position " &
                                                         "inner join dbo.[[man]]departement] dp on dp.departement_id = ps.position_departement inner join dbo.[[man]]company] cm on cm.company_id = dp.departement_company " &
                                                         "where (em.employee_id = '{0}')", RowID)
             Else
-                _DBR_MSSQL2008(1).Query = String.Format("select cm.company_name from dbo.[[man]]position] ps inner join dbo.[[man]]departement] dp on dp.departement_id = ps.position_departement " &
+                V_DBR_MSSQL2008(1).Query = String.Format("select cm.company_name from dbo.[[man]]position] ps inner join dbo.[[man]]departement] dp on dp.departement_id = ps.position_departement " &
                                                         "inner join dbo.[[man]]company] cm on cm.company_id = dp.departement_company where (ps.position_id = '{0}')", PositionID)
             End If
 
-            V_Company = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_Company = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
 
             Return V_Company
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETDepartement(ByVal RowID As String, Optional ByVal PositionID As String = "-1") As String
+        Public Shared Function GETDepartement(ByVal RowID As String, Optional ByVal PositionID As String = "-1") As String
             Dim V_Departement As String
 
             If PositionID = "-1" Then
-                _DBR_MSSQL2008(1).Query = String.Format("select dp.departement_name from dbo.[[man]]employee] em inner join dbo.[[man]]position] ps on ps.position_id = em.employee_position " &
+                V_DBR_MSSQL2008(1).Query = String.Format("select dp.departement_name from dbo.[[man]]employee] em inner join dbo.[[man]]position] ps on ps.position_id = em.employee_position " &
                                                         "inner join dbo.[[man]]departement] dp on dp.departement_id = ps.position_departement where (em.employee_id = '{0}')", RowID)
             Else
-                _DBR_MSSQL2008(1).Query = String.Format("select dp.departement_name from dbo.[[man]]position] ps inner join dbo.[[man]]departement] dp on dp.departement_id = ps.position_departement " &
+                V_DBR_MSSQL2008(1).Query = String.Format("select dp.departement_name from dbo.[[man]]position] ps inner join dbo.[[man]]departement] dp on dp.departement_id = ps.position_departement " &
                                                         "where (ps.position_id = '{0}')", PositionID)
             End If
 
-            V_Departement = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_Departement = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
 
             Return V_Departement
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETPositionID(ByVal RowID As String) As String
+        Public Shared Function GETPositionID(ByVal RowID As String) As String
             Dim V_PositionID As String
 
-            _DBR_MSSQL2008(1).Query = String.Format("select em.employee_position from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_position from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
 
-            V_PositionID = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_PositionID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
 
             Return V_PositionID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETPosition(ByVal RowID As String, Optional ByVal PositionID As String = "-1") As String
+        Public Shared Function GETPosition(ByVal RowID As String, Optional ByVal PositionID As String = "-1") As String
             Dim V_Position As String
 
             If PositionID = "-1" Then
-                _DBR_MSSQL2008(1).Query = String.Format("select ps.position_name from dbo.[[man]]employee] em inner join dbo.[[man]]position] ps on ps.position_id = em.employee_position where (em.employee_id = '{0}')", RowID)
+                V_DBR_MSSQL2008(1).Query = String.Format("select ps.position_name from dbo.[[man]]employee] em inner join dbo.[[man]]position] ps on ps.position_id = em.employee_position where (em.employee_id = '{0}')", RowID)
             Else
-                _DBR_MSSQL2008(1).Query = String.Format("select ps.position_name from dbo.[[man]]position] ps where (ps.position_id = '{0}')", PositionID)
+                V_DBR_MSSQL2008(1).Query = String.Format("select ps.position_name from dbo.[[man]]position] ps where (ps.position_id = '{0}')", PositionID)
             End If
 
-            V_Position = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_Position = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
 
             Return V_Position
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETGradeID(ByVal RowID As String) As String
+        Public Shared Function GETGradeID(ByVal RowID As String) As String
             Dim V_GradeID As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select em.employee_grade from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_grade from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
 
-            V_GradeID = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_GradeID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_GradeID = IIf(IsDBNull(V_GradeID), "", V_GradeID)
 
             Return V_GradeID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETGrade(ByVal RowID As String) As String
+        Public Shared Function GETGrade(ByVal RowID As String) As String
             Dim V_Grade As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select gd.employeegrade_name from dbo.[[man]]employee] em inner join dbo.[[man]]employeegrade] gd on gd.employeegrade_id = em.employee_grade where (em.employee_id = '{0}')", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select gd.employeegrade_name from dbo.[[man]]employee] em inner join dbo.[[man]]employeegrade] gd on gd.employeegrade_id = em.employee_grade where (em.employee_id = '{0}')", RowID)
 
-            V_Grade = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_Grade = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_Grade = IIf(IsDBNull(V_Grade), "", V_Grade)
 
             Return V_Grade
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETPersonalID(ByVal RowID As String) As String
+        Public Shared Function GETPersonalID(ByVal RowID As String) As String
             Dim V_PersonalID As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select e.employee_personalid from dbo.[[man]]employee] e where e.employee_id = '{0}'", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select e.employee_personalid from dbo.[[man]]employee] e where e.employee_id = '{0}'", RowID)
 
-            V_PersonalID = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_PersonalID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_PersonalID = IIf(IsDBNull(V_PersonalID), "", V_PersonalID)
 
             Return V_PersonalID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETBirthDate(ByVal RowID As String) As String
+        Public Shared Function GETBirthDate(ByVal RowID As String) As String
             Dim V_BirthDate As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select e.employee_birthdate from dbo.[[man]]employee] e where e.employee_id = '{0}'", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select e.employee_birthdate from dbo.[[man]]employee] e where e.employee_id = '{0}'", RowID)
 
-            V_BirthDate = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_BirthDate = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_BirthDate = IIf(IsDBNull(V_BirthDate), "1990-01-01", V_BirthDate)
 
             Return V_BirthDate
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETBirthPlace(ByVal RowID As String) As String
+        Public Shared Function GETBirthPlace(ByVal RowID As String) As String
             Dim V_BirthPlace As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select e.employee_birthplace from dbo.[[man]]employee] e where e.employee_id = '{0}'", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select e.employee_birthplace from dbo.[[man]]employee] e where e.employee_id = '{0}'", RowID)
 
-            V_BirthPlace = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_BirthPlace = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_BirthPlace = IIf(IsDBNull(V_BirthPlace), "", V_BirthPlace)
 
             Return V_BirthPlace
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETAddress(ByVal RowID As String) As String
+        Public Shared Function GETAddress(ByVal RowID As String) As String
             Dim V_BirthPlace As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select e.employee_address from dbo.[[man]]employee] e where e.employee_id = '{0}'", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select e.employee_address from dbo.[[man]]employee] e where e.employee_id = '{0}'", RowID)
 
-            V_BirthPlace = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_BirthPlace = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_BirthPlace = IIf(IsDBNull(V_BirthPlace), "", V_BirthPlace)
 
             Return V_BirthPlace
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETEmployeeNumber(ByVal RowID As String) As String
+        Public Shared Function GETEmployeeNumber(ByVal RowID As String) As String
             Dim V_EmployeeNumber As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select em.employee_number from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_number from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
 
-            V_EmployeeNumber = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_EmployeeNumber = IIf(IsDBNull(V_EmployeeNumber), "", V_EmployeeNumber)
 
             Return V_EmployeeNumber
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETEmployeeFullName(ByVal RowID As String) As String
+        Public Shared Function GETEmployeeFullName(ByVal RowID As String) As String
             Dim V_EmployeeName As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select em.employee_fullname from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_fullname from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
 
-            V_EmployeeName = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_EmployeeName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_EmployeeName = IIf(IsDBNull(V_EmployeeName), "", V_EmployeeName)
 
             Return V_EmployeeName
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETEmployeeNickname(ByVal RowID As String) As String
+        Public Shared Function GETEmployeeNickname(ByVal RowID As String) As String
             Dim V_Nickname As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select em.employee_nickname from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_nickname from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
 
-            V_Nickname = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_Nickname = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_Nickname = IIf(IsDBNull(V_Nickname), "", V_Nickname)
 
             Return V_Nickname
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETContractTypeID(ByVal RowID As String) As String
+        Public Shared Function GETContractTypeID(ByVal RowID As String) As String
             Dim V_ContractTypeID As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select em.employee_contracttype from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_contracttype from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
 
-            V_ContractTypeID = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_ContractTypeID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_ContractTypeID = IIf(IsDBNull(V_ContractTypeID), "", V_ContractTypeID)
 
             Return V_ContractTypeID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETContractType(ByVal RowID As String) As String
+        Public Shared Function GETContractType(ByVal RowID As String) As String
             Dim V_ContractType As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select cp.contracttype_name from dbo.[[man]]employee] em inner join dbo.[[man]]contracttype] cp on cp.contracttype_id = em.employee_contracttype " &
+            V_DBR_MSSQL2008(1).Query = String.Format("select cp.contracttype_name from dbo.[[man]]employee] em inner join dbo.[[man]]contracttype] cp on cp.contracttype_id = em.employee_contracttype " &
                                                     "where (em.employee_id = '{0}')", RowID)
 
-            V_ContractType = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_ContractType = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_ContractType = IIf(IsDBNull(V_ContractType), "", V_ContractType)
 
             Return V_ContractType
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETActiveEmployee(ByVal RowID As String) As Boolean
+        Public Shared Function GETActiveEmployee(ByVal RowID As String) As Boolean
             Dim V_ActiveEmployee As Object
 
-            _DBR_MSSQL2008(1).Query = String.Format("select em.employee_active from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
+            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_active from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
 
-            V_ActiveEmployee = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_ActiveEmployee = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             V_ActiveEmployee = IIf(IsDBNull(V_ActiveEmployee), False, V_ActiveEmployee)
 
             Return V_ActiveEmployee
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETGender(ByVal RowID As String) As String
+        Public Shared Function GETGender(ByVal RowID As String) As String
             Dim V_Gender As String
 
             Try
-                _DBR_MSSQL2008(1).Query = String.Format("select em.employee_gender from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
-                V_Gender = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+                V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_gender from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
+                V_Gender = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
             Catch ex As Exception
                 V_Gender = "MALE"
             End Try
@@ -270,11 +270,11 @@ Namespace Commands.EPLS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETIsHavePhoto(ByVal RowID As String) As Integer
+        Public Shared Function GETIsHavePhoto(ByVal RowID As String) As Integer
             Dim V_IsHavePhoto As Integer
 
-            _DBR_MSSQL2008(0).Query = String.Format("select count(f.file_id) as total from db_universe_erp_file.dbo.[[sto]]file] f where (f.file_parent = '{0}') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');", RowID)
-            V_IsHavePhoto = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+            V_DBR_MSSQL2008(0).Query = String.Format("select count(f.file_id) as total from db_universe_erp_file.dbo.[[sto]]file] f where (f.file_parent = '{0}') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');", RowID)
+            V_IsHavePhoto = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
 
             Return V_IsHavePhoto
         End Function
@@ -285,8 +285,8 @@ Namespace Commands.EPLS
             Dim V_Bytes As Byte()
 
             Try
-                _DBR_MSSQL2008(0).Query = String.Format("select f.file_content from db_universe_erp_file.dbo.[[sto]]file] f where f.file_parent = '{0}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'", RowID)
-                V_Bytes = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+                V_DBR_MSSQL2008(0).Query = String.Format("select f.file_content from db_universe_erp_file.dbo.[[sto]]file] f where f.file_parent = '{0}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'", RowID)
+                V_Bytes = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
 
                 If Not IsNothing(V_Bytes) Then
                     V_Photo = _IMG.OutputAsImage(V_Bytes)
@@ -299,15 +299,15 @@ Namespace Commands.EPLS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function IsPersonalIDExist(ByVal IsNew As Boolean, ByVal PersonalID As String, Optional ByVal EmployeeID As String = "") As Boolean
+        Public Shared Function IsPersonalIDExist(ByVal IsNew As Boolean, ByVal PersonalID As String, Optional ByVal EmployeeID As String = "") As Boolean
             Dim V_IsExist As Integer
 
             If IsNew = True Then
-                _DBR_MSSQL2008(1).Query = String.Format("select count(em.employee_personalid) from dbo.[[man]]employee] em where em.employee_personalid = '{0}'", PersonalID)
+                V_DBR_MSSQL2008(1).Query = String.Format("select count(em.employee_personalid) from dbo.[[man]]employee] em where em.employee_personalid = '{0}'", PersonalID)
             Else
-                _DBR_MSSQL2008(1).Query = String.Format("select count(em.employee_personalid) from dbo.[[man]]employee] em where (em.employee_personalid = '{0}' and em.employee_id <> '{1}')", PersonalID, EmployeeID)
+                V_DBR_MSSQL2008(1).Query = String.Format("select count(em.employee_personalid) from dbo.[[man]]employee] em where (em.employee_personalid = '{0}' and em.employee_id <> '{1}')", PersonalID, EmployeeID)
             End If
-            V_IsExist = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_IsExist = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
 
             If V_IsExist = 0 Then
                 Return False
@@ -317,11 +317,11 @@ Namespace Commands.EPLS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function IsPositionExist(ByVal PositionID As String) As Boolean
+        Public Shared Function IsPositionExist(ByVal PositionID As String) As Boolean
             Dim V_IsExist As Integer
 
-            _DBR_MSSQL2008(1).Query = String.Format("select count(ps.position_id) as [rows] from dbo.[[man]]position] ps where (ps.position_id = '{0}')", PositionID)
-            V_IsExist = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_DBR_MSSQL2008(1).Query = String.Format("select count(ps.position_id) as [rows] from dbo.[[man]]position] ps where (ps.position_id = '{0}')", PositionID)
+            V_IsExist = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
 
             If V_IsExist = 0 Then
                 Return False
@@ -332,7 +332,7 @@ Namespace Commands.EPLS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function IsDuplicate(ByVal PositionID As String, ByVal EmployeeNumber As String, Optional ByVal RowID As String = "-1") As Boolean
+        Public Shared Function IsDuplicate(ByVal PositionID As String, ByVal EmployeeNumber As String, Optional ByVal RowID As String = "-1") As Boolean
             Dim V_IsDuplicate As Integer
             Dim V_Where As String = "where "
 
@@ -344,10 +344,10 @@ Namespace Commands.EPLS
                                         "inner join dbo.[[man]]departement] dp1 on dp1.departement_id = ps1.position_departement where ps1.position_id = '{1}') and (em.employee_id <> '{2}')", EmployeeNumber, PositionID, RowID)
             End If
 
-            _DBR_MSSQL2008(1).Query = String.Format("select count(em.employee_id) as [rows] from dbo.[[man]]employee] em inner join dbo.[[man]]position] ps on ps.position_id = em.employee_position " &
+            V_DBR_MSSQL2008(1).Query = String.Format("select count(em.employee_id) as [rows] from dbo.[[man]]employee] em inner join dbo.[[man]]position] ps on ps.position_id = em.employee_position " &
                                                     "inner join dbo.[[man]]departement] dp on dp.departement_id = ps.position_departement {0}", V_Where)
 
-            V_IsDuplicate = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(1).Query)
+            V_IsDuplicate = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
 
             If V_IsDuplicate = 0 Then
                 Return False
@@ -357,24 +357,24 @@ Namespace Commands.EPLS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function PUSHData(ByVal PersonalID As String, ByVal Position As String, ByVal EmployeeNumber As String, ByVal EmployeeFullName As String, ByVal EmployeeBirthDate As dtp, ByVal EmployeeBirthPlace As String, ByVal EmployeeAddress As String, ByVal EmployeeNickname As String, ByVal ActiveEmployee As Boolean, ByVal EmployeeGender As String, ByVal EmployeePhoto As System.Drawing.Image, ByVal ForceChangePhoto As Boolean, ByVal CreatorEditor As String, Optional ByVal RowID As String = "-1") As Boolean
+        Public Shared Function PUSHData(ByVal PersonalID As String, ByVal Position As String, ByVal EmployeeNumber As String, ByVal EmployeeFullName As String, ByVal EmployeeBirthDate As dtp, ByVal EmployeeBirthPlace As String, ByVal EmployeeAddress As String, ByVal EmployeeNickname As String, ByVal ActiveEmployee As Boolean, ByVal EmployeeGender As String, ByVal EmployeePhoto As System.Drawing.Image, ByVal ForceChangePhoto As Boolean, ByVal CreatorEditor As String, Optional ByVal RowID As String = "-1") As Boolean
             Dim V_Success As Boolean
             Dim Hash As String = CMCv.Security.Encrypt.MD5()
             Dim V_EmployeeBirthDate As String = EmployeeBirthDate.Value.Year & "-" & EmployeeBirthDate.Value.Month & "-" & EmployeeBirthDate.Value.Day
 
             Try
                 If RowID = "-1" Then
-                    _DBR_MSSQL2008(1).Query = String.Format("insert into dbo.[[man]]employee](employee_id, employee_personalid, employee_position, employee_number, employee_fullname, employee_birthdate, employee_birthplace, " &
+                    V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.[[man]]employee](employee_id, employee_personalid, employee_position, employee_number, employee_fullname, employee_birthdate, employee_birthplace, " &
                                                             "employee_address, employee_nickname, employee_active, employee_gender) " &
                                                             "values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}');", Hash, PersonalID, Position, EmployeeNumber, EmployeeFullName, V_EmployeeBirthDate, EmployeeBirthPlace, EmployeeAddress, EmployeeNickname, ActiveEmployee, EmployeeGender)
                 Else
                     Hash = RowID
-                    _DBR_MSSQL2008(1).Query = String.Format("update dbo.[[man]]employee] set employee_position = '{0}', employee_number = '{1}', employee_fullname = '{2}', employee_birthdate = '{3}', employee_birthplace = '{4}', " &
+                    V_DBR_MSSQL2008(1).Query = String.Format("update dbo.[[man]]employee] set employee_position = '{0}', employee_number = '{1}', employee_fullname = '{2}', employee_birthdate = '{3}', employee_birthplace = '{4}', " &
                                                             "employee_address = '{5}', employee_nickname = '{6}', employee_active = '{7}', employee_gender = '{8}', employee_personalid = '{9}' " &
                                                             "where employee_id = '{10}';", Position, EmployeeNumber, EmployeeFullName, V_EmployeeBirthDate, EmployeeBirthPlace, EmployeeAddress, EmployeeNickname, ActiveEmployee, EmployeeGender, PersonalID, RowID)
                 End If
 
-                '_DBE_MSSQL2008.PUSHDATA(_DBR_MSSQL2008(1).Query)
+                'V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(1).Query)
                 Dim Query As String = String.Empty
                 Dim _CMD As SqlClient.SqlCommand = Nothing
                 _CMD = New SqlClient.SqlCommand
@@ -392,7 +392,7 @@ Namespace Commands.EPLS
                                               "file_tag = 'EMPLOYEE-PROFILE-PHOTO';", Hash)
                     End If
 
-                    _DBR_MSSQL2008(1).Query += Query
+                    V_DBR_MSSQL2008(1).Query += Query
 
                     _CMD.Parameters.AddWithValue("@ID", PhotoHash)
                     _CMD.Parameters.AddWithValue("@ParentID", Hash)
@@ -414,9 +414,9 @@ Namespace Commands.EPLS
                 End If
 
                 _CMD.CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' " &
-                                                 "GOTO RETRY END END CATCH", _DBR_MSSQL2008(1).Query)
+                                                 "GOTO RETRY END END CATCH", V_DBR_MSSQL2008(1).Query)
 
-                V_Success = _DBE_MSSQL2008.PUSHIMAGE(_CMD)
+                V_Success = V_DBE_MSSQL2008.PUSHIMAGE(_CMD)
 
             Catch ex As Exception
                 V_Success = False

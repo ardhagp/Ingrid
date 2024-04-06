@@ -93,8 +93,8 @@ Partial Class POST
         DgnPOST.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnPOST.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnPOST.Size = New Size(915, 511)
-        DgnPOST.SLFGroupFirstRows = False
-        DgnPOST.SLFGunakanNomorBaris = True
+        DgnPOST.XOGroupFirstRows = False
+        DgnPOST.XOGunakanNomorBaris = True
         DgnPOST.StandardTab = True
         DgnPOST.TabIndex = 0
         ' 

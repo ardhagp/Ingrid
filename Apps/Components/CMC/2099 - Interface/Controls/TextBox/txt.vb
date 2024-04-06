@@ -21,21 +21,21 @@ Public Class txt
         MyBase.MaxLength = 255
         MyBase.Height = 23
         MyBase.Width = 206
-        Me.SLFHarusDiisi = False
-        Me.SLFHarusDiisiWarnaLatar = Drawing.Color.LightPink
-        Me.SLFHarusDiisiWarnaLatarDefault = Drawing.Color.White
-        Me.SLFTanpaSpasi = False
-        Me.SLFAutoTrim = False
-        Me.SLFHightlightSaatFokus = False
-        Me.SLFHightlightSaatFokusWarna = Drawing.Color.LightYellow
-        Me.SLFPilihSemuaSaatFokus = False
-        Me.SLFRestriction = ControlCodeBase.enuRestriction.None
-        Me.SLFIsBlank = True
-        Me.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Me.SLFIsSearchBox = False
-        Me.SLFSearchBoxText = "Type then press Enter"
-        Me.SLFPwdLengthMin = 8
-        Me.SLFPwdStrengthCalculate = False
+        Me.XOHarusDiisi = False
+        Me.XOHarusDiisiWarnaLatar = Drawing.Color.LightPink
+        Me.XOHarusDiisiWarnaLatarDefault = Drawing.Color.White
+        Me.XOTanpaSpasi = False
+        Me.XOAutoTrim = False
+        Me.XOHightlightSaatFokus = False
+        Me.XOHightlightSaatFokusWarna = Drawing.Color.LightYellow
+        Me.XOPilihSemuaSaatFokus = False
+        Me.XORestriction = ControlCodeBase.enuRestriction.None
+        Me.XOIsBlank = True
+        Me.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        Me.XOIsSearchBox = False
+        Me.XOSearchBoxText = "Type then press Enter"
+        Me.XOPwdLengthMin = 8
+        Me.XOPwdStrengthCalculate = False
         Call FontSearchBox(True)
     End Sub
 
@@ -43,7 +43,7 @@ Public Class txt
     <Category("Text"),
     Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
     Private _varAutoTrim As Boolean
-    Public Property SLFAutoTrim() As Boolean
+    Public Property XOAutoTrim() As Boolean
         Get
             Return _varAutoTrim
         End Get
@@ -55,7 +55,7 @@ Public Class txt
     <Category("Text"),
     Description("Teksboks harus diisi")>
     Private _varHarusDiisi As Boolean
-    Public Property SLFHarusDiisi As Boolean
+    Public Property XOHarusDiisi As Boolean
         Get
             Return _varHarusDiisi
         End Get
@@ -67,7 +67,7 @@ Public Class txt
     Private _varHightlightSaatFokus As Boolean
     <Category("Text"),
     Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
-    Public Property SLFHightlightSaatFokus() As Boolean
+    Public Property XOHightlightSaatFokus() As Boolean
         Get
             Return _varHightlightSaatFokus
         End Get
@@ -79,7 +79,7 @@ Public Class txt
     Private _varHighlightSaatFokusWarna As System.Drawing.Color
     <Category("Text"),
     Description("Warna highlight")>
-    Public Property SLFHightlightSaatFokusWarna() As System.Drawing.Color
+    Public Property XOHightlightSaatFokusWarna() As System.Drawing.Color
         Get
             Return _varHighlightSaatFokusWarna
         End Get
@@ -91,7 +91,7 @@ Public Class txt
     <Category("Text"),
    Description("Panjang password minimum")>
     Private _varPwdLengthMin As Integer
-    Public Property SLFPwdLengthMin As Integer
+    Public Property XOPwdLengthMin As Integer
         Get
             Return _varPwdLengthMin
         End Get
@@ -103,7 +103,7 @@ Public Class txt
     <Category("Text"),
    Description("Aktifkan penghitung kekuatan password")>
     Private _varPwdStrengthCalculate As Boolean
-    Public Property SLFPwdStrengthCalculate As Boolean
+    Public Property XOPwdStrengthCalculate As Boolean
         Get
             Return _varPwdStrengthCalculate
         End Get
@@ -115,7 +115,7 @@ Public Class txt
     <Category("Text"),
    Description("Indikator kekuatan password (skor)")>
     Private _varPwdStrengthScore As Integer
-    Public Property SLFPwdStrengthScore As Integer
+    Public Property XOPwdStrengthScore As Integer
         Get
             Return _varPwdStrengthScore
         End Get
@@ -127,7 +127,7 @@ Public Class txt
     <Category("Text"),
    Description("Indikator kekuatan password (teks)")>
     Private _varPwdStrengthText As String
-    Public Property SLFPwdStrengthText As String
+    Public Property XOPwdStrengthText As String
         Get
             Return _varPwdStrengthText
         End Get
@@ -139,7 +139,7 @@ Public Class txt
     <Category("Text"),
    Description("Mengisi teksboks kosong dengan tanda (-)")>
     Private _varTanpaSpasi As Boolean
-    Public Property SLFTanpaSpasi As Boolean
+    Public Property XOTanpaSpasi As Boolean
         Get
             Return _varTanpaSpasi
         End Get
@@ -151,7 +151,7 @@ Public Class txt
     <Category("Text"),
    Description("Teks yang dikonversi untuk sql")>
     Private _varSQLText As String
-    Public Property SLFSQLText As String
+    Public Property XOSQLText As String
         Get
             Return _varSQLText
         End Get
@@ -164,7 +164,7 @@ Public Class txt
     Private _varHarusDiisiWarnaLatar As System.Drawing.Color
     <Category("Text"),
     Description("Warna saat teksboks tidak diisi")>
-    Public Property SLFHarusDiisiWarnaLatar As System.Drawing.Color
+    Public Property XOHarusDiisiWarnaLatar As System.Drawing.Color
         Get
             Return _varHarusDiisiWarnaLatar
         End Get
@@ -175,7 +175,7 @@ Public Class txt
 
     <Category("Text"),
     Description("Warna saat teksboks tidak diisi jika bernilai False")>
-    Public Property SLFHarusDiisiWarnaLatarDefault As System.Drawing.Color
+    Public Property XOHarusDiisiWarnaLatarDefault As System.Drawing.Color
         Get
             Return _varHarusDiisiWarnaLatarDefault
         End Get
@@ -187,7 +187,7 @@ Public Class txt
     Private _varValidasiField As String
     <Category("Text"),
     Description("Field yang ditampilkan saat validasi tidak diisi")>
-    Public Property SLFValidasiField As String
+    Public Property XOValidasiField As String
         Get
             Return _varValidasiField
         End Get
@@ -199,7 +199,7 @@ Public Class txt
     Private _varPilihSemuaSaatFokus As Boolean
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Memilih semua teks saat fokus")>
-    Public Property SLFPilihSemuaSaatFokus() As Boolean
+    Public Property XOPilihSemuaSaatFokus() As Boolean
         Get
             Return _varPilihSemuaSaatFokus
         End Get
@@ -215,7 +215,7 @@ Public Class txt
     ''' <value>True/False</value>
     ''' <returns>True/False</returns>
     ''' <remarks></remarks>
-    Public Property SLFIsBlank() As Boolean
+    Public Property XOIsBlank() As Boolean
         Get
             Return _varIsBlank
         End Get
@@ -227,7 +227,7 @@ Public Class txt
     Private _varJenisKapital As String
     <Category("Text"),
     Description("Isi akan diubah menjadi kapital semua")>
-    Public Property SLFJenisKapital As ControlCodeBase.enuJenisKapital
+    Public Property XOJenisKapital As ControlCodeBase.enuJenisKapital
         Get
             Return _varJenisKapital
         End Get
@@ -237,7 +237,7 @@ Public Class txt
     End Property
 
     Private _varRestriction As ControlCodeBase.enuRestriction
-    Public Property SLFRestriction As ControlCodeBase.enuRestriction
+    Public Property XORestriction As ControlCodeBase.enuRestriction
         Get
             Return _varRestriction
         End Get
@@ -247,7 +247,7 @@ Public Class txt
     End Property
 
     Private _varIsSearchBox As Boolean
-    Public Property SLFIsSearchBox As Boolean
+    Public Property XOIsSearchBox As Boolean
         Get
             Return _varIsSearchBox
         End Get
@@ -257,7 +257,7 @@ Public Class txt
     End Property
 
     Private _varSearchBoxText As String
-    Public Property SLFSearchBoxText As String
+    Public Property XOSearchBoxText As String
         Get
             Return _varSearchBoxText
         End Get
@@ -271,14 +271,14 @@ Public Class txt
     Private Function SQLSafeText(ByVal txtControl As txt) As String
         Dim _SQLSafeText As String = txtControl.Text
 
-        If (txtControl.SLFIsSearchBox = True) And (txtControl.Text = txtControl.SLFSearchBoxText) Then
+        If (txtControl.XOIsSearchBox = True) And (txtControl.Text = txtControl.XOSearchBoxText) Then
             _SQLSafeText = String.Empty
         End If
 
         _SQLSafeText = _SQLSafeText.Replace("'", "").Replace(";", "").Replace("--", "").Replace("drop table ", "").Replace("update ", "").Replace("insert into ", "").Replace("--", "").Replace("xp_", "").Trim
-        If SLFJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA Then
+        If XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA Then
             _SQLSafeText = _SQLSafeText.ToUpper
-        ElseIf SLFJenisKapital = ControlCodeBase.enuJenisKapital.kecilsemua Then
+        ElseIf XOJenisKapital = ControlCodeBase.enuJenisKapital.kecilsemua Then
             _SQLSafeText = _SQLSafeText.ToLower
         End If
         Return _SQLSafeText
@@ -404,14 +404,14 @@ Public Class txt
     Private Sub txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
         Call FontSearchBox(True)
 
-        If Me.SLFPilihSemuaSaatFokus AndAlso (MouseButtons = Windows.Forms.MouseButtons.None) Then
+        If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = Windows.Forms.MouseButtons.None) Then
             Me.SelectAll()
             _varFlagAutoSelect = True
         End If
-        If Me.SLFHightlightSaatFokus Then
-            MyBase.BackColor = Me.SLFHightlightSaatFokusWarna
+        If Me.XOHightlightSaatFokus Then
+            MyBase.BackColor = Me.XOHightlightSaatFokusWarna
         End If
-        If Me.SLFPilihSemuaSaatFokus Then
+        If Me.XOPilihSemuaSaatFokus Then
             Me.Select(0, Me.Text.Length)
         End If
         If Not HasKeyboard() Then
@@ -442,64 +442,64 @@ Public Class txt
 
     <SupportedOSPlatform("windows")>
     Private Sub txt_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
-        If Me.SLFAutoTrim Then
+        If Me.XOAutoTrim Then
             Me.Text = Me.Text.Trim()
         End If
 
-        'If Me.SLFHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
+        'If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
         '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
-        'ElseIf Me.SLFHightlightSaatFokus AndAlso Not Me.Focused Then
+        'ElseIf Me.XOHightlightSaatFokus AndAlso Not Me.Focused Then
         '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
         If Me.ReadOnly = False Then
-            If Me.SLFHarusDiisi = True AndAlso Me.Text.Trim = "" Then
-                MyBase.BackColor = Me.SLFHarusDiisiWarnaLatar
+            If Me.XOHarusDiisi = True AndAlso Me.Text.Trim = "" Then
+                MyBase.BackColor = Me.XOHarusDiisiWarnaLatar
             Else
-                MyBase.BackColor = Me.SLFHarusDiisiWarnaLatarDefault
+                MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
             End If
         End If
 
         Call FontSearchBox(False)
 
-        If (Me.SLFPwdStrengthCalculate = True) Then
+        If (Me.XOPwdStrengthCalculate = True) Then
             Call InitPasswordStrength(MyBase.Text)
             Call AnalyzePassword()
-            Me.SLFPwdStrengthScore = OutputResultScore()
-            Me.SLFPwdStrengthText = OutputResultText()
+            Me.XOPwdStrengthScore = OutputResultScore()
+            Me.XOPwdStrengthText = OutputResultText()
         End If
     End Sub
 
     Private Sub txt_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
-        If Me.SLFHightlightSaatFokus And Me.ReadOnly = False Then
-            MyBase.BackColor = Me.SLFHightlightSaatFokusWarna
+        If Me.XOHightlightSaatFokus And Me.ReadOnly = False Then
+            MyBase.BackColor = Me.XOHightlightSaatFokusWarna
         End If
     End Sub
 
     Private Sub txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
-        If Me.SLFHightlightSaatFokus And Not Me.Focused And Me.ReadOnly = False Then
-            MyBase.BackColor = Me.SLFHarusDiisiWarnaLatarDefault
+        If Me.XOHightlightSaatFokus And Not Me.Focused And Me.ReadOnly = False Then
+            MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
         End If
     End Sub
 
     Private Sub txt_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
-        If Me.SLFPilihSemuaSaatFokus AndAlso (Not _varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
+        If Me.XOPilihSemuaSaatFokus AndAlso (Not _varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
             _varFlagAutoSelect = True
             Me.SelectAll()
         End If
     End Sub
 
     Private Sub txt_TextChanged(sender As Object, e As System.EventArgs) Handles Me.TextChanged
-        SLFSQLText = SQLSafeText(Me)
+        XOSQLText = SQLSafeText(Me)
 
         If Me.Text = Nothing Then
-            SLFSQLText = ""
+            XOSQLText = ""
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Public Sub FontSearchBox(ByVal OnFocus As Boolean)
         Try
-            If Me.SLFIsSearchBox = True Then
-                If OnFocus = True And Me.Text = Me.SLFSearchBoxText Then
+            If Me.XOIsSearchBox = True Then
+                If OnFocus = True And Me.Text = Me.XOSearchBoxText Then
                     Me.Text = ""
                     Me.Font = New System.Drawing.Font(Me.Font, System.Drawing.FontStyle.Regular)
                     Me.ForeColor = System.Drawing.SystemColors.WindowText
@@ -508,7 +508,7 @@ Public Class txt
                 ElseIf OnFocus = False And Me.Text = String.Empty Then
                     Me.Font = New System.Drawing.Font(Me.Font, System.Drawing.FontStyle.Italic)
                     Me.ForeColor = System.Drawing.Color.LightGray
-                    Me.Text = Me.SLFSearchBoxText
+                    Me.Text = Me.XOSearchBoxText
                 End If
             Else
                 MyBase.Font = New System.Drawing.Font(MyBase.Font, System.Drawing.FontStyle.Regular)
@@ -519,10 +519,10 @@ Public Class txt
     End Sub
 
     Private Sub txt_Validating(sender As Object, e As CancelEventArgs) Handles Me.Validating
-        If Me.SLFHarusDiisi = True AndAlso Me.Text.Trim = "" Then
-            Me.SLFIsBlank = True
+        If Me.XOHarusDiisi = True AndAlso Me.Text.Trim = "" Then
+            Me.XOIsBlank = True
         Else
-            Me.SLFIsBlank = False
+            Me.XOIsBlank = False
         End If
     End Sub
 
@@ -544,10 +544,10 @@ End Class
 ''' 
 ''' </summary>
 Public Class Num
-    Property Excess As Integer = 0
-    Property Upper As Integer = 0
-    Property Numbers As Integer = 0
-    Property Symbols As Integer = 0
+    Property Excess As Integer
+    Property Upper As Integer
+    Property Numbers As Integer
+    Property Symbols As Integer
 End Class
 
 Public Class Bonus
@@ -555,7 +555,7 @@ Public Class Bonus
     Property Upper As Integer = 4
     Property Numbers As Integer = 5
     Property Symbols As Integer = 5
-    Property Combo As Integer = 0
-    Property FlatLower As Integer = 0
-    Property FlatNumber As Integer = 0
+    Property Combo As Integer
+    Property FlatLower As Integer
+    Property FlatNumber As Integer
 End Class

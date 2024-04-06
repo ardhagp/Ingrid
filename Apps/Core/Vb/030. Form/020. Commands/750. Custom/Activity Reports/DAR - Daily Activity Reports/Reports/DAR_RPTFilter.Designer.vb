@@ -107,10 +107,10 @@ Partial Class DAR_RPTFilter
         BtnShow.Margin = New Padding(4, 3, 4, 3)
         BtnShow.Name = "BtnShow"
         BtnShow.Size = New Size(117, 46)
-        BtnShow.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        BtnShow.SLFTampilkanFocusBorder = False
-        BtnShow.SLFValidasiSemuaInput = False
-        BtnShow.SLFValidasiSemuaInputTag = Nothing
+        BtnShow.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
+        BtnShow.XOTampilkanFocusBorder = False
+        BtnShow.XOValidasiSemuaInput = False
+        BtnShow.XOValidasiSemuaInputTag = Nothing
         BtnShow.TabIndex = 99
         BtnShow.Text = "&Show"
         BtnShow.UseVisualStyleBackColor = False
@@ -124,16 +124,16 @@ Partial Class DAR_RPTFilter
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
         BtnCancel.Location = New Point(378, 8)
         BtnCancel.Margin = New Padding(4, 3, 4, 3)
         BtnCancel.Name = "BtnCancel"
         BtnCancel.Size = New Size(117, 46)
-        BtnCancel.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        BtnCancel.SLFTampilkanFocusBorder = False
-        BtnCancel.SLFValidasiSemuaInput = False
-        BtnCancel.SLFValidasiSemuaInputTag = Nothing
+        BtnCancel.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        BtnCancel.XOTampilkanFocusBorder = False
+        BtnCancel.XOValidasiSemuaInput = False
+        BtnCancel.XOValidasiSemuaInputTag = Nothing
         BtnCancel.TabIndex = 98
         BtnCancel.Text = "&Cancel"
         BtnCancel.UseVisualStyleBackColor = False
@@ -161,7 +161,7 @@ Partial Class DAR_RPTFilter
         DtpFrom.MinDate = New Date(1918, 6, 24, 0, 0, 0, 0)
         DtpFrom.Name = "DtpFrom"
         DtpFrom.Size = New Size(321, 29)
-        DtpFrom.SLFResetOnDisabled = True
+        DtpFrom.XOResetOnDisabled = True
         DtpFrom.TabIndex = 5
         ' 
         ' ChkTo
@@ -169,7 +169,7 @@ Partial Class DAR_RPTFilter
         ChkTo.AutoSize = True
         ChkTo.BackColor = Color.Transparent
         ChkTo.FlatStyle = FlatStyle.Flat
-        ChkTo.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkTo.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         ChkTo.Location = New Point(47, 84)
         ChkTo.Margin = New Padding(4, 3, 4, 3)
         ChkTo.Name = "ChkTo"
@@ -180,14 +180,14 @@ Partial Class DAR_RPTFilter
         ' 
         ' DtpTo
         ' 
-        DtpTo.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        DtpTo.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         DtpTo.Location = New Point(144, 80)
         DtpTo.Margin = New Padding(4, 3, 4, 3)
         DtpTo.MaxDate = New Date(2028, 6, 24, 0, 0, 0, 0)
         DtpTo.MinDate = New Date(1918, 6, 24, 0, 0, 0, 0)
         DtpTo.Name = "DtpTo"
         DtpTo.Size = New Size(321, 29)
-        DtpTo.SLFResetOnDisabled = True
+        DtpTo.XOResetOnDisabled = True
         DtpTo.TabIndex = 6
         ' 
         ' ChkArea
@@ -276,25 +276,25 @@ Partial Class DAR_RPTFilter
         TxtDescription.MaxLength = 255
         TxtDescription.Name = "TxtDescription"
         TxtDescription.Size = New Size(321, 29)
-        TxtDescription.SLFAutoTrim = False
-        TxtDescription.SLFHarusDiisi = False
-        TxtDescription.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtDescription.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtDescription.SLFHightlightSaatFokus = False
-        TxtDescription.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtDescription.SLFIsBlank = True
-        TxtDescription.SLFIsSearchBox = False
-        TxtDescription.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        TxtDescription.SLFPilihSemuaSaatFokus = False
-        TxtDescription.SLFPwdLengthMin = 8
-        TxtDescription.SLFPwdStrengthCalculate = False
-        TxtDescription.SLFPwdStrengthScore = 0
-        TxtDescription.SLFPwdStrengthText = Nothing
-        TxtDescription.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtDescription.SLFSearchBoxText = "Type then press Enter"
-        TxtDescription.SLFSQLText = ""
-        TxtDescription.SLFTanpaSpasi = False
-        TxtDescription.SLFValidasiField = Nothing
+        TxtDescription.XOAutoTrim = False
+        TxtDescription.XOHarusDiisi = False
+        TxtDescription.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtDescription.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtDescription.XOHightlightSaatFokus = False
+        TxtDescription.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtDescription.XOIsBlank = True
+        TxtDescription.XOIsSearchBox = False
+        TxtDescription.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
+        TxtDescription.XOPilihSemuaSaatFokus = False
+        TxtDescription.XOPwdLengthMin = 8
+        TxtDescription.XOPwdStrengthCalculate = False
+        TxtDescription.XOPwdStrengthScore = 0
+        TxtDescription.XOPwdStrengthText = Nothing
+        TxtDescription.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtDescription.XOSearchBoxText = "Type then press Enter"
+        TxtDescription.XOSQLText = ""
+        TxtDescription.XOTanpaSpasi = False
+        TxtDescription.XOValidasiField = Nothing
         TxtDescription.TabIndex = 10
         TxtDescription.Tag = "txt"
         ' 
@@ -305,7 +305,7 @@ Partial Class DAR_RPTFilter
         LblNote.Margin = New Padding(4, 0, 4, 0)
         LblNote.Name = "LblNote"
         LblNote.Size = New Size(327, 60)
-        LblNote.SLFCustomElipsis = False
+        LblNote.XOCustomElipsis = False
         LblNote.TabIndex = 1007
         LblNote.Text = "Note : The more specific your filter," & vbCrLf & "the more faster report will load."
         ' 

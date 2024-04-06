@@ -1,9 +1,10 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Public Class UAC_Editor
 
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.UAC.Editor
+    Private _SQL As New Commands.UAC.Editor
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
     Private WithEvents _AddinEmployee As New UAC_Employee
     Private _IsAdminstrator As Boolean
@@ -12,8 +13,10 @@ Public Class UAC_Editor
 #End Region
 
 #Region "Subs Collections"
+
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA()
-        _SQL.DisplayData(DgnUACe, V_FORMAttrib.RowID)
+        Commands.UAC.Editor.DisplayData(DgnUACe, V_FORMAttrib.RowID)
     End Sub
 
     Private Sub CheckAllInput()
@@ -30,6 +33,7 @@ Public Class UAC_Editor
         TxtEmployeeFullName.Text = V_FORMAttrib.Field03
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnBrowseEmployee_Click(sender As Object, e As EventArgs) Handles BtnBrowseEmployee.Click
         _AddinEmployee = New UAC_Employee
         DISPLAY(_AddinEmployee, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, "Find Employee", "Browse for employee data", True)
@@ -49,11 +53,12 @@ Public Class UAC_Editor
 
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub UAC_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me, True)
         _MMSMenu.ShowMenuFILE(UI.View.MenuStrip.ShowItem.Yes)
 
-        DgnUACe.SLF_GETNewColor()
+        DgnUACe.XOGETNewColor()
 
         If (V_FORMAttrib.IsChangePasswordForm) Then
             TbctlAccess.Visible = False
@@ -71,13 +76,13 @@ Public Class UAC_Editor
             ChkAddNew.Enabled = False
             ChkAddNew.Visible = False
             BtnBrowseEmployee.Visible = False
-            TxtEmployeeNumber.Text = _SQL.GETEmployeeNumber(V_FORMAttrib.RowID)
-            TxtEmployeeFullName.Text = _SQL.GETEmployeeFullName(V_FORMAttrib.RowID)
-            TxtUsername.Text = _SQL.GETUsernameByUserID(V_FORMAttrib.RowID)
-            V_FORMAttrib.Password = _SQL.GETPassword(V_FORMAttrib.RowID)
-            ChkLocked.Checked = _SQL.GETLocked(V_FORMAttrib.RowID)
-            _IsAdminstrator = _SQL.GETAdministrator(V_USERAttrib.UID)
-            ChkAdministrator.Checked = _SQL.GETAdministrator(V_FORMAttrib.RowID)
+            TxtEmployeeNumber.Text = Commands.UAC.Editor.GETEmployeeNumber(V_FORMAttrib.RowID)
+            TxtEmployeeFullName.Text = Commands.UAC.Editor.GETEmployeeFullName(V_FORMAttrib.RowID)
+            TxtUsername.Text = Commands.UAC.Editor.GETUsernameByUserID(V_FORMAttrib.RowID)
+            V_FORMAttrib.Password = Commands.UAC.Editor.GETPassword(V_FORMAttrib.RowID)
+            ChkLocked.Checked = Commands.UAC.Editor.GETLocked(V_FORMAttrib.RowID)
+            _IsAdminstrator = Commands.UAC.Editor.GETAdministrator(V_USERAttrib.UID)
+            ChkAdministrator.Checked = Commands.UAC.Editor.GETAdministrator(V_FORMAttrib.RowID)
             If (_IsAdminstrator) AndAlso Not (V_FORMAttrib.IsChangePasswordForm) Then
                 ChkAdministrator.Visible = True
             Else
@@ -85,33 +90,34 @@ Public Class UAC_Editor
             End If
             TxtPassword.Text = V_FORMAttrib.Password
         End If
-        TxtPassword.SLFPwdLengthMin = _MINPASSWORDLENGTH
+        TxtPassword.XOPwdLengthMin = _MINPASSWORDLENGTH
         Call GETDATA()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Call CheckAllInput()
 
         If ((V_FORMAttrib.IsNew) AndAlso (V_FORMAttrib.Field01 = String.Empty)) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Employee data selected.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (TxtUsername.SLFSQLText = String.Empty) OrElse (TxtPassword.SLFSQLText = String.Empty) Then
+        ElseIf (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Username and Password properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf ((_PWDChange) AndAlso (TxtPassword.TextLength < _MINPASSWORDLENGTH)) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure your Password meets the minimum criteria.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf ((V_FORMAttrib.IsNew) AndAlso (_SQL.IsDuplicate(TxtUsername.SLFSQLText))) Then
+        ElseIf ((V_FORMAttrib.IsNew) AndAlso (Commands.UAC.Editor.IsDuplicate(TxtUsername.XOSQLText))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Username already registered.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (_SQL.IsDuplicate(TxtUsername.SLFSQLText, V_FORMAttrib.RowID))) Then
+        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (Commands.UAC.Editor.IsDuplicate(TxtUsername.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Username already used by another employee.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
         Call CheckPWDChange()
 
-        If (_SQL.PUSHData(V_FORMAttrib.Field01, TxtUsername.SLFSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.SLFSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, V_FORMAttrib.RowID, V_FORMAttrib.Hash, _PWDChange)) Then
+        If (Commands.UAC.Editor.PUSHData(V_FORMAttrib.Field01, TxtUsername.XOSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, V_FORMAttrib.RowID, V_FORMAttrib.Hash, _PWDChange)) Then
             RaiseEvent RecordSaved()
             Mainframe_n_6.Ts_status.Text = "Success"
         Else
@@ -131,7 +137,7 @@ Public Class UAC_Editor
     End Sub
 
     Private Sub CheckPWDChange()
-        If TxtPassword.SLFSQLText = V_FORMAttrib.Password Then
+        If TxtPassword.XOSQLText = V_FORMAttrib.Password Then
             _PWDChange = False
         Else
             _PWDChange = True
@@ -142,8 +148,8 @@ Public Class UAC_Editor
         Call CheckPWDChange()
 
         If (_PWDChange) Then
-            LblPwdText.Text = TxtPassword.SLFPwdStrengthText
-            ProgressBar1.Value = TxtPassword.SLFPwdStrengthScore
+            LblPwdText.Text = TxtPassword.XOPwdStrengthText
+            ProgressBar1.Value = TxtPassword.XOPwdStrengthScore
         End If
     End Sub
 End Class

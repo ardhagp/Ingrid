@@ -1,4 +1,6 @@
-﻿Public Class ControlCodeBase
+﻿Imports System.Runtime.Versioning
+
+Public Class ControlCodeBase
     ''' <summary>
     ''' Enumerasi jenis tombol
     ''' </summary>
@@ -91,7 +93,7 @@
     ''' <param name="GMax">Nilai maksimum warna hijau</param>
     ''' <param name="BMin">Nilai minimum warna biru</param>
     ''' <param name="BMax">Nilai maksimum warna biru</param>
-    Public Function WarnaAcakBaru(ByVal RMin As Integer, ByVal RMax As Integer, ByVal GMin As Integer, ByVal GMax As Integer, ByVal BMin As Integer, ByVal BMax As Integer) As System.Drawing.Color
+    Public Shared Function WarnaAcakBaru(ByVal RMin As Integer, ByVal RMax As Integer, ByVal GMin As Integer, ByVal GMax As Integer, ByVal BMin As Integer, ByVal BMax As Integer) As System.Drawing.Color
         Return System.Drawing.Color.FromArgb(_randomcolor.Next(RMin, RMax), _randomcolor.Next(GMin, GMax), _randomcolor.Next(BMin, BMax))
     End Function
 
@@ -102,7 +104,8 @@
     ''' <param name="_valOpasitasWarna">Opasitas warna.</param>
     ''' <param name="_valIntensitasPerubahan">Intensitas perubahan.</param>
     ''' <returns>Wara RGB</returns>
-    Public Function AmbilWarna(ByVal _valWarnaObjek As System.Drawing.Color, ByVal _valOpasitasWarna As enuOpasitasWarna, ByVal _valIntensitasPerubahan As Integer) As System.Drawing.Color
+    <SupportedOSPlatform("windows")>
+    Public Shared Function AmbilWarna(ByVal _valWarnaObjek As System.Drawing.Color, ByVal _valOpasitasWarna As enuOpasitasWarna, ByVal _valIntensitasPerubahan As Integer) As System.Drawing.Color
         Dim re As Integer = _valWarnaObjek.R
         Dim gr As Integer = _valWarnaObjek.G
         Dim bl As Integer = _valWarnaObjek.B

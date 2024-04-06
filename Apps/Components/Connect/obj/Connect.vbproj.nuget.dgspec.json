@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj": {}
+    "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj": {
+    "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj",
+        "projectUniqueName": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj",
         "projectName": "Bridge",
-        "projectPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj",
-        "packagesPath": "C:\\Users\\ardhagp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\obj\\",
+        "projectPath": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj",
+        "packagesPath": "C:\\Users\\titoa\\.nuget\\packages\\",
+        "outputPath": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Bridge\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Core\\Vb\\NuGet.Config",
-          "C:\\Users\\ardhagp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Core\\Vb\\NuGet.Config",
+          "C:\\Users\\titoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
           "net7.0-windows"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,6 +38,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -78,25 +82,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
+    "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj",
+        "projectUniqueName": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj",
         "projectName": "CMCv",
-        "projectPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj",
-        "packagesPath": "C:\\Users\\ardhagp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\obj\\",
+        "projectPath": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj",
+        "packagesPath": "C:\\Users\\titoa\\.nuget\\packages\\",
+        "outputPath": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\CMC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Core\\Vb\\NuGet.Config",
-          "C:\\Users\\ardhagp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Core\\Vb\\NuGet.Config",
+          "C:\\Users\\titoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -104,15 +108,14 @@
           "net7.0-windows"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0-windows7.0": {
             "targetAlias": "net7.0-windows",
             "projectReferences": {
-              "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj": {
-                "projectPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj"
+              "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj": {
+                "projectPath": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj"
               }
             }
           }
@@ -121,6 +124,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -130,6 +138,10 @@
             "Microsoft.CSharp": {
               "target": "Package",
               "version": "[4.7.0, )"
+            },
+            "NETCore.Encrypt": {
+              "target": "Package",
+              "version": "[2.1.1, )"
             },
             "ReportViewerCore.WinForms": {
               "target": "Package",
@@ -169,7 +181,11 @@
             },
             "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[4.8.5, )"
+              "version": "[4.8.6, )"
+            },
+            "System.IO.Hashing": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "System.Management": {
               "target": "Package",
@@ -177,7 +193,7 @@
             },
             "WinForms.DataVisualization": {
               "target": "Package",
-              "version": "[1.9.1, )"
+              "version": "[1.9.2, )"
             }
           },
           "imports": [
@@ -199,25 +215,25 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj": {
+    "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
+        "projectUniqueName": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
         "projectName": "Connect",
-        "projectPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
-        "packagesPath": "C:\\Users\\ardhagp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\obj\\",
+        "projectPath": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
+        "packagesPath": "C:\\Users\\titoa\\.nuget\\packages\\",
+        "outputPath": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Connect\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Core\\Vb\\NuGet.Config",
-          "C:\\Users\\ardhagp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Core\\Vb\\NuGet.Config",
+          "C:\\Users\\titoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -225,15 +241,14 @@
           "net7.0-windows"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0-windows7.0": {
             "targetAlias": "net7.0-windows",
             "projectReferences": {
-              "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
-                "projectPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj"
+              "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
+                "projectPath": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj"
               }
             }
           }
@@ -242,6 +257,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -276,7 +296,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

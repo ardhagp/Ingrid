@@ -3,8 +3,8 @@
 Public Class MCTG
 
 #Region "Variables"
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
-    Private _SQL As New LibSQL.Commands.MCTG.View
+    Private WithEvents C_MMSMenu As New UI.View.MenuStrip
+    Private _SQL As New Commands.MCTG.View
 #End Region
 
 #Region "Sub Collections"
@@ -13,44 +13,49 @@ Public Class MCTG
     ''' </summary>
     ''' <param name="ForceRefresh">True/False</param>
     ''' <remarks>True untuk mengambil data tanpa filter</remarks>
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
         DblBuffer(DgnMCTG)
-        _SQL.DisplayData(DgnMCTG, SLFStatus, TxtFind, ForceRefresh)
+        Commands.MCTG.View.DISPLAYDATA(DgnMCTG, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 #End Region
 
 #Region "Menu Strip Function"
-    Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
+    Private Sub EventDataAddNew() Handles C_MMSMenu.EventDataAddNew
 
     End Sub
 
-    Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
+    Private Sub EventDataEdit() Handles C_MMSMenu.EventDataEdit
 
     End Sub
 
-    Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
+    Private Sub EventDataDelete() Handles C_MMSMenu.EventDataDelete
 
     End Sub
 
-    Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
+    <SupportedOSPlatform("windows")>
+    Private Sub EventDataRefresh() Handles C_MMSMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
     End Sub
 
-    Private Sub EventDataClose() Handles _MMSMenu.EventDataClose
+    Private Sub EventDataClose() Handles C_MMSMenu.EventDataClose
         Me.Close()
     End Sub
 
-    Private Sub EventToolsImport() Handles _MMSMenu.EventToolsImport
-        Display(New frmImports(Import.Data.DataType.TypeofImports.MaterialMasterCatalog), IMAGEDB.Main.ImageLibrary.IMPORTS_ICON, "Catalog Imports", "Imports your catalog data from other database", True)
+    <SupportedOSPlatform("windows")>
+    Private Sub EventToolsImport() Handles C_MMSMenu.EventToolsImport
+        DISPLAY(New frmImports(Import.Data.DataType.TypeofImports.MaterialMasterCatalog), IMAGEDB.Main.ImageLibrary.IMPORTS_ICON, "Catalog Imports", "Imports your catalog data from other database", True)
     End Sub
 
-    Private Sub EventToolsFind() Handles _MMSMenu.EventToolsFind
+    Private Sub EventToolsFind() Handles C_MMSMenu.EventToolsFind
         TxtFind.Focus()
     End Sub
 #End Region
 
 #Region "Upper Form Bar"
+
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()
@@ -77,27 +82,29 @@ Public Class MCTG
 #End Region
 
 #Region "Component Events"
+
+    <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
         'Sisipkan ke dalam form
-        _MMSMenu.LoadIn(Me)
+        C_MMSMenu.LoadIn(Me)
 
         'Menampilkan Menu DATA
-        _MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        C_MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS
-        _MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        C_MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu REPORTS
-        _MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        C_MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS > View Attachment
-        _MMSMenu.Visible("EventToolsViewAttachment", True)
+        C_MMSMenu.Visible("EventToolsViewAttachment", True)
 
     End Sub
 
     Private Sub LoadDGN()
         'Memuat warna acak
-        DgnMCTG.SLF_GETNewColor()
+        DgnMCTG.XOGETNewColor()
     End Sub
 
     <SupportedOSPlatform("windows")>

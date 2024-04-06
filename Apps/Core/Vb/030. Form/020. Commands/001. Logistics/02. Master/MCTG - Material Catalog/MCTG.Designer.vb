@@ -95,8 +95,8 @@ Partial Class MCTG
         DgnMCTG.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnMCTG.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnMCTG.Size = New Size(915, 511)
-        DgnMCTG.SLFGroupFirstRows = False
-        DgnMCTG.SLFGunakanNomorBaris = True
+        DgnMCTG.XOGroupFirstRows = False
+        DgnMCTG.XOGunakanNomorBaris = True
         DgnMCTG.StandardTab = True
         DgnMCTG.TabIndex = 0
         ' 

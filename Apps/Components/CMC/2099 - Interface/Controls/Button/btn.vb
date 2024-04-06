@@ -3,6 +3,7 @@
 'Imports System.Windows.Forms
 'Imports System.Windows.Forms.VisualStyles
 Imports System.ComponentModel
+Imports System.Runtime.Versioning
 
 
 ''' <project>CMCC</project>
@@ -15,6 +16,7 @@ Public Class btn
     Inherits System.Windows.Forms.Button
     Public Event ValidasiBerhasil()
 
+    <SupportedOSPlatform("windows")>
     Public Sub New()
         InitializeComponent()
         Call ActivateLicenses()
@@ -24,16 +26,16 @@ Public Class btn
         MyBase.Size = New System.Drawing.Size(100, 40)
         MyBase.Cursor = System.Windows.Forms.Cursors.Hand
         MyBase.Font = globalFontBtn
-        'Me.SLFTampilkanBorder = False
-        Me.SLFTampilkanFocusBorder = False
-        Me.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Default
+        'Me.XOTampilkanBorder = False
+        Me.XOTampilkanFocusBorder = False
+        Me.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
         MyBase.DoubleBuffered = True
     End Sub
 
     Private _varJenisTombol As ControlCodeBase.enuJenisTombol
-    <Category("Text"), _
-    Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")> _
-    Public Property SLFJenisTombol() As ControlCodeBase.enuJenisTombol
+    <Category("Text"),
+    Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
+    Public Property XOJenisTombol() As ControlCodeBase.enuJenisTombol
         Get
             Return _varJenisTombol
         End Get
@@ -44,9 +46,9 @@ Public Class btn
     End Property
 
     Private _varValidasiSemuaInput As Boolean
-    <Category("Text"), _
-    Description("Memvalidasi semua input telah diisi")> _
-    Public Property SLFValidasiSemuaInput() As Boolean
+    <Category("Text"),
+    Description("Memvalidasi semua input telah diisi")>
+    Public Property XOValidasiSemuaInput() As Boolean
         Get
             Return _varValidasiSemuaInput
         End Get
@@ -56,9 +58,9 @@ Public Class btn
     End Property
 
     Private _varValidasiSemuaInputTag As String
-    <Category("Text"), _
-    Description("Teksboks dengan Tag ini yang akan divalidasi")> _
-    Public Property SLFValidasiSemuaInputTag() As String
+    <Category("Text"),
+    Description("Teksboks dengan Tag ini yang akan divalidasi")>
+    Public Property XOValidasiSemuaInputTag() As String
         Get
             Return _varValidasiSemuaInputTag
         End Get
@@ -117,19 +119,19 @@ Public Class btn
 
     Private Sub btn_BackColorChanged(sender As Object, e As System.EventArgs) Handles Me.BackColorChanged
         If Me.FlatStyle = Windows.Forms.FlatStyle.Flat Then
-            MyBase.FlatAppearance.BorderColor = CBS.AmbilWarna(MyBase.BackColor, ControlCodeBase.enuOpasitasWarna.Darker, 60)
-            MyBase.FlatAppearance.MouseOverBackColor = CBS.AmbilWarna(MyBase.BackColor, ControlCodeBase.enuOpasitasWarna.Lighter, 20)
+            MyBase.FlatAppearance.BorderColor = ControlCodeBase.AmbilWarna(MyBase.BackColor, ControlCodeBase.enuOpasitasWarna.Darker, 60)
+            MyBase.FlatAppearance.MouseOverBackColor = ControlCodeBase.AmbilWarna(MyBase.BackColor, ControlCodeBase.enuOpasitasWarna.Lighter, 20)
         End If
     End Sub
 
-    Private _varTampilkanFocusBorder As Boolean = False
+    Private _varTampilkanFocusBorder As Boolean
     Protected Overrides ReadOnly Property ShowFocusCues() As Boolean
         Get
             Return _varTampilkanFocusBorder
         End Get
     End Property
 
-    Public Property SLFTampilkanFocusBorder() As Boolean
+    Public Property XOTampilkanFocusBorder() As Boolean
         Get
             Return _varTampilkanFocusBorder
         End Get

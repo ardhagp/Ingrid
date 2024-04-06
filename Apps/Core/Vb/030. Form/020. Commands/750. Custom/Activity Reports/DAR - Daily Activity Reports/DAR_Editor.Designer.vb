@@ -167,10 +167,10 @@ Partial Class DAR_Editor
         BtnSave.Margin = New Padding(4, 3, 4, 3)
         BtnSave.Name = "BtnSave"
         BtnSave.Size = New Size(117, 46)
-        BtnSave.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-        BtnSave.SLFTampilkanFocusBorder = False
-        BtnSave.SLFValidasiSemuaInput = False
-        BtnSave.SLFValidasiSemuaInputTag = Nothing
+        BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
+        BtnSave.XOTampilkanFocusBorder = False
+        BtnSave.XOValidasiSemuaInput = False
+        BtnSave.XOValidasiSemuaInputTag = Nothing
         BtnSave.TabIndex = 600
         BtnSave.Text = "&Save"
         BtnSave.UseVisualStyleBackColor = False
@@ -184,16 +184,16 @@ Partial Class DAR_Editor
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
         BtnCancel.Location = New Point(711, 8)
         BtnCancel.Margin = New Padding(4, 3, 4, 3)
         BtnCancel.Name = "BtnCancel"
         BtnCancel.Size = New Size(117, 46)
-        BtnCancel.SLFJenisTombol = ControlCodeBase.enuJenisTombol.No
-        BtnCancel.SLFTampilkanFocusBorder = False
-        BtnCancel.SLFValidasiSemuaInput = False
-        BtnCancel.SLFValidasiSemuaInputTag = Nothing
+        BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
+        BtnCancel.XOTampilkanFocusBorder = False
+        BtnCancel.XOValidasiSemuaInput = False
+        BtnCancel.XOValidasiSemuaInputTag = Nothing
         BtnCancel.TabIndex = 602
         BtnCancel.Text = "&Close"
         BtnCancel.UseVisualStyleBackColor = False
@@ -203,7 +203,7 @@ Partial Class DAR_Editor
         CboTemplate.DropDownStyle = ComboBoxStyle.DropDownList
         CboTemplate.DropDownWidth = 350
         CboTemplate.FlatStyle = FlatStyle.Flat
-        CboTemplate.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CboTemplate.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         CboTemplate.FormattingEnabled = True
         CboTemplate.Location = New Point(196, 133)
         CboTemplate.Margin = New Padding(4, 3, 4, 3)
@@ -214,7 +214,7 @@ Partial Class DAR_Editor
         ' DtpStart
         ' 
         DtpStart.CustomFormat = "dd MMMM yyyy"
-        DtpStart.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        DtpStart.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         DtpStart.Format = DateTimePickerFormat.Custom
         DtpStart.Location = New Point(196, 12)
         DtpStart.Margin = New Padding(4, 3, 4, 3)
@@ -222,12 +222,12 @@ Partial Class DAR_Editor
         DtpStart.MinDate = New Date(1916, 6, 13, 0, 0, 0, 0)
         DtpStart.Name = "DtpStart"
         DtpStart.Size = New Size(205, 29)
-        DtpStart.SLFResetOnDisabled = False
+        DtpStart.XOResetOnDisabled = False
         DtpStart.TabIndex = 0
         ' 
         ' TxtContent
         ' 
-        TxtContent.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtContent.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtContent.Location = New Point(196, 173)
         TxtContent.Margin = New Padding(4, 3, 4, 3)
         TxtContent.MaxLength = 99999999
@@ -235,25 +235,25 @@ Partial Class DAR_Editor
         TxtContent.Name = "TxtContent"
         TxtContent.ScrollBars = ScrollBars.Vertical
         TxtContent.Size = New Size(632, 138)
-        TxtContent.SLFAutoTrim = True
-        TxtContent.SLFHarusDiisi = True
-        TxtContent.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtContent.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtContent.SLFHightlightSaatFokus = True
-        TxtContent.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtContent.SLFIsBlank = True
-        TxtContent.SLFIsSearchBox = False
-        TxtContent.SLFJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtContent.SLFPilihSemuaSaatFokus = False
-        TxtContent.SLFPwdLengthMin = 8
-        TxtContent.SLFPwdStrengthCalculate = False
-        TxtContent.SLFPwdStrengthScore = 0
-        TxtContent.SLFPwdStrengthText = Nothing
-        TxtContent.SLFRestriction = ControlCodeBase.enuRestriction.None
-        TxtContent.SLFSearchBoxText = "Type then press Enter"
-        TxtContent.SLFSQLText = Nothing
-        TxtContent.SLFTanpaSpasi = False
-        TxtContent.SLFValidasiField = Nothing
+        TxtContent.XOAutoTrim = True
+        TxtContent.XOHarusDiisi = True
+        TxtContent.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtContent.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtContent.XOHightlightSaatFokus = True
+        TxtContent.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtContent.XOIsBlank = True
+        TxtContent.XOIsSearchBox = False
+        TxtContent.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtContent.XOPilihSemuaSaatFokus = False
+        TxtContent.XOPwdLengthMin = 8
+        TxtContent.XOPwdStrengthCalculate = False
+        TxtContent.XOPwdStrengthScore = 0
+        TxtContent.XOPwdStrengthText = Nothing
+        TxtContent.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtContent.XOSearchBoxText = "Type then press Enter"
+        TxtContent.XOSQLText = Nothing
+        TxtContent.XOTanpaSpasi = False
+        TxtContent.XOValidasiField = Nothing
         TxtContent.TabIndex = 7
         TxtContent.Tag = "txt"
         ' 
@@ -262,7 +262,7 @@ Partial Class DAR_Editor
         CboArea.DropDownStyle = ComboBoxStyle.DropDownList
         CboArea.DropDownWidth = 350
         CboArea.FlatStyle = FlatStyle.Flat
-        CboArea.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CboArea.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         CboArea.FormattingEnabled = True
         CboArea.Location = New Point(196, 92)
         CboArea.Margin = New Padding(4, 3, 4, 3)
@@ -273,18 +273,18 @@ Partial Class DAR_Editor
         ' MebStart
         ' 
         MebStart.AsciiOnly = True
-        MebStart.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        MebStart.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         MebStart.Location = New Point(408, 12)
         MebStart.Margin = New Padding(4, 3, 4, 3)
         MebStart.Mask = "00:00"
         MebStart.Name = "MebStart"
         MebStart.Size = New Size(56, 29)
-        MebStart.SLFHarusDiisi = True
-        MebStart.SLFHarusDiisiWarnaLatar = Color.LightPink
-        MebStart.SLFHarusDiisiWarnaLatarDefault = Color.White
-        MebStart.SLFHightlightSaatFokus = True
-        MebStart.SLFHightlightSaatFokusWarna = Color.LightYellow
-        MebStart.SLFPilihSemuaSaatFokus = True
+        MebStart.XOHarusDiisi = True
+        MebStart.XOHarusDiisiWarnaLatar = Color.LightPink
+        MebStart.XOHarusDiisiWarnaLatarDefault = Color.White
+        MebStart.XOHightlightSaatFokus = True
+        MebStart.XOHightlightSaatFokusWarna = Color.LightYellow
+        MebStart.XOPilihSemuaSaatFokus = True
         MebStart.TabIndex = 1
         MebStart.TextAlign = HorizontalAlignment.Center
         MebStart.ValidatingType = GetType(Date)
@@ -297,16 +297,16 @@ Partial Class DAR_Editor
         BtnGETContent.FlatAppearance.BorderSize = 2
         BtnGETContent.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
         BtnGETContent.FlatStyle = FlatStyle.Flat
-        BtnGETContent.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnGETContent.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnGETContent.ForeColor = Color.White
         BtnGETContent.Location = New Point(472, 125)
         BtnGETContent.Margin = New Padding(4, 3, 4, 3)
         BtnGETContent.Name = "BtnGETContent"
         BtnGETContent.Size = New Size(117, 46)
-        BtnGETContent.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        BtnGETContent.SLFTampilkanFocusBorder = False
-        BtnGETContent.SLFValidasiSemuaInput = False
-        BtnGETContent.SLFValidasiSemuaInputTag = Nothing
+        BtnGETContent.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
+        BtnGETContent.XOTampilkanFocusBorder = False
+        BtnGETContent.XOValidasiSemuaInput = False
+        BtnGETContent.XOValidasiSemuaInputTag = Nothing
         BtnGETContent.TabIndex = 6
         BtnGETContent.Text = "Apply"
         BtnGETContent.UseVisualStyleBackColor = False
@@ -317,7 +317,7 @@ Partial Class DAR_Editor
         ChkAddNew.AutoSize = True
         ChkAddNew.BackColor = Color.Transparent
         ChkAddNew.FlatStyle = FlatStyle.Flat
-        ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkAddNew.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         ChkAddNew.ForeColor = Color.Tomato
         ChkAddNew.Location = New Point(434, 17)
         ChkAddNew.Margin = New Padding(4, 3, 4, 3)
@@ -330,18 +330,18 @@ Partial Class DAR_Editor
         ' MebEnd
         ' 
         MebEnd.AsciiOnly = True
-        MebEnd.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        MebEnd.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         MebEnd.Location = New Point(408, 52)
         MebEnd.Margin = New Padding(4, 3, 4, 3)
         MebEnd.Mask = "00:00"
         MebEnd.Name = "MebEnd"
         MebEnd.Size = New Size(56, 29)
-        MebEnd.SLFHarusDiisi = True
-        MebEnd.SLFHarusDiisiWarnaLatar = Color.LightPink
-        MebEnd.SLFHarusDiisiWarnaLatarDefault = Color.White
-        MebEnd.SLFHightlightSaatFokus = True
-        MebEnd.SLFHightlightSaatFokusWarna = Color.LightYellow
-        MebEnd.SLFPilihSemuaSaatFokus = True
+        MebEnd.XOHarusDiisi = True
+        MebEnd.XOHarusDiisiWarnaLatar = Color.LightPink
+        MebEnd.XOHarusDiisiWarnaLatarDefault = Color.White
+        MebEnd.XOHightlightSaatFokus = True
+        MebEnd.XOHightlightSaatFokusWarna = Color.LightYellow
+        MebEnd.XOPilihSemuaSaatFokus = True
         MebEnd.TabIndex = 3
         MebEnd.TextAlign = HorizontalAlignment.Center
         MebEnd.ValidatingType = GetType(Date)
@@ -349,7 +349,7 @@ Partial Class DAR_Editor
         ' DtpEnd
         ' 
         DtpEnd.CustomFormat = "dd MMMM yyyy"
-        DtpEnd.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        DtpEnd.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         DtpEnd.Format = DateTimePickerFormat.Custom
         DtpEnd.Location = New Point(196, 52)
         DtpEnd.Margin = New Padding(4, 3, 4, 3)
@@ -357,12 +357,12 @@ Partial Class DAR_Editor
         DtpEnd.MinDate = New Date(1916, 6, 13, 0, 0, 0, 0)
         DtpEnd.Name = "DtpEnd"
         DtpEnd.Size = New Size(205, 29)
-        DtpEnd.SLFResetOnDisabled = False
+        DtpEnd.XOResetOnDisabled = False
         DtpEnd.TabIndex = 2
         ' 
         ' TxtFeedback
         ' 
-        TxtFeedback.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtFeedback.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtFeedback.Location = New Point(196, 318)
         TxtFeedback.Margin = New Padding(4, 3, 4, 3)
         TxtFeedback.MaxLength = 255
@@ -370,25 +370,25 @@ Partial Class DAR_Editor
         TxtFeedback.Name = "TxtFeedback"
         TxtFeedback.ScrollBars = ScrollBars.Vertical
         TxtFeedback.Size = New Size(632, 71)
-        TxtFeedback.SLFAutoTrim = True
-        TxtFeedback.SLFHarusDiisi = False
-        TxtFeedback.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtFeedback.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtFeedback.SLFHightlightSaatFokus = True
-        TxtFeedback.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtFeedback.SLFIsBlank = True
-        TxtFeedback.SLFIsSearchBox = False
-        TxtFeedback.SLFJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtFeedback.SLFPilihSemuaSaatFokus = False
-        TxtFeedback.SLFPwdLengthMin = 8
-        TxtFeedback.SLFPwdStrengthCalculate = False
-        TxtFeedback.SLFPwdStrengthScore = 0
-        TxtFeedback.SLFPwdStrengthText = Nothing
-        TxtFeedback.SLFRestriction = ControlCodeBase.enuRestriction.None
-        TxtFeedback.SLFSearchBoxText = "Type then press Enter"
-        TxtFeedback.SLFSQLText = ""
-        TxtFeedback.SLFTanpaSpasi = False
-        TxtFeedback.SLFValidasiField = Nothing
+        TxtFeedback.XOAutoTrim = True
+        TxtFeedback.XOHarusDiisi = False
+        TxtFeedback.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtFeedback.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtFeedback.XOHightlightSaatFokus = True
+        TxtFeedback.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtFeedback.XOIsBlank = True
+        TxtFeedback.XOIsSearchBox = False
+        TxtFeedback.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtFeedback.XOPilihSemuaSaatFokus = False
+        TxtFeedback.XOPwdLengthMin = 8
+        TxtFeedback.XOPwdStrengthCalculate = False
+        TxtFeedback.XOPwdStrengthScore = 0
+        TxtFeedback.XOPwdStrengthText = Nothing
+        TxtFeedback.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtFeedback.XOSearchBoxText = "Type then press Enter"
+        TxtFeedback.XOSQLText = ""
+        TxtFeedback.XOTanpaSpasi = False
+        TxtFeedback.XOValidasiField = Nothing
         TxtFeedback.TabIndex = 8
         TxtFeedback.Tag = "txt"
         ' 
@@ -400,7 +400,7 @@ Partial Class DAR_Editor
         ' 
         TbctlAttachment.Controls.Add(tpPhotos)
         TbctlAttachment.Controls.Add(tpFiles)
-        TbctlAttachment.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TbctlAttachment.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TbctlAttachment.Location = New Point(196, 397)
         TbctlAttachment.Margin = New Padding(4, 3, 4, 3)
         TbctlAttachment.Name = "TbctlAttachment"
@@ -445,17 +445,17 @@ Partial Class DAR_Editor
         BtnBrowsePhoto.FlatAppearance.BorderSize = 2
         BtnBrowsePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnBrowsePhoto.FlatStyle = FlatStyle.Flat
-        BtnBrowsePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnBrowsePhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnBrowsePhoto.ForeColor = Color.White
         BtnBrowsePhoto.Image = My.Resources.Resources.FOLDER_001_16_ICON
         BtnBrowsePhoto.Location = New Point(4, 3)
         BtnBrowsePhoto.Margin = New Padding(4, 3, 4, 3)
         BtnBrowsePhoto.Name = "BtnBrowsePhoto"
         BtnBrowsePhoto.Size = New Size(38, 33)
-        BtnBrowsePhoto.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnBrowsePhoto.SLFTampilkanFocusBorder = False
-        BtnBrowsePhoto.SLFValidasiSemuaInput = False
-        BtnBrowsePhoto.SLFValidasiSemuaInputTag = Nothing
+        BtnBrowsePhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnBrowsePhoto.XOTampilkanFocusBorder = False
+        BtnBrowsePhoto.XOValidasiSemuaInput = False
+        BtnBrowsePhoto.XOValidasiSemuaInputTag = Nothing
         BtnBrowsePhoto.TabIndex = 5
         BtnBrowsePhoto.UseVisualStyleBackColor = False
         ' 
@@ -472,8 +472,8 @@ Partial Class DAR_Editor
         PctbxPhoto.Name = "PctbxPhoto"
         PctbxPhoto.Size = New Size(188, 194)
         PctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
-        PctbxPhoto.SLFTampilkanBorder = False
-        PctbxPhoto.SLFWarnaBorder = Color.DodgerBlue
+        PctbxPhoto.XOTampilkanBorder = False
+        PctbxPhoto.XOWarnaBorder = Color.DodgerBlue
         PctbxPhoto.TabIndex = 6
         PctbxPhoto.TabStop = False
         ' 
@@ -491,7 +491,7 @@ Partial Class DAR_Editor
         DgnPictureList.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -501,7 +501,7 @@ Partial Class DAR_Editor
         DgnPictureList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DgnPictureList.Columns.AddRange(New DataGridViewColumn() {photo_id, photo_datetime, photo_content, photo_status, photo_uploader, photo_delete})
         DgnPictureList.EnableHeadersVisualStyles = False
-        DgnPictureList.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnPictureList.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DgnPictureList.Location = New Point(4, 44)
         DgnPictureList.Margin = New Padding(4, 3, 4, 3)
         DgnPictureList.MultiSelect = False
@@ -510,7 +510,7 @@ Partial Class DAR_Editor
         DgnPictureList.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -519,8 +519,8 @@ Partial Class DAR_Editor
         DgnPictureList.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnPictureList.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DgnPictureList.Size = New Size(419, 150)
-        DgnPictureList.SLFGroupFirstRows = False
-        DgnPictureList.SLFGunakanNomorBaris = True
+        DgnPictureList.XOGroupFirstRows = False
+        DgnPictureList.XOGunakanNomorBaris = True
         DgnPictureList.StandardTab = True
         DgnPictureList.TabIndex = 10
         ' 
@@ -589,48 +589,48 @@ Partial Class DAR_Editor
         BtnPeekPhoto.FlatAppearance.BorderSize = 2
         BtnPeekPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnPeekPhoto.FlatStyle = FlatStyle.Flat
-        BtnPeekPhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnPeekPhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnPeekPhoto.ForeColor = Color.White
         BtnPeekPhoto.Image = My.Resources.Resources.ZOOMNORMAL_001_16_ICON
         BtnPeekPhoto.Location = New Point(338, 3)
         BtnPeekPhoto.Margin = New Padding(4, 3, 4, 3)
         BtnPeekPhoto.Name = "BtnPeekPhoto"
         BtnPeekPhoto.Size = New Size(38, 33)
-        BtnPeekPhoto.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnPeekPhoto.SLFTampilkanFocusBorder = False
-        BtnPeekPhoto.SLFValidasiSemuaInput = False
-        BtnPeekPhoto.SLFValidasiSemuaInputTag = Nothing
+        BtnPeekPhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnPeekPhoto.XOTampilkanFocusBorder = False
+        BtnPeekPhoto.XOValidasiSemuaInput = False
+        BtnPeekPhoto.XOValidasiSemuaInputTag = Nothing
         BtnPeekPhoto.TabIndex = 8
         BtnPeekPhoto.UseVisualStyleBackColor = False
         ' 
         ' TxtPhotoPath
         ' 
-        TxtPhotoPath.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPhotoPath.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtPhotoPath.Location = New Point(49, 3)
         TxtPhotoPath.Margin = New Padding(4, 3, 4, 3)
         TxtPhotoPath.MaxLength = 255
         TxtPhotoPath.Name = "TxtPhotoPath"
         TxtPhotoPath.ReadOnly = True
         TxtPhotoPath.Size = New Size(282, 29)
-        TxtPhotoPath.SLFAutoTrim = False
-        TxtPhotoPath.SLFHarusDiisi = False
-        TxtPhotoPath.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtPhotoPath.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtPhotoPath.SLFHightlightSaatFokus = False
-        TxtPhotoPath.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtPhotoPath.SLFIsBlank = True
-        TxtPhotoPath.SLFIsSearchBox = False
-        TxtPhotoPath.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        TxtPhotoPath.SLFPilihSemuaSaatFokus = False
-        TxtPhotoPath.SLFPwdLengthMin = 8
-        TxtPhotoPath.SLFPwdStrengthCalculate = False
-        TxtPhotoPath.SLFPwdStrengthScore = 0
-        TxtPhotoPath.SLFPwdStrengthText = Nothing
-        TxtPhotoPath.SLFRestriction = ControlCodeBase.enuRestriction.None
-        TxtPhotoPath.SLFSearchBoxText = "Type then press Enter"
-        TxtPhotoPath.SLFSQLText = ""
-        TxtPhotoPath.SLFTanpaSpasi = False
-        TxtPhotoPath.SLFValidasiField = Nothing
+        TxtPhotoPath.XOAutoTrim = False
+        TxtPhotoPath.XOHarusDiisi = False
+        TxtPhotoPath.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtPhotoPath.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtPhotoPath.XOHightlightSaatFokus = False
+        TxtPhotoPath.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtPhotoPath.XOIsBlank = True
+        TxtPhotoPath.XOIsSearchBox = False
+        TxtPhotoPath.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtPhotoPath.XOPilihSemuaSaatFokus = False
+        TxtPhotoPath.XOPwdLengthMin = 8
+        TxtPhotoPath.XOPwdStrengthCalculate = False
+        TxtPhotoPath.XOPwdStrengthScore = 0
+        TxtPhotoPath.XOPwdStrengthText = Nothing
+        TxtPhotoPath.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtPhotoPath.XOSearchBoxText = "Type then press Enter"
+        TxtPhotoPath.XOSQLText = ""
+        TxtPhotoPath.XOTanpaSpasi = False
+        TxtPhotoPath.XOValidasiField = Nothing
         TxtPhotoPath.TabIndex = 7
         TxtPhotoPath.Tag = "txt"
         ' 
@@ -642,17 +642,17 @@ Partial Class DAR_Editor
         BtnAddPhoto.FlatAppearance.BorderSize = 2
         BtnAddPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnAddPhoto.FlatStyle = FlatStyle.Flat
-        BtnAddPhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnAddPhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnAddPhoto.ForeColor = Color.White
         BtnAddPhoto.Image = My.Resources.Resources.ADD_001_16_ICON
         BtnAddPhoto.Location = New Point(384, 3)
         BtnAddPhoto.Margin = New Padding(4, 3, 4, 3)
         BtnAddPhoto.Name = "BtnAddPhoto"
         BtnAddPhoto.Size = New Size(38, 33)
-        BtnAddPhoto.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnAddPhoto.SLFTampilkanFocusBorder = False
-        BtnAddPhoto.SLFValidasiSemuaInput = False
-        BtnAddPhoto.SLFValidasiSemuaInputTag = Nothing
+        BtnAddPhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnAddPhoto.XOTampilkanFocusBorder = False
+        BtnAddPhoto.XOValidasiSemuaInput = False
+        BtnAddPhoto.XOValidasiSemuaInputTag = Nothing
         BtnAddPhoto.TabIndex = 9
         BtnAddPhoto.UseVisualStyleBackColor = False
         ' 
@@ -691,17 +691,17 @@ Partial Class DAR_Editor
         BtnBrowseFile.FlatAppearance.BorderSize = 2
         BtnBrowseFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnBrowseFile.FlatStyle = FlatStyle.Flat
-        BtnBrowseFile.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnBrowseFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnBrowseFile.ForeColor = Color.White
         BtnBrowseFile.Image = My.Resources.Resources.FOLDER_001_16_ICON
         BtnBrowseFile.Location = New Point(4, 3)
         BtnBrowseFile.Margin = New Padding(4, 3, 4, 3)
         BtnBrowseFile.Name = "BtnBrowseFile"
         BtnBrowseFile.Size = New Size(38, 33)
-        BtnBrowseFile.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnBrowseFile.SLFTampilkanFocusBorder = False
-        BtnBrowseFile.SLFValidasiSemuaInput = False
-        BtnBrowseFile.SLFValidasiSemuaInputTag = Nothing
+        BtnBrowseFile.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnBrowseFile.XOTampilkanFocusBorder = False
+        BtnBrowseFile.XOValidasiSemuaInput = False
+        BtnBrowseFile.XOValidasiSemuaInputTag = Nothing
         BtnBrowseFile.TabIndex = 10
         BtnBrowseFile.UseVisualStyleBackColor = False
         ' 
@@ -719,7 +719,7 @@ Partial Class DAR_Editor
         DgnFileList.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = Color.YellowGreen
-        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle5.SelectionForeColor = Color.Black
@@ -729,7 +729,7 @@ Partial Class DAR_Editor
         DgnFileList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DgnFileList.Columns.AddRange(New DataGridViewColumn() {file_id, file_tag, file_datetime, file_content, file_status, file_uploader, file_delete})
         DgnFileList.EnableHeadersVisualStyles = False
-        DgnFileList.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnFileList.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DgnFileList.Location = New Point(4, 44)
         DgnFileList.Margin = New Padding(4, 3, 4, 3)
         DgnFileList.MultiSelect = False
@@ -738,7 +738,7 @@ Partial Class DAR_Editor
         DgnFileList.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle6.BackColor = Color.YellowGreen
-        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle6.SelectionForeColor = Color.Black
@@ -747,8 +747,8 @@ Partial Class DAR_Editor
         DgnFileList.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnFileList.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DgnFileList.Size = New Size(614, 150)
-        DgnFileList.SLFGroupFirstRows = False
-        DgnFileList.SLFGunakanNomorBaris = True
+        DgnFileList.XOGroupFirstRows = False
+        DgnFileList.XOGunakanNomorBaris = True
         DgnFileList.StandardTab = True
         DgnFileList.TabIndex = 14
         ' 
@@ -824,7 +824,7 @@ Partial Class DAR_Editor
         ' 
         CboFileTag.DropDownStyle = ComboBoxStyle.DropDownList
         CboFileTag.FlatStyle = FlatStyle.Flat
-        CboFileTag.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CboFileTag.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         CboFileTag.FormattingEnabled = True
         CboFileTag.Location = New Point(308, 3)
         CboFileTag.Margin = New Padding(4, 3, 4, 3)
@@ -834,32 +834,32 @@ Partial Class DAR_Editor
         ' 
         ' TxtFilePath
         ' 
-        TxtFilePath.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtFilePath.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtFilePath.Location = New Point(49, 3)
         TxtFilePath.Margin = New Padding(4, 3, 4, 3)
         TxtFilePath.MaxLength = 255
         TxtFilePath.Name = "TxtFilePath"
         TxtFilePath.ReadOnly = True
         TxtFilePath.Size = New Size(251, 29)
-        TxtFilePath.SLFAutoTrim = False
-        TxtFilePath.SLFHarusDiisi = False
-        TxtFilePath.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtFilePath.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtFilePath.SLFHightlightSaatFokus = False
-        TxtFilePath.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtFilePath.SLFIsBlank = True
-        TxtFilePath.SLFIsSearchBox = False
-        TxtFilePath.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        TxtFilePath.SLFPilihSemuaSaatFokus = False
-        TxtFilePath.SLFPwdLengthMin = 8
-        TxtFilePath.SLFPwdStrengthCalculate = False
-        TxtFilePath.SLFPwdStrengthScore = 0
-        TxtFilePath.SLFPwdStrengthText = Nothing
-        TxtFilePath.SLFRestriction = ControlCodeBase.enuRestriction.None
-        TxtFilePath.SLFSearchBoxText = "Type then press Enter"
-        TxtFilePath.SLFSQLText = ""
-        TxtFilePath.SLFTanpaSpasi = False
-        TxtFilePath.SLFValidasiField = Nothing
+        TxtFilePath.XOAutoTrim = False
+        TxtFilePath.XOHarusDiisi = False
+        TxtFilePath.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtFilePath.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtFilePath.XOHightlightSaatFokus = False
+        TxtFilePath.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtFilePath.XOIsBlank = True
+        TxtFilePath.XOIsSearchBox = False
+        TxtFilePath.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtFilePath.XOPilihSemuaSaatFokus = False
+        TxtFilePath.XOPwdLengthMin = 8
+        TxtFilePath.XOPwdStrengthCalculate = False
+        TxtFilePath.XOPwdStrengthScore = 0
+        TxtFilePath.XOPwdStrengthText = Nothing
+        TxtFilePath.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtFilePath.XOSearchBoxText = "Type then press Enter"
+        TxtFilePath.XOSQLText = ""
+        TxtFilePath.XOTanpaSpasi = False
+        TxtFilePath.XOValidasiField = Nothing
         TxtFilePath.TabIndex = 11
         TxtFilePath.Tag = "txt"
         ' 
@@ -871,17 +871,17 @@ Partial Class DAR_Editor
         BtnAddFile.FlatAppearance.BorderSize = 2
         BtnAddFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnAddFile.FlatStyle = FlatStyle.Flat
-        BtnAddFile.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnAddFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnAddFile.ForeColor = Color.White
         BtnAddFile.Image = My.Resources.Resources.ADD_001_16_ICON
         BtnAddFile.Location = New Point(579, 3)
         BtnAddFile.Margin = New Padding(4, 3, 4, 3)
         BtnAddFile.Name = "BtnAddFile"
         BtnAddFile.Size = New Size(38, 33)
-        BtnAddFile.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnAddFile.SLFTampilkanFocusBorder = False
-        BtnAddFile.SLFValidasiSemuaInput = False
-        BtnAddFile.SLFValidasiSemuaInputTag = Nothing
+        BtnAddFile.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnAddFile.XOTampilkanFocusBorder = False
+        BtnAddFile.XOValidasiSemuaInput = False
+        BtnAddFile.XOValidasiSemuaInputTag = Nothing
         BtnAddFile.TabIndex = 13
         BtnAddFile.UseVisualStyleBackColor = False
         ' 
@@ -893,17 +893,17 @@ Partial Class DAR_Editor
         BtnPeekFile.FlatAppearance.BorderSize = 2
         BtnPeekFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnPeekFile.FlatStyle = FlatStyle.Flat
-        BtnPeekFile.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnPeekFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnPeekFile.ForeColor = Color.White
         BtnPeekFile.Image = My.Resources.Resources.ZOOMNORMAL_001_16_ICON
         BtnPeekFile.Location = New Point(533, 3)
         BtnPeekFile.Margin = New Padding(4, 3, 4, 3)
         BtnPeekFile.Name = "BtnPeekFile"
         BtnPeekFile.Size = New Size(38, 33)
-        BtnPeekFile.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnPeekFile.SLFTampilkanFocusBorder = False
-        BtnPeekFile.SLFValidasiSemuaInput = False
-        BtnPeekFile.SLFValidasiSemuaInputTag = Nothing
+        BtnPeekFile.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnPeekFile.XOTampilkanFocusBorder = False
+        BtnPeekFile.XOValidasiSemuaInput = False
+        BtnPeekFile.XOValidasiSemuaInputTag = Nothing
         BtnPeekFile.TabIndex = 12
         BtnPeekFile.UseVisualStyleBackColor = False
         ' 

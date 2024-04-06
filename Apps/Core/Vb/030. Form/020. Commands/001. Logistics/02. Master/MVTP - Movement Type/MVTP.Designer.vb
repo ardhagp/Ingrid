@@ -85,8 +85,8 @@ Partial Class MVTP
         DgnMVTP.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnMVTP.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnMVTP.Size = New Size(915, 511)
-        DgnMVTP.SLFGroupFirstRows = False
-        DgnMVTP.SLFGunakanNomorBaris = False
+        DgnMVTP.XOGroupFirstRows = False
+        DgnMVTP.XOGunakanNomorBaris = False
         DgnMVTP.StandardTab = True
         DgnMVTP.TabIndex = 802
         ' 

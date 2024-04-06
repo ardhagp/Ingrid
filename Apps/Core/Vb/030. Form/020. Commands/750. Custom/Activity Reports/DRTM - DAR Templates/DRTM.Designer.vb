@@ -90,8 +90,8 @@ Partial Class DRTM
         DgnTemplate.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnTemplate.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnTemplate.Size = New Size(915, 511)
-        DgnTemplate.SLFGroupFirstRows = False
-        DgnTemplate.SLFGunakanNomorBaris = False
+        DgnTemplate.XOGroupFirstRows = False
+        DgnTemplate.XOGunakanNomorBaris = False
         DgnTemplate.StandardTab = True
         DgnTemplate.TabIndex = 802
         ' 

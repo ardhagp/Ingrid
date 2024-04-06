@@ -40,8 +40,8 @@ Partial Class ULbl
         Me.UHead.Name = "UHead"
         Me.UHead.Size = New System.Drawing.Size(10, 29)
         Me.UHead.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.UHead.SLFTampilkanBorder = False
-        Me.UHead.SLFWarnaBorder = System.Drawing.Color.DodgerBlue
+        Me.UHead.XOTampilkanBorder = False
+        Me.UHead.XOWarnaBorder = System.Drawing.Color.DodgerBlue
         Me.UHead.TabIndex = 0
         Me.UHead.TabStop = False
         '
@@ -55,7 +55,7 @@ Partial Class ULbl
         Me.UText.Location = New System.Drawing.Point(10, 0)
         Me.UText.Name = "UText"
         Me.UText.Size = New System.Drawing.Size(137, 29)
-        Me.UText.SLFCustomElipsis = False
+        Me.UText.XOCustomElipsis = False
         Me.UText.TabIndex = 1
         Me.UText.Text = "Text"
         Me.UText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft

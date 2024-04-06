@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class PLNT_Editor
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -120,7 +120,7 @@ Partial Class PLNT_Editor
         ' 
         CboCompany.DropDownStyle = ComboBoxStyle.DropDownList
         CboCompany.FlatStyle = FlatStyle.Flat
-        CboCompany.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CboCompany.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         CboCompany.FormattingEnabled = True
         CboCompany.Location = New Point(164, 12)
         CboCompany.Margin = New Padding(4, 3, 4, 3)
@@ -131,350 +131,350 @@ Partial Class PLNT_Editor
         ' Lbl1
         ' 
         Lbl1.AutoSize = True
-        Lbl1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl1.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl1.Location = New Point(68, 15)
         Lbl1.Margin = New Padding(4, 0, 4, 0)
         Lbl1.Name = "Lbl1"
         Lbl1.Size = New Size(77, 21)
-        Lbl1.SLFCustomElipsis = False
+        Lbl1.XOCustomElipsis = False
         Lbl1.TabIndex = 997
         Lbl1.Text = "Company"
         ' 
         ' TxtPlantCode
         ' 
-        TxtPlantCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPlantCode.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtPlantCode.Location = New Point(164, 52)
         TxtPlantCode.Margin = New Padding(4, 3, 4, 3)
         TxtPlantCode.MaxLength = 10
         TxtPlantCode.Name = "TxtPlantCode"
         TxtPlantCode.Size = New Size(185, 29)
-        TxtPlantCode.SLFAutoTrim = True
-        TxtPlantCode.SLFHarusDiisi = True
-        TxtPlantCode.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtPlantCode.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtPlantCode.SLFHightlightSaatFokus = True
-        TxtPlantCode.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtPlantCode.SLFIsBlank = True
-        TxtPlantCode.SLFIsSearchBox = False
-        TxtPlantCode.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtPlantCode.SLFPilihSemuaSaatFokus = True
-        TxtPlantCode.SLFPwdLengthMin = 8
-        TxtPlantCode.SLFPwdStrengthCalculate = False
-        TxtPlantCode.SLFPwdStrengthScore = 0
-        TxtPlantCode.SLFPwdStrengthText = Nothing
-        TxtPlantCode.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtPlantCode.SLFSearchBoxText = "Type then press Enter"
-        TxtPlantCode.SLFSQLText = ""
-        TxtPlantCode.SLFTanpaSpasi = False
-        TxtPlantCode.SLFValidasiField = Nothing
+        TxtPlantCode.XOAutoTrim = True
+        TxtPlantCode.XOHarusDiisi = True
+        TxtPlantCode.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtPlantCode.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtPlantCode.XOHightlightSaatFokus = True
+        TxtPlantCode.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtPlantCode.XOIsBlank = True
+        TxtPlantCode.XOIsSearchBox = False
+        TxtPlantCode.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtPlantCode.XOPilihSemuaSaatFokus = True
+        TxtPlantCode.XOPwdLengthMin = 8
+        TxtPlantCode.XOPwdStrengthCalculate = False
+        TxtPlantCode.XOPwdStrengthScore = 0
+        TxtPlantCode.XOPwdStrengthText = Nothing
+        TxtPlantCode.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtPlantCode.XOSearchBoxText = "Type then press Enter"
+        TxtPlantCode.XOSQLText = ""
+        TxtPlantCode.XOTanpaSpasi = False
+        TxtPlantCode.XOValidasiField = Nothing
         TxtPlantCode.TabIndex = 1
         TxtPlantCode.Tag = "txt"
         TxtPlantCode.TextAlign = HorizontalAlignment.Center
         ' 
         ' TxtPlantName1
         ' 
-        TxtPlantName1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPlantName1.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtPlantName1.Location = New Point(166, 92)
         TxtPlantName1.Margin = New Padding(4, 3, 4, 3)
         TxtPlantName1.MaxLength = 255
         TxtPlantName1.Name = "TxtPlantName1"
         TxtPlantName1.Size = New Size(240, 29)
-        TxtPlantName1.SLFAutoTrim = True
-        TxtPlantName1.SLFHarusDiisi = True
-        TxtPlantName1.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtPlantName1.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtPlantName1.SLFHightlightSaatFokus = True
-        TxtPlantName1.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtPlantName1.SLFIsBlank = True
-        TxtPlantName1.SLFIsSearchBox = False
-        TxtPlantName1.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtPlantName1.SLFPilihSemuaSaatFokus = True
-        TxtPlantName1.SLFPwdLengthMin = 8
-        TxtPlantName1.SLFPwdStrengthCalculate = False
-        TxtPlantName1.SLFPwdStrengthScore = 0
-        TxtPlantName1.SLFPwdStrengthText = Nothing
-        TxtPlantName1.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtPlantName1.SLFSearchBoxText = "Type then press Enter"
-        TxtPlantName1.SLFSQLText = ""
-        TxtPlantName1.SLFTanpaSpasi = False
-        TxtPlantName1.SLFValidasiField = Nothing
+        TxtPlantName1.XOAutoTrim = True
+        TxtPlantName1.XOHarusDiisi = True
+        TxtPlantName1.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtPlantName1.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtPlantName1.XOHightlightSaatFokus = True
+        TxtPlantName1.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtPlantName1.XOIsBlank = True
+        TxtPlantName1.XOIsSearchBox = False
+        TxtPlantName1.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtPlantName1.XOPilihSemuaSaatFokus = True
+        TxtPlantName1.XOPwdLengthMin = 8
+        TxtPlantName1.XOPwdStrengthCalculate = False
+        TxtPlantName1.XOPwdStrengthScore = 0
+        TxtPlantName1.XOPwdStrengthText = Nothing
+        TxtPlantName1.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtPlantName1.XOSearchBoxText = "Type then press Enter"
+        TxtPlantName1.XOSQLText = ""
+        TxtPlantName1.XOTanpaSpasi = False
+        TxtPlantName1.XOValidasiField = Nothing
         TxtPlantName1.TabIndex = 2
         TxtPlantName1.Tag = "txt"
         ' 
         ' TxtSearchTerm1
         ' 
-        TxtSearchTerm1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtSearchTerm1.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtSearchTerm1.Location = New Point(166, 294)
         TxtSearchTerm1.Margin = New Padding(4, 3, 4, 3)
         TxtSearchTerm1.MaxLength = 255
         TxtSearchTerm1.Name = "TxtSearchTerm1"
         TxtSearchTerm1.Size = New Size(240, 29)
-        TxtSearchTerm1.SLFAutoTrim = True
-        TxtSearchTerm1.SLFHarusDiisi = True
-        TxtSearchTerm1.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtSearchTerm1.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtSearchTerm1.SLFHightlightSaatFokus = True
-        TxtSearchTerm1.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtSearchTerm1.SLFIsBlank = True
-        TxtSearchTerm1.SLFIsSearchBox = False
-        TxtSearchTerm1.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtSearchTerm1.SLFPilihSemuaSaatFokus = False
-        TxtSearchTerm1.SLFPwdLengthMin = 8
-        TxtSearchTerm1.SLFPwdStrengthCalculate = False
-        TxtSearchTerm1.SLFPwdStrengthScore = 0
-        TxtSearchTerm1.SLFPwdStrengthText = Nothing
-        TxtSearchTerm1.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtSearchTerm1.SLFSearchBoxText = "Type then press Enter"
-        TxtSearchTerm1.SLFSQLText = ""
-        TxtSearchTerm1.SLFTanpaSpasi = False
-        TxtSearchTerm1.SLFValidasiField = Nothing
+        TxtSearchTerm1.XOAutoTrim = True
+        TxtSearchTerm1.XOHarusDiisi = True
+        TxtSearchTerm1.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtSearchTerm1.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtSearchTerm1.XOHightlightSaatFokus = True
+        TxtSearchTerm1.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtSearchTerm1.XOIsBlank = True
+        TxtSearchTerm1.XOIsSearchBox = False
+        TxtSearchTerm1.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtSearchTerm1.XOPilihSemuaSaatFokus = False
+        TxtSearchTerm1.XOPwdLengthMin = 8
+        TxtSearchTerm1.XOPwdStrengthCalculate = False
+        TxtSearchTerm1.XOPwdStrengthScore = 0
+        TxtSearchTerm1.XOPwdStrengthText = Nothing
+        TxtSearchTerm1.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtSearchTerm1.XOSearchBoxText = "Type then press Enter"
+        TxtSearchTerm1.XOSQLText = ""
+        TxtSearchTerm1.XOTanpaSpasi = False
+        TxtSearchTerm1.XOValidasiField = Nothing
         TxtSearchTerm1.TabIndex = 7
         TxtSearchTerm1.Tag = "txt"
         ' 
         ' TxtPlantName2
         ' 
-        TxtPlantName2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPlantName2.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtPlantName2.Location = New Point(166, 133)
         TxtPlantName2.Margin = New Padding(4, 3, 4, 3)
         TxtPlantName2.MaxLength = 255
         TxtPlantName2.Name = "TxtPlantName2"
         TxtPlantName2.Size = New Size(240, 29)
-        TxtPlantName2.SLFAutoTrim = True
-        TxtPlantName2.SLFHarusDiisi = False
-        TxtPlantName2.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtPlantName2.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtPlantName2.SLFHightlightSaatFokus = True
-        TxtPlantName2.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtPlantName2.SLFIsBlank = True
-        TxtPlantName2.SLFIsSearchBox = False
-        TxtPlantName2.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtPlantName2.SLFPilihSemuaSaatFokus = True
-        TxtPlantName2.SLFPwdLengthMin = 8
-        TxtPlantName2.SLFPwdStrengthCalculate = False
-        TxtPlantName2.SLFPwdStrengthScore = 0
-        TxtPlantName2.SLFPwdStrengthText = Nothing
-        TxtPlantName2.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtPlantName2.SLFSearchBoxText = "Type then press Enter"
-        TxtPlantName2.SLFSQLText = ""
-        TxtPlantName2.SLFTanpaSpasi = False
-        TxtPlantName2.SLFValidasiField = Nothing
+        TxtPlantName2.XOAutoTrim = True
+        TxtPlantName2.XOHarusDiisi = False
+        TxtPlantName2.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtPlantName2.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtPlantName2.XOHightlightSaatFokus = True
+        TxtPlantName2.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtPlantName2.XOIsBlank = True
+        TxtPlantName2.XOIsSearchBox = False
+        TxtPlantName2.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtPlantName2.XOPilihSemuaSaatFokus = True
+        TxtPlantName2.XOPwdLengthMin = 8
+        TxtPlantName2.XOPwdStrengthCalculate = False
+        TxtPlantName2.XOPwdStrengthScore = 0
+        TxtPlantName2.XOPwdStrengthText = Nothing
+        TxtPlantName2.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtPlantName2.XOSearchBoxText = "Type then press Enter"
+        TxtPlantName2.XOSQLText = ""
+        TxtPlantName2.XOTanpaSpasi = False
+        TxtPlantName2.XOValidasiField = Nothing
         TxtPlantName2.TabIndex = 3
         TxtPlantName2.Tag = "txt"
         ' 
         ' TxtCity
         ' 
-        TxtCity.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtCity.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtCity.Location = New Point(166, 173)
         TxtCity.Margin = New Padding(4, 3, 4, 3)
         TxtCity.MaxLength = 255
         TxtCity.Name = "TxtCity"
         TxtCity.Size = New Size(240, 29)
-        TxtCity.SLFAutoTrim = True
-        TxtCity.SLFHarusDiisi = True
-        TxtCity.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtCity.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtCity.SLFHightlightSaatFokus = True
-        TxtCity.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtCity.SLFIsBlank = True
-        TxtCity.SLFIsSearchBox = False
-        TxtCity.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtCity.SLFPilihSemuaSaatFokus = True
-        TxtCity.SLFPwdLengthMin = 8
-        TxtCity.SLFPwdStrengthCalculate = False
-        TxtCity.SLFPwdStrengthScore = 0
-        TxtCity.SLFPwdStrengthText = Nothing
-        TxtCity.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtCity.SLFSearchBoxText = "Type then press Enter"
-        TxtCity.SLFSQLText = ""
-        TxtCity.SLFTanpaSpasi = False
-        TxtCity.SLFValidasiField = Nothing
+        TxtCity.XOAutoTrim = True
+        TxtCity.XOHarusDiisi = True
+        TxtCity.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtCity.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtCity.XOHightlightSaatFokus = True
+        TxtCity.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtCity.XOIsBlank = True
+        TxtCity.XOIsSearchBox = False
+        TxtCity.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtCity.XOPilihSemuaSaatFokus = True
+        TxtCity.XOPwdLengthMin = 8
+        TxtCity.XOPwdStrengthCalculate = False
+        TxtCity.XOPwdStrengthScore = 0
+        TxtCity.XOPwdStrengthText = Nothing
+        TxtCity.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtCity.XOSearchBoxText = "Type then press Enter"
+        TxtCity.XOSQLText = ""
+        TxtCity.XOTanpaSpasi = False
+        TxtCity.XOValidasiField = Nothing
         TxtCity.TabIndex = 4
         TxtCity.Tag = "txt"
         ' 
         ' TxtPostalCode
         ' 
-        TxtPostalCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPostalCode.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtPostalCode.Location = New Point(166, 213)
         TxtPostalCode.Margin = New Padding(4, 3, 4, 3)
         TxtPostalCode.MaxLength = 6
         TxtPostalCode.Name = "TxtPostalCode"
         TxtPostalCode.Size = New Size(110, 29)
-        TxtPostalCode.SLFAutoTrim = True
-        TxtPostalCode.SLFHarusDiisi = False
-        TxtPostalCode.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtPostalCode.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtPostalCode.SLFHightlightSaatFokus = True
-        TxtPostalCode.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtPostalCode.SLFIsBlank = True
-        TxtPostalCode.SLFIsSearchBox = False
-        TxtPostalCode.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtPostalCode.SLFPilihSemuaSaatFokus = True
-        TxtPostalCode.SLFPwdLengthMin = 8
-        TxtPostalCode.SLFPwdStrengthCalculate = False
-        TxtPostalCode.SLFPwdStrengthScore = 0
-        TxtPostalCode.SLFPwdStrengthText = Nothing
-        TxtPostalCode.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtPostalCode.SLFSearchBoxText = "Type then press Enter"
-        TxtPostalCode.SLFSQLText = ""
-        TxtPostalCode.SLFTanpaSpasi = False
-        TxtPostalCode.SLFValidasiField = Nothing
+        TxtPostalCode.XOAutoTrim = True
+        TxtPostalCode.XOHarusDiisi = False
+        TxtPostalCode.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtPostalCode.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtPostalCode.XOHightlightSaatFokus = True
+        TxtPostalCode.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtPostalCode.XOIsBlank = True
+        TxtPostalCode.XOIsSearchBox = False
+        TxtPostalCode.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtPostalCode.XOPilihSemuaSaatFokus = True
+        TxtPostalCode.XOPwdLengthMin = 8
+        TxtPostalCode.XOPwdStrengthCalculate = False
+        TxtPostalCode.XOPwdStrengthScore = 0
+        TxtPostalCode.XOPwdStrengthText = Nothing
+        TxtPostalCode.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtPostalCode.XOSearchBoxText = "Type then press Enter"
+        TxtPostalCode.XOSQLText = ""
+        TxtPostalCode.XOTanpaSpasi = False
+        TxtPostalCode.XOValidasiField = Nothing
         TxtPostalCode.TabIndex = 5
         TxtPostalCode.Tag = "txt"
         TxtPostalCode.TextAlign = HorizontalAlignment.Center
         ' 
         ' TxtDescription
         ' 
-        TxtDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtDescription.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtDescription.Location = New Point(166, 254)
         TxtDescription.Margin = New Padding(4, 3, 4, 3)
         TxtDescription.MaxLength = 255
         TxtDescription.Name = "TxtDescription"
         TxtDescription.Size = New Size(240, 29)
-        TxtDescription.SLFAutoTrim = True
-        TxtDescription.SLFHarusDiisi = True
-        TxtDescription.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtDescription.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtDescription.SLFHightlightSaatFokus = True
-        TxtDescription.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtDescription.SLFIsBlank = True
-        TxtDescription.SLFIsSearchBox = False
-        TxtDescription.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtDescription.SLFPilihSemuaSaatFokus = False
-        TxtDescription.SLFPwdLengthMin = 8
-        TxtDescription.SLFPwdStrengthCalculate = False
-        TxtDescription.SLFPwdStrengthScore = 0
-        TxtDescription.SLFPwdStrengthText = Nothing
-        TxtDescription.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtDescription.SLFSearchBoxText = "Type then press Enter"
-        TxtDescription.SLFSQLText = ""
-        TxtDescription.SLFTanpaSpasi = False
-        TxtDescription.SLFValidasiField = Nothing
+        TxtDescription.XOAutoTrim = True
+        TxtDescription.XOHarusDiisi = True
+        TxtDescription.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtDescription.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtDescription.XOHightlightSaatFokus = True
+        TxtDescription.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtDescription.XOIsBlank = True
+        TxtDescription.XOIsSearchBox = False
+        TxtDescription.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtDescription.XOPilihSemuaSaatFokus = False
+        TxtDescription.XOPwdLengthMin = 8
+        TxtDescription.XOPwdStrengthCalculate = False
+        TxtDescription.XOPwdStrengthScore = 0
+        TxtDescription.XOPwdStrengthText = Nothing
+        TxtDescription.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtDescription.XOSearchBoxText = "Type then press Enter"
+        TxtDescription.XOSQLText = ""
+        TxtDescription.XOTanpaSpasi = False
+        TxtDescription.XOValidasiField = Nothing
         TxtDescription.TabIndex = 6
         TxtDescription.Tag = "txt"
         ' 
         ' TxtSearchTerm2
         ' 
-        TxtSearchTerm2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtSearchTerm2.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtSearchTerm2.Location = New Point(164, 335)
         TxtSearchTerm2.Margin = New Padding(4, 3, 4, 3)
         TxtSearchTerm2.MaxLength = 255
         TxtSearchTerm2.Name = "TxtSearchTerm2"
         TxtSearchTerm2.Size = New Size(240, 29)
-        TxtSearchTerm2.SLFAutoTrim = True
-        TxtSearchTerm2.SLFHarusDiisi = False
-        TxtSearchTerm2.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtSearchTerm2.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtSearchTerm2.SLFHightlightSaatFokus = True
-        TxtSearchTerm2.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtSearchTerm2.SLFIsBlank = True
-        TxtSearchTerm2.SLFIsSearchBox = False
-        TxtSearchTerm2.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtSearchTerm2.SLFPilihSemuaSaatFokus = False
-        TxtSearchTerm2.SLFPwdLengthMin = 8
-        TxtSearchTerm2.SLFPwdStrengthCalculate = False
-        TxtSearchTerm2.SLFPwdStrengthScore = 0
-        TxtSearchTerm2.SLFPwdStrengthText = Nothing
-        TxtSearchTerm2.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtSearchTerm2.SLFSearchBoxText = "Type then press Enter"
-        TxtSearchTerm2.SLFSQLText = ""
-        TxtSearchTerm2.SLFTanpaSpasi = False
-        TxtSearchTerm2.SLFValidasiField = Nothing
+        TxtSearchTerm2.XOAutoTrim = True
+        TxtSearchTerm2.XOHarusDiisi = False
+        TxtSearchTerm2.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtSearchTerm2.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtSearchTerm2.XOHightlightSaatFokus = True
+        TxtSearchTerm2.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtSearchTerm2.XOIsBlank = True
+        TxtSearchTerm2.XOIsSearchBox = False
+        TxtSearchTerm2.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtSearchTerm2.XOPilihSemuaSaatFokus = False
+        TxtSearchTerm2.XOPwdLengthMin = 8
+        TxtSearchTerm2.XOPwdStrengthCalculate = False
+        TxtSearchTerm2.XOPwdStrengthScore = 0
+        TxtSearchTerm2.XOPwdStrengthText = Nothing
+        TxtSearchTerm2.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtSearchTerm2.XOSearchBoxText = "Type then press Enter"
+        TxtSearchTerm2.XOSQLText = ""
+        TxtSearchTerm2.XOTanpaSpasi = False
+        TxtSearchTerm2.XOValidasiField = Nothing
         TxtSearchTerm2.TabIndex = 8
         TxtSearchTerm2.Tag = "txt"
         ' 
         ' Lbl2
         ' 
         Lbl2.AutoSize = True
-        Lbl2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl2.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl2.Location = New Point(58, 55)
         Lbl2.Margin = New Padding(4, 0, 4, 0)
         Lbl2.Name = "Lbl2"
         Lbl2.Size = New Size(85, 21)
-        Lbl2.SLFCustomElipsis = False
+        Lbl2.XOCustomElipsis = False
         Lbl2.TabIndex = 1006
         Lbl2.Text = "Plant Code"
         ' 
         ' Lbl3
         ' 
         Lbl3.AutoSize = True
-        Lbl3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl3.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl3.Location = New Point(37, 96)
         Lbl3.Margin = New Padding(4, 0, 4, 0)
         Lbl3.Name = "Lbl3"
         Lbl3.Size = New Size(104, 21)
-        Lbl3.SLFCustomElipsis = False
+        Lbl3.XOCustomElipsis = False
         Lbl3.TabIndex = 1007
         Lbl3.Text = "Plant Name 1"
         ' 
         ' Lbl4
         ' 
         Lbl4.AutoSize = True
-        Lbl4.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl4.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl4.Location = New Point(37, 136)
         Lbl4.Margin = New Padding(4, 0, 4, 0)
         Lbl4.Name = "Lbl4"
         Lbl4.Size = New Size(104, 21)
-        Lbl4.SLFCustomElipsis = False
+        Lbl4.XOCustomElipsis = False
         Lbl4.TabIndex = 1008
         Lbl4.Text = "Plant Name 2"
         ' 
         ' Lbl5
         ' 
         Lbl5.AutoSize = True
-        Lbl5.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl5.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl5.Location = New Point(114, 177)
         Lbl5.Margin = New Padding(4, 0, 4, 0)
         Lbl5.Name = "Lbl5"
         Lbl5.Size = New Size(37, 21)
-        Lbl5.SLFCustomElipsis = False
+        Lbl5.XOCustomElipsis = False
         Lbl5.TabIndex = 1009
         Lbl5.Text = "City"
         ' 
         ' Lbl6
         ' 
         Lbl6.AutoSize = True
-        Lbl6.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl6.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl6.Location = New Point(52, 217)
         Lbl6.Margin = New Padding(4, 0, 4, 0)
         Lbl6.Name = "Lbl6"
         Lbl6.Size = New Size(91, 21)
-        Lbl6.SLFCustomElipsis = False
+        Lbl6.XOCustomElipsis = False
         Lbl6.TabIndex = 1010
         Lbl6.Text = "Postal Code"
         ' 
         ' Lbl7
         ' 
         Lbl7.AutoSize = True
-        Lbl7.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl7.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl7.Location = New Point(55, 257)
         Lbl7.Margin = New Padding(4, 0, 4, 0)
         Lbl7.Name = "Lbl7"
         Lbl7.Size = New Size(89, 21)
-        Lbl7.SLFCustomElipsis = False
+        Lbl7.XOCustomElipsis = False
         Lbl7.TabIndex = 1011
         Lbl7.Text = "Description"
         ' 
         ' Lbl8
         ' 
         Lbl8.AutoSize = True
-        Lbl8.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl8.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl8.Location = New Point(31, 338)
         Lbl8.Margin = New Padding(4, 0, 4, 0)
         Lbl8.Name = "Lbl8"
         Lbl8.Size = New Size(108, 21)
-        Lbl8.SLFCustomElipsis = False
+        Lbl8.XOCustomElipsis = False
         Lbl8.TabIndex = 1012
         Lbl8.Text = "Search Term 2"
         ' 
         ' Lbl9
         ' 
         Lbl9.AutoSize = True
-        Lbl9.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl9.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl9.Location = New Point(33, 298)
         Lbl9.Margin = New Padding(4, 0, 4, 0)
         Lbl9.Name = "Lbl9"
         Lbl9.Size = New Size(108, 21)
-        Lbl9.SLFCustomElipsis = False
+        Lbl9.XOCustomElipsis = False
         Lbl9.TabIndex = 1013
         Lbl9.Text = "Search Term 1"
         ' 
@@ -487,16 +487,16 @@ Partial Class PLNT_Editor
         BtnSave.FlatAppearance.BorderSize = 2
         BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
         BtnSave.FlatStyle = FlatStyle.Flat
-        BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnSave.ForeColor = Color.White
         BtnSave.Location = New Point(201, 8)
         BtnSave.Margin = New Padding(4, 3, 4, 3)
         BtnSave.Name = "BtnSave"
         BtnSave.Size = New Size(117, 46)
-        BtnSave.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        BtnSave.SLFTampilkanFocusBorder = False
-        BtnSave.SLFValidasiSemuaInput = False
-        BtnSave.SLFValidasiSemuaInputTag = Nothing
+        BtnSave.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
+        BtnSave.XOTampilkanFocusBorder = False
+        BtnSave.XOValidasiSemuaInput = False
+        BtnSave.XOValidasiSemuaInputTag = Nothing
         BtnSave.TabIndex = 600
         BtnSave.Text = "&Save"
         BtnSave.UseVisualStyleBackColor = False
@@ -510,16 +510,16 @@ Partial Class PLNT_Editor
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
         BtnCancel.Location = New Point(325, 8)
         BtnCancel.Margin = New Padding(4, 3, 4, 3)
         BtnCancel.Name = "BtnCancel"
         BtnCancel.Size = New Size(117, 46)
-        BtnCancel.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        BtnCancel.SLFTampilkanFocusBorder = False
-        BtnCancel.SLFValidasiSemuaInput = False
-        BtnCancel.SLFValidasiSemuaInputTag = Nothing
+        BtnCancel.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        BtnCancel.XOTampilkanFocusBorder = False
+        BtnCancel.XOValidasiSemuaInput = False
+        BtnCancel.XOValidasiSemuaInputTag = Nothing
         BtnCancel.TabIndex = 602
         BtnCancel.Text = "&Cancel"
         BtnCancel.UseVisualStyleBackColor = False
@@ -530,7 +530,7 @@ Partial Class PLNT_Editor
         Chk1.AutoSize = True
         Chk1.BackColor = Color.Transparent
         Chk1.FlatStyle = FlatStyle.Flat
-        Chk1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Chk1.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Chk1.ForeColor = Color.Tomato
         Chk1.Location = New Point(48, 17)
         Chk1.Margin = New Padding(4, 3, 4, 3)
@@ -542,7 +542,7 @@ Partial Class PLNT_Editor
         ' 
         ' PLNT_Editor
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         ClientSize = New Size(456, 575)
         KeyPreview = True
         Margin = New Padding(7, 3, 7, 3)

@@ -3,7 +3,7 @@
 Public Class REMS
 
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.REMS.View
+    Private _SQL As New Commands.REMS.View
     Private _SelectedGroup As String = ""
     Private _IsClosing As Boolean = False
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
@@ -14,9 +14,10 @@ Public Class REMS
         Call LoadMenu()
         TxtFind.ClearSearch()
 
-        _SQL.DisplayGrid(DgnOnProgress, DgnDone, DgnVerified, SLFStatus)
+        Commands.REMS.View.DisplayGrid(DgnOnProgress, DgnDone, DgnVerified, SLFStatus)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
         _MMSMenu.LoadIn(Me)
         _MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
@@ -25,9 +26,8 @@ Public Class REMS
         _MMSMenu.Checked("EventToolsViewAttachment", True)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataEdit() Handles _MMSMenu.EventDataEdit
-
-
         _REMS_Switch = New REMS_Editor_Switch
         DISPLAY(_REMS_Switch, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Please Select",, True,)
     End Sub

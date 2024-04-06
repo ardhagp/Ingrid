@@ -51,19 +51,20 @@ Public Class POST_Editor
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        If (CboDepartement.Items.Count = 0) OrElse (TxtPositionCode.SLFSQLText = String.Empty) OrElse (TxtPositionName.SLFSQLText = String.Empty) Then
+        If (CboDepartement.Items.Count = 0) OrElse (TxtPositionCode.XOSQLText = String.Empty) OrElse (TxtPositionName.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Departement selected, Postition Code and Position Description are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf ((V_FORMAttrib.IsNew) AndAlso (_SQL.IsDuplicate(CboDepartement.SelectedValue, TxtPositionCode.SLFSQLText, V_FORMAttrib.RowID))) Then
+        ElseIf ((V_FORMAttrib.IsNew) AndAlso (_SQL.IsDuplicate(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (_SQL.IsDuplicate(CboDepartement.SelectedValue, TxtPositionCode.SLFSQLText, V_FORMAttrib.RowID))) Then
+        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (_SQL.IsDuplicate(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (_SQL.PUSHData(CboDepartement.SelectedValue, TxtPositionCode.SLFSQLText, TxtPositionName.SLFSQLText, TxtPositionDescription.SLFSQLText, V_FORMAttrib.RowID)) Then
+        If (_SQL.PUSHData(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, TxtPositionName.XOSQLText, TxtPositionDescription.XOSQLText, V_FORMAttrib.RowID)) Then
             Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else

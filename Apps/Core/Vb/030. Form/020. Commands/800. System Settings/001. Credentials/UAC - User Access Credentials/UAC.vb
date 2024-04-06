@@ -3,14 +3,16 @@ Imports CMCv
 
 Public Class UAC
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.UAC.View
+    Private _SQL As New Commands.UAC.View
     Private WithEvents _UAC_Editor As UAC_Editor
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
 #End Region
 
 #Region "Subs Collections"
+
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        _SQL.DisplayData(DgnUAC, SLFStatus, TxtFind, ForceRefresh)
+        Commands.UAC.View.DisplayData(DgnUAC, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
@@ -23,6 +25,8 @@ Public Class UAC
 #End Region
 
 #Region "Menu Strip Functions"
+
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
         V_FORMAttrib.IsChangePasswordForm = False
 
@@ -33,11 +37,12 @@ Public Class UAC
 
         V_FORMAttrib.IsNew = True
         V_FORMAttrib.RowID = "-1"
-        V_FORMAttrib.Hash = CMCv.Security.Encrypt.MD5()
+        V_FORMAttrib.Hash = Security.Encrypt.MD5()
         _UAC_Editor = New UAC_Editor
         Display(_UAC_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new credential data", True)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
         V_FORMAttrib.IsChangePasswordForm = False
 
@@ -58,6 +63,7 @@ Public Class UAC
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
         If Not (V_USERAccess.User("UAC", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -70,7 +76,7 @@ Public Class UAC
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
+                If (Commands.UAC.View.DELETEData(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
@@ -80,6 +86,7 @@ Public Class UAC
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
@@ -98,11 +105,12 @@ Public Class UAC
     Private Sub UAC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
         _MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
-        DgnUAC.SLF_GETNewColor()
+        DgnUAC.XOGETNewColor()
         Call GETDATA()
         TxtFind.ClearSearch()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()
@@ -116,6 +124,7 @@ Public Class UAC
         TxtFind.ClearSearch()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _UAC_Editor_RecordSaved() Handles _UAC_Editor.RecordSaved
         Call GETDATA()
     End Sub

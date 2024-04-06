@@ -82,8 +82,8 @@ Partial Class VDLS
         DgnVendor.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnVendor.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnVendor.Size = New Size(915, 511)
-        DgnVendor.SLFGroupFirstRows = False
-        DgnVendor.SLFGunakanNomorBaris = True
+        DgnVendor.XOGroupFirstRows = False
+        DgnVendor.XOGunakanNomorBaris = True
         DgnVendor.StandardTab = True
         DgnVendor.TabIndex = 1
         ' 

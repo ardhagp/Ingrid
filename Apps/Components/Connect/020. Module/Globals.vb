@@ -4,7 +4,7 @@ Imports System.Runtime.Versioning
 <SupportedOSPlatform("windows")>
 Module Globals
     Public V_DBE_MSSQL2008 As New Database.Engine.MSSQL2008
-    Public V_DBE_SQLite As New Database.Engine.SQLite_v3
+    Public V_DBE_SQLite As New Database.Engine.SQLiteV3
     Public V_DB_Properties(1) As Database.Properties.Fields
     Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
 

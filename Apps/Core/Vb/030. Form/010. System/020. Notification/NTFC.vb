@@ -10,7 +10,7 @@ Public Class NTFC
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA()
         DblBuffer(DgnNotification)
-        _SQL.Display(DgnNotification, V_USERAttrib.EID)
+        Commands.NTFC.View.DISPLAY(DgnNotification, V_USERAttrib.EID)
         Mainframe_n_6.USERMENU.Text = V_USERAttrib.FirstName
         Mainframe_n_6.NotificationToolStripMenuItem.Text = "0 Notification(s)"
     End Sub
@@ -22,7 +22,7 @@ Public Class NTFC
 
     <SupportedOSPlatform("windows")>
     Private Sub NTFC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        DgnNotification.SLF_GETNewColor()
+        DgnNotification.XOGETNewColor()
         Call GETDATA()
     End Sub
 End Class

@@ -1,11 +1,12 @@
-﻿Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
+﻿Imports System.Runtime.Versioning
+Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Public Class WorkspaceClass
 #Region "Variables"
-    Private _CommandExist As Boolean
-    Private _CommandRestricted As Boolean
+    Private ReadOnly _CommandExist As Boolean
+    Private ReadOnly _CommandRestricted As Boolean
     Private _TCode As String()
-    Private _SQL As New LibSQL.Workspace
+    Private ReadOnly _SQL As New LibSQL.Workspace
     Private _MODSName As String
     Private _MODSDesc As String
 #End Region
@@ -52,13 +53,14 @@ Public Class WorkspaceClass
     Private WithEvents V_RESET As New RESET
 #End Region
 
+    <SupportedOSPlatform("windows")>
     Public Sub Open(ByVal Mainframe As Form, ByVal TCode As String, Optional StatusBar As CMCv.stt = Nothing)
         Try
             _TCode = TCode.ToString.Split("-".ToCharArray, StringSplitOptions.RemoveEmptyEntries)
             '_CommandExist = True
             '_CommandRestricted = False
-            _MODSName = _SQL.GETModuleName(TCode)
-            _MODSDesc = _SQL.GETModuleDescription(TCode)
+            _MODSName = LibSQL.Workspace.GETModuleName(TCode)
+            _MODSDesc = LibSQL.Workspace.GETModuleDescription(TCode)
 
             Select Case _TCode(0)
                 'ACCOUNTING
@@ -264,7 +266,7 @@ Public Class WorkspaceClass
         End Try
     End Sub
 
-    Private Sub V_MODS_DATACHANGED() Handles V_MODS.DATACHANGED
+    Private Shared Sub V_MODS_DATACHANGED() Handles V_MODS.DATACHANGED
         V_ForceRefreshMainframeData = True
     End Sub
 End Class

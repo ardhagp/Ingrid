@@ -60,8 +60,8 @@ Partial Class frmStandard
         Me.SLFLogo.Name = "SLFLogo"
         Me.SLFLogo.Size = New System.Drawing.Size(44, 44)
         Me.SLFLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.SLFLogo.SLFTampilkanBorder = False
-        Me.SLFLogo.SLFWarnaBorder = System.Drawing.Color.DodgerBlue
+        Me.SLFLogo.XOTampilkanBorder = False
+        Me.SLFLogo.XOWarnaBorder = System.Drawing.Color.DodgerBlue
         Me.SLFLogo.TabIndex = 0
         Me.SLFLogo.TabStop = False
         '
@@ -75,8 +75,8 @@ Partial Class frmStandard
         Me.SLFBackground.Name = "SLFBackground"
         Me.SLFBackground.Size = New System.Drawing.Size(48, 48)
         Me.SLFBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.SLFBackground.SLFTampilkanBorder = False
-        Me.SLFBackground.SLFWarnaBorder = System.Drawing.Color.DodgerBlue
+        Me.SLFBackground.XOTampilkanBorder = False
+        Me.SLFBackground.XOWarnaBorder = System.Drawing.Color.DodgerBlue
         Me.SLFBackground.TabIndex = 998
         Me.SLFBackground.TabStop = False
         '
@@ -91,7 +91,7 @@ Partial Class frmStandard
         Me.SLFNamaForm.Location = New System.Drawing.Point(50, -1)
         Me.SLFNamaForm.Name = "SLFNamaForm"
         Me.SLFNamaForm.Size = New System.Drawing.Size(147, 32)
-        Me.SLFNamaForm.SLFCustomElipsis = False
+        Me.SLFNamaForm.XOCustomElipsis = False
         Me.SLFNamaForm.TabIndex = 997
         Me.SLFNamaForm.Text = "Nama Form"
         Me.SLFNamaForm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -107,7 +107,7 @@ Partial Class frmStandard
         Me.SLFSubNamaForm.Location = New System.Drawing.Point(70, 30)
         Me.SLFSubNamaForm.Name = "SLFSubNamaForm"
         Me.SLFSubNamaForm.Size = New System.Drawing.Size(108, 15)
-        Me.SLFSubNamaForm.SLFCustomElipsis = False
+        Me.SLFSubNamaForm.XOCustomElipsis = False
         Me.SLFSubNamaForm.TabIndex = 996
         Me.SLFSubNamaForm.Text = "Sub Deskripsi Form"
         '

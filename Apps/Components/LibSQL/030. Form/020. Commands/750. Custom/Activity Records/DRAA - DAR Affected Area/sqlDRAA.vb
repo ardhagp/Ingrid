@@ -5,19 +5,19 @@ Imports CMCv
 Namespace Commands.DRAA
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Sub DisplayMainGrid(ByVal Find As txt, ByVal ContentGrid As dgn, ContentStatusBar As stt, Optional ByVal ForceRefresh As Boolean = False)
+        Public Shared Sub DisplayMainGrid(ByVal Find As txt, ByVal ContentGrid As dgn, ContentStatusBar As stt, Optional ByVal ForceRefresh As Boolean = False)
             Try
                 Dim _Where As String = String.Format("where ")
 
-                If (Find.SLFSQLText = String.Empty) AndAlso (ForceRefresh = True) Then
-                    _Where += String.Format("(aa.areaaffected_name like '%{0}%')", Find.SLFSQLText)
+                If (Find.XOSQLText = String.Empty) AndAlso (ForceRefresh = True) Then
+                    _Where += String.Format("(aa.areaaffected_name like '%{0}%')", Find.XOSQLText)
                 Else
-                    If Find.SLFSQLText = String.Empty Then
+                    If Find.XOSQLText = String.Empty Then
 
-                    ElseIf Find.SLFSQLText.Trim.Contains("||") = False Then
-                        _Where += String.Format("(aa.areaaffected_name like '%{0}%')", Find.SLFSQLText)
+                    ElseIf Find.XOSQLText.Trim.Contains("||") = False Then
+                        _Where += String.Format("(aa.areaaffected_name like '%{0}%')", Find.XOSQLText)
                     Else
-                        Dim _ContainText() As String = Find.SLFSQLText.Split("||")
+                        Dim _ContainText() As String = Find.XOSQLText.Split("||")
                         Dim _Repeater As Integer = 0
 
                         _Where += String.Format("(")
@@ -39,11 +39,11 @@ Namespace Commands.DRAA
 
                 End If
 
-                _DBR_MSSQL2008(0).Query = String.Format("select aa.areaaffected_id, aa.areaaffected_order, aa.areaaffected_name from dbo.[[doc]]areaaffected] aa {0} order by aa.areaaffected_order, aa.areaaffected_name", _Where)
+                V_DBR_MSSQL2008(0).Query = String.Format("select aa.areaaffected_id, aa.areaaffected_order, aa.areaaffected_name from dbo.[[doc]]areaaffected] aa {0} order by aa.areaaffected_order, aa.areaaffected_name", _Where)
 
-                _DBR_MSSQL2008(0).DataGrid = ContentGrid
-                _DBR_MSSQL2008(0).StatusBar = ContentStatusBar
-                _DBE_MSSQL2008.GETDATATABLE(_DBR_MSSQL2008(0), "TAreaAffected")
+                V_DBR_MSSQL2008(0).DataGrid = ContentGrid
+                V_DBR_MSSQL2008(0).StatusBar = ContentStatusBar
+                V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "TAreaAffected")
 
             Catch ex As Exception
                 MsgBox(ex.ToString)

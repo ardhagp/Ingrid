@@ -1,8 +1,10 @@
 ﻿Imports System.ComponentModel
+Imports System.Runtime.Versioning
 
 Public Class dtp
     Inherits System.Windows.Forms.DateTimePicker
 
+    <SupportedOSPlatform("windows")>
     Public Sub New()
         InitializeComponent()
         Call ActivateLicenses()
@@ -12,7 +14,7 @@ Public Class dtp
     End Sub
 
     Private Sub dtp_EnabledChanged(sender As Object, e As EventArgs) Handles Me.EnabledChanged
-        If (SLFResetOnDisabled) AndAlso Not (Me.Enabled) Then
+        If (XOResetOnDisabled) AndAlso Not (Me.Enabled) Then
             MyBase.MaxDate = DateAdd(DateInterval.Year, 10, Now.Date)
             MyBase.MinDate = DateAdd(DateInterval.Year, -100, Now.Date)
             Value = Now.Date
@@ -22,7 +24,7 @@ Public Class dtp
     <Category("Datetimepicker"),
     Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
     Private _ResetOnDisabled As Boolean
-    Public Property SLFResetOnDisabled As Boolean
+    Public Property XOResetOnDisabled As Boolean
         Get
             Return _ResetOnDisabled
         End Get
@@ -30,6 +32,4 @@ Public Class dtp
             _ResetOnDisabled = value
         End Set
     End Property
-
-
 End Class

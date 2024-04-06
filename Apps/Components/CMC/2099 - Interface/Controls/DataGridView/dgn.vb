@@ -1,13 +1,16 @@
-﻿''' <project>CMCC</project>
+﻿Imports System.Runtime.Versioning
+
+''' <project>CMCC</project>
 ''' <author>Ardha Gp</author>
 ''' <summary>
 ''' Datagridview dengan warna random dan nomor urut baris.
 ''' </summary>
 ''' <remarks></remarks>
 Public Class dgn
-    Public Event SLF_Selected()
+    Public Event XOSelected()
     'Public Event SLF_NewGridColor()
 
+    <SupportedOSPlatform("windows")>
     Public Sub New()
         InitializeComponent()
         Call ActivateLicenses()
@@ -34,7 +37,7 @@ Public Class dgn
 
 
     Private _varGunakanNomorBaris As Boolean
-    Public Property SLFGunakanNomorBaris() As Boolean
+    Public Property XOGunakanNomorBaris() As Boolean
         Get
             Return _varGunakanNomorBaris
         End Get
@@ -44,7 +47,7 @@ Public Class dgn
     End Property
 
     Private _varGroupFirstRows As Boolean
-    Public Property SLFGroupFirstRows As Boolean
+    Public Property XOGroupFirstRows As Boolean
         Get
             Return _varGroupFirstRows
         End Get
@@ -58,7 +61,7 @@ Public Class dgn
     End Function
 
     Private Sub dgn_CellFormatting(sender As Object, e As Windows.Forms.DataGridViewCellFormattingEventArgs) Handles Me.CellFormatting
-        If SLFGroupFirstRows = True Then
+        If XOGroupFirstRows = True Then
             If e.RowIndex > 0 And e.ColumnIndex = 0 Then
                 If MyBase.Item(0, e.RowIndex - 1).Value = e.Value Then
                     e.Value = String.Empty
@@ -76,7 +79,7 @@ Public Class dgn
         If (e.Button = Windows.Forms.MouseButtons.Right) Or (e.Button = Windows.Forms.MouseButtons.Left) Then
             Try
                 MyBase.CurrentCell = Me(e.ColumnIndex, e.RowIndex)
-                RaiseEvent SLF_Selected()
+                RaiseEvent XOSelected()
             Catch ex As Exception
                 'do nothing
             End Try
@@ -88,7 +91,7 @@ Public Class dgn
         No
     End Enum
 
-    Public Sub SLF_GETNewColor()
+    Public Sub XOGETNewColor()
         Call GENERATENewColor()
     End Sub
 
@@ -97,11 +100,11 @@ Public Class dgn
     End Sub
 
     Private Sub dgn_SelectionChanged(sender As Object, e As EventArgs) Handles Me.SelectionChanged
-        RaiseEvent SLF_Selected()
+        RaiseEvent XOSelected()
     End Sub
 
     Private Sub GENERATENewColor()
-        MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.WarnaAcakBaru(190, 255, 190, 255, 90, 190)
+        MyBase.AlternatingRowsDefaultCellStyle.BackColor = ControlCodeBase.WarnaAcakBaru(190, 255, 190, 255, 90, 190)
     End Sub
 End Class
 

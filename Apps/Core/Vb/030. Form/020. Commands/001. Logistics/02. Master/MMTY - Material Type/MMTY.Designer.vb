@@ -91,8 +91,8 @@ Partial Class MMTY
         DgnMMTY.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         DgnMMTY.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnMMTY.Size = New Size(915, 511)
-        DgnMMTY.SLFGroupFirstRows = False
-        DgnMMTY.SLFGunakanNomorBaris = True
+        DgnMMTY.XOGroupFirstRows = False
+        DgnMMTY.XOGunakanNomorBaris = True
         DgnMMTY.StandardTab = True
         DgnMMTY.TabIndex = 0
         ' 

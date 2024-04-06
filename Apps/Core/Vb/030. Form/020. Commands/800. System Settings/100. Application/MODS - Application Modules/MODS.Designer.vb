@@ -95,8 +95,8 @@ Partial Class MODS
         DgnMODS.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         DgnMODS.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnMODS.Size = New Size(915, 511)
-        DgnMODS.SLFGroupFirstRows = True
-        DgnMODS.SLFGunakanNomorBaris = True
+        DgnMODS.XOGroupFirstRows = True
+        DgnMODS.XOGunakanNomorBaris = True
         DgnMODS.StandardTab = True
         DgnMODS.TabIndex = 802
         ' 

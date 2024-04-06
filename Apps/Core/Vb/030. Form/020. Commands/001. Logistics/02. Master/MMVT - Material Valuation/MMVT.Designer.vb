@@ -85,8 +85,8 @@ Partial Class MMVT
         DgnMMVT.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnMMVT.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnMMVT.Size = New Size(915, 511)
-        DgnMMVT.SLFGroupFirstRows = False
-        DgnMMVT.SLFGunakanNomorBaris = False
+        DgnMMVT.XOGroupFirstRows = False
+        DgnMMVT.XOGunakanNomorBaris = False
         DgnMMVT.StandardTab = True
         DgnMMVT.TabIndex = 802
         ' 

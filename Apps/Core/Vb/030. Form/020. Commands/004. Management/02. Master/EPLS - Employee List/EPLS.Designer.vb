@@ -99,8 +99,8 @@ Partial Class EPLS
         DgnEPLS.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         DgnEPLS.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnEPLS.Size = New Size(915, 511)
-        DgnEPLS.SLFGroupFirstRows = False
-        DgnEPLS.SLFGunakanNomorBaris = True
+        DgnEPLS.XOGroupFirstRows = False
+        DgnEPLS.XOGunakanNomorBaris = True
         DgnEPLS.StandardTab = True
         DgnEPLS.TabIndex = 0
         ' 

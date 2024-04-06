@@ -2,7 +2,7 @@
 
 Public Class UAC_Employee
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.UAC.Addins.Browse.Employee
+    Private _SQL As New Commands.UAC.Addins.Browse.Employee
     Public Event RecordSelected()
 #End Region
 
@@ -14,12 +14,14 @@ Public Class UAC_Employee
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        _SQL.DisplayData(DgnAddinEmployee, SLFStatus, TxtFind, ForceRefresh)
+        Commands.UAC.Addins.Browse.Employee.DISPLAYDATA(DgnAddinEmployee, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
 #End Region
 
+    <SupportedOSPlatform("windows")>
     Private Sub UAC_Employee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call GETDATA()
     End Sub
@@ -42,6 +44,7 @@ Public Class UAC_Employee
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()

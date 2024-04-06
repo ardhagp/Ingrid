@@ -9,16 +9,16 @@
     Private Sub Btn_Process_Click(sender As Object, e As EventArgs) Handles Btn_Process.Click
         If _Step = 1 Then
 
-            If (Txt_Company.SLFIsBlank) OrElse (Txt_Department.SLFIsBlank) OrElse (Txt_Position.SLFIsBlank) OrElse (Txt_EmployeeName.SLFIsBlank) OrElse (Txt_EmployeeID.SLFIsBlank) Then
+            If (Txt_Company.XOIsBlank) OrElse (Txt_Department.XOIsBlank) OrElse (Txt_Position.XOIsBlank) OrElse (Txt_EmployeeName.XOIsBlank) OrElse (Txt_EmployeeID.XOIsBlank) Then
                 MsgBox("Field(s) cannot be emptied", MsgBoxStyle.Critical, "Ingrid")
 
-                If (Txt_Company.SLFIsBlank) Then
+                If (Txt_Company.XOIsBlank) Then
                     Txt_Company.Focus()
-                ElseIf (Txt_Department.SLFIsBlank) Then
+                ElseIf (Txt_Department.XOIsBlank) Then
                     Txt_Department.Focus()
-                ElseIf (Txt_Position.SLFIsBlank) Then
+                ElseIf (Txt_Position.XOIsBlank) Then
                     Txt_Position.Focus()
-                ElseIf (Txt_EmployeeName.SLFIsBlank) Then
+                ElseIf (Txt_EmployeeName.XOIsBlank) Then
                     Txt_EmployeeName.Focus()
                 Else
                     Txt_EmployeeID.Focus()
@@ -38,14 +38,14 @@
             _Step += 1
             Lbl_Step.Text = String.Format("Step {0} :", _Step)
 
-            Btn_Close.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Default
+            Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
             Btn_Close.Text = "&Prev"
 
         ElseIf _Step = 2 Then
-            If (Txt_Username.SLFIsBlank) OrElse (Txt_Password.SLFIsBlank) Then
+            If (Txt_Username.XOIsBlank) OrElse (Txt_Password.XOIsBlank) Then
                 MsgBox("Field(s) cannot be emptied", MsgBoxStyle.Critical, "Ingrid")
 
-                If (Txt_Username.SLFIsBlank) Then
+                If (Txt_Username.XOIsBlank) Then
                     Txt_Username.Focus()
                 Else
                     Txt_Password.Focus()
@@ -54,7 +54,7 @@
                 Exit Sub
             End If
 
-            If Txt_Password.SLFPwdStrengthScore < 70 Then
+            If Txt_Password.XOPwdStrengthScore < 70 Then
                 MsgBox("Your password is not strong enough!", MsgBoxStyle.Exclamation, "Ingrid")
                 Txt_Password.Focus()
                 Exit Sub
@@ -68,7 +68,8 @@
             Lbl_Step.Text = String.Format("Step {0} :", _Step)
 
         ElseIf _Step = 3 Then
-
+            'TODO: Continue next step, open SQLite Database for App_Settings.db
+            'ERL.
 
             _Step += 1
             Lbl_Step.Text = String.Format("Step {0} :", _Step)
@@ -96,7 +97,7 @@
             _Step -= 1
             Lbl_Step.Text = String.Format("Step {0} :", _Step)
 
-            Btn_Close.SLFJenisTombol = ControlCodeBase.enuJenisTombol.No
+            Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
             Btn_Close.Text = "&Close"
         ElseIf _Step = 3 Then
             Gbx_Login.Visible = True
@@ -128,7 +129,7 @@
 
     Private Sub Btn_Check_Click(sender As Object, e As EventArgs) Handles Btn_Check.Click
         'TODO: Value not refreshing in realtime
-        UPwdStrength1.SLFPasswordStrengthScore = Txt_Password.SLFPwdStrengthScore
-        UPwdStrength1.SLFPasswordStrengthText = Txt_Password.SLFPwdStrengthText
+        UPwdStrength1.SLFPasswordStrengthScore = Txt_Password.XOPwdStrengthScore
+        UPwdStrength1.SLFPasswordStrengthText = Txt_Password.XOPwdStrengthText
     End Sub
 End Class

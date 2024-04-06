@@ -128,8 +128,8 @@ Partial Class CONN
         DgnConnection.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         DgnConnection.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnConnection.Size = New Size(915, 446)
-        DgnConnection.SLFGroupFirstRows = False
-        DgnConnection.SLFGunakanNomorBaris = True
+        DgnConnection.XOGroupFirstRows = False
+        DgnConnection.XOGunakanNomorBaris = True
         DgnConnection.StandardTab = True
         DgnConnection.TabIndex = 997
         ' 
@@ -202,10 +202,10 @@ Partial Class CONN
         Btn_Close.Location = New Point(803, 11)
         Btn_Close.Name = "Btn_Close"
         Btn_Close.Size = New Size(100, 40)
-        Btn_Close.SLFJenisTombol = ControlCodeBase.enuJenisTombol.No
-        Btn_Close.SLFTampilkanFocusBorder = False
-        Btn_Close.SLFValidasiSemuaInput = False
-        Btn_Close.SLFValidasiSemuaInputTag = Nothing
+        Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
+        Btn_Close.XOTampilkanFocusBorder = False
+        Btn_Close.XOValidasiSemuaInput = False
+        Btn_Close.XOValidasiSemuaInputTag = Nothing
         Btn_Close.TabIndex = 1
         Btn_Close.Text = "&Close"
         Btn_Close.UseVisualStyleBackColor = False

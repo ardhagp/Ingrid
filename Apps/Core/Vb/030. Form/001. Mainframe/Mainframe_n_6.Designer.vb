@@ -879,7 +879,7 @@ Partial Class Mainframe_n_6
         lblStorage.Location = New Point(0, 0)
         lblStorage.Name = "lblStorage"
         lblStorage.Size = New Size(295, 32)
-        lblStorage.SLFCustomElipsis = False
+        lblStorage.XOCustomElipsis = False
         lblStorage.TabIndex = 0
         lblStorage.Text = "Storage"
         lblStorage.TextAlign = ContentAlignment.MiddleCenter
@@ -922,25 +922,25 @@ Partial Class Mainframe_n_6
         Txt_shortcut.MaxLength = 255
         Txt_shortcut.Name = "Txt_shortcut"
         Txt_shortcut.Size = New Size(243, 29)
-        Txt_shortcut.SLFAutoTrim = False
-        Txt_shortcut.SLFHarusDiisi = False
-        Txt_shortcut.SLFHarusDiisiWarnaLatar = Color.LightPink
-        Txt_shortcut.SLFHarusDiisiWarnaLatarDefault = Color.White
-        Txt_shortcut.SLFHightlightSaatFokus = False
-        Txt_shortcut.SLFHightlightSaatFokusWarna = Color.LightYellow
-        Txt_shortcut.SLFIsBlank = True
-        Txt_shortcut.SLFIsSearchBox = False
-        Txt_shortcut.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_shortcut.SLFPilihSemuaSaatFokus = False
-        Txt_shortcut.SLFPwdLengthMin = 8
-        Txt_shortcut.SLFPwdStrengthCalculate = False
-        Txt_shortcut.SLFPwdStrengthScore = 0
-        Txt_shortcut.SLFPwdStrengthText = Nothing
-        Txt_shortcut.SLFRestriction = ControlCodeBase.enuRestriction.None
-        Txt_shortcut.SLFSearchBoxText = "Command Module"
-        Txt_shortcut.SLFSQLText = Nothing
-        Txt_shortcut.SLFTanpaSpasi = False
-        Txt_shortcut.SLFValidasiField = Nothing
+        Txt_shortcut.XOAutoTrim = False
+        Txt_shortcut.XOHarusDiisi = False
+        Txt_shortcut.XOHarusDiisiWarnaLatar = Color.LightPink
+        Txt_shortcut.XOHarusDiisiWarnaLatarDefault = Color.White
+        Txt_shortcut.XOHightlightSaatFokus = False
+        Txt_shortcut.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt_shortcut.XOIsBlank = True
+        Txt_shortcut.XOIsSearchBox = False
+        Txt_shortcut.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        Txt_shortcut.XOPilihSemuaSaatFokus = False
+        Txt_shortcut.XOPwdLengthMin = 8
+        Txt_shortcut.XOPwdStrengthCalculate = False
+        Txt_shortcut.XOPwdStrengthScore = 0
+        Txt_shortcut.XOPwdStrengthText = Nothing
+        Txt_shortcut.XORestriction = ControlCodeBase.enuRestriction.None
+        Txt_shortcut.XOSearchBoxText = "Command Module"
+        Txt_shortcut.XOSQLText = Nothing
+        Txt_shortcut.XOTanpaSpasi = False
+        Txt_shortcut.XOValidasiField = Nothing
         Txt_shortcut.TabIndex = 0
         Txt_shortcut.Tag = "txt"
         ' 
@@ -971,8 +971,8 @@ Partial Class Mainframe_n_6
         PctProfile.Name = "PctProfile"
         PctProfile.Size = New Size(107, 126)
         PctProfile.SizeMode = PictureBoxSizeMode.StretchImage
-        PctProfile.SLFTampilkanBorder = False
-        PctProfile.SLFWarnaBorder = Color.DodgerBlue
+        PctProfile.XOTampilkanBorder = False
+        PctProfile.XOWarnaBorder = Color.DodgerBlue
         PctProfile.TabIndex = 0
         PctProfile.TabStop = False
         ' 
@@ -986,8 +986,8 @@ Partial Class Mainframe_n_6
         PctbxFrame.Name = "PctbxFrame"
         PctbxFrame.Size = New Size(117, 136)
         PctbxFrame.SizeMode = PictureBoxSizeMode.Zoom
-        PctbxFrame.SLFTampilkanBorder = False
-        PctbxFrame.SLFWarnaBorder = Color.Black
+        PctbxFrame.XOTampilkanBorder = False
+        PctbxFrame.XOWarnaBorder = Color.Black
         PctbxFrame.TabIndex = 5
         PctbxFrame.TabStop = False
         ' 
@@ -999,7 +999,7 @@ Partial Class Mainframe_n_6
         LblPosition.Location = New Point(131, 94)
         LblPosition.Name = "LblPosition"
         LblPosition.Size = New Size(84, 21)
-        LblPosition.SLFCustomElipsis = False
+        LblPosition.XOCustomElipsis = False
         LblPosition.TabIndex = 4
         LblPosition.Text = "Loading..."
         ' 
@@ -1011,7 +1011,7 @@ Partial Class Mainframe_n_6
         LblEmployeeName.Location = New Point(130, 69)
         LblEmployeeName.Name = "LblEmployeeName"
         LblEmployeeName.Size = New Size(100, 25)
-        LblEmployeeName.SLFCustomElipsis = False
+        LblEmployeeName.XOCustomElipsis = False
         LblEmployeeName.TabIndex = 3
         LblEmployeeName.Text = "Loading..."
         ' 
@@ -1023,7 +1023,7 @@ Partial Class Mainframe_n_6
         LblEmpNumber.Location = New Point(130, 44)
         LblEmpNumber.Name = "LblEmpNumber"
         LblEmpNumber.Size = New Size(100, 25)
-        LblEmpNumber.SLFCustomElipsis = False
+        LblEmpNumber.XOCustomElipsis = False
         LblEmpNumber.TabIndex = 2
         LblEmpNumber.Text = "Loading..."
         ' 
@@ -1036,7 +1036,7 @@ Partial Class Mainframe_n_6
         LblWelcome.Location = New Point(0, 0)
         LblWelcome.Name = "LblWelcome"
         LblWelcome.Size = New Size(295, 27)
-        LblWelcome.SLFCustomElipsis = False
+        LblWelcome.XOCustomElipsis = False
         LblWelcome.TabIndex = 1
         LblWelcome.TextAlign = ContentAlignment.MiddleCenter
         ' 
@@ -1101,25 +1101,25 @@ Partial Class Mainframe_n_6
         TxtRunning.Name = "TxtRunning"
         TxtRunning.ReadOnly = True
         TxtRunning.Size = New Size(784, 29)
-        TxtRunning.SLFAutoTrim = False
-        TxtRunning.SLFHarusDiisi = False
-        TxtRunning.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtRunning.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtRunning.SLFHightlightSaatFokus = False
-        TxtRunning.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtRunning.SLFIsBlank = True
-        TxtRunning.SLFIsSearchBox = False
-        TxtRunning.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        TxtRunning.SLFPilihSemuaSaatFokus = False
-        TxtRunning.SLFPwdLengthMin = 8
-        TxtRunning.SLFPwdStrengthCalculate = False
-        TxtRunning.SLFPwdStrengthScore = 0
-        TxtRunning.SLFPwdStrengthText = Nothing
-        TxtRunning.SLFRestriction = ControlCodeBase.enuRestriction.None
-        TxtRunning.SLFSearchBoxText = "Type then press Enter"
-        TxtRunning.SLFSQLText = ""
-        TxtRunning.SLFTanpaSpasi = False
-        TxtRunning.SLFValidasiField = Nothing
+        TxtRunning.XOAutoTrim = False
+        TxtRunning.XOHarusDiisi = False
+        TxtRunning.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtRunning.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtRunning.XOHightlightSaatFokus = False
+        TxtRunning.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtRunning.XOIsBlank = True
+        TxtRunning.XOIsSearchBox = False
+        TxtRunning.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtRunning.XOPilihSemuaSaatFokus = False
+        TxtRunning.XOPwdLengthMin = 8
+        TxtRunning.XOPwdStrengthCalculate = False
+        TxtRunning.XOPwdStrengthScore = 0
+        TxtRunning.XOPwdStrengthText = Nothing
+        TxtRunning.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtRunning.XOSearchBoxText = "Type then press Enter"
+        TxtRunning.XOSQLText = ""
+        TxtRunning.XOTanpaSpasi = False
+        TxtRunning.XOValidasiField = Nothing
         TxtRunning.TabIndex = 99
         TxtRunning.TabStop = False
         TxtRunning.Tag = "txt"

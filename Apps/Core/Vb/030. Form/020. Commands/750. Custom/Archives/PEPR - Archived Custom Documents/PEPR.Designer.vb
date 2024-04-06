@@ -191,8 +191,8 @@ Partial Class PEPR
         DgnDARActivity.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         DgnDARActivity.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnDARActivity.Size = New Size(915, 210)
-        DgnDARActivity.SLFGroupFirstRows = True
-        DgnDARActivity.SLFGunakanNomorBaris = True
+        DgnDARActivity.XOGroupFirstRows = True
+        DgnDARActivity.XOGunakanNomorBaris = True
         DgnDARActivity.StandardTab = True
         DgnDARActivity.TabIndex = 102
         ' 
@@ -360,8 +360,8 @@ Partial Class PEPR
         DgnPhoto.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
         DgnPhoto.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnPhoto.Size = New Size(371, 234)
-        DgnPhoto.SLFGroupFirstRows = False
-        DgnPhoto.SLFGunakanNomorBaris = True
+        DgnPhoto.XOGroupFirstRows = False
+        DgnPhoto.XOGunakanNomorBaris = True
         DgnPhoto.StandardTab = True
         DgnPhoto.TabIndex = 2
         ' 
@@ -486,8 +486,8 @@ Partial Class PEPR
         PctbxActivityPhoto.Name = "PctbxActivityPhoto"
         PctbxActivityPhoto.Size = New Size(513, 186)
         PctbxActivityPhoto.SizeMode = PictureBoxSizeMode.Zoom
-        PctbxActivityPhoto.SLFTampilkanBorder = False
-        PctbxActivityPhoto.SLFWarnaBorder = Color.DarkSlateBlue
+        PctbxActivityPhoto.XOTampilkanBorder = False
+        PctbxActivityPhoto.XOWarnaBorder = Color.DarkSlateBlue
         PctbxActivityPhoto.TabIndex = 105
         PctbxActivityPhoto.TabStop = False
         ' 
@@ -527,10 +527,10 @@ Partial Class PEPR
         BtnCopyPhoto.Margin = New Padding(4, 3, 4, 3)
         BtnCopyPhoto.Name = "BtnCopyPhoto"
         BtnCopyPhoto.Size = New Size(228, 30)
-        BtnCopyPhoto.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnCopyPhoto.SLFTampilkanFocusBorder = False
-        BtnCopyPhoto.SLFValidasiSemuaInput = False
-        BtnCopyPhoto.SLFValidasiSemuaInputTag = Nothing
+        BtnCopyPhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnCopyPhoto.XOTampilkanFocusBorder = False
+        BtnCopyPhoto.XOValidasiSemuaInput = False
+        BtnCopyPhoto.XOValidasiSemuaInputTag = Nothing
         BtnCopyPhoto.TabIndex = 3
         BtnCopyPhoto.UseVisualStyleBackColor = False
         ' 
@@ -550,10 +550,10 @@ Partial Class PEPR
         BtnSave.Margin = New Padding(4, 3, 4, 3)
         BtnSave.Name = "BtnSave"
         BtnSave.Size = New Size(229, 30)
-        BtnSave.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnSave.SLFTampilkanFocusBorder = False
-        BtnSave.SLFValidasiSemuaInput = False
-        BtnSave.SLFValidasiSemuaInputTag = Nothing
+        BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnSave.XOTampilkanFocusBorder = False
+        BtnSave.XOValidasiSemuaInput = False
+        BtnSave.XOValidasiSemuaInputTag = Nothing
         BtnSave.TabIndex = 4
         BtnSave.UseVisualStyleBackColor = False
         ' 
@@ -573,10 +573,10 @@ Partial Class PEPR
         BtnLike.Margin = New Padding(4, 3, 4, 3)
         BtnLike.Name = "BtnLike"
         BtnLike.Size = New Size(32, 30)
-        BtnLike.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnLike.SLFTampilkanFocusBorder = False
-        BtnLike.SLFValidasiSemuaInput = False
-        BtnLike.SLFValidasiSemuaInputTag = Nothing
+        BtnLike.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnLike.XOTampilkanFocusBorder = False
+        BtnLike.XOValidasiSemuaInput = False
+        BtnLike.XOValidasiSemuaInputTag = Nothing
         BtnLike.TabIndex = 6
         BtnLike.UseVisualStyleBackColor = False
         ' 
@@ -632,8 +632,8 @@ Partial Class PEPR
         DgnFile.RowHeadersDefaultCellStyle = DataGridViewCellStyle16
         DgnFile.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnFile.Size = New Size(899, 234)
-        DgnFile.SLFGroupFirstRows = False
-        DgnFile.SLFGunakanNomorBaris = True
+        DgnFile.XOGroupFirstRows = False
+        DgnFile.XOGunakanNomorBaris = True
         DgnFile.StandardTab = True
         DgnFile.TabIndex = 3
         ' 

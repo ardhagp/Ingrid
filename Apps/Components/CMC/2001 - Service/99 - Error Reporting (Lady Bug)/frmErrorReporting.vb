@@ -5,7 +5,7 @@ Public Class frmErrorReporting
     Public ResumeNext As Boolean
 
     'Private ERL As New Database.Engine.LocalDB
-    Private ERL As New Database.Engine.SQLite_v3
+    Private ERL As New Database.Engine.SQLiteV3
 
     Public Sub New()
 
@@ -17,7 +17,7 @@ Public Class frmErrorReporting
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Public Sub New(ByVal ErrorCatcher As Catcher.Error.Fields, Optional ByVal DBEngine As Database.Engine.SQLite_v3 = Nothing)
+    Public Sub New(ByVal ErrorCatcher As Catcher.Error.Fields, Optional ByVal DBEngine As Database.Engine.SQLiteV3 = Nothing)
         InitializeComponent()
         TxtErrorType.Text = TypeOfFaultiesConverter(ErrorCatcher)
         TxtErrorMessage.Text = ErrorCatcher.Message & System.Environment.NewLine & System.Environment.NewLine & "Sender: " & ErrorCatcher.FromSender

@@ -22,9 +22,9 @@ Namespace Commands.DBIC
         Public Shared Function IsCompanyExist() As Boolean
             Dim V_IsExist As Integer
 
-            _DBR_MSSQL2008(0).Query = String.Format("select count(c.company_id) as [company_count] from dbo.[[man]]company] as c")
+            V_DBR_MSSQL2008(0).Query = String.Format("select count(c.company_id) as [company_count] from dbo.[[man]]company] as c")
 
-            V_IsExist = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+            V_IsExist = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
 
             If V_IsExist > 0 Then
                 Return True
@@ -37,9 +37,9 @@ Namespace Commands.DBIC
         Public Shared Function IsDepartmentExist() As Integer
             Dim V_IsExist As Integer
 
-            _DBR_MSSQL2008(0).Query = String.Format("select count(d.departement_id) as [department_count] from dbo.[[man]]departement] as d")
+            V_DBR_MSSQL2008(0).Query = String.Format("select count(d.departement_id) as [department_count] from dbo.[[man]]departement] as d")
 
-            V_IsExist = _DBE_MSSQL2008.GETVALUE(_DBR_MSSQL2008(0).Query)
+            V_IsExist = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
 
             If V_IsExist > 0 Then
                 Return True

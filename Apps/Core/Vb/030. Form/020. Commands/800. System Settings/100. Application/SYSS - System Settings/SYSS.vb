@@ -1,8 +1,11 @@
-﻿Public Class SYSS
+﻿Imports System.Runtime.Versioning
 
-    Private _SQL_View As New LibSQL.Commands.SYSS.View
-    Private _SQL_Editor As New LibSQL.Commands.SYSS.Editor
+Public Class SYSS
 
+    Private _SQL_View As New Commands.SYSS.View
+    Private _SQL_Editor As New Commands.SYSS.Editor
+
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA()
         'Get Profile
         With CboProfile.Items
@@ -12,7 +15,7 @@
             .Add("User Only")
             .Add("All Users")
         End With
-        CboProfile.SelectedIndex = _SQL_View.GETSettingValue("settings_showprofile")
+        CboProfile.SelectedIndex = Commands.SYSS.View.GETSettingValue("settings_showprofile")
 
         'Get Storage
         With CboStorage.Items
@@ -22,7 +25,7 @@
             .Add("User Only")
             .Add("All Users")
         End With
-        CboStorage.SelectedIndex = _SQL_View.GETSettingValue("settings_showstorage")
+        CboStorage.SelectedIndex = Commands.SYSS.View.GETSettingValue("settings_showstorage")
 
         'Get NewsTicker
         With CboNewsTicker.Items
@@ -32,13 +35,13 @@
             .Add("User Only")
             .Add("All Users")
         End With
-        CboNewsTicker.SelectedIndex = _SQL_View.GETSettingValue("settings_showrunningtext")
+        CboNewsTicker.SelectedIndex = Commands.SYSS.View.GETSettingValue("settings_showrunningtext")
 
         'Get Minimum Photo Upload
-        nudUploadPhoto.Value = _SQL_View.GETSettingValue("settings_uploadphoto")
+        nudUploadPhoto.Value = Commands.SYSS.View.GETSettingValue("settings_uploadphoto")
 
         'Get Minimum PDF Upload
-        nudUploadPDF.Value = _SQL_View.GETSettingValue("settings_uploadpdf")
+        nudUploadPDF.Value = Commands.SYSS.View.GETSettingValue("settings_uploadpdf")
 
         'Get Watermark
         With CboWatermark.Items
@@ -48,13 +51,14 @@
             .Add("User Only")
             .Add("All Users")
         End With
-        CboWatermark.SelectedIndex = _SQL_View.GETSettingValue("settings_showwatermark")
-        TxtWatermark.Text = _SQL_View.GETSettingValue("settings_textmark")
+        CboWatermark.SelectedIndex = Commands.SYSS.View.GETSettingValue("settings_showwatermark")
+        TxtWatermark.Text = Commands.SYSS.View.GETSettingValue("settings_textmark")
 
         'Get Minimum Password
-        nudMinPassword.Value = _SQL_View.GETSettingValue("settings_minpasswordlength")
+        nudMinPassword.Value = Commands.SYSS.View.GETSettingValue("settings_minpasswordlength")
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub SYSS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call GETDATA()
     End Sub
@@ -67,9 +71,10 @@
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Try
-            If (_SQL_Editor.SaveSettings(CboProfile.SelectedIndex, CboStorage.SelectedIndex, CboNewsTicker.SelectedIndex, nudUploadPhoto.Value, nudUploadPDF.Value, CboWatermark.SelectedIndex, TxtWatermark.SLFSQLText, nudMinPassword.Value)) Then
+            If (Commands.SYSS.Editor.SaveSettings(CboProfile.SelectedIndex, CboStorage.SelectedIndex, CboNewsTicker.SelectedIndex, nudUploadPhoto.Value, nudUploadPDF.Value, CboWatermark.SelectedIndex, TxtWatermark.XOSQLText, nudMinPassword.Value)) Then
                 SLFStatus.Items(0).Text = "Saved"
             End If
         Catch ex As Exception

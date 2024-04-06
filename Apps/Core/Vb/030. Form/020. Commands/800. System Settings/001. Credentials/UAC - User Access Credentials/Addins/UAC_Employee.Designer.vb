@@ -109,8 +109,8 @@ Partial Class UAC_Employee
         Me.DgnAddinEmployee.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DgnAddinEmployee.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DgnAddinEmployee.Size = New System.Drawing.Size(657, 307)
-        Me.DgnAddinEmployee.SLFGroupFirstRows = False
-        Me.DgnAddinEmployee.SLFGunakanNomorBaris = True
+        Me.DgnAddinEmployee.XOGroupFirstRows = False
+        Me.DgnAddinEmployee.XOGunakanNomorBaris = True
         Me.DgnAddinEmployee.StandardTab = True
         Me.DgnAddinEmployee.TabIndex = 1006
         '
@@ -185,10 +185,10 @@ Partial Class UAC_Employee
         Me.BtnOk.Location = New System.Drawing.Point(439, 6)
         Me.BtnOk.Name = "BtnOk"
         Me.BtnOk.Size = New System.Drawing.Size(100, 40)
-        Me.BtnOk.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        Me.BtnOk.SLFTampilkanFocusBorder = False
-        Me.BtnOk.SLFValidasiSemuaInput = False
-        Me.BtnOk.SLFValidasiSemuaInputTag = Nothing
+        Me.BtnOk.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
+        Me.BtnOk.XOTampilkanFocusBorder = False
+        Me.BtnOk.XOValidasiSemuaInput = False
+        Me.BtnOk.XOValidasiSemuaInputTag = Nothing
         Me.BtnOk.TabIndex = 1
         Me.BtnOk.Text = "&Ok"
         Me.BtnOk.UseVisualStyleBackColor = False
@@ -206,10 +206,10 @@ Partial Class UAC_Employee
         Me.BtnCancel.Location = New System.Drawing.Point(545, 6)
         Me.BtnCancel.Name = "BtnCancel"
         Me.BtnCancel.Size = New System.Drawing.Size(100, 40)
-        Me.BtnCancel.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        Me.BtnCancel.SLFTampilkanFocusBorder = False
-        Me.BtnCancel.SLFValidasiSemuaInput = False
-        Me.BtnCancel.SLFValidasiSemuaInputTag = Nothing
+        Me.BtnCancel.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        Me.BtnCancel.XOTampilkanFocusBorder = False
+        Me.BtnCancel.XOValidasiSemuaInput = False
+        Me.BtnCancel.XOValidasiSemuaInputTag = Nothing
         Me.BtnCancel.TabIndex = 2
         Me.BtnCancel.Text = "&Cancel"
         Me.BtnCancel.UseVisualStyleBackColor = False

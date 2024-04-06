@@ -484,6 +484,18 @@
           }
         }
       },
+      "NETCore.Encrypt/2.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.1/NETCore.Encrypt.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/NETCore.Encrypt.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
@@ -938,7 +950,7 @@
           }
         }
       },
-      "System.Data.SqlClient/4.8.5": {
+      "System.Data.SqlClient/4.8.6": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Registry": "4.7.0",
@@ -1046,6 +1058,22 @@
             "assetType": "runtime",
             "rid": "win"
           }
+        }
+      },
+      "System.IO.Hashing/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/System.IO.Hashing.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/System.IO.Hashing.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.IO.Packaging/4.7.0": {
@@ -1296,7 +1324,7 @@
           }
         }
       },
-      "WinForms.DataVisualization/1.9.1": {
+      "WinForms.DataVisualization/1.9.2": {
         "type": "package",
         "compile": {
           "lib/net7.0-windows7.0/WinForms.DataVisualization.Utilities.dll": {
@@ -1337,6 +1365,7 @@
         "dependencies": {
           "Bridge": "1.0.0",
           "Microsoft.CSharp": "4.7.0",
+          "NETCore.Encrypt": "2.1.1",
           "ReportViewerCore.WinForms": "15.1.19",
           "Syncfusion.Grid.Windows": "23.1.41",
           "Syncfusion.Licensing": "23.1.41",
@@ -1346,9 +1375,10 @@
           "System.ComponentModel.Composition": "8.0.0",
           "System.Data.OleDb": "8.0.0",
           "System.Data.SQLite.Core": "1.0.118",
-          "System.Data.SqlClient": "4.8.5",
+          "System.Data.SqlClient": "4.8.6",
+          "System.IO.Hashing": "8.0.0",
           "System.Management": "8.0.0",
-          "WinForms.DataVisualization": "1.9.1"
+          "WinForms.DataVisualization": "1.9.2"
         },
         "compile": {
           "bin/placeholder/CMCv.dll": {}
@@ -2373,6 +2403,18 @@
         "version.txt"
       ]
     },
+    "NETCore.Encrypt/2.1.1": {
+      "sha512": "qw6XuYTz7xtNSRWNm4BltmWTnUZvfI05mcd7NoheIBXmxICP1MpwiyGB8mrl7TLhi+WwUInuwsl69aV6ToqBOQ==",
+      "type": "package",
+      "path": "netcore.encrypt/2.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.1/NETCore.Encrypt.dll",
+        "netcore.encrypt.2.1.1.nupkg.sha512",
+        "netcore.encrypt.nuspec"
+      ]
+    },
     "Newtonsoft.Json/13.0.1": {
       "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
@@ -3056,10 +3098,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Data.SqlClient/4.8.5": {
-      "sha512": "fRqxut4lrndPHrXD+ht1XRmCL3obuKldm4XjCRYS9p5f7FSR7shBxAwTkDrpFMsHC9BhNgjjmUtiIjvehn5zkg==",
+    "System.Data.SqlClient/4.8.6": {
+      "sha512": "2Ij/LCaTQRyAi5lAv7UUTV9R2FobC8xN9mE0fXBZohum/xLl8IZVmE98Rq5ugQHjCgTBRKqpXRb4ORulRdA6Ig==",
       "type": "package",
-      "path": "system.data.sqlclient/4.8.5",
+      "path": "system.data.sqlclient/4.8.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3136,7 +3178,7 @@
         "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.xml",
         "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.dll",
         "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.xml",
-        "system.data.sqlclient.4.8.5.nupkg.sha512",
+        "system.data.sqlclient.4.8.6.nupkg.sha512",
         "system.data.sqlclient.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -3266,6 +3308,36 @@
         "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "System.IO.Hashing/8.0.0": {
+      "sha512": "ne1843evDugl0md7Fjzy6QjJrzsjh46ZKbhf8GwBXb5f/gw97J4bxMs0NQKifDuThh/f0bZ0e62NPl1jzTuRqA==",
+      "type": "package",
+      "path": "system.io.hashing/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.IO.Hashing.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.IO.Hashing.targets",
+        "lib/net462/System.IO.Hashing.dll",
+        "lib/net462/System.IO.Hashing.xml",
+        "lib/net6.0/System.IO.Hashing.dll",
+        "lib/net6.0/System.IO.Hashing.xml",
+        "lib/net7.0/System.IO.Hashing.dll",
+        "lib/net7.0/System.IO.Hashing.xml",
+        "lib/net8.0/System.IO.Hashing.dll",
+        "lib/net8.0/System.IO.Hashing.xml",
+        "lib/netstandard2.0/System.IO.Hashing.dll",
+        "lib/netstandard2.0/System.IO.Hashing.xml",
+        "system.io.hashing.8.0.0.nupkg.sha512",
+        "system.io.hashing.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.IO.Packaging/4.7.0": {
@@ -3761,10 +3833,10 @@
         "version.txt"
       ]
     },
-    "WinForms.DataVisualization/1.9.1": {
-      "sha512": "/mKuUVwHYg0EpcjJbuvU5eGY8QGFB4iUMVEl0inHE5iF1fG/NK1dRR2sL26QDnv1wG0dnpuhE3jO5ktKQlvEGg==",
+    "WinForms.DataVisualization/1.9.2": {
+      "sha512": "e1aPoWqPS1GThTK2ZpI4GkIhteorW7smNQ5SP3y5EaODL7W2u21nX0hlHtmkerBWi9gpy6Rw8I53jvo5CF+4rA==",
       "type": "package",
-      "path": "winforms.datavisualization/1.9.1",
+      "path": "winforms.datavisualization/1.9.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3794,7 +3866,19 @@
         "lib/net7.0-windows7.0/WinForms.DataVisualization.dll",
         "lib/net7.0-windows7.0/WinForms.DataVisualization.pdb",
         "lib/net7.0-windows7.0/WinForms.DataVisualization.xml",
-        "winforms.datavisualization.1.9.1.nupkg.sha512",
+        "lib/net8.0-windows7.0/Design/WinForms/Server/WinForms.DataVisualization.Designer.ClientServerProtocol.dll",
+        "lib/net8.0-windows7.0/Design/WinForms/Server/WinForms.DataVisualization.Designer.Server.dll",
+        "lib/net8.0-windows7.0/Design/WinForms/Server/WinForms.DataVisualization.Utilities.dll",
+        "lib/net8.0-windows7.0/Design/WinForms/WinForms.DataVisualization.Designer.Client.dll",
+        "lib/net8.0-windows7.0/Design/WinForms/WinForms.DataVisualization.Designer.ClientServerProtocol.dll",
+        "lib/net8.0-windows7.0/Design/WinForms/WinForms.DataVisualization.Utilities.dll",
+        "lib/net8.0-windows7.0/WinForms.DataVisualization.Utilities.dll",
+        "lib/net8.0-windows7.0/WinForms.DataVisualization.Utilities.pdb",
+        "lib/net8.0-windows7.0/WinForms.DataVisualization.Utilities.xml",
+        "lib/net8.0-windows7.0/WinForms.DataVisualization.dll",
+        "lib/net8.0-windows7.0/WinForms.DataVisualization.pdb",
+        "lib/net8.0-windows7.0/WinForms.DataVisualization.xml",
+        "winforms.datavisualization.1.9.2.nupkg.sha512",
         "winforms.datavisualization.nuspec"
       ]
     },
@@ -3817,24 +3901,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ardhagp\\.nuget\\packages\\": {},
+    "C:\\Users\\titoa\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
+      "projectUniqueName": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
       "projectName": "Connect",
-      "projectPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
-      "packagesPath": "C:\\Users\\ardhagp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\obj\\",
+      "projectPath": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
+      "packagesPath": "C:\\Users\\titoa\\.nuget\\packages\\",
+      "outputPath": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\Connect\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Core\\Vb\\NuGet.Config",
-        "C:\\Users\\ardhagp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Core\\Vb\\NuGet.Config",
+        "C:\\Users\\titoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3842,15 +3926,14 @@
         "net7.0-windows"
       ],
       "sources": {
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "projectReferences": {
-            "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
-              "projectPath": "C:\\Users\\ardhagp\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj"
+            "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
+              "projectPath": "D:\\DATA STORAGE\\Github\\repo\\ardhagp\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj"
             }
           }
         }
@@ -3859,6 +3942,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -3893,7 +3981,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -43,7 +43,7 @@ Partial Class App_Launcher
         Lbl1.Location = New Point(9, -5)
         Lbl1.Name = "Lbl1"
         Lbl1.Size = New Size(368, 128)
-        Lbl1.SLFCustomElipsis = False
+        Lbl1.XOCustomElipsis = False
         Lbl1.TabIndex = 0
         Lbl1.Text = "Ingrid"
         Lbl1.TextAlign = ContentAlignment.TopCenter
@@ -56,7 +56,7 @@ Partial Class App_Launcher
         LblBuild.Location = New Point(205, 112)
         LblBuild.Name = "LblBuild"
         LblBuild.Size = New Size(120, 51)
-        LblBuild.SLFCustomElipsis = False
+        LblBuild.XOCustomElipsis = False
         LblBuild.TabIndex = 1
         LblBuild.Text = "Build"
         LblBuild.TextAlign = ContentAlignment.TopRight
@@ -73,10 +73,10 @@ Partial Class App_Launcher
         BtnLaunch.Location = New Point(138, 381)
         BtnLaunch.Name = "BtnLaunch"
         BtnLaunch.Size = New Size(100, 40)
-        BtnLaunch.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        BtnLaunch.SLFTampilkanFocusBorder = False
-        BtnLaunch.SLFValidasiSemuaInput = False
-        BtnLaunch.SLFValidasiSemuaInputTag = Nothing
+        BtnLaunch.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
+        BtnLaunch.XOTampilkanFocusBorder = False
+        BtnLaunch.XOValidasiSemuaInput = False
+        BtnLaunch.XOValidasiSemuaInputTag = Nothing
         BtnLaunch.TabIndex = 1
         BtnLaunch.Text = "&Launch"
         BtnLaunch.UseVisualStyleBackColor = False
@@ -89,7 +89,7 @@ Partial Class App_Launcher
         Lbl3.Location = New Point(205, 110)
         Lbl3.Name = "Lbl3"
         Lbl3.Size = New Size(160, 2)
-        Lbl3.SLFCustomElipsis = False
+        Lbl3.XOCustomElipsis = False
         Lbl3.TabIndex = 3
         ' 
         ' Lbl4
@@ -100,7 +100,7 @@ Partial Class App_Launcher
         Lbl4.Location = New Point(9, 110)
         Lbl4.Name = "Lbl4"
         Lbl4.Size = New Size(126, 2)
-        Lbl4.SLFCustomElipsis = False
+        Lbl4.XOCustomElipsis = False
         Lbl4.TabIndex = 4
         ' 
         ' CboApplication
@@ -126,7 +126,7 @@ Partial Class App_Launcher
         Lbl5.Location = New Point(33, 305)
         Lbl5.Name = "Lbl5"
         Lbl5.Size = New Size(74, 21)
-        Lbl5.SLFCustomElipsis = False
+        Lbl5.XOCustomElipsis = False
         Lbl5.TabIndex = 6
         Lbl5.Text = "Opening"
         ' 
@@ -138,7 +138,7 @@ Partial Class App_Launcher
         LblCountdown.Location = New Point(206, 305)
         LblCountdown.Name = "LblCountdown"
         LblCountdown.Size = New Size(144, 21)
-        LblCountdown.SLFCustomElipsis = False
+        LblCountdown.XOCustomElipsis = False
         LblCountdown.TabIndex = 7
         LblCountdown.Text = "app in 3 seconds..."
         ' 

@@ -1,10 +1,12 @@
 ﻿Imports System.Drawing
+Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Public Class pctbx
     Inherits System.Windows.Forms.PictureBox
     'Private initimg As New System.Drawing.Image
 
+    <SupportedOSPlatform("windows")>
     Public Sub New()
         InitializeComponent()
         Call ActivateLicenses()
@@ -13,13 +15,13 @@ Public Class pctbx
         MyBase.ErrorImage = My.Resources.FailToLoad_001_24_FFFFFFFF_
         MyBase.SizeMode = PictureBoxSizeMode.Zoom
         'MyBase.Image = My.Resources.pctbxinitial
-        Me.SLFTampilkanBorder = False
-        Me.SLFWarnaBorder = Color.DodgerBlue
+        Me.XOTampilkanBorder = False
+        Me.XOWarnaBorder = Color.DodgerBlue
         MyBase.DoubleBuffered = True
     End Sub
 
     Private _varTampilkanBorder As Boolean
-    Public Property SLFTampilkanBorder As Boolean
+    Public Property XOTampilkanBorder As Boolean
         Get
             Return _varTampilkanBorder
         End Get
@@ -29,7 +31,7 @@ Public Class pctbx
     End Property
 
     Private _varWarnaBorder As Color
-    Public Property SLFWarnaBorder As Color
+    Public Property XOWarnaBorder As Color
         Get
             Return _varWarnaBorder
         End Get
@@ -39,8 +41,8 @@ Public Class pctbx
     End Property
 
     Protected Overrides Sub OnPaint(ByVal pe As System.Windows.Forms.PaintEventArgs)
-        If Me.SLFTampilkanBorder = True Then
-            ControlPaint.DrawBorder(pe.Graphics, pe.ClipRectangle, Me.SLFWarnaBorder, ButtonBorderStyle.Outset)
+        If Me.XOTampilkanBorder = True Then
+            ControlPaint.DrawBorder(pe.Graphics, pe.ClipRectangle, Me.XOWarnaBorder, ButtonBorderStyle.Outset)
         End If
         MyBase.OnPaint(pe)
     End Sub

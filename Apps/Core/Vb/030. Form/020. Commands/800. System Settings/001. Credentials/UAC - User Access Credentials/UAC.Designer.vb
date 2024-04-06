@@ -96,8 +96,8 @@ Partial Class UAC
         DgnUAC.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         DgnUAC.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnUAC.Size = New Size(915, 511)
-        DgnUAC.SLFGroupFirstRows = False
-        DgnUAC.SLFGunakanNomorBaris = True
+        DgnUAC.XOGroupFirstRows = False
+        DgnUAC.XOGunakanNomorBaris = True
         DgnUAC.StandardTab = True
         DgnUAC.TabIndex = 0
         ' 

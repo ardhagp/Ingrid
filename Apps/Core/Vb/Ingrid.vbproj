@@ -514,6 +514,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\CALENDAR_001_512_icon.png" />
+    <Content Include="Resources\app_settings.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\catalog.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -620,6 +623,7 @@
     <EmbeddedResource Remove="030. Form\020. Commands\003. Accounting\Master\ACGR - Account Group\frmAccountGroup_Editor.resx" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\app_settings.db" />
     <None Remove="Resources\catalog.db" />
     <None Remove="Resources\dev_catalog.db" />
     <None Remove="Resources\errlog.db" />

@@ -119,8 +119,8 @@ Partial Class REMS
         TxtFind.Font = New Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point)
         TxtFind.ForeColor = Color.LightGray
         TxtFind.Margin = New Padding(5, 3, 5, 3)
-        TxtFind.SLFIsBlank = False
-        TxtFind.SLFSQLText = ""
+        TxtFind.XOIsBlank = False
+        TxtFind.XOSQLText = ""
         TxtFind.Text = "Type then press Enter"
         ' 
         ' SLFPanel
@@ -168,8 +168,8 @@ Partial Class REMS
         DgnOnProgress.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnOnProgress.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnOnProgress.Size = New Size(899, 411)
-        DgnOnProgress.SLFGroupFirstRows = False
-        DgnOnProgress.SLFGunakanNomorBaris = False
+        DgnOnProgress.XOGroupFirstRows = False
+        DgnOnProgress.XOGunakanNomorBaris = False
         DgnOnProgress.StandardTab = True
         DgnOnProgress.TabIndex = 802
         ' 
@@ -372,8 +372,8 @@ Partial Class REMS
         DgnDone.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         DgnDone.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnDone.Size = New Size(899, 411)
-        DgnDone.SLFGroupFirstRows = False
-        DgnDone.SLFGunakanNomorBaris = False
+        DgnDone.XOGroupFirstRows = False
+        DgnDone.XOGunakanNomorBaris = False
         DgnDone.StandardTab = True
         DgnDone.TabIndex = 803
         ' 
@@ -550,8 +550,8 @@ Partial Class REMS
         DgnVerified.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         DgnVerified.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnVerified.Size = New Size(899, 411)
-        DgnVerified.SLFGroupFirstRows = False
-        DgnVerified.SLFGunakanNomorBaris = False
+        DgnVerified.XOGroupFirstRows = False
+        DgnVerified.XOGunakanNomorBaris = False
         DgnVerified.StandardTab = True
         DgnVerified.TabIndex = 803
         ' 
@@ -712,10 +712,10 @@ Partial Class REMS
         BtnViewAttachment.Margin = New Padding(4, 3, 4, 3)
         BtnViewAttachment.Name = "BtnViewAttachment"
         BtnViewAttachment.Size = New Size(204, 46)
-        BtnViewAttachment.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnViewAttachment.SLFTampilkanFocusBorder = False
-        BtnViewAttachment.SLFValidasiSemuaInput = False
-        BtnViewAttachment.SLFValidasiSemuaInputTag = Nothing
+        BtnViewAttachment.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnViewAttachment.XOTampilkanFocusBorder = False
+        BtnViewAttachment.XOValidasiSemuaInput = False
+        BtnViewAttachment.XOValidasiSemuaInputTag = Nothing
         BtnViewAttachment.TabIndex = 0
         BtnViewAttachment.Text = "View Attachment"
         BtnViewAttachment.UseVisualStyleBackColor = False

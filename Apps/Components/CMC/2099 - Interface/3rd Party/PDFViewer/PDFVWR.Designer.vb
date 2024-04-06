@@ -64,10 +64,10 @@ Partial Class PDFVWR
         Me.BtnClose.Location = New System.Drawing.Point(545, 7)
         Me.BtnClose.Name = "BtnClose"
         Me.BtnClose.Size = New System.Drawing.Size(100, 40)
-        Me.BtnClose.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        Me.BtnClose.SLFTampilkanFocusBorder = False
-        Me.BtnClose.SLFValidasiSemuaInput = False
-        Me.BtnClose.SLFValidasiSemuaInputTag = Nothing
+        Me.BtnClose.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        Me.BtnClose.XOTampilkanFocusBorder = False
+        Me.BtnClose.XOValidasiSemuaInput = False
+        Me.BtnClose.XOValidasiSemuaInputTag = Nothing
         Me.BtnClose.TabIndex = 1
         Me.BtnClose.Text = "&Close"
         Me.BtnClose.UseVisualStyleBackColor = False

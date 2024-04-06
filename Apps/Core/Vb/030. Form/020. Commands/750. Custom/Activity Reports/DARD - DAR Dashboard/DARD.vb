@@ -2,7 +2,7 @@
 Imports System.Runtime.Versioning
 
 Public Class DARD
-    Private _SQL As New LibSQL.Commands.DARD.View
+    Private _SQL As New Commands.DARD.View
 
     <SupportedOSPlatform("windows")>
     Private Sub DARD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -14,7 +14,7 @@ Public Class DARD
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub GETChart()
-        _SQL.GETDailyStatistic(chrtDaily)
+        Commands.DARD.View.GETDailyStatistic(chrtDaily)
         chrtDaily.Series("Series1").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
         chrtDaily.Series("Series1").IsValueShownAsLabel = True
         chrtDaily.BorderlineWidth = 2
@@ -23,13 +23,13 @@ Public Class DARD
         chrtDaily.Series("Series1").BorderColor = Color.Red
         chrtDaily.Series("Series1").BorderWidth = 5
 
-        _SQL.GETYearlyStatistic(chrtYearly)
+        Commands.DARD.View.GETYearlyStatistic(chrtYearly)
         chrtYearly.Series("Series1").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column
         chrtYearly.Series("Series1").IsValueShownAsLabel = True
         chrtYearly.BorderColor = Color.MidnightBlue
         chrtYearly.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.All
 
-        _SQL.GETMonthlyStatistic(chrtMonthly)
+        Commands.DARD.View.GETMonthlyStatistic(chrtMonthly)
         chrtMonthly.Series("Series1").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column
         chrtMonthly.Series("Series1").IsValueShownAsLabel = True
         chrtMonthly.BorderColor = Color.MidnightBlue

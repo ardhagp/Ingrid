@@ -3,63 +3,63 @@ Imports System.Data
 Imports System.Runtime.Versioning
 
 Namespace Database.Engine
-    Public Class SQLite_v3
-        Private v_CS(2) As String
-        Private v_FilePath(2) As String
+    Public Class SQLiteV3
+        Private ReadOnly v_CS(2) As String
+        Private ReadOnly v_FilePath(2) As String
 
-        Private v_CONN(2) As SQLite.SQLiteConnection
-        Private v_CMD(2) As SQLite.SQLiteCommand
-        Private v_DR(2) As SQLite.SQLiteDataReader
+        Private ReadOnly V_CONN(2) As SQLite.SQLiteConnection
+        Private ReadOnly V_CMD(2) As SQLite.SQLiteCommand
+        Private ReadOnly V_DR(2) As SQLite.SQLiteDataReader
 
-        Private v_SQLite As New Connect.SQLiteConnection
+        Private ReadOnly V_SQLite As New Connect.SQLiteConnection
 
         <SupportedOSPlatform("windows")>
-        Public Function CheckDBCatalog() As Boolean
+        Public Shared Function CheckDBCatalog() As Boolean
             Try
-                Dim v_DBPath As String = Nothing
-                Dim v_DBExists(3) As Boolean
+                Dim V_DBPath As String = Nothing
+                Dim V_DBExists(3) As Boolean
 
-                Dim v_Location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
+                Dim V_Location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
 
-                System.IO.Directory.CreateDirectory(v_Location & "\Resources")
+                System.IO.Directory.CreateDirectory(V_Location & "\Resources")
 
-                v_DBPath = v_Location & "\Resources\catalog.db"
-                If _CFILEInfo.IsExists(v_DBPath) Then
-                    v_DBExists(1) = True
+                V_DBPath = V_Location & "\Resources\catalog.db"
+                If _CFILEInfo.IsExists(V_DBPath) Then
+                    V_DBExists(1) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\catalog.db", v_Location & "\Resources\catalog.db", True)
-                    If _CFILEInfo.IsExists(v_DBPath) Then
-                        v_DBExists(1) = True
+                    System.IO.File.Copy(Application.StartupPath & "\Resources\catalog.db", V_Location & "\Resources\catalog.db", True)
+                    If _CFILEInfo.IsExists(V_DBPath) Then
+                        V_DBExists(1) = True
                     Else
-                        v_DBExists(1) = False
+                        V_DBExists(1) = False
                     End If
                 End If
 
-                v_DBPath = v_Location & "\Resources\dev_catalog.db"
-                If _CFILEInfo.IsExists(v_DBPath) Then
-                    v_DBExists(2) = True
+                V_DBPath = V_Location & "\Resources\dev_catalog.db"
+                If _CFILEInfo.IsExists(V_DBPath) Then
+                    V_DBExists(2) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\dev_catalog.db", v_Location & "\Resources\dev_catalog.db", True)
-                    If _CFILEInfo.IsExists(v_DBPath) Then
-                        v_DBExists(2) = True
+                    System.IO.File.Copy(Application.StartupPath & "\Resources\dev_catalog.db", V_Location & "\Resources\dev_catalog.db", True)
+                    If _CFILEInfo.IsExists(V_DBPath) Then
+                        V_DBExists(2) = True
                     Else
-                        v_DBExists(2) = False
+                        V_DBExists(2) = False
                     End If
                 End If
 
-                v_DBPath = v_Location & "\Resources\errlog.db"
-                If _CFILEInfo.IsExists(v_DBPath) Then
-                    v_DBExists(3) = True
+                V_DBPath = V_Location & "\Resources\errlog.db"
+                If _CFILEInfo.IsExists(V_DBPath) Then
+                    V_DBExists(3) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\errlog.db", v_Location & "\Resources\errlog.db", True)
-                    If _CFILEInfo.IsExists(v_DBPath) Then
-                        v_DBExists(3) = True
+                    System.IO.File.Copy(Application.StartupPath & "\Resources\errlog.db", V_Location & "\Resources\errlog.db", True)
+                    If _CFILEInfo.IsExists(V_DBPath) Then
+                        V_DBExists(3) = True
                     Else
-                        v_DBExists(3) = False
+                        V_DBExists(3) = False
                     End If
                 End If
 
-                If ((v_DBExists(1)) AndAlso (v_DBExists(3))) OrElse ((v_DBExists(2)) AndAlso (v_DBExists(3))) Then
+                If ((V_DBExists(1)) AndAlso (V_DBExists(3))) OrElse ((V_DBExists(2)) AndAlso (V_DBExists(3))) Then
                     Return True
                 Else
                     Return False
@@ -74,7 +74,7 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub Open(Optional ByVal IsProductionMode As Boolean = False)
             Try
-                Dim v_Location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
+                Dim V_Location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
 
                 If Not (CheckDBCatalog()) Then
                     Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, "File configuration Not found", 0, "", GETAPPVERSION, False, True, False)
@@ -83,9 +83,9 @@ Namespace Database.Engine
                 End If
 
                 If (IsProductionMode) Then
-                    v_FilePath(0) = v_Location & "\Resources\catalog.db"
+                    v_FilePath(0) = V_Location & "\Resources\catalog.db"
                 Else
-                    v_FilePath(0) = v_Location & "\Resources\dev_catalog.db"
+                    v_FilePath(0) = V_Location & "\Resources\dev_catalog.db"
                 End If
 
                 Dim V_FileInfo As New OperatingSystem.File.Info
@@ -104,7 +104,7 @@ Namespace Database.Engine
                     '    GoTo FileNotFound
                 End If
 
-                v_FilePath(1) = v_Location & "\Resources\errlog.db"
+                v_FilePath(1) = V_Location & "\Resources\errlog.db"
 
                 If V_FileInfo.IsExists(v_FilePath(1)) Then
                     'For SQLite Only
@@ -123,6 +123,16 @@ Namespace Database.Engine
                 'Application.Exit()
             Catch ex As Exception
                 Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATASHOW()
+            End Try
+        End Sub
+
+        <SupportedOSPlatform("windows")>
+        Public Shared Sub OpenAppSettings()
+            Try
+
+            Catch ex As Exception
+                Call PUSHERRORDATA("[OpenAppSettings] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
             End Try
         End Sub

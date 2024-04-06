@@ -5,11 +5,11 @@ Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Namespace Application
     Public Class Access
-        Dim _SQL As New LibSQL.Application.Access
+        ReadOnly _SQL As New LibSQL.Application.Access
 
         <SupportedOSPlatform("windows")>
-        Public Function User(ByVal TCODE As String, ByVal UID As String, ByVal TypeOfAccess As LibSQL.Application.Access.TypeOfAccess, Optional ByVal Status As stt = Nothing) As Boolean
-            Dim _AccessValue As Integer = 0
+        Public Function User(ByVal TCODE As String, ByVal UID As String, ByVal TypeOfAccess As LibSQL.Application.Access.TypeOfAccess, Optional Status As stt = Nothing) As Boolean
+            Dim _AccessValue As Integer
 
             Try
                 _AccessValue = _SQL.User(TCODE, UID, TypeOfAccess)
@@ -30,13 +30,14 @@ End Namespace
 
 Namespace Application
     Public Class Modules
-        Dim _SQL As New LibSQL.Application.Modules
+        ReadOnly _SQL As New LibSQL.Application.Modules
 
-        Public Function IsModuleReady(ByVal TCODE As String) As Boolean
-            Dim _IsModuleReady As Integer = 0
+        <SupportedOSPlatform("windows")>
+        Public Shared Function IsModuleReady(ByVal TCODE As String) As Boolean
+            Dim _IsModuleReady As Integer
 
             Try
-                _IsModuleReady = _SQL.Exist(TCODE)
+                _IsModuleReady = LibSQL.Application.Modules.Exist(TCODE)
 
                 Return _IsModuleReady
             Catch ex As Exception
@@ -44,12 +45,13 @@ Namespace Application
             End Try
         End Function
 
-        Public Function IsModuleLocked(ByVal TCODE As String) As Boolean
-            Dim _IsModuleLocked As Boolean = False
+        <SupportedOSPlatform("windows")>
+        Public Shared Function IsModuleLocked(ByVal TCODE As String) As Boolean
+            Dim _IsModuleLocked As Boolean
 
             Try
 
-                _IsModuleLocked = _SQL.Locked(TCODE)
+                _IsModuleLocked = LibSQL.Application.Modules.Locked(TCODE)
 
                 Return _IsModuleLocked
             Catch ex As Exception
@@ -105,7 +107,7 @@ Namespace Application
             If ScrollDirection = Direction.Left Then
                 Dim MoveCharacter As String = Mid$(_CurrentText, 1, 1)
                 _CurrentText = Replace(_CurrentText, MoveCharacter, "", 1, 1)
-                _CurrentText = _CurrentText & MoveCharacter
+                _CurrentText &= MoveCharacter
                 _MarqueeText = Mid$(_CurrentText, 1, _ScrollLength)
             ElseIf ScrollDirection = Direction.Right Then
                 Dim MoveCharacter As String = Mid$(_CurrentText, Len(_CurrentText), 1)

@@ -20,6 +20,9 @@ Partial Class frmFistGuide
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Btn_Process = New btn(components)
         Lbl_Step = New lbl(components)
         Gbx_Company = New gbx(components)
@@ -43,6 +46,7 @@ Partial Class frmFistGuide
         Txt_Username = New txt(components)
         object_da28eea8_631c_4534_a532_605841b1d2bd = New lbl(components)
         Gbx_Modules = New gbx(components)
+        Dgn1 = New dgn(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -50,6 +54,8 @@ Partial Class frmFistGuide
         CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
         Gbx_Company.SuspendLayout()
         Gbx_Login.SuspendLayout()
+        Gbx_Modules.SuspendLayout()
+        CType(Dgn1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PnlBottomButton
@@ -67,16 +73,16 @@ Partial Class frmFistGuide
         ' 
         ' SLFPanel
         ' 
-        SLFPanel.Controls.Add(Gbx_Login)
-        SLFPanel.Controls.Add(Gbx_Company)
         SLFPanel.Controls.Add(Lbl_Step)
         SLFPanel.Controls.Add(Gbx_Modules)
+        SLFPanel.Controls.Add(Gbx_Login)
+        SLFPanel.Controls.Add(Gbx_Company)
         SLFPanel.Size = New Size(479, 455)
+        SLFPanel.Controls.SetChildIndex(Gbx_Company, 0)
+        SLFPanel.Controls.SetChildIndex(Gbx_Login, 0)
         SLFPanel.Controls.SetChildIndex(Gbx_Modules, 0)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(Lbl_Step, 0)
-        SLFPanel.Controls.SetChildIndex(Gbx_Company, 0)
-        SLFPanel.Controls.SetChildIndex(Gbx_Login, 0)
         ' 
         ' Btn_Process
         ' 
@@ -90,24 +96,24 @@ Partial Class frmFistGuide
         Btn_Process.Location = New Point(367, 11)
         Btn_Process.Name = "Btn_Process"
         Btn_Process.Size = New Size(100, 40)
-        Btn_Process.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        Btn_Process.SLFTampilkanFocusBorder = False
-        Btn_Process.SLFValidasiSemuaInput = False
-        Btn_Process.SLFValidasiSemuaInputTag = Nothing
         Btn_Process.TabIndex = 1
         Btn_Process.Text = "&Next"
         Btn_Process.UseVisualStyleBackColor = False
+        Btn_Process.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
+        Btn_Process.XOTampilkanFocusBorder = False
+        Btn_Process.XOValidasiSemuaInput = False
+        Btn_Process.XOValidasiSemuaInputTag = Nothing
         ' 
         ' Lbl_Step
         ' 
         Lbl_Step.AutoSize = True
-        Lbl_Step.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Lbl_Step.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Lbl_Step.Location = New Point(18, 18)
         Lbl_Step.Name = "Lbl_Step"
         Lbl_Step.Size = New Size(65, 21)
-        Lbl_Step.SLFCustomElipsis = False
         Lbl_Step.TabIndex = 996
         Lbl_Step.Text = "Step 1 :"
+        Lbl_Step.XOCustomElipsis = False
         ' 
         ' Gbx_Company
         ' 
@@ -121,7 +127,7 @@ Partial Class frmFistGuide
         Gbx_Company.Controls.Add(Txt_Position)
         Gbx_Company.Controls.Add(Txt_Department)
         Gbx_Company.Controls.Add(Txt_Company)
-        Gbx_Company.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Gbx_Company.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Gbx_Company.Location = New Point(12, 42)
         Gbx_Company.Name = "Gbx_Company"
         Gbx_Company.Size = New Size(455, 349)
@@ -144,32 +150,32 @@ Partial Class frmFistGuide
         ' 
         ' Txt_EmployeeID
         ' 
-        Txt_EmployeeID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_EmployeeID.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_EmployeeID.Location = New Point(189, 184)
         Txt_EmployeeID.MaxLength = 255
         Txt_EmployeeID.Name = "Txt_EmployeeID"
         Txt_EmployeeID.Size = New Size(260, 29)
-        Txt_EmployeeID.SLFAutoTrim = True
-        Txt_EmployeeID.SLFHarusDiisi = True
-        Txt_EmployeeID.SLFHarusDiisiWarnaLatar = Color.LightPink
-        Txt_EmployeeID.SLFHarusDiisiWarnaLatarDefault = Color.White
-        Txt_EmployeeID.SLFHightlightSaatFokus = True
-        Txt_EmployeeID.SLFHightlightSaatFokusWarna = Color.LightYellow
-        Txt_EmployeeID.SLFIsBlank = True
-        Txt_EmployeeID.SLFIsSearchBox = False
-        Txt_EmployeeID.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_EmployeeID.SLFPilihSemuaSaatFokus = False
-        Txt_EmployeeID.SLFPwdLengthMin = 8
-        Txt_EmployeeID.SLFPwdStrengthCalculate = False
-        Txt_EmployeeID.SLFPwdStrengthScore = 0
-        Txt_EmployeeID.SLFPwdStrengthText = Nothing
-        Txt_EmployeeID.SLFRestriction = ControlCodeBase.enuRestriction.None
-        Txt_EmployeeID.SLFSearchBoxText = "Type then press Enter"
-        Txt_EmployeeID.SLFSQLText = ""
-        Txt_EmployeeID.SLFTanpaSpasi = False
-        Txt_EmployeeID.SLFValidasiField = Nothing
         Txt_EmployeeID.TabIndex = 5
         Txt_EmployeeID.Tag = "txt"
+        Txt_EmployeeID.XOAutoTrim = True
+        Txt_EmployeeID.XOHarusDiisi = True
+        Txt_EmployeeID.XOHarusDiisiWarnaLatar = Color.LightPink
+        Txt_EmployeeID.XOHarusDiisiWarnaLatarDefault = Color.White
+        Txt_EmployeeID.XOHightlightSaatFokus = True
+        Txt_EmployeeID.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt_EmployeeID.XOIsBlank = True
+        Txt_EmployeeID.XOIsSearchBox = False
+        Txt_EmployeeID.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        Txt_EmployeeID.XOPilihSemuaSaatFokus = False
+        Txt_EmployeeID.XOPwdLengthMin = 8
+        Txt_EmployeeID.XOPwdStrengthCalculate = False
+        Txt_EmployeeID.XOPwdStrengthScore = 0
+        Txt_EmployeeID.XOPwdStrengthText = Nothing
+        Txt_EmployeeID.XORestriction = ControlCodeBase.enuRestriction.None
+        Txt_EmployeeID.XOSearchBoxText = "Type then press Enter"
+        Txt_EmployeeID.XOSQLText = ""
+        Txt_EmployeeID.XOTanpaSpasi = False
+        Txt_EmployeeID.XOValidasiField = Nothing
         ' 
         ' ULbl4
         ' 
@@ -225,119 +231,119 @@ Partial Class frmFistGuide
         ' 
         ' Txt_EmployeeName
         ' 
-        Txt_EmployeeName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_EmployeeName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_EmployeeName.Location = New Point(189, 145)
         Txt_EmployeeName.MaxLength = 255
         Txt_EmployeeName.Name = "Txt_EmployeeName"
         Txt_EmployeeName.Size = New Size(260, 29)
-        Txt_EmployeeName.SLFAutoTrim = True
-        Txt_EmployeeName.SLFHarusDiisi = True
-        Txt_EmployeeName.SLFHarusDiisiWarnaLatar = Color.LightPink
-        Txt_EmployeeName.SLFHarusDiisiWarnaLatarDefault = Color.White
-        Txt_EmployeeName.SLFHightlightSaatFokus = True
-        Txt_EmployeeName.SLFHightlightSaatFokusWarna = Color.LightYellow
-        Txt_EmployeeName.SLFIsBlank = True
-        Txt_EmployeeName.SLFIsSearchBox = False
-        Txt_EmployeeName.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_EmployeeName.SLFPilihSemuaSaatFokus = False
-        Txt_EmployeeName.SLFPwdLengthMin = 8
-        Txt_EmployeeName.SLFPwdStrengthCalculate = False
-        Txt_EmployeeName.SLFPwdStrengthScore = 0
-        Txt_EmployeeName.SLFPwdStrengthText = Nothing
-        Txt_EmployeeName.SLFRestriction = ControlCodeBase.enuRestriction.None
-        Txt_EmployeeName.SLFSearchBoxText = "Type then press Enter"
-        Txt_EmployeeName.SLFSQLText = ""
-        Txt_EmployeeName.SLFTanpaSpasi = False
-        Txt_EmployeeName.SLFValidasiField = Nothing
         Txt_EmployeeName.TabIndex = 4
         Txt_EmployeeName.Tag = "txt"
+        Txt_EmployeeName.XOAutoTrim = True
+        Txt_EmployeeName.XOHarusDiisi = True
+        Txt_EmployeeName.XOHarusDiisiWarnaLatar = Color.LightPink
+        Txt_EmployeeName.XOHarusDiisiWarnaLatarDefault = Color.White
+        Txt_EmployeeName.XOHightlightSaatFokus = True
+        Txt_EmployeeName.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt_EmployeeName.XOIsBlank = True
+        Txt_EmployeeName.XOIsSearchBox = False
+        Txt_EmployeeName.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        Txt_EmployeeName.XOPilihSemuaSaatFokus = False
+        Txt_EmployeeName.XOPwdLengthMin = 8
+        Txt_EmployeeName.XOPwdStrengthCalculate = False
+        Txt_EmployeeName.XOPwdStrengthScore = 0
+        Txt_EmployeeName.XOPwdStrengthText = Nothing
+        Txt_EmployeeName.XORestriction = ControlCodeBase.enuRestriction.None
+        Txt_EmployeeName.XOSearchBoxText = "Type then press Enter"
+        Txt_EmployeeName.XOSQLText = ""
+        Txt_EmployeeName.XOTanpaSpasi = False
+        Txt_EmployeeName.XOValidasiField = Nothing
         ' 
         ' Txt_Position
         ' 
-        Txt_Position.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Position.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_Position.Location = New Point(189, 106)
         Txt_Position.MaxLength = 255
         Txt_Position.Name = "Txt_Position"
         Txt_Position.Size = New Size(260, 29)
-        Txt_Position.SLFAutoTrim = True
-        Txt_Position.SLFHarusDiisi = True
-        Txt_Position.SLFHarusDiisiWarnaLatar = Color.LightPink
-        Txt_Position.SLFHarusDiisiWarnaLatarDefault = Color.White
-        Txt_Position.SLFHightlightSaatFokus = True
-        Txt_Position.SLFHightlightSaatFokusWarna = Color.LightYellow
-        Txt_Position.SLFIsBlank = True
-        Txt_Position.SLFIsSearchBox = False
-        Txt_Position.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_Position.SLFPilihSemuaSaatFokus = False
-        Txt_Position.SLFPwdLengthMin = 8
-        Txt_Position.SLFPwdStrengthCalculate = False
-        Txt_Position.SLFPwdStrengthScore = 0
-        Txt_Position.SLFPwdStrengthText = Nothing
-        Txt_Position.SLFRestriction = ControlCodeBase.enuRestriction.None
-        Txt_Position.SLFSearchBoxText = "Type then press Enter"
-        Txt_Position.SLFSQLText = ""
-        Txt_Position.SLFTanpaSpasi = False
-        Txt_Position.SLFValidasiField = Nothing
         Txt_Position.TabIndex = 3
         Txt_Position.Tag = "txt"
+        Txt_Position.XOAutoTrim = True
+        Txt_Position.XOHarusDiisi = True
+        Txt_Position.XOHarusDiisiWarnaLatar = Color.LightPink
+        Txt_Position.XOHarusDiisiWarnaLatarDefault = Color.White
+        Txt_Position.XOHightlightSaatFokus = True
+        Txt_Position.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt_Position.XOIsBlank = True
+        Txt_Position.XOIsSearchBox = False
+        Txt_Position.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        Txt_Position.XOPilihSemuaSaatFokus = False
+        Txt_Position.XOPwdLengthMin = 8
+        Txt_Position.XOPwdStrengthCalculate = False
+        Txt_Position.XOPwdStrengthScore = 0
+        Txt_Position.XOPwdStrengthText = Nothing
+        Txt_Position.XORestriction = ControlCodeBase.enuRestriction.None
+        Txt_Position.XOSearchBoxText = "Type then press Enter"
+        Txt_Position.XOSQLText = ""
+        Txt_Position.XOTanpaSpasi = False
+        Txt_Position.XOValidasiField = Nothing
         ' 
         ' Txt_Department
         ' 
-        Txt_Department.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Department.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_Department.Location = New Point(189, 67)
         Txt_Department.MaxLength = 255
         Txt_Department.Name = "Txt_Department"
         Txt_Department.Size = New Size(260, 29)
-        Txt_Department.SLFAutoTrim = True
-        Txt_Department.SLFHarusDiisi = True
-        Txt_Department.SLFHarusDiisiWarnaLatar = Color.LightPink
-        Txt_Department.SLFHarusDiisiWarnaLatarDefault = Color.White
-        Txt_Department.SLFHightlightSaatFokus = True
-        Txt_Department.SLFHightlightSaatFokusWarna = Color.LightYellow
-        Txt_Department.SLFIsBlank = True
-        Txt_Department.SLFIsSearchBox = False
-        Txt_Department.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_Department.SLFPilihSemuaSaatFokus = False
-        Txt_Department.SLFPwdLengthMin = 8
-        Txt_Department.SLFPwdStrengthCalculate = False
-        Txt_Department.SLFPwdStrengthScore = 0
-        Txt_Department.SLFPwdStrengthText = Nothing
-        Txt_Department.SLFRestriction = ControlCodeBase.enuRestriction.None
-        Txt_Department.SLFSearchBoxText = "Type then press Enter"
-        Txt_Department.SLFSQLText = ""
-        Txt_Department.SLFTanpaSpasi = False
-        Txt_Department.SLFValidasiField = Nothing
         Txt_Department.TabIndex = 2
         Txt_Department.Tag = "txt"
+        Txt_Department.XOAutoTrim = True
+        Txt_Department.XOHarusDiisi = True
+        Txt_Department.XOHarusDiisiWarnaLatar = Color.LightPink
+        Txt_Department.XOHarusDiisiWarnaLatarDefault = Color.White
+        Txt_Department.XOHightlightSaatFokus = True
+        Txt_Department.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt_Department.XOIsBlank = True
+        Txt_Department.XOIsSearchBox = False
+        Txt_Department.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        Txt_Department.XOPilihSemuaSaatFokus = False
+        Txt_Department.XOPwdLengthMin = 8
+        Txt_Department.XOPwdStrengthCalculate = False
+        Txt_Department.XOPwdStrengthScore = 0
+        Txt_Department.XOPwdStrengthText = Nothing
+        Txt_Department.XORestriction = ControlCodeBase.enuRestriction.None
+        Txt_Department.XOSearchBoxText = "Type then press Enter"
+        Txt_Department.XOSQLText = ""
+        Txt_Department.XOTanpaSpasi = False
+        Txt_Department.XOValidasiField = Nothing
         ' 
         ' Txt_Company
         ' 
-        Txt_Company.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Company.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_Company.Location = New Point(189, 28)
         Txt_Company.MaxLength = 255
         Txt_Company.Name = "Txt_Company"
         Txt_Company.Size = New Size(260, 29)
-        Txt_Company.SLFAutoTrim = True
-        Txt_Company.SLFHarusDiisi = True
-        Txt_Company.SLFHarusDiisiWarnaLatar = Color.LightPink
-        Txt_Company.SLFHarusDiisiWarnaLatarDefault = Color.White
-        Txt_Company.SLFHightlightSaatFokus = True
-        Txt_Company.SLFHightlightSaatFokusWarna = Color.LightYellow
-        Txt_Company.SLFIsBlank = True
-        Txt_Company.SLFIsSearchBox = False
-        Txt_Company.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_Company.SLFPilihSemuaSaatFokus = False
-        Txt_Company.SLFPwdLengthMin = 8
-        Txt_Company.SLFPwdStrengthCalculate = False
-        Txt_Company.SLFPwdStrengthScore = 0
-        Txt_Company.SLFPwdStrengthText = Nothing
-        Txt_Company.SLFRestriction = ControlCodeBase.enuRestriction.None
-        Txt_Company.SLFSearchBoxText = "Type then press Enter"
-        Txt_Company.SLFSQLText = ""
-        Txt_Company.SLFTanpaSpasi = False
-        Txt_Company.SLFValidasiField = Nothing
         Txt_Company.TabIndex = 1
         Txt_Company.Tag = "txt"
+        Txt_Company.XOAutoTrim = True
+        Txt_Company.XOHarusDiisi = True
+        Txt_Company.XOHarusDiisiWarnaLatar = Color.LightPink
+        Txt_Company.XOHarusDiisiWarnaLatarDefault = Color.White
+        Txt_Company.XOHightlightSaatFokus = True
+        Txt_Company.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt_Company.XOIsBlank = True
+        Txt_Company.XOIsSearchBox = False
+        Txt_Company.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        Txt_Company.XOPilihSemuaSaatFokus = False
+        Txt_Company.XOPwdLengthMin = 8
+        Txt_Company.XOPwdStrengthCalculate = False
+        Txt_Company.XOPwdStrengthScore = 0
+        Txt_Company.XOPwdStrengthText = Nothing
+        Txt_Company.XORestriction = ControlCodeBase.enuRestriction.None
+        Txt_Company.XOSearchBoxText = "Type then press Enter"
+        Txt_Company.XOSQLText = ""
+        Txt_Company.XOTanpaSpasi = False
+        Txt_Company.XOValidasiField = Nothing
         ' 
         ' Btn_Close
         ' 
@@ -346,18 +352,18 @@ Partial Class frmFistGuide
         Btn_Close.FlatAppearance.BorderSize = 2
         Btn_Close.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         Btn_Close.FlatStyle = FlatStyle.Flat
-        Btn_Close.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Btn_Close.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Btn_Close.ForeColor = Color.White
         Btn_Close.Location = New Point(261, 11)
         Btn_Close.Name = "Btn_Close"
         Btn_Close.Size = New Size(100, 40)
-        Btn_Close.SLFJenisTombol = ControlCodeBase.enuJenisTombol.No
-        Btn_Close.SLFTampilkanFocusBorder = False
-        Btn_Close.SLFValidasiSemuaInput = False
-        Btn_Close.SLFValidasiSemuaInputTag = Nothing
         Btn_Close.TabIndex = 2
         Btn_Close.Text = "&Close"
         Btn_Close.UseVisualStyleBackColor = False
+        Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
+        Btn_Close.XOTampilkanFocusBorder = False
+        Btn_Close.XOValidasiSemuaInput = False
+        Btn_Close.XOValidasiSemuaInputTag = Nothing
         ' 
         ' Gbx_Login
         ' 
@@ -367,7 +373,7 @@ Partial Class frmFistGuide
         Gbx_Login.Controls.Add(ULbl6)
         Gbx_Login.Controls.Add(Txt_Password)
         Gbx_Login.Controls.Add(Txt_Username)
-        Gbx_Login.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Gbx_Login.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Gbx_Login.Location = New Point(12, 42)
         Gbx_Login.Name = "Gbx_Login"
         Gbx_Login.Size = New Size(455, 349)
@@ -382,18 +388,18 @@ Partial Class frmFistGuide
         Btn_Check.FlatAppearance.BorderSize = 2
         Btn_Check.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
         Btn_Check.FlatStyle = FlatStyle.Flat
-        Btn_Check.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Btn_Check.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Btn_Check.ForeColor = Color.White
         Btn_Check.Location = New Point(349, 159)
         Btn_Check.Name = "Btn_Check"
         Btn_Check.Size = New Size(100, 40)
-        Btn_Check.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        Btn_Check.SLFTampilkanFocusBorder = False
-        Btn_Check.SLFValidasiSemuaInput = False
-        Btn_Check.SLFValidasiSemuaInputTag = Nothing
         Btn_Check.TabIndex = 11
         Btn_Check.Text = "&Check"
         Btn_Check.UseVisualStyleBackColor = False
+        Btn_Check.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
+        Btn_Check.XOTampilkanFocusBorder = False
+        Btn_Check.XOValidasiSemuaInput = False
+        Btn_Check.XOValidasiSemuaInputTag = Nothing
         ' 
         ' UPwdStrength1
         ' 
@@ -433,81 +439,82 @@ Partial Class frmFistGuide
         ' 
         ' Txt_Password
         ' 
-        Txt_Password.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Password.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_Password.Location = New Point(189, 67)
         Txt_Password.MaxLength = 255
         Txt_Password.Name = "Txt_Password"
         Txt_Password.Size = New Size(260, 29)
-        Txt_Password.SLFAutoTrim = False
-        Txt_Password.SLFHarusDiisi = True
-        Txt_Password.SLFHarusDiisiWarnaLatar = Color.LightPink
-        Txt_Password.SLFHarusDiisiWarnaLatarDefault = Color.White
-        Txt_Password.SLFHightlightSaatFokus = True
-        Txt_Password.SLFHightlightSaatFokusWarna = Color.LightYellow
-        Txt_Password.SLFIsBlank = True
-        Txt_Password.SLFIsSearchBox = False
-        Txt_Password.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_Password.SLFPilihSemuaSaatFokus = True
-        Txt_Password.SLFPwdLengthMin = 8
-        Txt_Password.SLFPwdStrengthCalculate = True
-        Txt_Password.SLFPwdStrengthScore = 0
-        Txt_Password.SLFPwdStrengthText = Nothing
-        Txt_Password.SLFRestriction = ControlCodeBase.enuRestriction.None
-        Txt_Password.SLFSearchBoxText = "Type then press Enter"
-        Txt_Password.SLFSQLText = ""
-        Txt_Password.SLFTanpaSpasi = False
-        Txt_Password.SLFValidasiField = Nothing
         Txt_Password.TabIndex = 7
         Txt_Password.Tag = "txt"
         Txt_Password.UseSystemPasswordChar = True
+        Txt_Password.XOAutoTrim = False
+        Txt_Password.XOHarusDiisi = True
+        Txt_Password.XOHarusDiisiWarnaLatar = Color.LightPink
+        Txt_Password.XOHarusDiisiWarnaLatarDefault = Color.White
+        Txt_Password.XOHightlightSaatFokus = True
+        Txt_Password.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt_Password.XOIsBlank = True
+        Txt_Password.XOIsSearchBox = False
+        Txt_Password.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        Txt_Password.XOPilihSemuaSaatFokus = True
+        Txt_Password.XOPwdLengthMin = 8
+        Txt_Password.XOPwdStrengthCalculate = True
+        Txt_Password.XOPwdStrengthScore = 0
+        Txt_Password.XOPwdStrengthText = Nothing
+        Txt_Password.XORestriction = ControlCodeBase.enuRestriction.None
+        Txt_Password.XOSearchBoxText = "Type then press Enter"
+        Txt_Password.XOSQLText = ""
+        Txt_Password.XOTanpaSpasi = False
+        Txt_Password.XOValidasiField = Nothing
         ' 
         ' Txt_Username
         ' 
-        Txt_Username.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Username.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_Username.Location = New Point(189, 28)
         Txt_Username.MaxLength = 255
         Txt_Username.Name = "Txt_Username"
         Txt_Username.Size = New Size(260, 29)
-        Txt_Username.SLFAutoTrim = True
-        Txt_Username.SLFHarusDiisi = True
-        Txt_Username.SLFHarusDiisiWarnaLatar = Color.LightPink
-        Txt_Username.SLFHarusDiisiWarnaLatarDefault = Color.White
-        Txt_Username.SLFHightlightSaatFokus = True
-        Txt_Username.SLFHightlightSaatFokusWarna = Color.LightYellow
-        Txt_Username.SLFIsBlank = True
-        Txt_Username.SLFIsSearchBox = False
-        Txt_Username.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_Username.SLFPilihSemuaSaatFokus = False
-        Txt_Username.SLFPwdLengthMin = 8
-        Txt_Username.SLFPwdStrengthCalculate = False
-        Txt_Username.SLFPwdStrengthScore = 0
-        Txt_Username.SLFPwdStrengthText = Nothing
-        Txt_Username.SLFRestriction = ControlCodeBase.enuRestriction.None
-        Txt_Username.SLFSearchBoxText = "Type then press Enter"
-        Txt_Username.SLFSQLText = ""
-        Txt_Username.SLFTanpaSpasi = False
-        Txt_Username.SLFValidasiField = Nothing
         Txt_Username.TabIndex = 6
         Txt_Username.Tag = "txt"
+        Txt_Username.XOAutoTrim = True
+        Txt_Username.XOHarusDiisi = True
+        Txt_Username.XOHarusDiisiWarnaLatar = Color.LightPink
+        Txt_Username.XOHarusDiisiWarnaLatarDefault = Color.White
+        Txt_Username.XOHightlightSaatFokus = True
+        Txt_Username.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt_Username.XOIsBlank = True
+        Txt_Username.XOIsSearchBox = False
+        Txt_Username.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        Txt_Username.XOPilihSemuaSaatFokus = False
+        Txt_Username.XOPwdLengthMin = 8
+        Txt_Username.XOPwdStrengthCalculate = False
+        Txt_Username.XOPwdStrengthScore = 0
+        Txt_Username.XOPwdStrengthText = Nothing
+        Txt_Username.XORestriction = ControlCodeBase.enuRestriction.None
+        Txt_Username.XOSearchBoxText = "Type then press Enter"
+        Txt_Username.XOSQLText = ""
+        Txt_Username.XOTanpaSpasi = False
+        Txt_Username.XOValidasiField = Nothing
         ' 
         ' object_da28eea8_631c_4534_a532_605841b1d2bd
         ' 
         object_da28eea8_631c_4534_a532_605841b1d2bd.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         object_da28eea8_631c_4534_a532_605841b1d2bd.BackColor = Color.Transparent
-        object_da28eea8_631c_4534_a532_605841b1d2bd.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        object_da28eea8_631c_4534_a532_605841b1d2bd.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         object_da28eea8_631c_4534_a532_605841b1d2bd.ForeColor = Color.Black
         object_da28eea8_631c_4534_a532_605841b1d2bd.Location = New Point(12, 0)
         object_da28eea8_631c_4534_a532_605841b1d2bd.Margin = New Padding(4, 0, 4, 0)
         object_da28eea8_631c_4534_a532_605841b1d2bd.Name = "object_da28eea8_631c_4534_a532_605841b1d2bd"
         object_da28eea8_631c_4534_a532_605841b1d2bd.Size = New Size(160, 33)
-        object_da28eea8_631c_4534_a532_605841b1d2bd.SLFCustomElipsis = False
         object_da28eea8_631c_4534_a532_605841b1d2bd.TabIndex = 1
         object_da28eea8_631c_4534_a532_605841b1d2bd.Text = "Username"
         object_da28eea8_631c_4534_a532_605841b1d2bd.TextAlign = ContentAlignment.MiddleLeft
+        object_da28eea8_631c_4534_a532_605841b1d2bd.XOCustomElipsis = False
         ' 
         ' Gbx_Modules
         ' 
-        Gbx_Modules.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Gbx_Modules.Controls.Add(Dgn1)
+        Gbx_Modules.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Gbx_Modules.Location = New Point(12, 42)
         Gbx_Modules.Name = "Gbx_Modules"
         Gbx_Modules.Size = New Size(455, 349)
@@ -515,6 +522,47 @@ Partial Class frmFistGuide
         Gbx_Modules.TabStop = False
         Gbx_Modules.Text = "Preparing Necessary Modules"
         Gbx_Modules.Visible = False
+        ' 
+        ' Dgn1
+        ' 
+        Dgn1.AllowUserToAddRows = False
+        Dgn1.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(240), CByte(190), CByte(165))
+        Dgn1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Dgn1.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+        Dgn1.BorderStyle = BorderStyle.None
+        Dgn1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        Dgn1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.YellowGreen
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle2.SelectionForeColor = Color.Black
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        Dgn1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Dgn1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Dgn1.EnableHeadersVisualStyles = False
+        Dgn1.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Dgn1.Location = New Point(6, 63)
+        Dgn1.Name = "Dgn1"
+        Dgn1.ReadOnly = True
+        Dgn1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.YellowGreen
+        DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle3.SelectionForeColor = Color.Black
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        Dgn1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Dgn1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Dgn1.RowTemplate.Height = 25
+        Dgn1.Size = New Size(443, 280)
+        Dgn1.StandardTab = True
+        Dgn1.TabIndex = 0
+        Dgn1.XOGroupFirstRows = False
+        Dgn1.XOGunakanNomorBaris = False
         ' 
         ' frmFistGuide
         ' 
@@ -537,6 +585,8 @@ Partial Class frmFistGuide
         Gbx_Company.PerformLayout()
         Gbx_Login.ResumeLayout(False)
         Gbx_Login.PerformLayout()
+        Gbx_Modules.ResumeLayout(False)
+        CType(Dgn1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
 
@@ -565,5 +615,6 @@ Partial Class frmFistGuide
     Friend WithEvents UPwdStrength1 As UPwdStrength
     Friend WithEvents Gbx_Modules As gbx
     Friend WithEvents Btn_Check As btn
+    Friend WithEvents Dgn1 As dgn
 
 End Class

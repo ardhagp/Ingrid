@@ -85,8 +85,8 @@ Partial Class MOW
         DgnMOW.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnMOW.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnMOW.Size = New Size(915, 511)
-        DgnMOW.SLFGroupFirstRows = False
-        DgnMOW.SLFGunakanNomorBaris = False
+        DgnMOW.XOGroupFirstRows = False
+        DgnMOW.XOGunakanNomorBaris = False
         DgnMOW.StandardTab = True
         DgnMOW.TabIndex = 802
         ' 

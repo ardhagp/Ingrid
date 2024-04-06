@@ -2,16 +2,18 @@
 
 Public Class MODS
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.MODS.View
+    Private _SQL As New Commands.MODS.View
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
     Private WithEvents _MODS_Editor As New MODS_Editor
     Public Event DATACHANGED()
 #End Region
 
 #Region "Subs Collection"
+
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
         DblBuffer(DgnMODS)
-        _SQL.DisplayData(DgnMODS, SLFStatus, TxtFind, ForceRefresh)
+        Commands.MODS.View.DisplayData(DgnMODS, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
@@ -24,6 +26,8 @@ Public Class MODS
 #End Region
 
 #Region "Menu Strip Functions"
+
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataAddNew() Handles _MMSMenu.EventDataAddNew
         If Not (V_USERAccess.User("MODS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -37,6 +41,7 @@ Public Class MODS
         Display(_MODS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new module", True)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
         If Not (V_USERAccess.User("UAC", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -55,6 +60,7 @@ Public Class MODS
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
         If Not (V_USERAccess.User("MODS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -67,7 +73,7 @@ Public Class MODS
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
+                If (Commands.DAR.View.DELETEData(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     RaiseEvent DATACHANGED()
                     Mainframe_n_6.Ts_status.Text = "Success"
@@ -100,11 +106,12 @@ Public Class MODS
         _MMSMenu.LoadIn(Me)
         _MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
         TxtFind.ClearSearch()
-        DgnMODS.SLF_GETNewColor()
+        DgnMODS.XOGETNewColor()
         Call GETDATA(True)
         TxtFind.ClearSearch()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()
@@ -122,6 +129,7 @@ Public Class MODS
         TxtFind.Focus()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _MODS_Editor_RecordSaved() Handles _MODS_Editor.RecordSaved
         Call GETDATA()
         RaiseEvent DATACHANGED()

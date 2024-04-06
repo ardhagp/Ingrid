@@ -94,8 +94,8 @@ Partial Class CCIN
         DgnCCIN.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnCCIN.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnCCIN.Size = New Size(915, 511)
-        DgnCCIN.SLFGroupFirstRows = False
-        DgnCCIN.SLFGunakanNomorBaris = True
+        DgnCCIN.XOGroupFirstRows = False
+        DgnCCIN.XOGunakanNomorBaris = True
         DgnCCIN.StandardTab = True
         DgnCCIN.TabIndex = 0
         ' 

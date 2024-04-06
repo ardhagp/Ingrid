@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MODS_Editor
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -89,16 +89,16 @@ Partial Class MODS_Editor
         BtnSave.FlatAppearance.BorderSize = 2
         BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
         BtnSave.FlatStyle = FlatStyle.Flat
-        BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnSave.ForeColor = Color.White
         BtnSave.Location = New Point(408, 8)
         BtnSave.Margin = New Padding(4, 3, 4, 3)
         BtnSave.Name = "BtnSave"
         BtnSave.Size = New Size(117, 46)
-        BtnSave.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        BtnSave.SLFTampilkanFocusBorder = False
-        BtnSave.SLFValidasiSemuaInput = False
-        BtnSave.SLFValidasiSemuaInputTag = Nothing
+        BtnSave.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
+        BtnSave.XOTampilkanFocusBorder = False
+        BtnSave.XOValidasiSemuaInput = False
+        BtnSave.XOValidasiSemuaInputTag = Nothing
         BtnSave.TabIndex = 6
         BtnSave.Text = "&Save"
         BtnSave.UseVisualStyleBackColor = False
@@ -112,16 +112,16 @@ Partial Class MODS_Editor
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
         BtnCancel.Location = New Point(532, 8)
         BtnCancel.Margin = New Padding(4, 3, 4, 3)
         BtnCancel.Name = "BtnCancel"
         BtnCancel.Size = New Size(117, 46)
-        BtnCancel.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        BtnCancel.SLFTampilkanFocusBorder = False
-        BtnCancel.SLFValidasiSemuaInput = False
-        BtnCancel.SLFValidasiSemuaInputTag = Nothing
+        BtnCancel.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        BtnCancel.XOTampilkanFocusBorder = False
+        BtnCancel.XOValidasiSemuaInput = False
+        BtnCancel.XOValidasiSemuaInputTag = Nothing
         BtnCancel.TabIndex = 8
         BtnCancel.Text = "&Cancel"
         BtnCancel.UseVisualStyleBackColor = False
@@ -132,7 +132,7 @@ Partial Class MODS_Editor
         ChkAddNew.AutoSize = True
         ChkAddNew.BackColor = Color.Transparent
         ChkAddNew.FlatStyle = FlatStyle.Flat
-        ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkAddNew.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         ChkAddNew.ForeColor = Color.Tomato
         ChkAddNew.Location = New Point(255, 17)
         ChkAddNew.Margin = New Padding(4, 3, 4, 3)
@@ -147,7 +147,7 @@ Partial Class MODS_Editor
         Tbctl1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         Tbctl1.Controls.Add(tpGeneral)
         Tbctl1.Controls.Add(tpPermissions)
-        Tbctl1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Tbctl1.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Tbctl1.Location = New Point(14, 7)
         Tbctl1.Margin = New Padding(4, 3, 4, 3)
         Tbctl1.Name = "Tbctl1"
@@ -249,7 +249,7 @@ Partial Class MODS_Editor
         ChkSystem.AutoSize = True
         ChkSystem.BackColor = Color.Transparent
         ChkSystem.FlatStyle = FlatStyle.Flat
-        ChkSystem.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkSystem.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         ChkSystem.Location = New Point(189, 213)
         ChkSystem.Margin = New Padding(4, 3, 4, 3)
         ChkSystem.Name = "ChkSystem"
@@ -260,31 +260,31 @@ Partial Class MODS_Editor
         ' 
         ' TxtCode
         ' 
-        TxtCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtCode.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtCode.Location = New Point(191, 92)
         TxtCode.Margin = New Padding(4, 3, 4, 3)
         TxtCode.MaxLength = 255
         TxtCode.Name = "TxtCode"
         TxtCode.Size = New Size(153, 29)
-        TxtCode.SLFAutoTrim = True
-        TxtCode.SLFHarusDiisi = True
-        TxtCode.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtCode.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtCode.SLFHightlightSaatFokus = False
-        TxtCode.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtCode.SLFIsBlank = True
-        TxtCode.SLFIsSearchBox = False
-        TxtCode.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-        TxtCode.SLFPilihSemuaSaatFokus = True
-        TxtCode.SLFPwdLengthMin = 8
-        TxtCode.SLFPwdStrengthCalculate = False
-        TxtCode.SLFPwdStrengthScore = 0
-        TxtCode.SLFPwdStrengthText = Nothing
-        TxtCode.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtCode.SLFSearchBoxText = "Type then press Enter"
-        TxtCode.SLFSQLText = ""
-        TxtCode.SLFTanpaSpasi = True
-        TxtCode.SLFValidasiField = Nothing
+        TxtCode.XOAutoTrim = True
+        TxtCode.XOHarusDiisi = True
+        TxtCode.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtCode.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtCode.XOHightlightSaatFokus = False
+        TxtCode.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtCode.XOIsBlank = True
+        TxtCode.XOIsSearchBox = False
+        TxtCode.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtCode.XOPilihSemuaSaatFokus = True
+        TxtCode.XOPwdLengthMin = 8
+        TxtCode.XOPwdStrengthCalculate = False
+        TxtCode.XOPwdStrengthScore = 0
+        TxtCode.XOPwdStrengthText = Nothing
+        TxtCode.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtCode.XOSearchBoxText = "Type then press Enter"
+        TxtCode.XOSQLText = ""
+        TxtCode.XOTanpaSpasi = True
+        TxtCode.XOValidasiField = Nothing
         TxtCode.TabIndex = 3
         TxtCode.Tag = "txt"
         ' 
@@ -293,7 +293,7 @@ Partial Class MODS_Editor
         ChkLocked.AutoSize = True
         ChkLocked.BackColor = Color.Transparent
         ChkLocked.FlatStyle = FlatStyle.Flat
-        ChkLocked.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkLocked.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         ChkLocked.Location = New Point(189, 249)
         ChkLocked.Margin = New Padding(4, 3, 4, 3)
         ChkLocked.Name = "ChkLocked"
@@ -306,7 +306,7 @@ Partial Class MODS_Editor
         ' 
         CboGroup.DropDownStyle = ComboBoxStyle.DropDownList
         CboGroup.FlatStyle = FlatStyle.Flat
-        CboGroup.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CboGroup.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         CboGroup.FormattingEnabled = True
         CboGroup.Location = New Point(191, 52)
         CboGroup.Margin = New Padding(4, 3, 4, 3)
@@ -316,92 +316,92 @@ Partial Class MODS_Editor
         ' 
         ' TxtDescription
         ' 
-        TxtDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtDescription.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtDescription.Location = New Point(191, 173)
         TxtDescription.Margin = New Padding(4, 3, 4, 3)
         TxtDescription.MaxLength = 255
         TxtDescription.Name = "TxtDescription"
         TxtDescription.Size = New Size(387, 29)
-        TxtDescription.SLFAutoTrim = True
-        TxtDescription.SLFHarusDiisi = True
-        TxtDescription.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtDescription.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtDescription.SLFHightlightSaatFokus = False
-        TxtDescription.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtDescription.SLFIsBlank = True
-        TxtDescription.SLFIsSearchBox = False
-        TxtDescription.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        TxtDescription.SLFPilihSemuaSaatFokus = False
-        TxtDescription.SLFPwdLengthMin = 8
-        TxtDescription.SLFPwdStrengthCalculate = False
-        TxtDescription.SLFPwdStrengthScore = 0
-        TxtDescription.SLFPwdStrengthText = Nothing
-        TxtDescription.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtDescription.SLFSearchBoxText = "Type then press Enter"
-        TxtDescription.SLFSQLText = ""
-        TxtDescription.SLFTanpaSpasi = False
-        TxtDescription.SLFValidasiField = Nothing
+        TxtDescription.XOAutoTrim = True
+        TxtDescription.XOHarusDiisi = True
+        TxtDescription.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtDescription.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtDescription.XOHightlightSaatFokus = False
+        TxtDescription.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtDescription.XOIsBlank = True
+        TxtDescription.XOIsSearchBox = False
+        TxtDescription.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
+        TxtDescription.XOPilihSemuaSaatFokus = False
+        TxtDescription.XOPwdLengthMin = 8
+        TxtDescription.XOPwdStrengthCalculate = False
+        TxtDescription.XOPwdStrengthScore = 0
+        TxtDescription.XOPwdStrengthText = Nothing
+        TxtDescription.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtDescription.XOSearchBoxText = "Type then press Enter"
+        TxtDescription.XOSQLText = ""
+        TxtDescription.XOTanpaSpasi = False
+        TxtDescription.XOValidasiField = Nothing
         TxtDescription.TabIndex = 5
         TxtDescription.Tag = "txt"
         ' 
         ' TxtName
         ' 
-        TxtName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtName.Location = New Point(191, 133)
         TxtName.Margin = New Padding(4, 3, 4, 3)
         TxtName.MaxLength = 255
         TxtName.Name = "TxtName"
         TxtName.Size = New Size(266, 29)
-        TxtName.SLFAutoTrim = True
-        TxtName.SLFHarusDiisi = True
-        TxtName.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtName.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtName.SLFHightlightSaatFokus = False
-        TxtName.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtName.SLFIsBlank = True
-        TxtName.SLFIsSearchBox = False
-        TxtName.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        TxtName.SLFPilihSemuaSaatFokus = True
-        TxtName.SLFPwdLengthMin = 8
-        TxtName.SLFPwdStrengthCalculate = False
-        TxtName.SLFPwdStrengthScore = 0
-        TxtName.SLFPwdStrengthText = Nothing
-        TxtName.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtName.SLFSearchBoxText = "Type then press Enter"
-        TxtName.SLFSQLText = ""
-        TxtName.SLFTanpaSpasi = False
-        TxtName.SLFValidasiField = Nothing
+        TxtName.XOAutoTrim = True
+        TxtName.XOHarusDiisi = True
+        TxtName.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtName.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtName.XOHightlightSaatFokus = False
+        TxtName.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtName.XOIsBlank = True
+        TxtName.XOIsSearchBox = False
+        TxtName.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
+        TxtName.XOPilihSemuaSaatFokus = True
+        TxtName.XOPwdLengthMin = 8
+        TxtName.XOPwdStrengthCalculate = False
+        TxtName.XOPwdStrengthScore = 0
+        TxtName.XOPwdStrengthText = Nothing
+        TxtName.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtName.XOSearchBoxText = "Type then press Enter"
+        TxtName.XOSQLText = ""
+        TxtName.XOTanpaSpasi = False
+        TxtName.XOValidasiField = Nothing
         TxtName.TabIndex = 4
         TxtName.Tag = "txt"
         ' 
         ' TxtID
         ' 
-        TxtID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtID.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtID.Location = New Point(191, 12)
         TxtID.Margin = New Padding(4, 3, 4, 3)
         TxtID.MaxLength = 255
         TxtID.Name = "TxtID"
         TxtID.ReadOnly = True
         TxtID.Size = New Size(387, 29)
-        TxtID.SLFAutoTrim = False
-        TxtID.SLFHarusDiisi = False
-        TxtID.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtID.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtID.SLFHightlightSaatFokus = False
-        TxtID.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtID.SLFIsBlank = True
-        TxtID.SLFIsSearchBox = False
-        TxtID.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        TxtID.SLFPilihSemuaSaatFokus = False
-        TxtID.SLFPwdLengthMin = 8
-        TxtID.SLFPwdStrengthCalculate = False
-        TxtID.SLFPwdStrengthScore = 0
-        TxtID.SLFPwdStrengthText = Nothing
-        TxtID.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        TxtID.SLFSearchBoxText = "Type then press Enter"
-        TxtID.SLFSQLText = ""
-        TxtID.SLFTanpaSpasi = False
-        TxtID.SLFValidasiField = Nothing
+        TxtID.XOAutoTrim = False
+        TxtID.XOHarusDiisi = False
+        TxtID.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtID.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtID.XOHightlightSaatFokus = False
+        TxtID.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtID.XOIsBlank = True
+        TxtID.XOIsSearchBox = False
+        TxtID.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
+        TxtID.XOPilihSemuaSaatFokus = False
+        TxtID.XOPwdLengthMin = 8
+        TxtID.XOPwdStrengthCalculate = False
+        TxtID.XOPwdStrengthScore = 0
+        TxtID.XOPwdStrengthText = Nothing
+        TxtID.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtID.XOSearchBoxText = "Type then press Enter"
+        TxtID.XOSQLText = ""
+        TxtID.XOTanpaSpasi = False
+        TxtID.XOValidasiField = Nothing
         TxtID.TabIndex = 1
         TxtID.Tag = "txt"
         ' 
@@ -421,7 +421,7 @@ Partial Class MODS_Editor
         ' 
         GbxAccessBy.Controls.Add(DgnUserRoles)
         GbxAccessBy.Dock = DockStyle.Fill
-        GbxAccessBy.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        GbxAccessBy.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         GbxAccessBy.Location = New Point(4, 3)
         GbxAccessBy.Margin = New Padding(4, 3, 4, 3)
         GbxAccessBy.Name = "GbxAccessBy"
@@ -443,7 +443,7 @@ Partial Class MODS_Editor
         DgnUserRoles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -452,7 +452,7 @@ Partial Class MODS_Editor
         DgnUserRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DgnUserRoles.Dock = DockStyle.Fill
         DgnUserRoles.EnableHeadersVisualStyles = False
-        DgnUserRoles.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnUserRoles.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DgnUserRoles.Location = New Point(4, 25)
         DgnUserRoles.Margin = New Padding(4, 3, 4, 3)
         DgnUserRoles.Name = "DgnUserRoles"
@@ -460,7 +460,7 @@ Partial Class MODS_Editor
         DgnUserRoles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -468,14 +468,14 @@ Partial Class MODS_Editor
         DgnUserRoles.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnUserRoles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnUserRoles.Size = New Size(1016, 511)
-        DgnUserRoles.SLFGroupFirstRows = False
-        DgnUserRoles.SLFGunakanNomorBaris = False
+        DgnUserRoles.XOGroupFirstRows = False
+        DgnUserRoles.XOGunakanNomorBaris = False
         DgnUserRoles.StandardTab = True
         DgnUserRoles.TabIndex = 0
         ' 
         ' MODS_Editor
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         ClientSize = New Size(663, 485)
         KeyPreview = True
         Margin = New Padding(7, 3, 7, 3)

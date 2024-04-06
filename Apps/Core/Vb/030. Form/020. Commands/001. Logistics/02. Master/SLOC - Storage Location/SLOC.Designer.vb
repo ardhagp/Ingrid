@@ -85,8 +85,8 @@ Partial Class SLOC
         DgnSLOC.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnSLOC.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnSLOC.Size = New Size(915, 511)
-        DgnSLOC.SLFGroupFirstRows = False
-        DgnSLOC.SLFGunakanNomorBaris = False
+        DgnSLOC.XOGroupFirstRows = False
+        DgnSLOC.XOGunakanNomorBaris = False
         DgnSLOC.StandardTab = True
         DgnSLOC.TabIndex = 1
         ' 

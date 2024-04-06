@@ -96,8 +96,8 @@ Partial Class PLNT
         DgnPLNT.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnPLNT.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnPLNT.Size = New Size(915, 511)
-        DgnPLNT.SLFGroupFirstRows = False
-        DgnPLNT.SLFGunakanNomorBaris = True
+        DgnPLNT.XOGroupFirstRows = False
+        DgnPLNT.XOGunakanNomorBaris = True
         DgnPLNT.StandardTab = True
         DgnPLNT.TabIndex = 1
         ' 

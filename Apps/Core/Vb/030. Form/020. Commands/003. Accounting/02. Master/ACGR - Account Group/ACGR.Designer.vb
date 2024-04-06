@@ -145,7 +145,7 @@ Partial Class ACGR
         Lbl3.Margin = New Padding(4, 0, 4, 0)
         Lbl3.Name = "Lbl3"
         Lbl3.Size = New Size(77, 21)
-        Lbl3.SLFCustomElipsis = False
+        Lbl3.XOCustomElipsis = False
         Lbl3.TabIndex = 9
         Lbl3.Text = "Company"
         ' 
@@ -169,7 +169,7 @@ Partial Class ACGR
         Lbl2.Margin = New Padding(4, 0, 4, 0)
         Lbl2.Name = "Lbl2"
         Lbl2.Size = New Size(45, 21)
-        Lbl2.SLFCustomElipsis = False
+        Lbl2.XOCustomElipsis = False
         Lbl2.TabIndex = 7
         Lbl2.Text = "Book"
         ' 
@@ -241,8 +241,8 @@ Partial Class ACGR
         DgnACGRAssets.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         DgnACGRAssets.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnACGRAssets.Size = New Size(899, 471)
-        DgnACGRAssets.SLFGroupFirstRows = False
-        DgnACGRAssets.SLFGunakanNomorBaris = True
+        DgnACGRAssets.XOGroupFirstRows = False
+        DgnACGRAssets.XOGunakanNomorBaris = True
         DgnACGRAssets.StandardTab = True
         DgnACGRAssets.TabIndex = 0
         ' 
@@ -336,8 +336,8 @@ Partial Class ACGR
         DgnACGRLiabities.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         DgnACGRLiabities.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnACGRLiabities.Size = New Size(899, 471)
-        DgnACGRLiabities.SLFGroupFirstRows = False
-        DgnACGRLiabities.SLFGunakanNomorBaris = True
+        DgnACGRLiabities.XOGroupFirstRows = False
+        DgnACGRLiabities.XOGunakanNomorBaris = True
         DgnACGRLiabities.StandardTab = True
         DgnACGRLiabities.TabIndex = 0
         ' 
@@ -432,8 +432,8 @@ Partial Class ACGR
         DgnACGREquity.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
         DgnACGREquity.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnACGREquity.Size = New Size(899, 471)
-        DgnACGREquity.SLFGroupFirstRows = False
-        DgnACGREquity.SLFGunakanNomorBaris = True
+        DgnACGREquity.XOGroupFirstRows = False
+        DgnACGREquity.XOGunakanNomorBaris = True
         DgnACGREquity.StandardTab = True
         DgnACGREquity.TabIndex = 0
         ' 
@@ -528,8 +528,8 @@ Partial Class ACGR
         DgnACGRRevenue.RowHeadersDefaultCellStyle = DataGridViewCellStyle16
         DgnACGRRevenue.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnACGRRevenue.Size = New Size(899, 471)
-        DgnACGRRevenue.SLFGroupFirstRows = False
-        DgnACGRRevenue.SLFGunakanNomorBaris = True
+        DgnACGRRevenue.XOGroupFirstRows = False
+        DgnACGRRevenue.XOGunakanNomorBaris = True
         DgnACGRRevenue.StandardTab = True
         DgnACGRRevenue.TabIndex = 0
         ' 
@@ -624,8 +624,8 @@ Partial Class ACGR
         DgnACGRExpense.RowHeadersDefaultCellStyle = DataGridViewCellStyle20
         DgnACGRExpense.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnACGRExpense.Size = New Size(899, 471)
-        DgnACGRExpense.SLFGroupFirstRows = False
-        DgnACGRExpense.SLFGunakanNomorBaris = True
+        DgnACGRExpense.XOGroupFirstRows = False
+        DgnACGRExpense.XOGunakanNomorBaris = True
         DgnACGRExpense.StandardTab = True
         DgnACGRExpense.TabIndex = 0
         ' 

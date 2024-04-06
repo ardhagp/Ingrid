@@ -30,29 +30,29 @@ Public Class LOGIN
 
     <SupportedOSPlatform("windows")>
     Private Sub ExecLogin()
-        If (TxtUsername.SLFSQLText = String.Empty) OrElse (TxtPassword.SLFSQLText = String.Empty) Then
+        If (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
             Return
         End If
 
-        V_USERAttrib.UID = _SQL.GETUID(TxtUsername.SLFSQLText, TxtPassword.SLFSQLText, V_USERAttrib.FirstName)
+        V_USERAttrib.UID = Commands.UAC.Login.GETUID(TxtUsername.XOSQLText, TxtPassword.XOSQLText, V_USERAttrib.FirstName)
 
         If V_USERAttrib.UID = String.Empty Then
             RaiseEvent LoginFailed()
             _WrongLogin += 1
             SLFStatus.Items(0).Text = "Login Failed"
-            V_LOGUser.LoginFailed(TxtUsername.SLFSQLText)
-            Bridge.Security.WRITELOG.SENDLOG(TxtUsername.SLFSQLText & " failed to login.", Bridge.Security.WRITELOG.LogType.Error)
+            V_LOGUser.LoginFailed(TxtUsername.XOSQLText)
+            Bridge.Security.WRITELOG.SENDLOG(TxtUsername.XOSQLText & " failed to login.", Bridge.Security.WRITELOG.LogType.Error)
             tmr_status.Enabled = True
             If _WrongLogin = 3 Then
                 tmr_control.Enabled = True
             End If
         Else
-            V_USERAttrib.EID = _SQL.GETEID(V_USERAttrib.UID)
-            V_USERAttrib.FirstName = _SQL.GETFirstName(V_USERAttrib.UID)
-            V_USERAttrib.EmployeeNumber = _SQL.GETEmployeeNumber(V_USERAttrib.UID)
-            V_USERAttrib.Gender = _SQL.GETGender(V_USERAttrib.UID)
-            V_USERAttrib.Position = _SQL.GETPosition(V_USERAttrib.UID)
-            V_USERAttrib.IsAdministrator = _SQL.GETAdministrator(V_USERAttrib.UID)
+            V_USERAttrib.EID = Commands.UAC.Login.GETEID(V_USERAttrib.UID)
+            V_USERAttrib.FirstName = Commands.UAC.Login.GETFirstName(V_USERAttrib.UID)
+            V_USERAttrib.EmployeeNumber = Commands.UAC.Login.GETEmployeeNumber(V_USERAttrib.UID)
+            V_USERAttrib.Gender = Commands.UAC.Login.GETGender(V_USERAttrib.UID)
+            V_USERAttrib.Position = Commands.UAC.Login.GETPosition(V_USERAttrib.UID)
+            V_USERAttrib.IsAdministrator = Commands.UAC.Login.GETAdministrator(V_USERAttrib.UID)
             V_LOGUser.LoginSuccess(V_USERAttrib.EID)
             Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " is login.", Bridge.Security.WRITELOG.LogType.Information)
             RaiseEvent LoginSuccess()

@@ -6,7 +6,7 @@
 Public Class DRAA
 #Region "Variables"
     'SQL Class
-    Private _SQL As New LibSQL.Commands.DRAA.View
+    Private _SQL As New Commands.DRAA.View
 
     'Variabel -> Class
     Private WithEvents _DRAA_Editor As New DRAA_Editor
@@ -18,17 +18,19 @@ Public Class DRAA
     ''' Menampilkan data awal
     ''' </summary>
     ''' <param name="ForceRefresh">Boolean</param>
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
         'Buffer Datagrid
         DblBuffer(DgnArea)
 
         'Mengisi Datagrid dengan data dari database    
-        _SQL.DisplayMainGrid(TxtFind, DgnArea, SLFStatus, ForceRefresh)
+        Commands.DRAA.View.DisplayMainGrid(TxtFind, DgnArea, SLFStatus, ForceRefresh)
     End Sub
 
     ''' <summary>
     ''' Menyisipkan menu pada form saat pertama kali dimuat.
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
         'Sisipkan ke dalam form
         _MMSMenu.LoadIn(Me)
@@ -52,7 +54,7 @@ Public Class DRAA
     ''' </summary>
     Private Sub LoadDGN()
         'Memuat warna acak
-        DgnArea.SLF_GETNewColor()
+        DgnArea.XOGETNewColor()
     End Sub
 
     ''' <summary>

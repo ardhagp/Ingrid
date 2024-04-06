@@ -8,7 +8,7 @@ Public Class DAR_Editor
     Public Event RecordSaved()
     Private _DAR_SinglePhotoViewer As DAR_SinglePhotoViewer
     Private _DAR_SinglePDFViewer As DAR_SinglePDFViewer
-    Private _SQL As New LibSQL.Commands.DAR.Editor
+    Private _SQL As New Commands.DAR.Editor
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
     Private _DS(2) As DataSet
     Private _PhotoByte As Byte()
@@ -18,12 +18,12 @@ Public Class DAR_Editor
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GETAffectedArea()
-        _SQL.GETAffectedArea(CboArea)
+        Commands.DAR.Editor.GETAffectedArea(CboArea)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub GETTemplateTitle()
-        _SQL.GETTemplateTitle(CboTemplate)
+        Commands.DAR.Editor.GETTemplateTitle(CboTemplate)
     End Sub
 
     Public Sub CheckAllInput()
@@ -37,6 +37,7 @@ Public Class DAR_Editor
         BtnSave.Focus()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Public Sub LoadAttachment()
         _DS(0) = New DataSet
 
@@ -90,7 +91,7 @@ Public Class DAR_Editor
         _MMSMenu.LoadIn(Me, True)
         _MMSMenu.ShowMenuFILE(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
-        DgnPictureList.SLF_GETNewColor()
+        DgnPictureList.XOGETNewColor()
 
         If (V_FORMAttrib.IsNew) Then
             V_FORMAttrib.RowID = CMCv.Security.Encrypt.MD5()
@@ -119,13 +120,14 @@ Public Class DAR_Editor
 #End Region
 
 #Region "Component Events"
+    <SupportedOSPlatform("windows")>
     Private Sub BtnGETContent_Click(sender As Object, e As EventArgs) Handles BtnGETContent.Click
         If Not (V_FORMAttrib.IsNew) Then
             If Decision("Do you want to replace Description with template content?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                TxtContent.Text = _SQL.GETTemplateContent(CboTemplate)
+                TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(CboTemplate)
             End If
         Else
-            TxtContent.Text = _SQL.GETTemplateContent(CboTemplate)
+            TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(CboTemplate)
         End If
     End Sub
 
@@ -162,7 +164,7 @@ Public Class DAR_Editor
             Return
         End If
 
-        If (_SQL.PUSHData(CboArea.SelectedValue, CboTemplate.SelectedValue, DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, MebStart.Text.Replace(".", ":"), DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, MebEnd.Text.Replace(".", ":"), TxtContent.SLFSQLText, TxtFeedback.SLFSQLText, V_USERAttrib.UID, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, _ExtQuery)) Then
+        If (Commands.DAR.Editor.PUSHData(CboArea.SelectedValue, CboTemplate.SelectedValue, DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, MebStart.Text.Replace(".", ":"), DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, MebEnd.Text.Replace(".", ":"), TxtContent.XOSQLText, TxtFeedback.XOSQLText, V_USERAttrib.UID, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, _ExtQuery)) Then
             _ExtQuery = String.Empty
             Mainframe_n_6.Ts_status.Text = "Success"
 
@@ -174,7 +176,7 @@ Public Class DAR_Editor
             Next
 
             If _NewPhotoAdded > 0 Then
-                If (_SQL.PUSHPhoto(DgnPictureList, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, DtpStart.Value)) Then
+                If (Commands.DAR.Editor.PUSHPhoto(DgnPictureList, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, DtpStart.Value)) Then
                     Mainframe_n_6.Ts_status.Text = "Success + All pictures has been added"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Success + With errors while adding pictures"
@@ -193,7 +195,7 @@ Public Class DAR_Editor
             Next
 
             If _NewFileAdded > 0 Then
-                If (_SQL.PUSHFile(DgnFileList, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, DtpStart.Value)) Then
+                If (Commands.DAR.Editor.PUSHFile(DgnFileList, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, DtpStart.Value)) Then
                     Mainframe_n_6.Ts_status.Text = "Success + All file has been added"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Success + With errors while adding files"
@@ -219,20 +221,22 @@ Public Class DAR_Editor
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub LoadData()
-        _SQL.GETRowValue(V_FORMAttrib.RowID, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
+        Commands.DAR.Editor.GETRowValue(V_FORMAttrib.RowID, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
         Call LoadAttachment()
     End Sub
 #End Region
 
+    <SupportedOSPlatform("windows")>
     Private Sub CboTemplate_KeyDown(sender As Object, e As KeyEventArgs) Handles CboTemplate.KeyDown
         If e.KeyCode = Keys.Enter Then
             If Not (V_FORMAttrib.IsNew) Then
                 If Decision("Do you want to replace Description with template content?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    TxtContent.Text = _SQL.GETTemplateContent(CboTemplate)
+                    TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(CboTemplate)
                 End If
             Else
-                TxtContent.Text = _SQL.GETTemplateContent(CboTemplate)
+                TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(CboTemplate)
             End If
         End If
     End Sub
@@ -284,6 +288,7 @@ Public Class DAR_Editor
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnPeekPhoto_Click(sender As Object, e As EventArgs) Handles BtnPeekPhoto.Click
         If TxtPhotoPath.Text.Trim = String.Empty Then
             Decision("Plase pick your photo first.", "No file selected", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
@@ -317,7 +322,7 @@ Public Class DAR_Editor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub DgnPictureList_SLF_Selected() Handles DgnPictureList.SLF_Selected
+    Private Sub DgnPictureList_SLF_Selected() Handles DgnPictureList.XOSelected
         If DgnPictureList.RowCount <> 0 Then
             If DgnPictureList.CurrentRow.Cells("photo_status").Value = "Add" Then
                 PctbxPhoto.Image = DgnPictureList.CurrentRow.Cells("photo_content").Value
@@ -340,6 +345,7 @@ Public Class DAR_Editor
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnPeekFile_Click(sender As Object, e As EventArgs) Handles BtnPeekFile.Click
         If TxtFilePath.Text.Trim = String.Empty Then
             Decision("Plase pick your file first.", "No file selected", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
@@ -405,6 +411,7 @@ Public Class DAR_Editor
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventFileUndoAll() Handles _MMSMenu.EventFileUndoAll
         If Decision("Do you want to undo all changes?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
             If (V_FORMAttrib.IsNew) Then

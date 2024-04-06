@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class EPLS_Position
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class EPLS_Position
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -91,10 +91,10 @@ Partial Class EPLS_Position
         Me.BtnClear.Location = New System.Drawing.Point(262, 2)
         Me.BtnClear.Name = "BtnClear"
         Me.BtnClear.Size = New System.Drawing.Size(100, 40)
-        Me.BtnClear.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        Me.BtnClear.SLFTampilkanFocusBorder = False
-        Me.BtnClear.SLFValidasiSemuaInput = False
-        Me.BtnClear.SLFValidasiSemuaInputTag = Nothing
+        Me.BtnClear.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        Me.BtnClear.XOTampilkanFocusBorder = False
+        Me.BtnClear.XOValidasiSemuaInput = False
+        Me.BtnClear.XOValidasiSemuaInputTag = Nothing
         Me.BtnClear.TabIndex = 6
         Me.BtnClear.Text = "Clear"
         Me.BtnClear.UseVisualStyleBackColor = False
@@ -106,7 +106,7 @@ Partial Class EPLS_Position
         Me.Lbl1.Location = New System.Drawing.Point(12, 13)
         Me.Lbl1.Name = "Lbl1"
         Me.Lbl1.Size = New System.Drawing.Size(40, 21)
-        Me.Lbl1.SLFCustomElipsis = False
+        Me.Lbl1.XOCustomElipsis = False
         Me.Lbl1.TabIndex = 5
         Me.Lbl1.Text = "Find"
         '
@@ -117,25 +117,25 @@ Partial Class EPLS_Position
         Me.TxtFind.MaxLength = 255
         Me.TxtFind.Name = "TxtFind"
         Me.TxtFind.Size = New System.Drawing.Size(193, 29)
-        Me.TxtFind.SLFAutoTrim = False
-        Me.TxtFind.SLFHarusDiisi = False
-        Me.TxtFind.SLFHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
-        Me.TxtFind.SLFHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
-        Me.TxtFind.SLFHightlightSaatFokus = False
-        Me.TxtFind.SLFHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
-        Me.TxtFind.SLFIsBlank = True
-        Me.TxtFind.SLFIsSearchBox = False
-        Me.TxtFind.SLFJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        Me.TxtFind.SLFPilihSemuaSaatFokus = False
-        Me.TxtFind.SLFPwdLengthMin = 8
-        Me.TxtFind.SLFPwdStrengthCalculate = False
-        Me.TxtFind.SLFPwdStrengthScore = 0
-        Me.TxtFind.SLFPwdStrengthText = Nothing
-        Me.TxtFind.SLFRestriction = CMCv.ControlCodeBase.enuRestriction.None
-        Me.TxtFind.SLFSearchBoxText = "Type then press Enter"
-        Me.TxtFind.SLFSQLText = Nothing
-        Me.TxtFind.SLFTanpaSpasi = False
-        Me.TxtFind.SLFValidasiField = Nothing
+        Me.TxtFind.XOAutoTrim = False
+        Me.TxtFind.XOHarusDiisi = False
+        Me.TxtFind.XOHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
+        Me.TxtFind.XOHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
+        Me.TxtFind.XOHightlightSaatFokus = False
+        Me.TxtFind.XOHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
+        Me.TxtFind.XOIsBlank = True
+        Me.TxtFind.XOIsSearchBox = False
+        Me.TxtFind.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
+        Me.TxtFind.XOPilihSemuaSaatFokus = False
+        Me.TxtFind.XOPwdLengthMin = 8
+        Me.TxtFind.XOPwdStrengthCalculate = False
+        Me.TxtFind.XOPwdStrengthScore = 0
+        Me.TxtFind.XOPwdStrengthText = Nothing
+        Me.TxtFind.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        Me.TxtFind.XOSearchBoxText = "Type then press Enter"
+        Me.TxtFind.XOSQLText = Nothing
+        Me.TxtFind.XOTanpaSpasi = False
+        Me.TxtFind.XOValidasiField = Nothing
         Me.TxtFind.TabIndex = 4
         Me.TxtFind.Tag = "txt"
         '
@@ -176,8 +176,8 @@ Partial Class EPLS_Position
         Me.DgnAddinPosition.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DgnAddinPosition.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DgnAddinPosition.Size = New System.Drawing.Size(657, 307)
-        Me.DgnAddinPosition.SLFGroupFirstRows = False
-        Me.DgnAddinPosition.SLFGunakanNomorBaris = True
+        Me.DgnAddinPosition.XOGroupFirstRows = False
+        Me.DgnAddinPosition.XOGunakanNomorBaris = True
         Me.DgnAddinPosition.StandardTab = True
         Me.DgnAddinPosition.TabIndex = 1005
         '
@@ -265,10 +265,10 @@ Partial Class EPLS_Position
         Me.BtnOk.Location = New System.Drawing.Point(448, 6)
         Me.BtnOk.Name = "BtnOk"
         Me.BtnOk.Size = New System.Drawing.Size(100, 40)
-        Me.BtnOk.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        Me.BtnOk.SLFTampilkanFocusBorder = False
-        Me.BtnOk.SLFValidasiSemuaInput = False
-        Me.BtnOk.SLFValidasiSemuaInputTag = Nothing
+        Me.BtnOk.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
+        Me.BtnOk.XOTampilkanFocusBorder = False
+        Me.BtnOk.XOValidasiSemuaInput = False
+        Me.BtnOk.XOValidasiSemuaInputTag = Nothing
         Me.BtnOk.TabIndex = 1
         Me.BtnOk.Text = "&Ok"
         Me.BtnOk.UseVisualStyleBackColor = False
@@ -287,10 +287,10 @@ Partial Class EPLS_Position
         Me.BtnCancel.Location = New System.Drawing.Point(554, 6)
         Me.BtnCancel.Name = "BtnCancel"
         Me.BtnCancel.Size = New System.Drawing.Size(100, 40)
-        Me.BtnCancel.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        Me.BtnCancel.SLFTampilkanFocusBorder = False
-        Me.BtnCancel.SLFValidasiSemuaInput = False
-        Me.BtnCancel.SLFValidasiSemuaInputTag = Nothing
+        Me.BtnCancel.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        Me.BtnCancel.XOTampilkanFocusBorder = False
+        Me.BtnCancel.XOValidasiSemuaInput = False
+        Me.BtnCancel.XOValidasiSemuaInputTag = Nothing
         Me.BtnCancel.TabIndex = 2
         Me.BtnCancel.Text = "&Cancel"
         Me.BtnCancel.UseVisualStyleBackColor = False

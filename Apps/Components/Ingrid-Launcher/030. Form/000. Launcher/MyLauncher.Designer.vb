@@ -46,10 +46,10 @@ Partial Class MyLauncher
         BtnLaunch.Location = New Point(138, 381)
         BtnLaunch.Name = "BtnLaunch"
         BtnLaunch.Size = New Size(100, 40)
-        BtnLaunch.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        BtnLaunch.SLFTampilkanFocusBorder = False
-        BtnLaunch.SLFValidasiSemuaInput = False
-        BtnLaunch.SLFValidasiSemuaInputTag = Nothing
+        BtnLaunch.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
+        BtnLaunch.XOTampilkanFocusBorder = False
+        BtnLaunch.XOValidasiSemuaInput = False
+        BtnLaunch.XOValidasiSemuaInputTag = Nothing
         BtnLaunch.TabIndex = 1
         BtnLaunch.Text = "&Launch"
         BtnLaunch.UseVisualStyleBackColor = False
@@ -62,7 +62,7 @@ Partial Class MyLauncher
         Lbl1.Location = New Point(9, -5)
         Lbl1.Name = "Lbl1"
         Lbl1.Size = New Size(368, 128)
-        Lbl1.SLFCustomElipsis = False
+        Lbl1.XOCustomElipsis = False
         Lbl1.TabIndex = 0
         Lbl1.Text = "Ingrid"
         Lbl1.TextAlign = ContentAlignment.TopCenter

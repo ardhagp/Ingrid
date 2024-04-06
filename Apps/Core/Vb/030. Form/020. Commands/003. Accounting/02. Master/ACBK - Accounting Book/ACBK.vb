@@ -3,14 +3,14 @@ Imports CMCv
 
 Public Class ACBK
 #Region "Variables"
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
-    Private _SQL As New LibSQL.Commands.ACBK.View
+    Private WithEvents C_MMSMenu As New CMCv.UI.View.MenuStrip
+    Private _SQL As New Commands.ACBK.View
 #End Region
 
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA()
-        _SQL.DisplayData(DgnACBK, SLFStatus, TxtFind, True)
+        Commands.ACBK.View.DISPLAYDATA(DgnACBK, SLFStatus, TxtFind, True)
     End Sub
 #End Region
 
@@ -46,8 +46,8 @@ Public Class ACBK
 #Region "Form Events"
     <SupportedOSPlatform("windows")>
     Private Sub frmACBK_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _MMSMenu.LoadIn(Me)
-        _MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
+        C_MMSMenu.LoadIn(Me)
+        C_MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
 
         Call GETDATA()
     End Sub

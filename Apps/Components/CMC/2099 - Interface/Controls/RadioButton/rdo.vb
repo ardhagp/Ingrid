@@ -1,6 +1,9 @@
-﻿Public Class rdo
+﻿Imports System.Runtime.Versioning
+
+Public Class rdo
     Inherits System.Windows.Forms.RadioButton
 
+    <SupportedOSPlatform("windows")>
     Public Sub New()
         InitializeComponent()
         Call ActivateLicenses()

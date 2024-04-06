@@ -1,4 +1,6 @@
-﻿''' <project>CMCC</project>
+﻿Imports System.Runtime.Versioning
+
+''' <project>CMCC</project>
 ''' <author>Ardha Gp</author>
 ''' <summary>
 ''' Custom combobox
@@ -6,6 +8,7 @@
 Public Class cbo
     Inherits System.Windows.Forms.ComboBox
 
+    <SupportedOSPlatform("windows")>
     Public Sub New()
         InitializeComponent()
         Call ActivateLicenses()

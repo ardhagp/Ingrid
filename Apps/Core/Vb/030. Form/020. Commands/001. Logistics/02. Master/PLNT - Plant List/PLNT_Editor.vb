@@ -10,7 +10,7 @@ Public Class PLNT_Editor
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GETCompany()
-        Call _SQL.GETCompany(CboCompany)
+        Call Commands.PLNT.Editor.GETCompany(CboCompany)
     End Sub
 
     Private Sub CheckAllInput()

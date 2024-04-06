@@ -141,6 +141,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Public ReadOnly Property app_settings() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("app_settings", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Public ReadOnly Property Application_001_90_FFFFFFFF_() As System.Drawing.Bitmap

@@ -254,8 +254,8 @@ Partial Class DAR
         DgnDARDate.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnDARDate.RowTemplate.Height = 30
         DgnDARDate.Size = New Size(325, 710)
-        DgnDARDate.SLFGroupFirstRows = False
-        DgnDARDate.SLFGunakanNomorBaris = True
+        DgnDARDate.XOGroupFirstRows = False
+        DgnDARDate.XOGunakanNomorBaris = True
         DgnDARDate.StandardTab = True
         DgnDARDate.TabIndex = 0
         ' 
@@ -393,8 +393,8 @@ Partial Class DAR
         DgnDARActivity.RowHeadersDefaultCellStyle = DataGridViewCellStyle13
         DgnDARActivity.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnDARActivity.Size = New Size(807, 280)
-        DgnDARActivity.SLFGroupFirstRows = True
-        DgnDARActivity.SLFGunakanNomorBaris = True
+        DgnDARActivity.XOGroupFirstRows = True
+        DgnDARActivity.XOGunakanNomorBaris = True
         DgnDARActivity.StandardTab = True
         DgnDARActivity.TabIndex = 102
         ' 
@@ -562,8 +562,8 @@ Partial Class DAR
         DgnPhoto.RowHeadersDefaultCellStyle = DataGridViewCellStyle17
         DgnPhoto.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnPhoto.Size = New Size(327, 323)
-        DgnPhoto.SLFGroupFirstRows = False
-        DgnPhoto.SLFGunakanNomorBaris = True
+        DgnPhoto.XOGroupFirstRows = False
+        DgnPhoto.XOGunakanNomorBaris = True
         DgnPhoto.StandardTab = True
         DgnPhoto.TabIndex = 2
         ' 
@@ -688,8 +688,8 @@ Partial Class DAR
         PctbxActivityPhoto.Name = "PctbxActivityPhoto"
         PctbxActivityPhoto.Size = New Size(449, 275)
         PctbxActivityPhoto.SizeMode = PictureBoxSizeMode.Zoom
-        PctbxActivityPhoto.SLFTampilkanBorder = False
-        PctbxActivityPhoto.SLFWarnaBorder = Color.DarkSlateBlue
+        PctbxActivityPhoto.XOTampilkanBorder = False
+        PctbxActivityPhoto.XOWarnaBorder = Color.DarkSlateBlue
         PctbxActivityPhoto.TabIndex = 105
         PctbxActivityPhoto.TabStop = False
         ' 
@@ -730,10 +730,10 @@ Partial Class DAR
         BtnCopyPhoto.Margin = New Padding(4, 3, 4, 3)
         BtnCopyPhoto.Name = "BtnCopyPhoto"
         BtnCopyPhoto.Size = New Size(196, 30)
-        BtnCopyPhoto.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnCopyPhoto.SLFTampilkanFocusBorder = False
-        BtnCopyPhoto.SLFValidasiSemuaInput = False
-        BtnCopyPhoto.SLFValidasiSemuaInputTag = Nothing
+        BtnCopyPhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnCopyPhoto.XOTampilkanFocusBorder = False
+        BtnCopyPhoto.XOValidasiSemuaInput = False
+        BtnCopyPhoto.XOValidasiSemuaInputTag = Nothing
         BtnCopyPhoto.TabIndex = 3
         BtnCopyPhoto.UseVisualStyleBackColor = False
         ' 
@@ -754,10 +754,10 @@ Partial Class DAR
         BtnSave.Margin = New Padding(4, 3, 4, 3)
         BtnSave.Name = "BtnSave"
         BtnSave.Size = New Size(197, 30)
-        BtnSave.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnSave.SLFTampilkanFocusBorder = False
-        BtnSave.SLFValidasiSemuaInput = False
-        BtnSave.SLFValidasiSemuaInputTag = Nothing
+        BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnSave.XOTampilkanFocusBorder = False
+        BtnSave.XOValidasiSemuaInput = False
+        BtnSave.XOValidasiSemuaInputTag = Nothing
         BtnSave.TabIndex = 4
         BtnSave.UseVisualStyleBackColor = False
         ' 
@@ -777,10 +777,10 @@ Partial Class DAR
         BtnLike.Margin = New Padding(4, 3, 4, 3)
         BtnLike.Name = "BtnLike"
         BtnLike.Size = New Size(32, 30)
-        BtnLike.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        BtnLike.SLFTampilkanFocusBorder = False
-        BtnLike.SLFValidasiSemuaInput = False
-        BtnLike.SLFValidasiSemuaInputTag = Nothing
+        BtnLike.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
+        BtnLike.XOTampilkanFocusBorder = False
+        BtnLike.XOValidasiSemuaInput = False
+        BtnLike.XOValidasiSemuaInputTag = Nothing
         BtnLike.TabIndex = 6
         BtnLike.UseVisualStyleBackColor = False
         ' 
@@ -836,8 +836,8 @@ Partial Class DAR
         DgnFile.RowHeadersDefaultCellStyle = DataGridViewCellStyle21
         DgnFile.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnFile.Size = New Size(791, 323)
-        DgnFile.SLFGroupFirstRows = False
-        DgnFile.SLFGunakanNomorBaris = True
+        DgnFile.XOGroupFirstRows = False
+        DgnFile.XOGunakanNomorBaris = True
         DgnFile.StandardTab = True
         DgnFile.TabIndex = 3
         ' 
@@ -993,7 +993,7 @@ Partial Class DAR
         DtpMonth.Name = "DtpMonth"
         DtpMonth.ShowUpDown = True
         DtpMonth.Size = New Size(172, 29)
-        DtpMonth.SLFResetOnDisabled = False
+        DtpMonth.XOResetOnDisabled = False
         DtpMonth.TabIndex = 804
         ' 
         ' miniToolStrip

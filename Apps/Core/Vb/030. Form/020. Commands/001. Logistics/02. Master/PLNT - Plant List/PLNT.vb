@@ -98,7 +98,7 @@ Public Class PLNT
 #Region "Main Form Events"
     Private Sub PLNT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
-        DgnPLNT.SLF_GETNewColor()
+        DgnPLNT.XOGETNewColor()
         Call ClearFind()
     End Sub
 

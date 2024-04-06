@@ -1,6 +1,9 @@
-﻿Public Class lnklbl
+﻿Imports System.Runtime.Versioning
+
+Public Class lnklbl
     Inherits System.Windows.Forms.LinkLabel
 
+    <SupportedOSPlatform("windows")>
     Public Sub New()
         InitializeComponent()
         Call ActivateLicenses()

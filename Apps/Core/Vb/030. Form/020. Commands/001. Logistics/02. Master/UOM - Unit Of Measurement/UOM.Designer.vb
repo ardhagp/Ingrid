@@ -85,8 +85,8 @@ Partial Class UOM
         DgnUOM.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnUOM.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnUOM.Size = New Size(915, 511)
-        DgnUOM.SLFGroupFirstRows = False
-        DgnUOM.SLFGunakanNomorBaris = False
+        DgnUOM.XOGroupFirstRows = False
+        DgnUOM.XOGunakanNomorBaris = False
         DgnUOM.StandardTab = True
         DgnUOM.TabIndex = 802
         ' 

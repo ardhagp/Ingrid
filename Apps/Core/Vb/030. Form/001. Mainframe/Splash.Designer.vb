@@ -42,8 +42,8 @@ Partial Class Splash
         Me.Pctbx1.Name = "Pctbx1"
         Me.Pctbx1.Size = New System.Drawing.Size(657, 241)
         Me.Pctbx1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.Pctbx1.SLFTampilkanBorder = False
-        Me.Pctbx1.SLFWarnaBorder = System.Drawing.Color.DodgerBlue
+        Me.Pctbx1.XOTampilkanBorder = False
+        Me.Pctbx1.XOWarnaBorder = System.Drawing.Color.DodgerBlue
         Me.Pctbx1.TabIndex = 0
         Me.Pctbx1.TabStop = False
         '
@@ -79,7 +79,7 @@ Partial Class Splash
         Me.LblTitle.Location = New System.Drawing.Point(3, 0)
         Me.LblTitle.Name = "LblTitle"
         Me.LblTitle.Size = New System.Drawing.Size(651, 110)
-        Me.LblTitle.SLFCustomElipsis = False
+        Me.LblTitle.XOCustomElipsis = False
         Me.LblTitle.TabIndex = 0
         Me.LblTitle.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.LblTitle.UseCompatibleTextRendering = True
@@ -98,7 +98,7 @@ Partial Class Splash
         Me.LblAdditional.Location = New System.Drawing.Point(3, 130)
         Me.LblAdditional.Name = "LblAdditional"
         Me.LblAdditional.Size = New System.Drawing.Size(651, 111)
-        Me.LblAdditional.SLFCustomElipsis = False
+        Me.LblAdditional.XOCustomElipsis = False
         Me.LblAdditional.TabIndex = 1
         Me.LblAdditional.Text = "Loading..."
         Me.LblAdditional.TextAlign = System.Drawing.ContentAlignment.BottomRight

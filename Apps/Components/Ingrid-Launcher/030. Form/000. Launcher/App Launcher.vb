@@ -4,6 +4,7 @@ Imports Connect
 Public Class App_Launcher
     Private WithEvents IngridMainframe As New Mainframe_n_6
     Private WithEvents ConnectMainframe As New CONN
+
     Private V_BRIDGE As New Bridge.Security.WRITELOG
 
     Private Var_Second As Integer
@@ -55,7 +56,6 @@ Public Class App_Launcher
             End If
             My.Settings.DefaultApp = AppNameIndex
             My.Settings.Save()
-            Me.Hide()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -69,5 +69,9 @@ Public Class App_Launcher
 
     Private Sub IngridMainframe_IngridFrameOpen() Handles IngridMainframe.IngridFrameOpen
         Me.Close()
+    End Sub
+
+    Private Sub ConnectMainframe_ConnectFrameOpen() Handles ConnectMainframe.ConnectFrameOpen
+        Me.Hide()
     End Sub
 End Class

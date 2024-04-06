@@ -62,10 +62,10 @@ Partial Class Rpt_Bsc
         BtnClose.Margin = New Windows.Forms.Padding(4, 3, 4, 3)
         BtnClose.Name = "BtnClose"
         BtnClose.Size = New Drawing.Size(117, 46)
-        BtnClose.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        BtnClose.SLFTampilkanFocusBorder = False
-        BtnClose.SLFValidasiSemuaInput = False
-        BtnClose.SLFValidasiSemuaInputTag = Nothing
+        BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
+        BtnClose.XOTampilkanFocusBorder = False
+        BtnClose.XOValidasiSemuaInput = False
+        BtnClose.XOValidasiSemuaInputTag = Nothing
         BtnClose.TabIndex = 1
         BtnClose.Text = "&Close"
         BtnClose.UseVisualStyleBackColor = False

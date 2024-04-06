@@ -3,12 +3,15 @@ Imports CMCv
 
 <SupportedOSPlatform("windows")>
 Public Class CONN
+    Public Event ConnectFrameOpen()
     Public Event ConnectFrameClose()
-    Private WithEvents V_MMSMenu As New UI.View.MenuStrip
+
+    Private WithEvents C_MMSMenu As New UI.View.MenuStrip
     Private WithEvents V_CONN_Editor As New CONN_Editor
-    Private v_SQL As New Commands.CONN.View
-    Private v_IsProduction As Boolean = True
-    Private v_IsExtension As Boolean = False
+
+    Private V_SQL As New Commands.CONN.View
+    Private V_IsProduction As Boolean = True
+    Private V_IsExtension As Boolean = False
 
     Public Sub New()
 
@@ -16,7 +19,7 @@ Public Class CONN
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        v_IsProduction = True
+        V_IsProduction = True
     End Sub
 
     Public Sub New(Optional ByVal IsProduction As Boolean = False, Optional ByVal IsExtension As Boolean = True)
@@ -25,8 +28,8 @@ Public Class CONN
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        v_IsProduction = IsProduction
-        v_IsExtension = IsExtension
+        V_IsProduction = IsProduction
+        V_IsExtension = IsExtension
     End Sub
 
 #Region "Sub Collections"
@@ -35,9 +38,10 @@ Public Class CONN
     ''' </summary>
     ''' <param name="ForceRefresh">True/False</param>
     ''' <remarks>True untuk mengambil data tanpa filter</remarks>
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
         DblBuffer(DgnConnection)
-        v_SQL.DisplayData(DgnConnection, SLFStatus, TxtFind, ForceRefresh)
+        Commands.CONN.View.DisplayData(DgnConnection, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     ''' <summary>
@@ -55,20 +59,22 @@ Public Class CONN
 
     <SupportedOSPlatform("windows")>
     Private Sub CONN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        RaiseEvent ConnectFrameOpen()
+
         Bridge.Security.WRITELOG.SENDLOG("Connection Settings is opened.", Bridge.Security.WRITELOG.LogType.Information)
 
         V_DBE_SQLite.Open(v_IsProduction)
 
         Call LoadMenu()
 
-        DgnConnection.SLF_GETNewColor()
+        DgnConnection.XOGETNewColor()
 
         Call GETDATA(True)
     End Sub
 
     Private Sub LoadMenu()
-        v_MMSMenu.LoadIn(Me, True)
-        v_MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
+        C_MMSMenu.LoadIn(Me, True)
+        C_MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -91,11 +97,11 @@ Public Class CONN
     ''' Add new data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataAddNew() Handles v_MMSMenu.EventDataAddNew
+    Private Sub EventDataAddNew() Handles C_MMSMenu.EventDataAddNew
         V_FORMAttrib.IsNew = True
         V_FORMAttrib.RowID = "-1"
-        v_CONN_Editor = New CONN_Editor
-        Display(v_CONN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new connection", True)
+        V_CONN_Editor = New CONN_Editor
+        Display(V_CONN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new connection", True)
         SLFStatus.Text = String.Empty
     End Sub
 
@@ -103,15 +109,15 @@ Public Class CONN
     ''' Edit existing data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Public Sub EventDataEdit() Handles v_MMSMenu.EventDataEdit
+    Public Sub EventDataEdit() Handles C_MMSMenu.EventDataEdit
         Call GETTableID()
         V_FORMAttrib.IsNew = False
 
         If V_FORMAttrib.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            v_CONN_Editor = New CONN_Editor
-            Display(v_CONN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update connection", True)
+            V_CONN_Editor = New CONN_Editor
+            Display(V_CONN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update connection", True)
         End If
 
         SLFStatus.Text = String.Empty
@@ -121,14 +127,14 @@ Public Class CONN
     ''' Delete selected data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataDelete() Handles v_MMSMenu.EventDataDelete
+    Private Sub EventDataDelete() Handles C_MMSMenu.EventDataDelete
         Call GETTableID()
         If V_FORMAttrib.RowID = "-1" Then
             Decision("no record selected", "error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             V_FORMAttrib.IsNew = False
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnConnection.CurrentRow.Cells("connectionname").Value & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (v_SQL.DELETEData(v_FORMAttrib.RowID)) Then
+                If (Commands.CONN.View.DELETEData(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     SLFStatus.Text = "Success"
                 Else
@@ -155,14 +161,14 @@ Public Class CONN
     ''' <summary>
     ''' Search mode
     ''' </summary>
-    Private Sub EventToolsFind() Handles v_MMSMenu.EventToolsFind
+    Private Sub EventToolsFind() Handles C_MMSMenu.EventToolsFind
         TxtFind.Focus()
     End Sub
 
     ''' <summary>
     ''' Load data with filter applied
     ''' </summary>
-    Private Sub EventDataRefresh() Handles v_MMSMenu.EventDataRefresh
+    Private Sub EventDataRefresh() Handles C_MMSMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
     End Sub
@@ -170,7 +176,7 @@ Public Class CONN
     ''' <summary>
     ''' Close form
     ''' </summary>
-    Private Sub EventDataClose() Handles v_MMSMenu.EventDataClose
+    Private Sub EventDataClose() Handles C_MMSMenu.EventDataClose
         Me.Close()
     End Sub
 
@@ -180,7 +186,7 @@ Public Class CONN
         Call GETDATA(True)
     End Sub
 
-    Private Sub V_CONN_Editor_RecordSaved() Handles v_CONN_Editor.RecordSaved
+    Private Sub V_CONN_Editor_RecordSaved() Handles V_CONN_Editor.RecordSaved
         TxtFind.Clear()
         Call GETDATA(True)
     End Sub

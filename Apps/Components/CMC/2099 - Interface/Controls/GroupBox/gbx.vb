@@ -1,6 +1,9 @@
-﻿Public Class gbx
+﻿Imports System.Runtime.Versioning
+
+Public Class gbx
     Inherits System.Windows.Forms.GroupBox
 
+    <SupportedOSPlatform("windows")>
     Public Sub New()
         InitializeComponent()
         Call ActivateLicenses()

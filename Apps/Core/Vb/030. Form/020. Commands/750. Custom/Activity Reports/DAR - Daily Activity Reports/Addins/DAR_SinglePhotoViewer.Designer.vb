@@ -67,10 +67,10 @@ Partial Class DAR_SinglePhotoViewer
         BtnClose.Margin = New Padding(4, 3, 4, 3)
         BtnClose.Name = "BtnClose"
         BtnClose.Size = New Size(117, 46)
-        BtnClose.SLFJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        BtnClose.SLFTampilkanFocusBorder = False
-        BtnClose.SLFValidasiSemuaInput = False
-        BtnClose.SLFValidasiSemuaInputTag = Nothing
+        BtnClose.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        BtnClose.XOTampilkanFocusBorder = False
+        BtnClose.XOValidasiSemuaInput = False
+        BtnClose.XOValidasiSemuaInputTag = Nothing
         BtnClose.TabIndex = 0
         BtnClose.Text = "&Close"
         BtnClose.UseVisualStyleBackColor = False
@@ -86,8 +86,8 @@ Partial Class DAR_SinglePhotoViewer
         PctbxPhoto.Name = "PctbxPhoto"
         PctbxPhoto.Size = New Size(766, 412)
         PctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
-        PctbxPhoto.SLFTampilkanBorder = False
-        PctbxPhoto.SLFWarnaBorder = Color.DodgerBlue
+        PctbxPhoto.XOTampilkanBorder = False
+        PctbxPhoto.XOWarnaBorder = Color.DodgerBlue
         PctbxPhoto.TabIndex = 996
         PctbxPhoto.TabStop = False
         ' 

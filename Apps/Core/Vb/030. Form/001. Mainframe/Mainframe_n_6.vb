@@ -24,7 +24,9 @@ Public Class Mainframe_n_6
     Private WithEvents V_PHTRZ As New CMCv.PHTRZ
     Private WithEvents V_UAC_Editor As UAC_Editor
     'Private WithEvents _CSETTINGS As New Connect.CONN
-    Private _SYSS As SYSS
+
+    Private F_SYSS As SYSS
+
     Private _SQL As New LibSQL.Mainframe.Database
     Private _SQL_DBCheck As New LibSQL.Commands.DBIC.Applications
     Private _SQL_Notification As New LibSQL.Application.Notification
@@ -41,6 +43,7 @@ Public Class Mainframe_n_6
 #End Region
 
 #Region "Subs Collection"
+    <SupportedOSPlatform("windows")>
     Private Sub CommandAutoComplete()
         Try
             Dim V_DS As New DataSet
@@ -50,6 +53,10 @@ Public Class Mainframe_n_6
             Txt_shortcut.AutoCompleteMode = AutoCompleteMode.SuggestAppend
 
             V_DS = _SQL_Modules.DisplayAutoComplete '.DisplayAutoComplete(V_FORMAttrib.RowID, DgnPictureList)
+
+            If V_DS Is Nothing Then
+                Exit Sub
+            End If
 
             For i As Integer = 0 To V_DS.Tables("TCMD").Rows.Count - 1
                 V_List.Add(V_DS.Tables("TCMD").Rows(i).Item("module_code"))
@@ -88,6 +95,7 @@ Public Class Mainframe_n_6
         _ClearStatus = 0
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub CloseAllWindows(Optional ByVal Forced As Boolean = False)
         Try
             If Not (Forced) Then
@@ -210,6 +218,7 @@ Public Class Mainframe_n_6
         Me.LayoutMdi(MdiLayout.TileHorizontal)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub Ms_workspace_CloseAll_Click(sender As Object, e As EventArgs) Handles Ms_workspace_CloseAll.Click
         Call CloseAllWindows()
     End Sub
@@ -222,6 +231,7 @@ Public Class Mainframe_n_6
         Me.WindowState = FormWindowState.Maximized
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub ChangePasswordToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangePasswordToolStripMenuItem.Click
         Try
             V_FORMAttrib.RowID = V_USERAttrib.UID
@@ -259,7 +269,7 @@ Public Class Mainframe_n_6
             Call FirstLoad()
             V_USERAttrib.UID = String.Empty
 
-            If (_SQL.Connect(_PRODUCTIONMODE)) Then
+            If Mainframe.Database.Connect(_PRODUCTIONMODE) Then
                 Ts_connection.Text = "Connected"
                 V_LOGApp.Run()
             Else
@@ -267,8 +277,11 @@ Public Class Mainframe_n_6
                 Decision("Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "<b>Restart</b> Ingrid after you made any changes!", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                 Return
             End If
+
             'splash.Close()
-            Call CommandAutoComplete()
+
+            Call CommandAutoComplete() 'TODO: Raised Error
+
             V_APPVer = GETAPPVERSION()
             Text += " - Ver. " & V_APPVer
 
@@ -420,16 +433,16 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub GetProfile()
-        PnlProfile.Visible = _SQL_Profiles.Show(v_USERAttrib.IsAdministrator)
+        PnlProfile.Visible = LibSQL.Application.ProfilePanel.Show(V_USERAttrib.IsAdministrator)
         If (PnlProfile.Visible) Then
-            LblWelcome.Text = _SQL_Profiles.Welcome
+            LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome
             LblEmpNumber.Text = v_USERAttrib.EmployeeNumber
 
             Dim _Nama = v_USERAttrib.FirstName.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
 
             LblEmployeeName.Text = String.Join(" ", _Nama.Take(2))
             LblPosition.Text = v_USERAttrib.Position
-            PctProfile.Image = _SQL_Profiles.GETPhoto(v_USERAttrib.EID, v_USERAttrib.Gender)
+            PctProfile.Image = _SQL_Profiles.GETPhoto(V_USERAttrib.EID, V_USERAttrib.Gender)
             PnlProfile.Height = 191
         Else
             LblWelcome.Text = String.Empty
@@ -447,29 +460,30 @@ Public Class Mainframe_n_6
         Dim V_FileCurrentSize As Double
         Dim V_FreeSpace As String
 
-        PnlStorage.Visible = _SQL_Storage.Show(v_USERAttrib.IsAdministrator)
+        PnlStorage.Visible = LibSQL.Application.StorageSense.Show(V_USERAttrib.IsAdministrator)
 
         If (PnlStorage.Visible) Then
             PnlStorage.Height = 158
 
-            V_FreeSpace = _SQL_Storage.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp")
+            V_FreeSpace = LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp")
             pgDataStorage.Maximum = V_FreeSpace
 
-            V_DataCurrentSize = _SQL_Storage.DataCurrentSize
+            V_DataCurrentSize = LibSQL.Application.StorageSense.DataCurrentSize
             pgDataStorage.Value = V_DataCurrentSize
 
             lblDataStorage.Text = String.Format("{0} / {1}", IIf(V_DataCurrentSize < 1024, V_DataCurrentSize & " MB", Math.Round((V_DataCurrentSize / 1024), 2) & " GB"), Math.Round((V_FreeSpace / 1024), 2) & " GB")
 
-            V_FreeSpace = _SQL_Storage.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp_file")
+            V_FreeSpace = LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp_file")
             pgFileStorage.Maximum = V_FreeSpace
 
-            V_FileCurrentSize = _SQL_Storage.FileCurrentSize
+            V_FileCurrentSize = LibSQL.Application.StorageSense.FileCurrentSize
             pgFileStorage.Value = V_FileCurrentSize
 
             lblFileStorage.Text = String.Format("{0} / {1}", IIf(V_FileCurrentSize < 1024, V_FileCurrentSize & " MB", Math.Round((V_FileCurrentSize / 1024), 2) & " GB"), Math.Round((V_FreeSpace / 1024), 2) & " GB")
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub NotificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificationToolStripMenuItem.Click
         Dim _NTFC As New NTFC
         Display(_NTFC, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, "Notification", "Show all notification that addressed to you", True)
@@ -506,10 +520,11 @@ Public Class Mainframe_n_6
     End Sub
 
     'Private Sub BtnExecute2_Click(sender As Object, e As EventArgs) Handles BtnExecute2.Click
-    '    Call EnterCommand(Txt_shortcut.SLFSQLText)
-    '    Txt_shortcut.AutoCompleteCustomSource.Add(Txt_shortcut.SLFSQLText.Trim)
+    '    Call EnterCommand(Txt_shortcut.XOSQLText)
+    '    Txt_shortcut.AutoCompleteCustomSource.Add(Txt_shortcut.XOSQLText.Trim)
     'End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub TmrMOD_Tick(sender As Object, e As EventArgs) Handles TmrMOD.Tick
         If (v_ForceRefreshMainframeData) Then
             Call CommandAutoComplete()
@@ -539,6 +554,7 @@ Public Class Mainframe_n_6
         Call LoginClicked()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub mainframe_Closing(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
         Dim _ReqFolder = CHECKREQUIREDFOLDER(DirName.PDF)
 
@@ -589,11 +605,11 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Public Sub GetSettings()
-        _MAXUPLOADSIZE_PDF = _SQL_Modules.MaxPDFAllowed
-        _MAXUPLOADSIZE_PHOTO = _SQL_Modules.MaxPhotoAllowed
-        _MINPASSWORDLENGTH = _SQL_Modules.MinPasswordLength
-        _TEXTMARK = _SQL_Modules.TextMark(V_USERAttrib.IsAdministrator)
+    Public Shared Sub GetSettings()
+        _MAXUPLOADSIZE_PDF = LibSQL.Application.Modules.MaxPDFAllowed
+        _MAXUPLOADSIZE_PHOTO = LibSQL.Application.Modules.MaxPhotoAllowed
+        _MINPASSWORDLENGTH = LibSQL.Application.Modules.MinPasswordLength
+        _TEXTMARK = LibSQL.Application.Modules.TextMark(V_USERAttrib.IsAdministrator)
     End Sub
 
     <SupportedOSPlatform("windows")>

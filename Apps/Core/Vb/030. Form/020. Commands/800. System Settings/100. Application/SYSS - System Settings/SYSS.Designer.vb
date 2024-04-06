@@ -293,25 +293,25 @@ Partial Class SYSS
         TxtWatermark.MaxLength = 255
         TxtWatermark.Name = "TxtWatermark"
         TxtWatermark.Size = New Size(279, 29)
-        TxtWatermark.SLFAutoTrim = False
-        TxtWatermark.SLFHarusDiisi = False
-        TxtWatermark.SLFHarusDiisiWarnaLatar = Color.LightPink
-        TxtWatermark.SLFHarusDiisiWarnaLatarDefault = Color.White
-        TxtWatermark.SLFHightlightSaatFokus = False
-        TxtWatermark.SLFHightlightSaatFokusWarna = Color.LightYellow
-        TxtWatermark.SLFIsBlank = True
-        TxtWatermark.SLFIsSearchBox = False
-        TxtWatermark.SLFJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        TxtWatermark.SLFPilihSemuaSaatFokus = False
-        TxtWatermark.SLFPwdLengthMin = 8
-        TxtWatermark.SLFPwdStrengthCalculate = False
-        TxtWatermark.SLFPwdStrengthScore = 0
-        TxtWatermark.SLFPwdStrengthText = Nothing
-        TxtWatermark.SLFRestriction = ControlCodeBase.enuRestriction.None
-        TxtWatermark.SLFSearchBoxText = "Watermark Text"
-        TxtWatermark.SLFSQLText = ""
-        TxtWatermark.SLFTanpaSpasi = False
-        TxtWatermark.SLFValidasiField = Nothing
+        TxtWatermark.XOAutoTrim = False
+        TxtWatermark.XOHarusDiisi = False
+        TxtWatermark.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtWatermark.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtWatermark.XOHightlightSaatFokus = False
+        TxtWatermark.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtWatermark.XOIsBlank = True
+        TxtWatermark.XOIsSearchBox = False
+        TxtWatermark.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtWatermark.XOPilihSemuaSaatFokus = False
+        TxtWatermark.XOPwdLengthMin = 8
+        TxtWatermark.XOPwdStrengthCalculate = False
+        TxtWatermark.XOPwdStrengthScore = 0
+        TxtWatermark.XOPwdStrengthText = Nothing
+        TxtWatermark.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtWatermark.XOSearchBoxText = "Watermark Text"
+        TxtWatermark.XOSQLText = ""
+        TxtWatermark.XOTanpaSpasi = False
+        TxtWatermark.XOValidasiField = Nothing
         TxtWatermark.TabIndex = 3
         TxtWatermark.Tag = "txt"
         ' 
@@ -367,7 +367,7 @@ Partial Class SYSS
         Lbl7.Margin = New Padding(4, 0, 4, 0)
         Lbl7.Name = "Lbl7"
         Lbl7.Size = New Size(33, 21)
-        Lbl7.SLFCustomElipsis = False
+        Lbl7.XOCustomElipsis = False
         Lbl7.TabIndex = 15
         Lbl7.Text = "MB"
         ' 
@@ -386,12 +386,12 @@ Partial Class SYSS
         ' Lbl6
         ' 
         Lbl6.AutoSize = True
-        Lbl6.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl6.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl6.Location = New Point(338, 36)
         Lbl6.Margin = New Padding(4, 0, 4, 0)
         Lbl6.Name = "Lbl6"
         Lbl6.Size = New Size(33, 21)
-        Lbl6.SLFCustomElipsis = False
+        Lbl6.XOCustomElipsis = False
         Lbl6.TabIndex = 13
         Lbl6.Text = "MB"
         ' 
@@ -471,10 +471,10 @@ Partial Class SYSS
         BtnClose.Margin = New Padding(4, 3, 4, 3)
         BtnClose.Name = "BtnClose"
         BtnClose.Size = New Size(117, 46)
-        BtnClose.SLFJenisTombol = ControlCodeBase.enuJenisTombol.No
-        BtnClose.SLFTampilkanFocusBorder = False
-        BtnClose.SLFValidasiSemuaInput = False
-        BtnClose.SLFValidasiSemuaInputTag = Nothing
+        BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
+        BtnClose.XOTampilkanFocusBorder = False
+        BtnClose.XOValidasiSemuaInput = False
+        BtnClose.XOValidasiSemuaInputTag = Nothing
         BtnClose.TabIndex = 805
         BtnClose.Text = "&Close"
         BtnClose.UseVisualStyleBackColor = False
@@ -488,16 +488,16 @@ Partial Class SYSS
         BtnSave.FlatAppearance.BorderSize = 2
         BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
         BtnSave.FlatStyle = FlatStyle.Flat
-        BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnSave.ForeColor = Color.White
         BtnSave.Location = New Point(673, 3)
         BtnSave.Margin = New Padding(4, 3, 4, 3)
         BtnSave.Name = "BtnSave"
         BtnSave.Size = New Size(117, 46)
-        BtnSave.SLFJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-        BtnSave.SLFTampilkanFocusBorder = False
-        BtnSave.SLFValidasiSemuaInput = False
-        BtnSave.SLFValidasiSemuaInputTag = Nothing
+        BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
+        BtnSave.XOTampilkanFocusBorder = False
+        BtnSave.XOValidasiSemuaInput = False
+        BtnSave.XOValidasiSemuaInputTag = Nothing
         BtnSave.TabIndex = 804
         BtnSave.Text = "&Save"
         BtnSave.UseVisualStyleBackColor = False

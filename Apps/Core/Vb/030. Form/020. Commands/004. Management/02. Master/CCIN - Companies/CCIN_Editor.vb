@@ -1,4 +1,5 @@
-﻿Imports CMCv
+﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Public Class CCIN_Editor
 
@@ -20,16 +21,18 @@ Public Class CCIN_Editor
 #End Region
 
 #Region "Form Events"
+
+    <SupportedOSPlatform("windows")>
     Private Sub CCIN_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If (V_FORMAttrib.IsNew) Then
             ChkAddNew.Visible = True
             ChkAddNew.Checked = False
         Else
-            TxtCode.Text = _SQL.GETCompanyCode(V_FORMAttrib.RowID)
-            TxtName.Text = _SQL.GETCompanyName(V_FORMAttrib.RowID)
-            TxtSearchTerm1.Text = _SQL.GETSearchTerm1(V_FORMAttrib.RowID)
-            TxtSearchTerm2.Text = _SQL.GETSearchTerm2(V_FORMAttrib.RowID)
-            TxtDescription.Text = _SQL.GETDescription(V_FORMAttrib.RowID)
+            TxtCode.Text = Commands.CCIN.Editor.GETCompanyCode(V_FORMAttrib.RowID)
+            TxtName.Text = Commands.CCIN.Editor.GETCompanyName(V_FORMAttrib.RowID)
+            TxtSearchTerm1.Text = Commands.CCIN.Editor.GETSearchTerm1(V_FORMAttrib.RowID)
+            TxtSearchTerm2.Text = Commands.CCIN.Editor.GETSearchTerm2(V_FORMAttrib.RowID)
+            TxtDescription.Text = Commands.CCIN.Editor.GETDescription(V_FORMAttrib.RowID)
             ChkAddNew.Visible = False
             ChkAddNew.Checked = False
         End If
@@ -41,19 +44,20 @@ Public Class CCIN_Editor
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        If (TxtCode.SLFSQLText = String.Empty) OrElse (TxtName.SLFSQLText = String.Empty) Then
+        If (TxtCode.XOSQLText = String.Empty) OrElse (TxtName.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Company Code & Company Name properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf ((V_FORMAttrib.IsNew) AndAlso (_SQL.IsDuplicate(TxtCode.SLFSQLText))) Then
+        ElseIf ((V_FORMAttrib.IsNew) AndAlso (Commands.CCIN.Editor.IsDuplicate(TxtCode.XOSQLText))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Company Code already registered.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (_SQL.IsDuplicate(TxtCode.SLFSQLText, V_FORMAttrib.RowID))) Then
+        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (Commands.CCIN.Editor.IsDuplicate(TxtCode.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Company Code already used by another company.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (_SQL.PUSHData(TxtCode.SLFSQLText, TxtName.SLFSQLText, TxtSearchTerm1.SLFSQLText, TxtSearchTerm2.SLFSQLText, TxtDescription.SLFSQLText, V_FORMAttrib.RowID)) Then
+        If (Commands.CCIN.Editor.PUSHData(TxtCode.XOSQLText, TxtName.XOSQLText, TxtSearchTerm1.XOSQLText, TxtSearchTerm2.XOSQLText, TxtDescription.XOSQLText, V_FORMAttrib.RowID)) Then
             Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else

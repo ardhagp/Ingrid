@@ -3,14 +3,16 @@ Imports CMCv
 
 Public Class EPLS
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.EPLS.View
-    Private WithEvents _EPLS_Editor As New EPLS_Editor
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
+    Private _SQL As New Commands.EPLS.View
+    Private WithEvents F_EPLS_Editor As New EPLS_Editor
+    Private WithEvents C_MMSMenu As New UI.View.MenuStrip
 #End Region
 
 #Region "Subs Collections"
+
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        _SQL.DisplayData(DgnEPLS, SLFStatus, TxtFind, ForceRefresh)
+        Commands.EPLS.View.DISPLAYDATA(DgnEPLS, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
@@ -24,7 +26,7 @@ Public Class EPLS
 
 #Region "Menu Strip Functions"
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
+    Private Sub EventDataAddNew() Handles C_MMSMenu.EventDataAddNew
         If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
@@ -33,12 +35,12 @@ Public Class EPLS
         V_FORMAttrib.IsNew = True
         V_FORMAttrib.RowID = "-1"
 
-        _EPLS_Editor = New EPLS_Editor
-        Display(_EPLS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new employee data", True)
+        F_EPLS_Editor = New EPLS_Editor
+        DISPLAY(F_EPLS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new employee data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
+    Private Sub EventDataEdit() Handles C_MMSMenu.EventDataEdit
         If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
@@ -50,13 +52,13 @@ Public Class EPLS
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             V_FORMAttrib.IsNew = False
-            _EPLS_Editor = New EPLS_Editor
-            Display(_EPLS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
+            F_EPLS_Editor = New EPLS_Editor
+            DISPLAY(F_EPLS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
+    Private Sub EventDataDelete() Handles C_MMSMenu.EventDataDelete
         If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
@@ -67,7 +69,7 @@ Public Class EPLS
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
+                If (Commands.EPLS.View.DELETEDATA(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
@@ -77,35 +79,38 @@ Public Class EPLS
         End If
     End Sub
 
-    Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
+    <SupportedOSPlatform("windows")>
+    Private Sub EventDataRefresh() Handles C_MMSMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
     End Sub
 
-    Private Sub EventDataClose() Handles _MMSMenu.EventDataClose
+    Private Sub EventDataClose() Handles C_MMSMenu.EventDataClose
         Me.Close()
     End Sub
 
-    Private Sub EventToolsFind() Handles _MMSMenu.EventToolsFind
+    Private Sub EventToolsFind() Handles C_MMSMenu.EventToolsFind
         TxtFind.Focus()
     End Sub
 #End Region
 
     <SupportedOSPlatform("windows")>
     Private Sub EPLS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _MMSMenu.LoadIn(Me)
-        _MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
+        C_MMSMenu.LoadIn(Me)
+        C_MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
         Call GETDATA()
         TxtFind.ClearSearch()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()
         End If
     End Sub
 
-    Private Sub _EPLS_Editor_RecordSaved() Handles _EPLS_Editor.RecordSaved
+    <SupportedOSPlatform("windows")>
+    Private Sub F_EPLS_Editor_RecordSaved() Handles F_EPLS_Editor.RecordSaved
         Call GETDATA()
     End Sub
 

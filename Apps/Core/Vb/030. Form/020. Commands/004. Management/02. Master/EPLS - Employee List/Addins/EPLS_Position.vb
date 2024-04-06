@@ -2,7 +2,7 @@
 
 Public Class EPLS_Position
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.EPLS.Addins.Browse.Position
+    Private _SQL As New Commands.EPLS.Addins.Browse.Position
     Public Event RecordSelected()
 #End Region
 
@@ -16,7 +16,7 @@ Public Class EPLS_Position
 
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        _SQL.DisplayData(DgnAddinPosition, SLFStatus, TxtFind, ForceRefresh)
+        Commands.EPLS.Addins.Browse.Position.DISPLAYDATA(DgnAddinPosition, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 #End Region
 

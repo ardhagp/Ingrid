@@ -36,7 +36,7 @@ Module Globals
     Public ErrorCatcher As New Catcher.Error.Fields
 
     'Public ERL As Database.Engine.LocalDB
-    Public ERL As Database.Engine.SQLite_v3
+    Public ERL As Database.Engine.SQLiteV3
     Public WithEvents ERC As New frmErrorReporting
     'Public WithEvents TED As New frmTextEditor
     Public WithEvents MSG As New frmDialogBox
@@ -48,11 +48,13 @@ Module Globals
     Public V_USERAttrib As New Ingrid.Main.GlobalUser
 #End Region
 
+    <SupportedOSPlatform("windows")>
     Public Sub FirstLoad()
         Call GETAPPVERSION()
         Call CHECKREQUIREDFOLDER()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Public Sub DblBuffer(ByVal GridView As DataGridView)
         Try
             Dim systemType As Type = GridView.GetType()
@@ -95,6 +97,7 @@ Module Globals
     ''' Metode untuk menampilkan log error
     ''' </summary>
     ''' <remarks></remarks>
+    <SupportedOSPlatform("windows")>
     Public Sub PUSHERRORDATASHOW()
         ERC = New CMCv.frmErrorReporting(ErrorCatcher, ERL)
         ERC.ShowDialog()
@@ -111,6 +114,7 @@ Module Globals
     ''' </summary>
     ''' <returns>String</returns>
     ''' <remarks></remarks>
+    <SupportedOSPlatform("windows")>
     Public Function GETAPPVERSION() As String
         Try
             Dim V_Major, V_Minor, V_Build, V_Revision As Integer
@@ -177,6 +181,7 @@ Module Globals
     ''' <param name="IsDialog">True/False</param>
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
+    <SupportedOSPlatform("windows")>
     Public Sub DISPLAY(ByVal formName As CMCv.frmStandard, Optional ByVal FormImage As System.Drawing.Image = Nothing, Optional ByVal FormTitle As String = "", Optional ByVal FormSubTitle As String = "", Optional ByVal IsDialog As Boolean = False, Optional ByVal ParentFrame As Windows.Forms.Form = Nothing)
         Try
             formName.SLFNamaForm.Text = FormTitle
@@ -218,7 +223,8 @@ Module Globals
     ''' <param name="IsDialog">True/False</param>
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
-    Public Sub Display(ByVal FormName As CMCv.Std_Fo, Optional ByVal FormImage As System.Drawing.Image = Nothing, Optional ByVal FormTitle As String = "", Optional ByVal FormSubTitle As String = "", Optional ByVal IsDialog As Boolean = False, Optional ByVal ParentFrame As Windows.Forms.Form = Nothing)
+    <SupportedOSPlatform("windows")>
+    Public Sub DISPLAY(ByVal FormName As CMCv.Std_Fo, Optional ByVal FormImage As System.Drawing.Image = Nothing, Optional ByVal FormTitle As String = "", Optional ByVal FormSubTitle As String = "", Optional ByVal IsDialog As Boolean = False, Optional ByVal ParentFrame As Windows.Forms.Form = Nothing)
         Try
             FormName.SLFNamaForm.Text = FormTitle
             If FormImage IsNot Nothing Then

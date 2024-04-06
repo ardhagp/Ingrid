@@ -44,7 +44,7 @@ Public Class frmStandard
         Dim _Violation As Integer = 0
         Dim AllTxt As New List(Of Windows.Forms.Control)
         For Each _Txt As CMCv.txt In FindControlRecursive(AllTxt, Me, GetType(CMCv.txt))
-            If (_Txt.SLFHarusDiisi) AndAlso _Txt.SLFSQLText = String.Empty Then
+            If (_Txt.XOHarusDiisi) AndAlso _Txt.XOSQLText = String.Empty Then
                 _Violation += 1
             End If
         Next
