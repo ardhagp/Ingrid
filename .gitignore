@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Apps/Core/Vb/.vs
+/Apps/Core/Vb/bin/Debug/net7.0-windows
+/Apps/Core/Vb/obj
+/Database/SQL Server/DatabaseSchema_File/bin/Debug
+/Database/SQL Server/DatabaseSchema_File/obj/Debug
+/.vs
+/Apps/Components/Bridge/bin/Debug/net7.0-windows
+/Apps/Components/Bridge/obj
+/Apps/Components/Connect/bin/Debug/net7.0-windows
