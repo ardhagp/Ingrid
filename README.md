@@ -5,27 +5,36 @@
 Multi purpose application
 
 #   <span style="color:darkorange">**Project Status**</span>
----
-| <span style="color:darkorange">_Information_</span> | <span style="color:darkorange">_Value_</span> |
+----
+| <span style="color:darkorange">_Information_</span> | <span style="color:darkorange">_Status_</span> |
 |--:|--|
 |License| [![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) |
-|Last Check In| [![Build status](https://cagakmelon.visualstudio.com/Ingrid/_apis/build/status/www.iupdt.my.id/scheduled/CI-Build)](https://cagakmelon.visualstudio.com/Ingrid/_build/latest?definitionId=8) |
-|Midnight Build| [![Build status](https://cagakmelon.visualstudio.com/Ingrid/_apis/build/status/www.iupdt.my.id/scheduled/Midnight-Build-Beta)](https://cagakmelon.visualstudio.com/Ingrid/_build/latest?definitionId=1) |
-|Beta Version| ![Deployment](https://cagakmelon.vsrm.visualstudio.com/_apis/public/Release/badge/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/1/2) |
-|Stable Release| ![Deployment](https://cagakmelon.vsrm.visualstudio.com/_apis/public/Release/badge/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/2/3) |
-
-| <span style="color:darkorange">_Information_</span> | <span style="color:darkorange">_Value_</span> |
-|--:|--|
-|Azure Build| [![Build Status](https://dev.azure.com/cagakmelon/Ingrid/_apis/build/status%2Ffrom%20Github%2Fardhagp.Ingrid?branchName=master)](https://dev.azure.com/cagakmelon/Ingrid/_build/latest?definitionId=12&branchName=master) |
 |Epics| [![Board Status](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/d8d5eb94-3f20-4331-b741-a71cad549752/_apis/work/boardbadge/618e4563-8610-4e05-baa7-5e30f40ea320?columnOptions=1)](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/_boards/board/t/d8d5eb94-3f20-4331-b741-a71cad549752/Epics/) |
 |Features| [![Board Status](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/d8d5eb94-3f20-4331-b741-a71cad549752/_apis/work/boardbadge/e555542b-4c40-4b49-839c-9f4f3facb8ff?columnOptions=1)](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/_boards/board/t/d8d5eb94-3f20-4331-b741-a71cad549752/Features/) |
 |Stories| [![Board Status](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/d8d5eb94-3f20-4331-b741-a71cad549752/_apis/work/boardbadge/531d42ad-5741-4fbf-b551-86a086c98e7f?columnOptions=1)](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/_boards/board/t/d8d5eb94-3f20-4331-b741-a71cad549752/Stories/) |
 |Offline Setup| [![Static Badge](https://img.shields.io/badge/Download-Installer-gold)](https://www.iupdt.my.id/Ingrid.zip) |
 
+----
+| <span style="color:darkorange">_TFVC_</span> | <span style="color:darkorange">_Status_</span> |
+|--:|--|
+|Last Check In| [![Build status](https://cagakmelon.visualstudio.com/Ingrid/_apis/build/status/www.iupdt.my.id/scheduled/CI-Build)](https://cagakmelon.visualstudio.com/Ingrid/_build/latest?definitionId=8) |
+|Midnight Build| [![Build status](https://cagakmelon.visualstudio.com/Ingrid/_apis/build/status/www.iupdt.my.id/scheduled/Midnight-Build-Beta)](https://cagakmelon.visualstudio.com/Ingrid/_build/latest?definitionId=1) |
+|Beta Version| ![Deployment](https://cagakmelon.vsrm.visualstudio.com/_apis/public/Release/badge/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/1/2) |
+|Stable Release| ![Deployment](https://cagakmelon.vsrm.visualstudio.com/_apis/public/Release/badge/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/2/3) |
+
+----
+| <span style="color:darkorange">_Git_</span> | <span style="color:darkorange">_Status_</span> |
+|--:|--|
+|Last Check In| _In Configuration_ |
+|Midnight Build| _In Configuration_ |
+|Beta Version| _In Configuration_ |
+|Stable Release| _In Configuration_ |
+----
+
 #   <span style="color:darkorange">**Tools**</span>
 ----
 <span style="color:orange">1.</span>	Visual Studio Community Edition ([Download](https://visualstudio.microsoft.com/downloads/)) <br/>
-<span style="color:orange">2.</span>	.NET 6 ([Download](https://dotnet.microsoft.com/en-us/download/dotnet/6.0))<br/>
+<span style="color:orange">2.</span>	.NET 7 ([Download](https://dotnet.microsoft.com/en-us/download/dotnet/7.0))<br/>
 <span style="color:orange">3.</span>  SQL Server 2022 Express / Developer Edition ([Download](https://www.microsoft.com/en-us/sql-server/sql-server-downloads))<br/>
 | <span style="color:darkorange">_Instruction For Database_</span> |
 | -- |
@@ -42,13 +51,13 @@ Then type this json structure.
   "KEYS": {
 	  "SALT": "<input random characters including Upper and Lower Case, Symbols and Space>",
     "SYNCFUSION": "<input your Syncfusion Key>",
-   "BETTERSTACK": "<input your BetterStack Key>"
+    "BETTERSTACK_LOG": "<input your BetterStack Key>"
   }
 }
 ```
-by accessing this directory:
+or simply by editing _secrets.json_ in this directory:
 ```
-%APPDATA%\Microsoft\UserSecrets\{guid}\secrets.json
+%APPDATA%\Microsoft\UserSecrets\{guid}\
 ```
 ----
 What if Manage User Secrets context menu doesn't show up?
@@ -68,17 +77,24 @@ then type this command using PowerShell
 ```
 dotnet user-secrets set KEYS:SALT "<input random characters including Upper and Lower Case, Symbols and Space>"
 dotnet user-secrets set KEYS:SYNCFUSION "<input your Syncfusion Key>"
-dotnet user-secrets set KEYS:BETTERSTACK "<input your BetterStack Key>"
+dotnet user-secrets set KEYS:BETTERSTACK_LOG "<input your BetterStack Key>"
 ```
-----
-
+## Keys :
+### 1. Syncfusion
 To obtain Syncfusion Key, please sign up with <span style="color:orange">**Community License**</span> and visit this page : [Syncfusion](https://www.syncfusion.com/account/downloads)
 Then follow this steps below :
+
 ![](https://res.cloudinary.com/cagakmelon/image/upload/v1696932718/apps/ingrid-assets/readme.md/get_license_key.png)
+
+### 2. BetterStack
+To obtain BetterStack Key, please sign up <span style="color:orange">**BetterStack**</span> and open [https://betterstack.com/settings](https://betterstack.com/settings) 
+
+![](https://res.cloudinary.com/cagakmelon/image/upload/v1712380400/apps/ingrid-assets/readme.md/2024-04-06_120426.jpg)
 
 #   <span style="color:darkorange">**About MIT License**</span>
 ----
 This application is released under the [MIT license]($/Ingrid/LICENSE). You can use the code for any purpose, including commercial projects.
+
 ![MIT License](https://res.cloudinary.com/cagakmelon/image/upload/v1697064703/apps/ingrid-assets/readme.md/license.png)
 
 #   <span style="color:darkorange">**Navigation**</span>
