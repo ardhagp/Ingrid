@@ -1,5 +1,6 @@
 ﻿Imports System.Reflection
 Imports System.Runtime.Versioning
+Imports CMCv
 
 <SupportedOSPlatform("windows")>
 Module Globals
