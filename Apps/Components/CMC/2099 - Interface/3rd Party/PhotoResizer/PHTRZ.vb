@@ -10,18 +10,19 @@ Public Class PHTRZ
         RaiseEvent Done()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
 
         Try
             If TxtLoad.Text = String.Empty Then
                 SLFStatusLabel.Text = "Please pick one of your photo first."
                 Return
-            ElseIf Not (_FILEHandler.IsExists(TxtLoad.Text)) Then
+            ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtLoad.Text)) Then
                 SLFStatusLabel.Text = "Your photo does not exist. Please recheck your file."
                 Return
             End If
 
-            If Not (_IMG_Compressor.OutputAsFile(TxtLoad.Text, TxtSave.Text)) Then
+            If Not (CMCv.ImageEditor.Proccessor.Compress.OutputAsFile(TxtLoad.Text, TxtSave.Text)) Then
                 SLFStatusLabel.Text = "Error occured while resizing. Compressing failed."
                 Return
             End If

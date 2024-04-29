@@ -6,7 +6,7 @@ Imports CMCv
 Namespace Commands.UAC
 
     Public Class Login
-        ReadOnly _IMG As New ImageEditor.Proccessor.Compress
+        'ReadOnly _IMG As New ImageEditor.Proccessor.Compress
 
         Public Enum EnuAuthType
             Read = 4
@@ -194,7 +194,7 @@ Namespace Commands.UAC
                 _FileStream = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
 
                 If _FileStream IsNot Nothing Then
-                    _Photo = _IMG.OutputAsImage(_FileStream)
+                    _Photo = ImageEditor.Proccessor.Compress.OutputAsImage(_FileStream)
                 End If
 
 

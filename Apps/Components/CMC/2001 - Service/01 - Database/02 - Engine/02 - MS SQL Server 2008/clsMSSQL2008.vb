@@ -4,14 +4,14 @@ Imports System.Windows.Forms
 
 Namespace Database.Engine
     Public Class MSSQL2008
-        Private _CS(1) As String
-        Private _FilePath(1) As String
+        'Private ReadOnly _CS(1) As String
+        'Private ReadOnly _FilePath(1) As String
 
-        Private _CONN(1) As SqlClient.SqlConnection
-        Private _CMD(1) As SqlClient.SqlCommand
+        Private ReadOnly _CONN(1) As SqlClient.SqlConnection
+        Private ReadOnly _CMD(1) As SqlClient.SqlCommand
         Private _Adapter As SqlClient.SqlDataAdapter
 
-        Private _MSSQL2008 As New Connect.MSSQLServer2008Connection
+        Private ReadOnly _MSSQL2008 As New Connect.MSSQLServer2008Connection
 
         Public Enum DatabaseID
             DbDefault
@@ -101,6 +101,7 @@ Namespace Database.Engine
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function GETDATASET(ByVal DBR As Adapter.MSSQL2008.Display.Request, ByVal TableName As String, Optional ByVal DatabaseName As String = "db_universe_erp") As DataSet
             Dim _DA(1) As SqlClient.SqlDataAdapter
 
@@ -260,6 +261,9 @@ Namespace Database.Engine
 
                 Call PUSHERRORDATA("[FILLDATASET] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, False, False)
             End Try
+
+            _Adapter = Nothing
+            _Adapter.Dispose()
 
             Return DataSetName
         End Function

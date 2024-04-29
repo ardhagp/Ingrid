@@ -527,7 +527,7 @@ Public Class txt
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Function HasKeyboard()
+    Private Shared Function HasKeyboard()
         Dim searcher As New ManagementObjectSearcher("root\CIMV2", "SELECT * FROM Win32_Keyboard")
         Dim result = From mobj In searcher.Get()
                      Select mobj Where mobj("Status").ToString() = 0

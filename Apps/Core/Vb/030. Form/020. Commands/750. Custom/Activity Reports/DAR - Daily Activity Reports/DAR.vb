@@ -504,11 +504,12 @@ Public Class DAR
             If _TEXTMARK = String.Empty Then
                 CopyPicture = PctbxActivityPhoto.Image
             Else
-                CopyPicture = V_IMG_EDITOR.Watermarker(PctbxActivityPhoto.Image, _TEXTMARK)
+                CopyPicture = CMCv.ImageEditor.Proccessor.Editor.Watermarker(PctbxActivityPhoto.Image, _TEXTMARK)
             End If
             Clipboard.SetImage(CopyPicture)
         End If
         CopyPicture = Nothing
+        CopyPicture.Dispose()
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -526,12 +527,13 @@ Public Class DAR
                 If _TEXTMARK = String.Empty Then
                     SavePicture = PctbxActivityPhoto.Image
                 Else
-                    SavePicture = V_IMG_EDITOR.Watermarker(PctbxActivityPhoto.Image, _TEXTMARK)
+                    SavePicture = CMCv.ImageEditor.Proccessor.Editor.Watermarker(PctbxActivityPhoto.Image, _TEXTMARK)
                 End If
                 SavePicture.Save(SfdPhoto.FileName, System.Drawing.Imaging.ImageFormat.Jpeg)
             End If
         End If
         SavePicture = Nothing
+        SavePicture.Dispose()
     End Sub
 
     <SupportedOSPlatform("windows")>

@@ -5,7 +5,7 @@ Imports System.Windows.Forms
 Namespace Sys.Hardware
     <SupportedOSPlatform("windows")>
     Public Class Keyboard
-        Public Function Installed() As Integer
+        Public Shared Function Installed() As Integer
 
             Try
                 Dim _Result As Integer = 0

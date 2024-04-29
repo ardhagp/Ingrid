@@ -56,7 +56,7 @@ Public Class dgn
         End Set
     End Property
 
-    Private Function RGB(p1 As Integer) As System.Drawing.Color
+    Private Shared Function RGB(p1 As Integer) As System.Drawing.Color
         Throw New NotImplementedException
     End Function
 

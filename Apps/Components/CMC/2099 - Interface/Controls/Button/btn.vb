@@ -117,6 +117,7 @@ Public Class btn
         End Select
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub btn_BackColorChanged(sender As Object, e As System.EventArgs) Handles Me.BackColorChanged
         If Me.FlatStyle = Windows.Forms.FlatStyle.Flat Then
             MyBase.FlatAppearance.BorderColor = ControlCodeBase.AmbilWarna(MyBase.BackColor, ControlCodeBase.enuOpasitasWarna.Darker, 60)
