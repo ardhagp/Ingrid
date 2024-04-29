@@ -110,10 +110,12 @@ steps:
       more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
 
 - task: VSBuild@1
-  displayName: 'VSBuild - Beta'
+  displayName: 'VSBuild - CI'
   inputs:
     solution: '**\*.sln'
-    vsVersion: '17.0'
-    platform: '$(BuildPlatform)'
-    configuration: '$(BuildConfiguration)'
+    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:InstallUrl="https://www.iupdt.my.id/beta/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net6.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net6.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
+    platform: 'any cpu'
+    configuration: 'release'
     clean: true
+    maximumCpuCount: true
+    createLogFile: true
