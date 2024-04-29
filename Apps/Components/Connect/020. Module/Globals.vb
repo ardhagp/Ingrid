@@ -1,15 +1,21 @@
-﻿Imports System.Reflection
+﻿Imports CMCv.Database.Engine
+Imports CMCv.Database.Properties
+Imports CMCv.Database.Adapter
+
+Imports Bridge.Security
+
+Imports System.Reflection
 Imports System.Runtime.Versioning
 
 <SupportedOSPlatform("windows")>
 Module Globals
-    Public V_DBE_MSSQL2008 As New Database.Engine.MSSQL2008
-    Public V_DBE_SQLite As New Database.Engine.SQLiteV3
-    Public V_DB_Properties(1) As Database.Properties.Fields
-    Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
+    Public V_DBE_MSSQL2008 As New MSSQL2008
+    Public V_DBE_SQLite As New SQLiteV3
+    Public V_DB_Properties(1) As Fields
+    Public V_BRIDGE_LOG As New WRITELOG
 
-    Public V_DBR_SQLITE(1) As Database.Adapter.SQLite.Display.Request
-    Public V_DBP_SQLITE As New Database.Adapter.SQLite.Execute
+    Public V_DBR_SQLITE(1) As SQLite.Display.Request
+    Public V_DBP_SQLITE As New SQLite.Execute
 
     Public V_SECEncrypt As New Security.Encrypt
 
