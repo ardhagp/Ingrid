@@ -1,17 +1,19 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class MMTY
-    Private _SQL As New LibSQL.Commands.MMTY.View
+    'Private _SQL As New LibSQL.Commands.MMTY.View
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
 
 #Region "Menu Strip Functions"
 
 #End Region
 
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
-        _SQL.DisplayData(DgnMMTY, SLFStatus, TxtFind, ForceRefresh)
+        Commands.MMTY.View.DisplayData(DgnMMTY, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub frmMMTY_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
         Call GETDATA(True)
@@ -24,6 +26,7 @@ Public Class MMTY
         TxtFind.ClearSearch()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()

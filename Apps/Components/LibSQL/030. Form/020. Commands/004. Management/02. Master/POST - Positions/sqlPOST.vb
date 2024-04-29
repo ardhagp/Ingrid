@@ -4,7 +4,7 @@ Imports CMCv
 
 Namespace Commands.POST
     Public Class View
-        ReadOnly _DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly _DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(ByVal Grid As dgn, ByVal Status As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)

@@ -24,16 +24,17 @@ Namespace Tools.Import.MaterialMaster
             Dim IsSuccess As Boolean = True
             Dim CSVValue As String()
             Dim CSVRow As Integer
-            Dim CSVRowFound As Integer
+            'Dim CSVRowFound As Integer
 
             Dim Search As String = "SELECT COUNT(m.material_id) FROM dbo.[[log]]material] m WHERE m.material_id = '%n'"
 
             If File.Exists(FileLocation) = True Then
                 DisplayLogs.AppendText("Done." & Environment.NewLine)
 
-                Dim CSVParser As New Microsoft.VisualBasic.FileIO.TextFieldParser(FileLocation)
-                CSVParser.TextFieldType = FileIO.FieldType.Delimited
-                CSVParser.Delimiters = New String() {";"}
+                Dim CSVParser As New Microsoft.VisualBasic.FileIO.TextFieldParser(FileLocation) With {
+                .TextFieldType = FileIO.FieldType.Delimited,
+                .Delimiters = New String() {";"}
+                }
 
                 '_DBP_MSSQL2008.Query = "INSERT INTO dbo.material(material_id,material_materialtype,material_description,material_potext,material_materialgroup) VALUES "
                 CSVRow = 1

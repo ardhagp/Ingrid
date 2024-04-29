@@ -6,11 +6,13 @@ Public Class PLNT
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
 
 #Region "Sub Collections"
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
         DblBuffer(DgnPLNT)
-        _SQL.DisplayData(DgnPLNT, SLFStatus, TxtFind, ForceRefresh)
+        LibSQL.Commands.PLNT.View.DisplayData(DgnPLNT, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub ClearFind()
         Call GETDATA(True)
     End Sub
@@ -32,6 +34,7 @@ Public Class PLNT
     ''' <summary>
     ''' Add new data
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataAddNew() Handles _MMSMenu.EventDataAddNew
         If V_USERAccess.User("PLNT", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Add) = False Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -44,6 +47,7 @@ Public Class PLNT
         Mainframe_n_6.Ts_status.Text = String.Empty
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataEdit() Handles _MMSMenu.EventDataEdit
         If V_USERAccess.User("PLNT", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Edit) = False Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -60,6 +64,7 @@ Public Class PLNT
         Mainframe_n_6.Ts_status.Text = String.Empty
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataDelete() Handles _MMSMenu.EventDataDelete
         If V_USERAccess.User("PLNT", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Delete) = False Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -71,7 +76,7 @@ Public Class PLNT
         Else
             V_FORMAttrib.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If _SQL.DELETEData(V_FORMAttrib.RowID) = True Then
+                If LibSQL.Commands.PLNT.View.DELETEDATA(V_FORMAttrib.RowID) = True Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
@@ -81,6 +86,7 @@ Public Class PLNT
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataRefresh() Handles _MMSMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
@@ -96,6 +102,7 @@ Public Class PLNT
 #End Region
 
 #Region "Main Form Events"
+    <SupportedOSPlatform("windows")>
     Private Sub PLNT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
         DgnPLNT.XOGETNewColor()

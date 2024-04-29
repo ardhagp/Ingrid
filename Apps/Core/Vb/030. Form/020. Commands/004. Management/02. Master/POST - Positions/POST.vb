@@ -9,8 +9,9 @@ Public Class POST
 #End Region
 
 #Region "Subs Collections"
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        _SQL.DisplayData(DgnPOST, SLFStatus, TxtFind, ForceRefresh)
+        LibSQL.Commands.POST.View.DisplayData(DgnPOST, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
@@ -23,6 +24,7 @@ Public Class POST
 #End Region
 
 #Region "Menu Strip Functions"
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
         V_FORMAttrib.IsNew = True
         V_FORMAttrib.RowID = "-1"
@@ -30,6 +32,7 @@ Public Class POST
         Display(_POST_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new job position data", True)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
         Call GETTableID()
         V_FORMAttrib.IsNew = False
@@ -41,6 +44,7 @@ Public Class POST
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
         Call GETTableID()
 
@@ -49,7 +53,7 @@ Public Class POST
         Else
             V_FORMAttrib.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
+                If (LibSQL.Commands.POST.View.DELETEData(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
@@ -59,6 +63,7 @@ Public Class POST
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
@@ -82,7 +87,7 @@ Public Class POST
         TxtFind.ClearSearch()
     End Sub
 
-
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()
@@ -96,11 +101,13 @@ Public Class POST
         TxtFind.ClearSearch()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _POST_Editor_RecordSaved() Handles _POST_Editor.RecordSaved
         Call GETDATA(True)
     End Sub
 
 #Region "UNUSED : CreateMenu"
+    <SupportedOSPlatform("windows")>
     Private Sub CreateMenu()
         Dim _MMSMenu As New CMCv.mnu
         Dim _item As ToolStripMenuItem()
@@ -187,6 +194,7 @@ Public Class POST
 #End Region
 
 #Region "UNUSED : CreateMenu_Events"
+    <SupportedOSPlatform("windows")>
     Private Sub AddNewToolStripMenuItem_Clicked(sender As Object, e As EventArgs)
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
@@ -207,6 +215,7 @@ Public Class POST
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EditToolStripMenuItem_Clicked(sender As Object, e As EventArgs)
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
@@ -231,6 +240,7 @@ Public Class POST
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub DeleteToolStripMenuItem_Clicked(sender As Object, e As EventArgs)
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
@@ -245,9 +255,9 @@ Public Class POST
                     Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                 Else
                     If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                        If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
+                        If LibSQL.Commands.POST.View.DELETEData(V_FORMAttrib.RowID) Then
                             Call GETDATA(True)
-                            Mainframe_n_6.ts_status.Text = "Success"
+                            Mainframe_n_6.Ts_status.Text = "Success"
                         Else
                             Mainframe_n_6.ts_status.Text = "Delete failed"
                         End If
@@ -259,6 +269,7 @@ Public Class POST
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub RefreshToolStripMenuItem_Clicked(sender As Object, e As EventArgs)
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then

@@ -186,7 +186,7 @@ Namespace Commands.UAC
         <SupportedOSPlatform("windows")>
         Public Function GETPhoto(ByVal UID As String) As System.Drawing.Image
             Dim _UID As String = UID
-            Dim _Photo As System.Drawing.Image
+            Dim _Photo As System.Drawing.Image = Nothing
             Dim _FileStream As IO.FileStream
 
             Try
@@ -197,11 +197,13 @@ Namespace Commands.UAC
                     _Photo = _IMG.OutputAsImage(_FileStream)
                 End If
 
+
             Catch ex As Exception
                 _Photo = Nothing
             End Try
 
             Return _Photo
+
         End Function
 
         ''' <summary>
