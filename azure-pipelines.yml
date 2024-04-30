@@ -40,15 +40,6 @@ steps:
     nugetConfigPath: './Apps/Core/Vb/NuGet.config'
     externalFeedCredentials: 'ingrid'
 
-- task: update-build-pipeline-variable@0
-  displayName: 'Updating Pipeline Variable'
-  inputs:
-    variableName: '$(VAR_G_INGRIDVERSION_REVISION)'
-    variableDataType: 'int'
-    newVariableValueInInt: 1
-    pipelineUpdateComment: 'Update Pipeline Variable Task'
-    usePAT: false
-
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: V_BRIDGEKEY.SALT'
   inputs:
