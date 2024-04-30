@@ -23,7 +23,7 @@ steps:
     checkLatest: true
 
 - task: CmdLine@2
-  displayName: 'Reviewing Codes'
+  displayName: 'Pre-Build Check - $(Build.SourcesDirectory) Alpha'
   inputs:
     script: |
       echo "File List - Ingrid-CI-Build"
@@ -39,6 +39,16 @@ steps:
     feedsToUse: 'config'
     nugetConfigPath: './Apps/Core/Vb/NuGet.config'
     externalFeedCredentials: 'ingrid'
+
+- task: update-variablegroup-variable@0
+  displayName: 'Update Variable Group'
+  inputs:
+    variableGroupName: 'global_variables'
+    variableName: 'var_g_Ingridversion_revision'
+    variableDataType: 'int'
+    newVariableValueInInt: 1
+    usePAT: true
+    patValue: $(PAT)
 
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: V_BRIDGEKEY.SALT'
