@@ -55,7 +55,7 @@ steps:
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: '= V_BRIDGE_KEY.SALT()'
-    parameterReplaceText: '= "$(var_g_Salt)"'
+    parameterReplaceText: '= "$(VAR_G_SALT)"'
     parameterTypeOfSearch: 'filesSearchPattern'
 
 - task: ReplaceInFilesTextByText@2
@@ -63,7 +63,7 @@ steps:
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: '= V_BRIDGE_KEY.SYNCFUSION()'
-    parameterReplaceText: '= "$(var_g_SyncfusionKey)"'
+    parameterReplaceText: '= "$(VAR_G_SYNCFUSIONKEY)"'
     parameterTypeOfSearch: 'filesSearchPattern'
 
 - task: ReplaceInFilesTextByText@2
@@ -71,7 +71,7 @@ steps:
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'sourceToken: KEYLOG.BETTERSTACK_LOG()'
-    parameterReplaceText: 'sourceToken: "$(var_g_BetterStack_Log)"'
+    parameterReplaceText: 'sourceToken: "$(VAR_G_BETTERSTACK_LOG)"'
     parameterTypeOfSearch: 'filesSearchPattern'
 
 - task: ReplaceInFilesTextByText@2
@@ -79,7 +79,7 @@ steps:
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'My.Application.Info.Version.Major'
-    parameterReplaceText: '$(var_g_Ingridversion_major)'
+    parameterReplaceText: '$(VAR_G_INGRIDVERSION_MAJOR)'
     parameterTypeOfSearch: 'filesSearchPattern'
 
 - task: ReplaceInFilesTextByText@2
@@ -87,7 +87,7 @@ steps:
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'My.Application.Info.Version.Minor'
-    parameterReplaceText: '$(var_g_Ingridversion_minor)'
+    parameterReplaceText: '$(VAR_G_INGRIDVERSION_MINOR)'
     parameterTypeOfSearch: 'filesSearchPattern'
 
 - task: ReplaceInFilesTextByText@2
@@ -95,7 +95,7 @@ steps:
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'My.Application.Info.Version.Build'
-    parameterReplaceText: '$(var_g_Ingridversion_build)'
+    parameterReplaceText: '$(VAR_G_INGRIDVERSION_BUILD)'
     parameterTypeOfSearch: 'filesSearchPattern'
 
 - task: ReplaceInFilesTextByText@2
@@ -103,7 +103,7 @@ steps:
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'My.Application.Info.Version.Revision'
-    parameterReplaceText: '$(var_g_Ingridversion_revision)'
+    parameterReplaceText: '$(VAR_G_INGRIDVERSION_REVISION)'
     parameterTypeOfSearch: 'filesSearchPattern'
 
 - task: CmdLine@2
