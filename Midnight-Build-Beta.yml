@@ -55,8 +55,7 @@ steps:
     variableDataType: 'int'
     newVariableValueInInt: 1
     pipelineUpdateComment: '[AutoUpdate] : Update Pipeline Variable Task'
-    usePAT: true
-    patValue: '$(VAR_G_TOKEN_AZURE)'
+    usePAT: false
 
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: V_BRIDGEKEY.SALT'
