@@ -4,7 +4,15 @@
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net.
 
 trigger:
-- master
+- none
+
+schedules:
+- cron: '0 0 * * *'
+  displayName: Daily midnight build
+  branches:
+    include:
+    - master
+  always: true
 
 pool:
   vmImage: 'windows-latest'
