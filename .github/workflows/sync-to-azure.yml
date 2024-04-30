@@ -4,7 +4,7 @@
   uses: a11smiles/GitSync@v1.2.3
   with:
     # An alternate Azure DevOps configuration from GitHub secrets
-    ado: # optional
+    ado: $(VAR_G_AZURE)
     # An alternate GitHub configuration from GitHub secrets
     github: $(VAR_G_GHKEY)
           
