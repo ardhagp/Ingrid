@@ -46,7 +46,7 @@ steps:
     variableName: '$(VAR_G_INGRIDVERSION_REVISION)'
     variableDataType: 'int'
     newVariableValueInInt: 1
-    pipelineUpdateComment: '[AutoUpdate] : Update Pipeline Variable Task'
+    pipelineUpdateComment: 'Update Pipeline Variable Task'
     usePAT: false
 
 - task: ReplaceInFilesTextByText@2
