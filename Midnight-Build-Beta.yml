@@ -51,7 +51,7 @@ steps:
 - task: update-build-pipeline-variable@0
   displayName: 'Update Variable'
   inputs:
-    variableName: 'var_g_Ingridversion_revision'
+    variableName: '$(VAR_G_INGRIDVERSION_REVISION)'
     variableDataType: 'int'
     newVariableValueInInt: 1
     pipelineUpdateComment: '[AutoUpdate] : Update Pipeline Variable Task'
