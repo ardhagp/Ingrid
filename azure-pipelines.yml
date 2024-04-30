@@ -62,7 +62,7 @@ steps:
   displayName: 'Replacing: V_BRIDGEKEY.SYNCFUSION'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
-    parameterSearchText: '= = V_BRIDGE_KEY.SYNCFUSION()'
+    parameterSearchText: '= V_BRIDGE_KEY.SYNCFUSION()'
     parameterReplaceText: '= "$(var_g_SyncfusionKey)"'
     parameterTypeOfSearch: 'filesSearchPattern'
 
@@ -123,7 +123,7 @@ steps:
   displayName: 'VSBuild - CI'
   inputs:
     solution: '**\*.sln'
-    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:InstallUrl="https://www.iupdt.my.id/beta/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net6.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net6.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
+    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:InstallUrl="https://www.iupdt.my.id/beta/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
     platform: 'any cpu'
     configuration: 'release'
     clean: true
