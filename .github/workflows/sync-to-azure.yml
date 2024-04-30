@@ -6,5 +6,5 @@
     # An alternate Azure DevOps configuration from GitHub secrets
     ado: # optional
     # An alternate GitHub configuration from GitHub secrets
-    github: # optional
+    github: $(VAR_G_GHKEY)
           
