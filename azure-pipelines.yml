@@ -43,12 +43,14 @@ steps:
 - task: update-build-pipeline-variable@0
   displayName: 'Updating Variable'
   inputs:
-    variableName: 'var_g_Ingridversion_revision'
+    variableName: '$(var_g_Ingridversion_revision)'
     variableDataType: 'int'
     newVariableValueInInt: 1
     pipelineUpdateComment: '[AutoUpdate] : Update Pipeline Variable Task'
     usePAT: true
     patValue: '$(VAR_G_TOKEN_AZURE)'
+
+
 
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: V_BRIDGEKEY.SALT'
