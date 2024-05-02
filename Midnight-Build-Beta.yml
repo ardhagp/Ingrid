@@ -169,4 +169,5 @@ steps:
       echo "Reading Artifact Directory"
       echo "---------------------------"
       cd $(build.ArtifactStagingDirectory)
+      dir /b /s /A-D /o:gn
 
