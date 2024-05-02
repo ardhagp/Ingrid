@@ -165,7 +165,7 @@ steps:
     githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
     repositoryname: 'Ingrid'
     branchname: 'publish'
-    commitmessage: 'Automated Release $(Release.ReleaseId)'
+    commitmessage: 'Automated Release $(var_g_Ingridversion_revision)'
 
 - task: CmdLine@2
   displayName: 'File List - Post Build $(Build.SourcesDirectory) Alpha'
