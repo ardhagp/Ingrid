@@ -6,7 +6,6 @@
 trigger:
 - none
 
-
 schedules:
 - cron: '0 0 * * *'
   displayName: Daily midnight build
@@ -20,6 +19,8 @@ pool:
 
 variables:
 - group: global_variables
+- name: var_p_Email
+  value: $[variables.var_g_Email]
 - name: var_p_Ingridversion_major
   value: $[variables.var_g_Ingridversion_major]
 - name: var_p_Ingridversion_minor
@@ -158,10 +159,11 @@ steps:
     publishLocation: 'Container'
 
 - task: GitHubPagesPublish@1
+  displayName: 'Publish Fi;es To Github Pages'
   inputs:
     docPath: '$(build.ArtifactStagingDirectory)\*'
     githubusername: 'ardhagp'
-    githubemail: 'tito.ardha@windowslive.com'
+    githubemail: '$(var_g_Email)'
     githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
     repositoryname: 'Ingrid'
     branchname: 'publish'
