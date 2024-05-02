@@ -157,6 +157,16 @@ steps:
     ArtifactName: 'ingrid-beta'
     publishLocation: 'Container'
 
+- task: GitHubPagesPublish@1
+  inputs:
+    docPath: '$(build.ArtifactStagingDirectory)\*'
+    githubusername: 'ardhagp'
+    githubemail: 'tito.ardha@windowslive.com'
+    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
+    repositoryname: 'Ingrid'
+    branchname: 'publish'
+    commitmessage: 'Automated Release $(Release.ReleaseId)'
+
 - task: CmdLine@2
   displayName: 'File List - Post Build $(Build.SourcesDirectory) Alpha'
   inputs:
