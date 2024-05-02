@@ -108,6 +108,7 @@ steps:
   displayName: 'Check Text Replacement'
   inputs:
     script: |
+      echp BetterStackLog: $(var_g_BetterStack_Log)
       echo Major: $(var_g_Ingridversion_major)
       echo Minor: $(var_g_Ingridversion_minor)
       echo Build: $(var_g_Ingridversion_build)
