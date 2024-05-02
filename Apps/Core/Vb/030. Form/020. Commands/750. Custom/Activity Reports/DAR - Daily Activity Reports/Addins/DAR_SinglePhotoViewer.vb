@@ -33,7 +33,7 @@ Public Class DAR_SinglePhotoViewer
             If _TEXTMARK = String.Empty Then
                 PctbxPhoto.Image = _IMAGE
             Else
-                PctbxPhoto.Image = V_IMG_EDITOR.Watermarker(_IMAGE, _TEXTMARK)
+                PctbxPhoto.Image = CMCv.ImageEditor.Proccessor.Editor.Watermarker(_IMAGE, _TEXTMARK)
             End If
         End If
     End Sub

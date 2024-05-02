@@ -149,7 +149,7 @@ Public Class EPLS_Editor
 
         If OfdPhoto.ShowDialog = DialogResult.OK Then
             If (OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, _MAXUPLOADSIZE_PHOTO, True)) Then
-                _Photo = V_IMG_COMPRESS.OutputAsImage(OfdPhoto.FileName)
+                _Photo = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
                 pctbxPhoto.Image = _Photo
                 _ChangePhoto = True
                 _HavePhoto = 1

@@ -19,8 +19,9 @@ Public Class CCIN
     ''' </summary>
     ''' <param name="ForceRefresh">True/False</param>
     ''' <remarks></remarks>
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
-        _SQL.DisplayData(DgnCCIN, SLFStatus, TxtFind, ForceRefresh)
+        LibSQL.Commands.CCIN.View.DISPLAYDATA(DgnCCIN, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
@@ -33,6 +34,7 @@ Public Class CCIN
 #End Region
 
 #Region "Menu Strip Function"
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
         V_FORMAttrib.IsNew = True
         V_FORMAttrib.RowID = "-1"
@@ -40,6 +42,7 @@ Public Class CCIN
         Display(_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new company data", True)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
         Call GETTableID()
         If V_FORMAttrib.RowID = "-1" Then
@@ -51,6 +54,7 @@ Public Class CCIN
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
         Call GETTableID()
         If V_FORMAttrib.RowID = "-1" Then
@@ -58,7 +62,7 @@ Public Class CCIN
         Else
             V_FORMAttrib.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
+                If (LibSQL.Commands.CCIN.View.DELETEDATA(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
@@ -68,6 +72,7 @@ Public Class CCIN
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
@@ -83,6 +88,7 @@ Public Class CCIN
 #End Region
 
 #Region "Form Events"
+    <SupportedOSPlatform("windows")>
     Private Sub frmCompany_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
         _MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
@@ -91,6 +97,7 @@ Public Class CCIN
 #End Region
 
 #Region "Component Events"
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()
@@ -109,7 +116,7 @@ Public Class CCIN
     End Sub
 #End Region
 
-
+    <SupportedOSPlatform("windows")>
     Private Sub _CCIN_Editor_RecordSaved() Handles _CCIN_Editor.RecordSaved
         Call GETDATA(True)
     End Sub

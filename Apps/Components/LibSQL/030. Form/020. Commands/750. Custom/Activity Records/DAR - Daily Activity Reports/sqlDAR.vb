@@ -454,6 +454,7 @@ Namespace Commands.DAR
             FeedBack.Text = IIf(IsDBNull(_Feedback), "", _Feedback)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Function DisplayPhotoGrid(ByVal RowID As String, ByVal FileGrid As dgn) As DataSet
             _DS = New DataSet
             'ReDim V_DBR_MSSQL2008(3)
@@ -469,6 +470,7 @@ Namespace Commands.DAR
             'V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(2), "TPhotoFileEditor")
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function DisplayFileGrid(ByVal RowID As String, ByVal FileGrid As dgn) As DataSet
             _DS = New DataSet
             'ReDim V_DBR_MSSQL2008(3)

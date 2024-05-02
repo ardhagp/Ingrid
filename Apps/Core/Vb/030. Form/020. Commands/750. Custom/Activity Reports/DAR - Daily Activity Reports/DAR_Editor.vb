@@ -142,10 +142,10 @@ Public Class DAR_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub Save()
-        Dim _ActivityStart_S As String = String.Empty
-        Dim _ActivityEnd_S As String = String.Empty
-        Dim _ActivityStart_D As Date = Now
-        Dim _ActivityEnd_D As Date = Now
+        Dim _ActivityStart_S As String
+        Dim _ActivityEnd_S As String
+        Dim _ActivityStart_D As Date
+        Dim _ActivityEnd_D As Date
 
         Call CheckAllInput()
 
@@ -255,7 +255,7 @@ Public Class DAR_Editor
             If TxtPhotoPath.Text.Trim = String.Empty Then
                 Decision("Plase pick your photo first.", "No file selected", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
                 Return
-            ElseIf Not (V_FileInfo.IsExists(TxtPhotoPath.Text)) Then
+            ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
                 Decision("Your photo cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
                 Return
             ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtPhotoPath.Text, _MAXUPLOADSIZE_PHOTO, True)) Then
@@ -264,7 +264,7 @@ Public Class DAR_Editor
 
             Dim Row As Object() = Nothing
             Dim _Date As Date = Now
-            Dim _Photo As System.Drawing.Image = V_IMG_COMPRESS.OutputAsImage(TxtPhotoPath.Text) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
+            Dim _Photo As System.Drawing.Image = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(TxtPhotoPath.Text) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
 
             Row = New Object() {CMCv.Security.Encrypt.MD5(), _Date, _Photo, "Add", V_USERAttrib.EID}
 
@@ -293,7 +293,7 @@ Public Class DAR_Editor
         If TxtPhotoPath.Text.Trim = String.Empty Then
             Decision("Plase pick your photo first.", "No file selected", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf Not (V_FileInfo.IsExists(TxtPhotoPath.Text)) Then
+        ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
             Decision("Your photo cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
@@ -350,7 +350,7 @@ Public Class DAR_Editor
         If TxtFilePath.Text.Trim = String.Empty Then
             Decision("Plase pick your file first.", "No file selected", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf Not (V_FileInfo.IsExists(TxtFilePath.Text)) Then
+        ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
             Decision("Your file cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
@@ -364,7 +364,7 @@ Public Class DAR_Editor
             If TxtFilePath.Text.Trim = String.Empty Then
                 Decision("Plase pick your PDF file first.", "No file selected", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
                 Return
-            ElseIf Not (V_FileInfo.IsExists(TxtFilePath.Text)) Then
+            ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
                 Decision("Your file cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
                 Return
             ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtFilePath.Text, _MAXUPLOADSIZE_PDF, True)) Then

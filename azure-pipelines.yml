@@ -1,7 +1,7 @@
 # .NET Desktop
 # Build and run tests for .NET Desktop or Windows classic desktop solutions.
 # Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
+# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net.
 
 trigger:
 - master
@@ -16,30 +16,106 @@ variables:
 
 steps:
 
-
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      git branch -r | findstr /v "\->" |  ForEach-Object {$br=$_.TrimStart(); git branch --track $br.TrimStart("origin/") $br}
-      $repoName = "$env:BUILD_REPOSITORY_NAME".split('/')[1]
-      $repoUri = "$env:SYSTEM_TEAMFOUNDATIONCOLLECTIONURI".Substring(8)+ "_git/$repoName"
-      git remote add vsts "$(System.AccessToken)$repoUri"
-      git branch -r | findstr /v "\->" |  ForEach-Object { $br=$_.TrimStart("  master/"); git push -u vsts $br }
-
 - task: NuGetToolInstaller@1
+  displayName: 'Nuget Install'
+  inputs:
+    versionSpec: 
+    checkLatest: true
+
+- task: CmdLine@2
+  displayName: 'Pre-Build Check - $(Build.SourcesDirectory) Alpha'
+  inputs:
+    script: |
+      echo "File List - Ingrid-CI-Build"
+      
+      cd $(Build.SourcesDirectory)
+      dir /b /s /A-D /o:gn
 
 - task: NuGetCommand@2
+  displayName: 'NuGet Restore'
   inputs:
-    restoreSolution: '$(solution)'
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'config'
+    nugetConfigPath: './Apps/Core/Vb/NuGet.config'
+    externalFeedCredentials: 'ingrid'
+
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: V_BRIDGEKEY.SALT'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: '= V_BRIDGE_KEY.SALT()'
+    parameterReplaceText: '= "$(var_g_Salt)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: V_BRIDGEKEY.SYNCFUSION'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: '= V_BRIDGE_KEY.SYNCFUSION()'
+    parameterReplaceText: '= "$(var_g_SyncfusionKey)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: V_BRIDGEKEY.BETTERSTACK_LOG'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'sourceToken: KEYLOG.BETTERSTACK_LOG()'
+    parameterReplaceText: 'sourceToken: "$(var_g_BetterStack_Log)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_MAJOR}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Major'
+    parameterReplaceText: '$(var_g_Ingridversion_major)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_MINOR}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Minor'
+    parameterReplaceText: '$(var_g_Ingridversion_minor)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_BUILD}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Build'
+    parameterReplaceText: '$(var_g_Ingridversion_build)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_REVISION}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Revision'
+    parameterReplaceText: '$(var_g_Ingridversion_revision)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+- task: CmdLine@2
+  displayName: 'Reviewing Codes'
+  inputs:
+    script: |
+      echo "File List - Ingrid-CI-Build"
+      
+      cd $(Build.SourcesDirectory)
+      dir /b /s /A-D /o:gn
+      echo "---------------------------"
+      echo "Reading CMC\Globals.vb"
+      echo "---------------------------"
+      more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
 
 - task: VSBuild@1
+  displayName: 'VSBuild - CI'
   inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    solution: '**\*.sln'
+    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:InstallUrl="https://www.iupdt.my.id/beta/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
+    platform: 'any cpu'
+    configuration: 'release'
+    clean: true
+    maximumCpuCount: true
+    createLogFile: true

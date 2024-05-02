@@ -131,10 +131,10 @@ Public Class Mainframe_n_6
         End If
 
         'For Module That Required Login
-        If Not (V_SYSAPP.IsModuleReady(TCode.ToUpper.Trim)) Then
+        If Not (Application.Modules.IsModuleReady(TCode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "Module " & TCode.ToUpper.Trim & " not found."
             Return
-        ElseIf (V_SYSAPP.IsModuleLocked(TCode.ToUpper.Trim)) Then
+        ElseIf (Application.Modules.IsModuleLocked(TCode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "[" & TCode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
             Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " trying to open Under Maintenance Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Error)
             Decision("[" & TCode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -249,7 +249,7 @@ Public Class Mainframe_n_6
 
 #Region "Form Events"
     <SupportedOSPlatform("windows")>
-    Private Sub mainframe_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Mainframe_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             RaiseEvent IngridFrameOpen()
 
@@ -286,7 +286,7 @@ Public Class Mainframe_n_6
             Text += " - Ver. " & V_APPVer
 
             If Not (LibSQL.Commands.DBIC.Applications.IsCompanyExist) OrElse Not (LibSQL.Commands.DBIC.Applications.IsDepartmentExist) Then
-                Display(frmFistGuide,, "First Guide", "", True, Me)
+                DISPLAY(frmFistGuide,, "First Guide", "", True, Me)
             End If
         Catch ex As Exception
             PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
@@ -489,13 +489,13 @@ Public Class Mainframe_n_6
         Display(_NTFC, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, "Notification", "Show all notification that addressed to you", True)
     End Sub
 
-    Private Sub ts_status_Click(sender As Object, e As EventArgs) Handles ts_status.Click
+    Private Sub Ts_status_Click(sender As Object, e As EventArgs) Handles Ts_status.Click
         'waiting some code here
     End Sub
 
-    Private Sub ts_status_TextChanged(sender As Object, e As EventArgs) Handles ts_status.TextChanged
+    Private Sub Ts_status_TextChanged(sender As Object, e As EventArgs) Handles Ts_status.TextChanged
         _ClearStatus = 0
-        If ts_status.Text = String.Empty Then
+        If Ts_status.Text = String.Empty Then
             TmrStatus.Enabled = False
         Else
             TmrStatus.Enabled = True
@@ -515,7 +515,7 @@ Public Class Mainframe_n_6
         PnlProfile.Visible = True
     End Sub
 
-    Private Sub tmr_gc_Tick(sender As Object, e As EventArgs) Handles Tmr_gc.Tick
+    Private Sub Tmr_gc_Tick(sender As Object, e As EventArgs) Handles Tmr_gc.Tick
         GC.Collect()
     End Sub
 
@@ -555,7 +555,7 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub mainframe_Closing(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
+    Private Sub Mainframe_Closing(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
         Dim _ReqFolder = CHECKREQUIREDFOLDER(DirName.PDF)
 
         Try
@@ -568,7 +568,7 @@ Public Class Mainframe_n_6
         End Try
     End Sub
 
-    Private Sub tmr_runningtext_Tick(sender As Object, e As EventArgs) Handles Tmr_runningtext.Tick
+    Private Sub Tmr_runningtext_Tick(sender As Object, e As EventArgs) Handles Tmr_runningtext.Tick
         _MyMarquee.Tick()
         TxtRunning.Text = _MyMarquee.MarqueeText
     End Sub
@@ -582,7 +582,7 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub ms_start_Settings_Click(sender As Object, e As EventArgs) Handles ms_start_Settings.Click
+    Private Sub Ms_start_Settings_Click(sender As Object, e As EventArgs) Handles Ms_start_Settings.Click
         Call EnterCommand("SYSS")
     End Sub
 
@@ -613,7 +613,7 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub ms_start_Exit_Click(sender As Object, e As EventArgs) Handles ms_start_Exit.Click
+    Private Sub Ms_start_Exit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
         If (_Session) Then
             Call SystemLogout()
             V_LOGUser.Logout(V_USERAttrib.EID)
@@ -626,13 +626,13 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub ms_start_connection_app_Click(sender As Object, e As EventArgs) Handles ms_start_connection_app.Click 'uncomment this when add Connect to library
+    Private Sub Ms_start_connection_app_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click 'uncomment this when add Connect to library
         V_CONN = New Connect.CONN(_PRODUCTIONMODE, True)
 
         DISPLAY(V_CONN, IMAGEDB.Main.ImageLibrary.CONN_ICON, "Connection Settings", "Configure Ingrid database connection", True)
     End Sub
 
-    Private Sub ms_start_connection_folder_Click(sender As Object, e As EventArgs) Handles ms_start_connection_folder.Click
+    Private Sub Ms_start_connection_folder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
         Try
             Process.Start(New ProcessStartInfo(My.Application.Info.DirectoryPath & "\Resources\") With {.UseShellExecute = True})
         Catch ex As Exception

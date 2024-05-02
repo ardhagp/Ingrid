@@ -24,7 +24,7 @@ Module Globals
     Public V_IMG_COMPRESS As New CMCv.ImageEditor.Proccessor.Compress
     Public V_IMG_EDITOR As New CMCv.ImageEditor.Proccessor.Editor
     Public V_USERAccess As New Application.Access
-    Public V_SYSAPP As New Application.Modules
+    'Public V_SYSAPP As New Application.Modules
     Public V_LOGUser As New LibSQL.SystemLog.Activity.User
     Public V_LOGApp As New LibSQL.SystemLog.Activity.Application
     Public V_ForceRefreshMainframeData As Boolean

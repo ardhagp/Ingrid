@@ -9,8 +9,9 @@ Public Class CDIN
 #End Region
 
 #Region "Subs Collections"
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        _SQL.DisplayData(DgnCDIN, SLFStatus, TxtFind, ForceRefresh)
+        LibSQL.Commands.CDIN.View.DISPLAYDATA(DgnCDIN, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
@@ -24,6 +25,7 @@ Public Class CDIN
 #End Region
 
 #Region "Menu Strip Function"
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
         V_FORMAttrib.IsNew = True
         V_FORMAttrib.RowID = "-1"
@@ -31,6 +33,7 @@ Public Class CDIN
         Display(_CDIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new departement data", True)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
         Call GETTableID()
         If V_FORMAttrib.RowID = "-1" Then
@@ -42,13 +45,14 @@ Public Class CDIN
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
         Call GETTableID()
         If V_FORMAttrib.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
+                If (LibSQL.Commands.CDIN.View.DELETEDATA(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
@@ -58,6 +62,7 @@ Public Class CDIN
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
@@ -83,6 +88,7 @@ Public Class CDIN
 #End Region
 
 #Region "Component Events"
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()
@@ -97,6 +103,7 @@ Public Class CDIN
     End Sub
 #End Region
 
+    <SupportedOSPlatform("windows")>
     Private Sub _CDIN_Editor_RecordSaved() Handles _CDIN_Editor.RecordSaved
         Call GETDATA()
     End Sub

@@ -17,10 +17,13 @@ Public Class POST_Editor
         TxtPositionName.Focus()
         BtnSave.Focus()
     End Sub
+
+    'Private sub _SQL as libsql.com
 #End Region
 
     <SupportedOSPlatform("windows")>
     Private Sub POST_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        '#Disable Warning BC42025 ' Access of shared member, constant member, enum member or nested type through an instance
         _FirstLoad = True
         _SQL.FILLCompany(CboCompany)
         _SQL.FILLDepartement(CboDepartement, CboCompany)
@@ -29,15 +32,16 @@ Public Class POST_Editor
             ChkAddNew.Visible = True
         Else
             ChkAddNew.Visible = False
-            CboCompany.SelectedValue = _SQL.GETCompanyID(V_FORMAttrib.RowID)
+            CboCompany.SelectedValue = LibSQL.Commands.POST.Editor.GETCompanyID(V_FORMAttrib.RowID)
             _SQL.FILLDepartement(CboDepartement, CboCompany)
-            CboDepartement.SelectedValue = _SQL.GETDepartementID(V_FORMAttrib.RowID)
-            TxtPositionCode.Text = _SQL.GETPositionCode(V_FORMAttrib.RowID)
-            TxtPositionName.Text = _SQL.GETPositionName(V_FORMAttrib.RowID)
-            TxtPositionDescription.Text = _SQL.GETPositionDescription(V_FORMAttrib.RowID)
+            CboDepartement.SelectedValue = LibSQL.Commands.POST.Editor.GETDepartementID(V_FORMAttrib.RowID)
+            TxtPositionCode.Text = LibSQL.Commands.POST.Editor.GETPositionCode(V_FORMAttrib.RowID)
+            TxtPositionName.Text = LibSQL.Commands.POST.Editor.GETPositionName(V_FORMAttrib.RowID)
+            TxtPositionDescription.Text = LibSQL.Commands.POST.Editor.GETPositionDescription(V_FORMAttrib.RowID)
         End If
 
         _FirstLoad = False
+        '#Enable Warning BC42025 ' Access of shared member, constant member, enum member or nested type through an instance
     End Sub
 
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
@@ -56,15 +60,15 @@ Public Class POST_Editor
         If (CboDepartement.Items.Count = 0) OrElse (TxtPositionCode.XOSQLText = String.Empty) OrElse (TxtPositionName.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Departement selected, Postition Code and Position Description are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf ((V_FORMAttrib.IsNew) AndAlso (_SQL.IsDuplicate(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
+        ElseIf ((V_FORMAttrib.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (_SQL.IsDuplicate(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
+        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (_SQL.PUSHData(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, TxtPositionName.XOSQLText, TxtPositionDescription.XOSQLText, V_FORMAttrib.RowID)) Then
+        If (LibSQL.Commands.POST.Editor.PUSHData(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, TxtPositionName.XOSQLText, TxtPositionDescription.XOSQLText, V_FORMAttrib.RowID)) Then
             Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else

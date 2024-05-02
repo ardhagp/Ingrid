@@ -1,4 +1,7 @@
 ﻿Imports System.IO
+Imports System.Runtime.Versioning
+Imports System.Security.Principal
+Imports Syncfusion.Windows.Forms.Tools.Win32API
 
 Public Class frmImports
     Private _Source As Import.Data.DataType.TypeofImports
@@ -49,6 +52,7 @@ ByVal FormatFlags As Windows.Forms.TextFormatFlags) As String
 
     End Function
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         If _varOriginalSourceFile <> String.Empty Then
             TxtProgress.AppendText("Checking if your file exist... ")

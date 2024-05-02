@@ -1,15 +1,21 @@
-﻿Imports System.Reflection
+﻿Imports CMCv.Database.Engine
+Imports CMCv.Database.Properties
+Imports CMCv.Database.Adapter
+
+Imports Bridge.Security
+
+Imports System.Reflection
 Imports System.Runtime.Versioning
 
 <SupportedOSPlatform("windows")>
 Module Globals
-    Public V_DBE_MSSQL2008 As New Database.Engine.MSSQL2008
-    Public V_DBE_SQLite As New Database.Engine.SQLiteV3
-    Public V_DB_Properties(1) As Database.Properties.Fields
-    Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
+    Public v_dbe_mssql2008 As New CMCv.Database.Engine.MSSQL2008
+    Public V_DBE_SQLite As New SQLiteV3
+    Public V_DB_Properties(1) As Fields
+    Public V_BRIDGE_LOG As New WRITELOG
 
-    Public V_DBR_SQLITE(1) As Database.Adapter.SQLite.Display.Request
-    Public V_DBP_SQLITE As New Database.Adapter.SQLite.Execute
+    Public V_DBR_SQLITE(1) As SQLite.Display.Request
+    Public V_DBP_SQLITE As New SQLite.Execute
 
     Public V_SECEncrypt As New Security.Encrypt
 
@@ -104,7 +110,7 @@ Module Globals
             PUSHERRORDATA("[GETAPPVERSION] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, "0.0.0", False, True, True)
             PUSHERRORDATASHOW()
             V_APPVer = "0.0.0"
-            Return v_APPVer
+            Return V_APPVer
         End Try
     End Function
 #End Region
@@ -143,7 +149,7 @@ Module Globals
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub PUSHERRORDATASHOW()
-        ERC = New CMCv.frmErrorReporting(ErrorCatcher, v_DBE_SQLite)
+        ERC = New CMCv.frmErrorReporting(ErrorCatcher, V_DBE_SQLite)
         ERC.ShowDialog()
         If Not (ERC.ResumeNext) Then
             End

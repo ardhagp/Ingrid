@@ -30,7 +30,7 @@ End Namespace
 
 Namespace Application
     Public Class Modules
-        ReadOnly _SQL As New LibSQL.Application.Modules
+        'ReadOnly _SQL As New LibSQL.Application.Modules
 
         <SupportedOSPlatform("windows")>
         Public Shared Function IsModuleReady(ByVal TCODE As String) As Boolean

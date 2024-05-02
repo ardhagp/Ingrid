@@ -57,7 +57,7 @@ Module Globals
 
     Public ERC As New frmErrorReporting
     Public ERL As New Database.Engine.LocalDB
-    Public ErrorCatcher As New Catcher.Error.Fields
+    Public ErrorCatcher As Catcher.Error.Fields
 
     Public _APPVer As String
 #End Region

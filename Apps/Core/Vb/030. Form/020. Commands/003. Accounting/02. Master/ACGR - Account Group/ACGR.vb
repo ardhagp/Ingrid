@@ -17,9 +17,10 @@ Public Class ACGR
     ''' Isikan data buku akuntansi ke CBO
     ''' </summary>
     ''' <remarks></remarks>
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATA()
-        _SQL.FILLCompany(CboCompany)
-        _SQL.FILLAccountingBook(CboAccountingBook, CboCompany)
+        LibSQL.Commands.ACGR.View.FILLCompany(CboCompany)
+        LibSQL.Commands.ACGR.View.FILLAccountingBook(CboAccountingBook, CboCompany)
     End Sub
 
     ''' <summary>
@@ -27,8 +28,9 @@ Public Class ACGR
     ''' </summary>
     ''' <param name="ForceRefresh">True / False</param>
     ''' <remarks>True akan memaksa data untuk direfresh tanpa filter apapun</remarks>
+    <SupportedOSPlatform("windows")>
     Private Sub GETDATAGRID(Optional ByVal ForceRefresh As Boolean = False)
-        _SQL.GETAccountList(DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, ForceRefresh)
+        LibSQL.Commands.ACGR.View.GETAccountList(DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, ForceRefresh)
     End Sub
 
     'Private _RowID As Integer
@@ -76,6 +78,7 @@ Public Class ACGR
 #End Region
 
 #Region "Menu Strip Function"
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataAddNew() Handles _MMSMenu.EventDataAddNew
         V_FORMAttrib.IsNew = True
         V_FORMAttrib.RowID = "-1"
@@ -84,6 +87,7 @@ Public Class ACGR
         Call GetTableID()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataEdit() Handles _MMSMenu.EventDataEdit
         Call GetTableID()
         V_FORMAttrib.IsNew = False
@@ -95,6 +99,7 @@ Public Class ACGR
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataDelete() Handles _MMSMenu.EventDataDelete
         Call GetTableID()
         If V_FORMAttrib.RowID = "-1" Then
@@ -102,7 +107,7 @@ Public Class ACGR
         Else
             V_FORMAttrib.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (_SQL.DELETEData(V_FORMAttrib.RowID)) Then
+                If (LibSQL.Commands.ACGR.View.DELETEData(V_FORMAttrib.RowID)) Then
                     Call GETDATAGRID(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
@@ -119,6 +124,7 @@ Public Class ACGR
 #End Region
 
 #Region "Upper Form Bar"
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GETDATAGRID()
@@ -135,11 +141,11 @@ Public Class ACGR
 #End Region
 
 #Region "Main Form Events"
-
     Private Sub frmAccountGroup_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         _IsClosing = True
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub frmAccountGroup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
         _MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
@@ -160,6 +166,7 @@ Public Class ACGR
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub CboAccountingBook_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboAccountingBook.SelectedIndexChanged
         If Not (_Firstload) Then
             Call GETDATAGRID(True)
@@ -167,15 +174,17 @@ Public Class ACGR
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub CboPlant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
         If Not (_Firstload) Then
-            _SQL.FILLAccountingBook(CboAccountingBook, CboCompany)
+            LibSQL.Commands.ACGR.View.FILLAccountingBook(CboAccountingBook, CboCompany)
             Call GETDATAGRID(True)
         End If
     End Sub
 #End Region
 
 #Region "WithEvents"
+    <SupportedOSPlatform("windows")>
     Private Sub RecordSaved() Handles _ACGR_Editor.RecordSaved
         Call GETDATAGRID(True)
     End Sub

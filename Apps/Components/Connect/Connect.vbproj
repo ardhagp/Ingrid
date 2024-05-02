@@ -93,12 +93,12 @@
     <PackageReference Include="System.Management" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Ingrid\Apps\Components\CMC\CMCv.vbproj" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Connected.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Connected.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CMC\CMCv.vbproj" />
   </ItemGroup>
 </Project>

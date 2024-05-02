@@ -4,17 +4,17 @@ Imports System.Windows.Forms
 
 Namespace Database.Engine
     Public Class LocalDB
-        Private v_CS(2) As String
-        Private v_FilePath(2) As String
+        Private ReadOnly v_CS(2) As String
+        Private ReadOnly v_FilePath(2) As String
 
-        Private v_CONN(2) As SqlClient.SqlConnection
-        Private v_CMD(2) As SqlClient.SqlCommand
+        Private ReadOnly v_CONN(2) As SqlClient.SqlConnection
+        Private ReadOnly v_CMD(2) As SqlClient.SqlCommand
         Private ReadOnly v_DR(2) As SqlClient.SqlDataReader
 
-        Private v_LocalDB As New Connect.LocalDBConnection
+        Private ReadOnly v_LocalDB As New Connect.LocalDBConnection
 
         <SupportedOSPlatform("windows")>
-        Public Function CheckDBCatalog() As Boolean
+        Public Shared Function CheckDBCatalog() As Boolean
             Try
                 Dim v_DBPath As String = Nothing
                 Dim v_DBExists(3) As Boolean
@@ -24,11 +24,11 @@ Namespace Database.Engine
                 System.IO.Directory.CreateDirectory(v_Location & "\Resources")
 
                 v_DBPath = v_Location & "\Resources\CATALOG.mdf"
-                If _CFILEInfo.IsExists(v_DBPath) Then
+                If OperatingSystem.File.Info.IsExists(v_DBPath) Then
                     v_DBExists(1) = True
                 Else
                     System.IO.File.Copy(Application.StartupPath & "\Resources\CATALOG.mdf", v_Location & "\Resources\CATALOG.mdf", True)
-                    If _CFILEInfo.IsExists(v_DBPath) Then
+                    If OperatingSystem.File.Info.IsExists(v_DBPath) Then
                         v_DBExists(1) = True
                     Else
                         v_DBExists(1) = False
@@ -36,11 +36,11 @@ Namespace Database.Engine
                 End If
 
                 v_DBPath = v_Location & "\Resources\DEV_CATALOG.mdf"
-                If _CFILEInfo.IsExists(v_DBPath) Then
+                If OperatingSystem.File.Info.IsExists(v_DBPath) Then
                     v_DBExists(2) = True
                 Else
                     System.IO.File.Copy(Application.StartupPath & "\Resources\DEV_CATALOG.mdf", v_Location & "\Resources\DEV_CATALOG.mdf", True)
-                    If _CFILEInfo.IsExists(v_DBPath) Then
+                    If OperatingSystem.File.Info.IsExists(v_DBPath) Then
                         v_DBExists(2) = True
                     Else
                         v_DBExists(2) = False
@@ -48,11 +48,11 @@ Namespace Database.Engine
                 End If
 
                 v_DBPath = v_Location & "\Resources\ERRLOG.mdf"
-                If _CFILEInfo.IsExists(v_DBPath) Then
+                If OperatingSystem.File.Info.IsExists(v_DBPath) Then
                     v_DBExists(3) = True
                 Else
                     System.IO.File.Copy(Application.StartupPath & "\Resources\ERRLOG.mdf", v_Location & "\Resources\ERRLOG.mdf", True)
-                    If _CFILEInfo.IsExists(v_DBPath) Then
+                    If OperatingSystem.File.Info.IsExists(v_DBPath) Then
                         v_DBExists(3) = True
                     Else
                         v_DBExists(3) = False
@@ -90,7 +90,7 @@ Namespace Database.Engine
 
                 Dim V_FileInfo As New OperatingSystem.File.Info
 
-                If V_FileInfo.IsExists(v_FilePath(0)) Then
+                If OperatingSystem.File.Info.IsExists(v_FilePath(0)) Then
                     v_CS(0) = v_LocalDB.LocalDB_InitialCatalog(v_FilePath(0))
 
                     v_CONN(1) = New SqlClient.SqlConnection(v_CS(0)) 'OleDb.OleDbConnection(_CS(0))
@@ -101,7 +101,7 @@ Namespace Database.Engine
 
                 v_FilePath(1) = v_Location & "\Resources\ERRLOG.mdf"
 
-                If V_FileInfo.IsExists(v_FilePath(1)) Then
+                If OperatingSystem.File.Info.IsExists(v_FilePath(1)) Then
                     v_CS(1) = v_LocalDB.LocalDB_InitialCatalog(v_FilePath(1))
 
                     v_CONN(2) = New SqlClient.SqlConnection(v_CS(1))

@@ -3,7 +3,7 @@ Imports CMCv
 
 Namespace Commands.MMTY
     Public Class View
-        ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)

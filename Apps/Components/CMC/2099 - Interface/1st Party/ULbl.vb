@@ -2,7 +2,7 @@
 Imports System.Windows.Forms
 
 Public Class ULbl
-    Private iLoop As Integer = 0
+    Private iLoop As Integer
 
     <SupportedOSPlatform("windows")>
     Public Sub New()

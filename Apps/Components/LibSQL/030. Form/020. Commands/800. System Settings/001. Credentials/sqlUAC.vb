@@ -6,7 +6,7 @@ Imports CMCv
 Namespace Commands.UAC
 
     Public Class Login
-        ReadOnly _IMG As New ImageEditor.Proccessor.Compress
+        'ReadOnly _IMG As New ImageEditor.Proccessor.Compress
 
         Public Enum EnuAuthType
             Read = 4
@@ -186,7 +186,7 @@ Namespace Commands.UAC
         <SupportedOSPlatform("windows")>
         Public Function GETPhoto(ByVal UID As String) As System.Drawing.Image
             Dim _UID As String = UID
-            Dim _Photo As System.Drawing.Image
+            Dim _Photo As System.Drawing.Image = Nothing
             Dim _FileStream As IO.FileStream
 
             Try
@@ -194,14 +194,16 @@ Namespace Commands.UAC
                 _FileStream = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
 
                 If _FileStream IsNot Nothing Then
-                    _Photo = _IMG.OutputAsImage(_FileStream)
+                    _Photo = ImageEditor.Proccessor.Compress.OutputAsImage(_FileStream)
                 End If
+
 
             Catch ex As Exception
                 _Photo = Nothing
             End Try
 
             Return _Photo
+
         End Function
 
         ''' <summary>

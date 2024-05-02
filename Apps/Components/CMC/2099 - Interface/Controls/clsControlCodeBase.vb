@@ -100,36 +100,36 @@ Public Class ControlCodeBase
     ''' <summary>
     ''' Fungsi untuk mengambil warna.
     ''' </summary>
-    ''' <param name="_valWarnaObjek">Objek warna.</param>
-    ''' <param name="_valOpasitasWarna">Opasitas warna.</param>
-    ''' <param name="_valIntensitasPerubahan">Intensitas perubahan.</param>
+    ''' <param name="ValWarnaObjek">Objek warna.</param>
+    ''' <param name="ValOpasitasWarna">Opasitas warna.</param>
+    ''' <param name="ValIntensitasPerubahan">Intensitas perubahan.</param>
     ''' <returns>Wara RGB</returns>
     <SupportedOSPlatform("windows")>
-    Public Shared Function AmbilWarna(ByVal _valWarnaObjek As System.Drawing.Color, ByVal _valOpasitasWarna As enuOpasitasWarna, ByVal _valIntensitasPerubahan As Integer) As System.Drawing.Color
-        Dim re As Integer = _valWarnaObjek.R
-        Dim gr As Integer = _valWarnaObjek.G
-        Dim bl As Integer = _valWarnaObjek.B
+    Public Shared Function AmbilWarna(ByVal ValWarnaObjek As System.Drawing.Color, ByVal ValOpasitasWarna As enuOpasitasWarna, ByVal ValIntensitasPerubahan As Integer) As System.Drawing.Color
+        Dim re As Integer = ValWarnaObjek.R
+        Dim gr As Integer = ValWarnaObjek.G
+        Dim bl As Integer = ValWarnaObjek.B
 
-        Select Case _valOpasitasWarna
+        Select Case ValOpasitasWarna
             Case enuOpasitasWarna.Darker
-                If (re >= (0 + _valIntensitasPerubahan)) Then
-                    re -= _valIntensitasPerubahan
+                If (re >= (0 + ValIntensitasPerubahan)) Then
+                    re -= ValIntensitasPerubahan
                 End If
-                If (gr >= (0 + _valIntensitasPerubahan)) Then
-                    gr -= _valIntensitasPerubahan
+                If (gr >= (0 + ValIntensitasPerubahan)) Then
+                    gr -= ValIntensitasPerubahan
                 End If
-                If (bl >= (0 + _valIntensitasPerubahan)) Then
-                    bl -= _valIntensitasPerubahan
+                If (bl >= (0 + ValIntensitasPerubahan)) Then
+                    bl -= ValIntensitasPerubahan
                 End If
             Case enuOpasitasWarna.Lighter
-                If (re <= (255 - _valIntensitasPerubahan)) Then
-                    re += _valIntensitasPerubahan
+                If (re <= (255 - ValIntensitasPerubahan)) Then
+                    re += ValIntensitasPerubahan
                 End If
-                If (gr <= (255 - _valIntensitasPerubahan)) Then
-                    gr += _valIntensitasPerubahan
+                If (gr <= (255 - ValIntensitasPerubahan)) Then
+                    gr += ValIntensitasPerubahan
                 End If
-                If (bl <= (255 - _valIntensitasPerubahan)) Then
-                    bl += _valIntensitasPerubahan
+                If (bl <= (255 - ValIntensitasPerubahan)) Then
+                    bl += ValIntensitasPerubahan
                 End If
         End Select
 

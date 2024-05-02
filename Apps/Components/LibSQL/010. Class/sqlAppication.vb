@@ -60,7 +60,7 @@ Namespace Application
 
     Public Class Modules
         Private _DS As DataSet
-        ReadOnly _DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly _DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Shared Function Exist(ByVal TCODE As String) As Boolean
@@ -90,6 +90,7 @@ Namespace Application
             End Try
         End Function
 
+        <SupportedOSPlatform("windows")>
         Public Function DisplayAutoComplete() As DataSet
             Try
                 _DS = New DataSet
@@ -219,7 +220,7 @@ Namespace Application
     End Class
 
     Public Class StorageSense
-        ReadOnly _DBR_MSSQL2008(0) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly _DBR_MSSQL2008(0) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Shared Function Show(Optional ByVal IsAdmininstrator As Boolean = False) As Boolean
@@ -320,7 +321,7 @@ Namespace Application
                 V_Bytes = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
 
                 If Not IsNothing(V_Bytes) Then
-                    V_Photo = _IMG.OutputAsImage(V_Bytes)
+                    V_Photo = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(V_Bytes)
                 Else
                     If (Gender = "MALE") OrElse (Gender = "") Then
                         V_Photo = My.Resources.MALE_001_512_icon

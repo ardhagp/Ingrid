@@ -22,8 +22,8 @@ Namespace UI.View
         Public Event EventFileCancel()
         Public Event EventReportShow()
 
-        Private _EventToolsViewAttachmentVisible As Boolean = False
-        Private _EventToolsViewAttachmentChecked As Boolean = False
+        Private _EventToolsViewAttachmentVisible As Boolean
+        Private _EventToolsViewAttachmentChecked As Boolean
 
         Public Enum ShowItem
             Yes = 1

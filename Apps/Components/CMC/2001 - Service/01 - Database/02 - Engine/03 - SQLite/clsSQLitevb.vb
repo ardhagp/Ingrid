@@ -24,11 +24,11 @@ Namespace Database.Engine
                 System.IO.Directory.CreateDirectory(V_Location & "\Resources")
 
                 V_DBPath = V_Location & "\Resources\catalog.db"
-                If _CFILEInfo.IsExists(V_DBPath) Then
+                If OperatingSystem.File.Info.IsExists(V_DBPath) Then
                     V_DBExists(1) = True
                 Else
                     System.IO.File.Copy(Application.StartupPath & "\Resources\catalog.db", V_Location & "\Resources\catalog.db", True)
-                    If _CFILEInfo.IsExists(V_DBPath) Then
+                    If OperatingSystem.File.Info.IsExists(V_DBPath) Then
                         V_DBExists(1) = True
                     Else
                         V_DBExists(1) = False
@@ -36,11 +36,11 @@ Namespace Database.Engine
                 End If
 
                 V_DBPath = V_Location & "\Resources\dev_catalog.db"
-                If _CFILEInfo.IsExists(V_DBPath) Then
+                If OperatingSystem.File.Info.IsExists(V_DBPath) Then
                     V_DBExists(2) = True
                 Else
                     System.IO.File.Copy(Application.StartupPath & "\Resources\dev_catalog.db", V_Location & "\Resources\dev_catalog.db", True)
-                    If _CFILEInfo.IsExists(V_DBPath) Then
+                    If OperatingSystem.File.Info.IsExists(V_DBPath) Then
                         V_DBExists(2) = True
                     Else
                         V_DBExists(2) = False
@@ -48,11 +48,11 @@ Namespace Database.Engine
                 End If
 
                 V_DBPath = V_Location & "\Resources\errlog.db"
-                If _CFILEInfo.IsExists(V_DBPath) Then
+                If OperatingSystem.File.Info.IsExists(V_DBPath) Then
                     V_DBExists(3) = True
                 Else
                     System.IO.File.Copy(Application.StartupPath & "\Resources\errlog.db", V_Location & "\Resources\errlog.db", True)
-                    If _CFILEInfo.IsExists(V_DBPath) Then
+                    If OperatingSystem.File.Info.IsExists(V_DBPath) Then
                         V_DBExists(3) = True
                     Else
                         V_DBExists(3) = False
@@ -90,15 +90,15 @@ Namespace Database.Engine
 
                 Dim V_FileInfo As New OperatingSystem.File.Info
 
-                If V_FileInfo.IsExists(v_FilePath(0)) Then
+                If OperatingSystem.File.Info.IsExists(v_FilePath(0)) Then
                     'For SQLite Only
                     v_FilePath(0) = Replace(v_FilePath(0), "\", "\\")
                     'v_FilePath(0) = Replace(v_FilePath(0), ".db", "")
 
-                    v_CS(0) = v_SQLite.SQLite_Basic(v_FilePath(0))
+                    v_CS(0) = V_SQLite.SQLite_Basic(v_FilePath(0))
 
-                    v_CONN(1) = New SQLite.SQLiteConnection(v_CS(0)) 'OleDb.OleDbConnection(_CS(0))
-                    v_CONN(1).Open()
+                    V_CONN(1) = New SQLite.SQLiteConnection(v_CS(0)) 'OleDb.OleDbConnection(_CS(0))
+                    V_CONN(1).Open()
 
                     'Else
                     '    GoTo FileNotFound
@@ -106,15 +106,15 @@ Namespace Database.Engine
 
                 v_FilePath(1) = V_Location & "\Resources\errlog.db"
 
-                If V_FileInfo.IsExists(v_FilePath(1)) Then
+                If OperatingSystem.File.Info.IsExists(v_FilePath(1)) Then
                     'For SQLite Only
                     v_FilePath(1) = Replace(v_FilePath(1), "\", "\\")
                     'v_FilePath(1) = Replace(v_FilePath(0), ".db", "")
 
-                    v_CS(1) = v_SQLite.SQLite_Basic(v_FilePath(1))
+                    v_CS(1) = V_SQLite.SQLite_Basic(v_FilePath(1))
 
-                    v_CONN(2) = New SQLite.SQLiteConnection(v_CS(1))
-                    v_CONN(2).Open()
+                    V_CONN(2) = New SQLite.SQLiteConnection(v_CS(1))
+                    V_CONN(2).Open()
                     'Else
                     '    GoTo FileNotFound
                 End If

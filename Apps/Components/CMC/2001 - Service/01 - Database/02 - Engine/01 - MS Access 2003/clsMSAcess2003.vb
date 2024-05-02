@@ -4,14 +4,14 @@ Imports System.Windows.Forms
 
 Namespace Database.Engine
     Public Class MSAccess2003
-        Private _CS(2) As String
-        Private _FilePath(2) As String
+        Private ReadOnly _CS(2) As String
+        Private ReadOnly _FilePath(2) As String
 
-        Private _CONN(2) As OleDb.OleDbConnection
-        Private _CMD(2) As OleDb.OleDbCommand
-        Private _DR(2) As OleDb.OleDbDataReader
+        Private ReadOnly _CONN(2) As OleDb.OleDbConnection
+        Private ReadOnly _CMD(2) As OleDb.OleDbCommand
+        Private ReadOnly _DR(2) As OleDb.OleDbDataReader
 
-        Private _MSA2003C As New Connect.MSAccess2003Connection
+        Private ReadOnly _MSA2003C As New Connect.MSAccess2003Connection
 
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckDBCatalog() As Boolean
@@ -22,7 +22,7 @@ Namespace Database.Engine
                 System.IO.Directory.CreateDirectory(Application.StartupPath & "\Resources")
 
                 _DBPath = Application.StartupPath & "\Resources\CATALOG.mdb"
-                If _CFILEInfo.IsExists(_DBPath) Then
+                If OperatingSystem.File.Info.IsExists(_DBPath) Then
                     _DBExists(1) = True
                 Else
                     'My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\Resources", My.Resources.catalog, True)
@@ -30,7 +30,7 @@ Namespace Database.Engine
                 End If
 
                 _DBPath = Application.StartupPath & "\Resources\DEV_CATALOG.mdb"
-                If _CFILEInfo.IsExists(_DBPath) Then
+                If OperatingSystem.File.Info.IsExists(_DBPath) Then
                     _DBExists(2) = True
                 Else
                     'My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\Resources", My.Resources.dev_catalog, True)
@@ -38,7 +38,7 @@ Namespace Database.Engine
                 End If
 
                 _DBPath = Application.StartupPath & "\Resources\ERRLOG.mdb"
-                If _CFILEInfo.IsExists(_DBPath) Then
+                If OperatingSystem.File.Info.IsExists(_DBPath) Then
                     _DBExists(2) = True
                 Else
                     'My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\Resources", My.Resources.errlog, True)
@@ -71,7 +71,7 @@ Namespace Database.Engine
 
                 Dim V_FileInfo As New OperatingSystem.File.Info
 
-                If V_FileInfo.IsExists(_FilePath(0)) Then
+                If OperatingSystem.File.Info.IsExists(_FilePath(0)) Then
                     _CS(0) = _MSA2003C.Microsoft_OLEDB_Standard(_FilePath(0), "admin", "")
 
                     _CONN(0) = New OleDb.OleDbConnection(_CS(0))
@@ -80,7 +80,7 @@ Namespace Database.Engine
 
                 _FilePath(1) = Application.StartupPath & "\Resources\ERRLOG.mdb"
 
-                If V_FileInfo.IsExists(_FilePath(1)) Then
+                If OperatingSystem.File.Info.IsExists(_FilePath(1)) Then
                     _CS(1) = _MSA2003C.Microsoft_OLEDB_Standard(_FilePath(1), "admin", "")
 
                     _CONN(1) = New OleDb.OleDbConnection(_CS(1))
@@ -121,7 +121,7 @@ Namespace Database.Engine
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Function GETDATAROW(ByVal Query As String, ByVal MyConnection As OleDb.OleDbConnection, ByVal MyCommand As OleDb.OleDbCommand) As OleDb.OleDbDataReader
+        Private Shared Function GETDATAROW(ByVal Query As String, ByVal MyConnection As OleDb.OleDbConnection, ByVal MyCommand As OleDb.OleDbCommand) As OleDb.OleDbDataReader
             Try
                 Dim _DR As OleDb.OleDbDataReader
 
@@ -146,7 +146,7 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Private Sub PUSHDATA(ByVal Query As String, ByVal MyConnection As OleDb.OleDbConnection, ByVal MyCommand As OleDb.OleDbCommand)
+        Private Shared Sub PUSHDATA(ByVal Query As String, ByVal MyConnection As OleDb.OleDbConnection, ByVal MyCommand As OleDb.OleDbCommand)
             Try
                 MyCommand = New OleDb.OleDbCommand With {
                 .Connection = MyConnection,

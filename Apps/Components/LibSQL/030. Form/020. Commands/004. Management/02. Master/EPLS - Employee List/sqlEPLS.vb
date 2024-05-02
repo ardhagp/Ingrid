@@ -289,7 +289,7 @@ Namespace Commands.EPLS
                 V_Bytes = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
 
                 If Not IsNothing(V_Bytes) Then
-                    V_Photo = _IMG.OutputAsImage(V_Bytes)
+                    V_Photo = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(V_Bytes)
                 End If
 
                 Return V_Photo
@@ -406,8 +406,9 @@ Namespace Commands.EPLS
                     _Image.Save(_MemoryStream, Imaging.ImageFormat.Jpeg) ', Row.Cells("file_content").Value)
                     _PhotoByte = _MemoryStream.ToArray
 
-                    Dim _ImageParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image)
-                    _ImageParam.Value = _PhotoByte
+                    Dim _ImageParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image) With {
+                    .Value = _PhotoByte
+                    }
                     _CMD.Parameters.Add(_ImageParam)
 
                     _CMD.Parameters.AddWithValue("@DateNow", Now.Date)

@@ -1,8 +1,11 @@
-﻿Public Class Dummy
+﻿Imports System.Runtime.Versioning
+
+Public Class Dummy
     Public Event Done()
     Private WithEvents _Dummy_Editor As New Dummy_Editor
     'Private _MMSMenu As VisualInheritanceFixer.MergeableMenuStrip
 
+    <SupportedOSPlatform("Windows")>
     Private Sub AddNewToolStripMenuItem_Click(sender As Object, e As EventArgs)
         _Dummy_Editor = New Dummy_Editor
         Display(_Dummy_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new activity", True)
