@@ -20,13 +20,13 @@ pool:
 
 variables:
 - group: global_variables
-- name: var_g_Ingridversion_major
+- name: var_p_Ingridversion_major
   value: $[variables.var_g_Ingridversion_major]
-- name: var_g_Ingridversion_minor
+- name: var_p_Ingridversion_minor
   value: $[variables.var_g_Ingridversion_minor]
-- name: var_g_Ingridversion_build
+- name: var_p_Ingridversion_build
   value: $[variables.var_g_Ingridversion_build]
-- name: var_g_Ingridversion_revision
+- name: var_p_Ingridversion_revision
   value: $[variables.var_g_Ingridversion_revision]
 
 steps:
