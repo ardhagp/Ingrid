@@ -148,7 +148,7 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact.. ingrid-beta'
   inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
+    PathtoPublish: '$(build.ArtifactStagingDirectory)'
     ArtifactName: 'ingrid-beta'
     publishLocation: 'Container'
 
@@ -162,12 +162,12 @@ steps:
       cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\
       dir /b /s /A-D /o:gn
       echo "---------------------------"
-      echo "Reading Ingrid.Application"
-      echo "---------------------------"
-      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
-      echo "---------------------------"
       echo "Reading Artifact Directory"
       echo "---------------------------"
       cd $(build.ArtifactStagingDirectory)
       dir /b /s /A-D /o:gn
+      echo "---------------------------"
+      echo "Reading Ingrid.Application"
+      echo "---------------------------"
+      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
 
