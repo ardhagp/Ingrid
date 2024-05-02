@@ -141,14 +141,14 @@ steps:
 #- task: CopyFiles@2
 #  displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory) Alpha'
 #  inputs:
-#    SourceFolder: '$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
+#    SourceFolder: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
 #    Contents: '**'
 #    TargetFolder: '$(build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact.. ingrid-beta'
   inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
+    PathtoPublish: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
     ArtifactName: 'ingrid-beta'
     publishLocation: 'Container'
 
@@ -164,7 +164,7 @@ steps:
       echo "---------------------------"
       echo "Reading Ingrid.Application"
       echo "---------------------------"
-      more $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
+      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
       echo "---------------------------"
       
 
