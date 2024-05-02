@@ -138,12 +138,12 @@ steps:
     maximumCpuCount: true
     createLogFile: true
 
-#- task: CopyFiles@2
-#  displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory) Alpha'
-#  inputs:
-#    SourceFolder: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
-#    Contents: '**'
-#    TargetFolder: '$(build.ArtifactStagingDirectory)'
+- task: CopyFiles@2
+  displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory) Alpha'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
+    Contents: '**'
+    TargetFolder: '$(build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact.. ingrid-beta'
