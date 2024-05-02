@@ -166,5 +166,5 @@ steps:
       echo "---------------------------"
       more $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
       echo "---------------------------"
-      more $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
+      
 
