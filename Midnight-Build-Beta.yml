@@ -105,6 +105,15 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
 
 - task: CmdLine@2
+  displayName: 'Check Text Replacement'
+  inputs:
+    script: |
+      echo Major: $(var_g_Ingridversion_major)
+      echo Minor: $(var_g_Ingridversion_minor)
+      echo Build: $(var_g_Ingridversion_build)
+      echo Revision: $(var_g_Ingridversion_revision)'
+
+- task: CmdLine@2
   displayName: 'Reviewing Codes'
   inputs:
     script: |
