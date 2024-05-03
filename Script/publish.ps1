@@ -9,6 +9,9 @@
 
     $defaultWorkingDirectory = '$(System.DefaultWorkingDirectory)'
     
+    cd D:\a\1\s\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\publish\*
+    dir /b /s /A-D /o:gn
+
     Write-Host "Cloning existing GitHub repository"
 
     git clone https://${githubusername}:$githubaccesstoken@github.com/$githubusername/$repositoryname.git --branch=$branchName $defaultWorkingDirectory\ghpages --progress
