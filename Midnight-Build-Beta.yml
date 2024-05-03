@@ -57,7 +57,7 @@ steps:
 - task: update-variablegroup-variable@0
   inputs:
     variableGroupName: 'global_variables'
-    variableName: 'var_g_Ingridversion_revision'
+    variableName: '$(var_g_Ingridversion_revision)'
     variableDataType: 'int'
     newVariableValueInInt: 1
     usePAT: true
