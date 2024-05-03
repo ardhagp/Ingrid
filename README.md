@@ -2,5 +2,7 @@
 
 #   <span style="color:darkorange">**Publish Branch**</span>
 ----
-For **publishing** only, no app code stored here.
-Please refer to ![Ingrid on Github](https://github.com/ardhagp/Ingrid)
+> [!CAUTION]
+> This branch is for **publishing** only, no app code stored here.
+
+Please refer to [![Ingrid on Github](https://github.com/ardhagp/Ingrid)]
