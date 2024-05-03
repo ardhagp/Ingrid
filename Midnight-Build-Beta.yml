@@ -162,6 +162,14 @@ steps:
     Contents: '**'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
+#Upload Artifact prepare for Relase via FTP
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact.. ingrid-beta'
+  inputs:
+    PathtoPublish: '$(build.ArtifactStagingDirectory)'
+    ArtifactName: 'ingrid-beta'
+    publishLocation: 'Container'
+
 #Direct publish to Github Pages
 #- task: GitHubPagesPublish@1
 #  displayName: 'Publishing App To Github Pages'
@@ -178,14 +186,6 @@ steps:
   displayName: 'Executing Powershell'
   inputs:
     filePath: '$(System.DefaultWorkingDirectory)\Script\publish.ps1'
-
-#Upload Artifact prepare for Relase via FTP
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact.. ingrid-beta'
-  inputs:
-    PathtoPublish: '$(build.ArtifactStagingDirectory)'
-    ArtifactName: 'ingrid-beta'
-    publishLocation: 'Container'
 
 - task: CmdLine@2
   displayName: 'File List - Post Build $(Build.SourcesDirectory)'
