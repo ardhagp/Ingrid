@@ -1,8 +1,3 @@
-[CmdletBinding()]
-param()
-
-Trace-VstsEnteringInvocation $MyInvocation
-try {
     # Get inputs.
     $docPath = '$(build.ArtifactStagingDirectory)\*'
     $githubusername = 'ardhagp'
@@ -52,7 +47,3 @@ try {
         Write-Host "##vso[task.logissue type=error;]Error pushing to $branchName branch, probably an incorrect Personal Access Token, error code $lastexitcode"
         [Environment]::Exit(1)
     }
-
-} finally {
-    Trace-VstsLeavingInvocation $MyInvocation
-}
