@@ -19,8 +19,15 @@ pool:
 
 variables:
 - group: global_variables
+
 - name: var_p_Email
   value: $[variables.var_g_Email]
+
+- name: var_p_Platform
+  value: $[variables.var_Platform]
+- name: var_p_BuildConfiguration
+  value: $[variables.var_BuildConfiguration]
+
 - name: var_p_Ingridversion_major
   value: $[variables.var_g_Ingridversion_major]
 - name: var_p_Ingridversion_minor
@@ -29,6 +36,18 @@ variables:
   value: $[variables.var_g_Ingridversion_build]
 - name: var_p_Ingridversion_revision
   value: $[variables.var_g_Ingridversion_revision]
+
+- name: var_p_BetterStack_Log
+  value: $[variables.var_g_BetterStack_Log]
+- name: var_p_SyncfusionKey
+  value: $[variables.var_g_SyncfusionKey]
+- name: var_p_Salt
+  value: $[variables.var_g_Salt]
+
+- name: var_p_TOKEN_GITHUB
+  value: $[variables.var_g_TOKEN_GITHUB]
+- name: var_p_TOKEN_AZURE
+  value: $[variables.var_g_TOKEN_AZURE]
 
 steps:
 - task: NuGetToolInstaller@1
