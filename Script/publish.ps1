@@ -1,5 +1,5 @@
     # Get inputs.
-    $docPath = '$(build.ArtifactStagingDirectory)\*'
+    $docPath = '$(Pipeline.Workspace)\*'
     $githubusername = 'ardhagp'
     $githubemail = '$(env:VAR_G_EMAIL)'
     $githubaccesstoken = '$(env:var_G_TOKEN_GITHUB)'
