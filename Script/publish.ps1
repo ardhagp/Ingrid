@@ -7,7 +7,7 @@
     $branchName = 'publish'
     $commitMessage = 'Release v$(env:VAR_G_INGRIDVERSION_MAJOR).$(env:VAR_G_INGRIDVERSION_MINOR).$(env:VAR_G_INGRIDVERSION_BUILD).$(env:VAR_G_INGRIDVERSION_REVISION)'
 
-    $defaultWorkingDirectory = '$(env:System.DefaultWorkingDirectory)'
+    $defaultWorkingDirectory = '$(System.DefaultWorkingDirectory)'
     
     Write-Host "Cloning existing GitHub repository"
 
