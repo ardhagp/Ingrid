@@ -1,7 +1,7 @@
     # Get inputs.
-    $docPath = '$(env:build.ArtifactStagingDirectory)\*'
+    $docPath = '$(build.ArtifactStagingDirectory)\*'
     $githubusername = 'ardhagp'
-    $githubemail = '${env:VAR_G_EMAIL}'
+    $githubemail = '$(env:VAR_G_EMAIL)'
     $githubaccesstoken = '$(env:var_G_TOKEN_GITHUB)'
     $repositoryname = 'Ingrid'
     $branchName = 'publish'
