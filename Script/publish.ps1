@@ -1,5 +1,5 @@
     # Get inputs.
-    $docPath = '$(build.ArtifactStagingDirectory)\Apps\Components\Ingrid-Launcher\bin\$(env:VAR_BUILDCONFIGURATION)\net7.0-windows\publish\*'
+    $docPath = 'a\1\s\Apps\Components\Ingrid-Launcher\bin\$(env:VAR_BUILDCONFIGURATION)\net7.0-windows\publish\*'
     $githubusername = 'ardhagp'
     $githubemail = '$(env:VAR_G_EMAIL)'
     $githubaccesstoken = '$(env:var_G_TOKEN_GITHUB)'
