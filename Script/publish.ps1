@@ -1,13 +1,13 @@
     # Get inputs.
-    $docPath = '$(build.ArtifactStagingDirectory)\*'
+    $docPath = '$(env:build.ArtifactStagingDirectory)\*'
     $githubusername = 'ardhagp'
     $githubemail = '${env:VAR_G_EMAIL}'
     $githubaccesstoken = '$(env:var_G_TOKEN_GITHUB)'
     $repositoryname = 'Ingrid'
     $branchName = 'publish'
-    $commitMessage = 'Release v$(VAR_G_INGRIDVERSION_MAJOR).$(VAR_G_INGRIDVERSION_MINOR).$(VAR_G_INGRIDVERSION_BUILD).$(VAR_G_INGRIDVERSION_REVISION)'
+    $commitMessage = 'Release v$(env:VAR_G_INGRIDVERSION_MAJOR).$(env:VAR_G_INGRIDVERSION_MINOR).$(env:VAR_G_INGRIDVERSION_BUILD).$(env:VAR_G_INGRIDVERSION_REVISION)'
 
-    $defaultWorkingDirectory = '$(System.DefaultWorkingDirectory)'
+    $defaultWorkingDirectory = '$(env:System.DefaultWorkingDirectory)'
     
     Write-Host "Cloning existing GitHub repository"
 
