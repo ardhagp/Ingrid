@@ -163,16 +163,21 @@ steps:
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
 #Direct publish to Github Pages
-- task: GitHubPagesPublish@1
-  displayName: 'Publishing App To Github Pages'
+#- task: GitHubPagesPublish@1
+#  displayName: 'Publishing App To Github Pages'
+#  inputs:
+#    docPath: '$(build.ArtifactStagingDirectory)\*'
+#    githubusername: 'ardhagp'
+#    githubemail: '$(var_g_Email)'
+#    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
+#    repositoryname: 'Ingrid'
+#    branchname: 'publish'
+#    commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
+
+- task: PowerShell@2
+  displayName: 'Executing Powershell'
   inputs:
-    docPath: '$(build.ArtifactStagingDirectory)\*'
-    githubusername: 'ardhagp'
-    githubemail: '$(var_g_Email)'
-    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
-    repositoryname: 'Ingrid'
-    branchname: 'publish'
-    commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
+    filePath: '$(System.DefaultWorkingDirectory)\Script\publish.ps1'
 
 #Upload Artifact prepare for Relase via FTP
 - task: PublishBuildArtifacts@1
