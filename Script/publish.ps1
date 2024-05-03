@@ -7,7 +7,7 @@
     $branchName = 'publish'
     $commitMessage = 'Release v$(VAR_G_INGRIDVERSION_MAJOR).$(VAR_G_INGRIDVERSION_MINOR).$(VAR_G_INGRIDVERSION_BUILD).$(VAR_G_INGRIDVERSION_REVISION)'
 
-    $defaultWorkingDirectory = Get-VstsTaskVariable -Name 'System.DefaultWorkingDirectory'    
+    $defaultWorkingDirectory = '$(System.DefaultWorkingDirectory)'
     
     Write-Host "Cloning existing GitHub repository"
 
