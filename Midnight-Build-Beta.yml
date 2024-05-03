@@ -154,19 +154,7 @@ steps:
     maximumCpuCount: true
     createLogFile: true
 
-#Direct publish to Github Pages
-- task: GitHubPagesPublish@1
-  displayName: 'Publishing App To Github Pages'
-  inputs:
-    docPath: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\*'
-    githubusername: 'ardhagp'
-    githubemail: '$(var_g_Email)'
-    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
-    repositoryname: 'Ingrid'
-    branchname: 'publish'
-    commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
-
-#Prepare Artifact for FTP Server (if needed)
+#Prepare Artifact for Github Page and FTP Server
 - task: CopyFiles@2
   displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
@@ -174,6 +162,19 @@ steps:
     Contents: '**'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
+#Direct publish to Github Pages
+- task: GitHubPagesPublish@1
+  displayName: 'Publishing App To Github Pages'
+  inputs:
+    docPath: '$(build.ArtifactStagingDirectory)\*'
+    githubusername: 'ardhagp'
+    githubemail: '$(var_g_Email)'
+    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
+    repositoryname: 'Ingrid'
+    branchname: 'publish'
+    commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
+
+#Upload Artifact prepare for Relase via FTP
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact.. ingrid-beta'
   inputs:
