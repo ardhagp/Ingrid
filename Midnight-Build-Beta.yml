@@ -55,6 +55,7 @@ steps:
     externalFeedCredentials: 'ingrid'
 
 - task: update-variablegroup-variable@0
+  displayName: 'Bump Version'
   inputs:
     variableGroupName: 'global_variables'
     variableName: 'var_g_Ingridversion_revision'
