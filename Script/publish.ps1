@@ -1,5 +1,5 @@
     # Get inputs.
-    $docPath = '$(Pipeline.Workspace)\*'
+    $docPath = '\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\*'
     $githubusername = 'ardhagp'
     $githubemail = '$(env:VAR_G_EMAIL)'
     $githubaccesstoken = '$(env:var_G_TOKEN_GITHUB)'
