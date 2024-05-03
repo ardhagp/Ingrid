@@ -144,8 +144,21 @@ steps:
     maximumCpuCount: true
     createLogFile: true
 
+#Direct publish to Github Pages
+- task: GitHubPagesPublish@1
+  displayName: 'Publishing App To Github Pages'
+  inputs:
+    docPath: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\*'
+    githubusername: 'ardhagp'
+    githubemail: '$(var_g_Email)'
+    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
+    repositoryname: 'Ingrid'
+    branchname: 'publish'
+    commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
+
+#Prepare Artifact for FTP Server (if needed)
 - task: CopyFiles@2
-  displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory) Alpha'
+  displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
     Contents: '**'
@@ -158,19 +171,8 @@ steps:
     ArtifactName: 'ingrid-beta'
     publishLocation: 'Container'
 
-- task: GitHubPagesPublish@1
-  displayName: 'Publish Fi;es To Github Pages'
-  inputs:
-    docPath: '$(build.ArtifactStagingDirectory)\*'
-    githubusername: 'ardhagp'
-    githubemail: '$(var_g_Email)'
-    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
-    repositoryname: 'Ingrid'
-    branchname: 'publish'
-    commitmessage: 'Automated Release $(var_g_Ingridversion_revision)'
-
 - task: CmdLine@2
-  displayName: 'File List - Post Build $(Build.SourcesDirectory) Alpha'
+  displayName: 'File List - Post Build $(Build.SourcesDirectory)'
   inputs:
     script: |
       echo "---------------------------"
