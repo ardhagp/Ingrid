@@ -2,7 +2,7 @@
     $docPath = 'D:\a\1\s\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\publish\*'
     $githubusername = 'ardhagp'
     $githubemail = '$(env:VAR_G_EMAIL)'
-    $githubaccesstoken = '$(env:var_G_TOKEN_GITHUB)'
+    $githubaccesstoken = '$(env:VAR_G_TOKEN_GITHUB)'
     $repositoryname = 'Ingrid'
     $branchName = 'publish'
     $commitMessage = 'Release v$(env:VAR_G_INGRIDVERSION_MAJOR).$(env:VAR_G_INGRIDVERSION_MINOR).$(env:VAR_G_INGRIDVERSION_BUILD).$(env:VAR_G_INGRIDVERSION_REVISION)'
