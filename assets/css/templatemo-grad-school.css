@@ -69,7 +69,7 @@ p {
 /* Buttons */
 
 .main-button a {
-    background-color: #f5a425;
+    background-color: #e64040;
     color: #fff;
     font-size: 13px;
     text-transform: uppercase;
@@ -408,7 +408,7 @@ section.features .col-4 {
 }
 
 .features-content:hover {
-    background-color: #f5a425;
+    background-color: #0c1228;
     box-shadow: 0px 0px 30px rgba(0,0,0,0.5);
 }
 
