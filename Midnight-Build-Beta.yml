@@ -73,16 +73,6 @@ steps:
     nugetConfigPath: './Apps/Core/Vb/NuGet.config'
     externalFeedCredentials: 'ingrid'
 
-- task: update-variablegroup-variable@0
-  displayName: 'Bump Version'
-  inputs:
-    variableGroupName: 'global_variables'
-    variableName: 'var_g_Ingridversion_revision'
-    variableDataType: 'int'
-    newVariableValueInInt: 1
-    usePAT: true
-    patValue: '$(var_g_TOKEN_AZURE)'
-
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: V_BRIDGEKEY.SALT'
   inputs:
@@ -190,21 +180,22 @@ steps:
     publishLocation: 'Container'
 
 #Direct publish to Github Pages
-#- task: GitHubPagesPublish@1
-#  displayName: 'Publishing App To Github Pages'
-#  inputs:
-#    docPath: '$(build.ArtifactStagingDirectory)\*'
-#    githubusername: 'ardhagp'
-#    githubemail: '$(var_g_Email)'
-#    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
-#    repositoryname: 'Ingrid'
-#    branchname: 'publish'
-#    commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
-
-- task: PowerShell@2
-  displayName: 'Executing Powershell'
+- task: GitHubPagesPublish@1
+  displayName: 'Publishing App To Github Pages'
   inputs:
-    filePath: '$(System.DefaultWorkingDirectory)\Script\publish.ps1'
+    docPath: '$(build.ArtifactStagingDirectory)\*'
+    githubusername: 'ardhagp'
+    githubemail: '$(var_g_Email)'
+    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
+    repositoryname: 'Ingrid'
+    branchname: 'publish'
+    commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
+
+#This task is alternative to publish Ingrid App to Github Page
+#- task: PowerShell@2
+#  displayName: 'Executing Powershell'
+#  inputs:
+#    filePath: '$(System.DefaultWorkingDirectory)\Script\publish.ps1'
 
 - task: CmdLine@2
   displayName: 'File List - Post Build $(Build.SourcesDirectory)'
@@ -225,3 +216,12 @@ steps:
       echo "---------------------------"
       more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
 
+- task: update-variablegroup-variable@0
+  displayName: 'Prepare Versioning For Next Build'
+  inputs:
+    variableGroupName: 'global_variables'
+    variableName: 'var_g_Ingridversion_revision'
+    variableDataType: 'int'
+    newVariableValueInInt: 1
+    usePAT: true
+    patValue: '$(var_g_TOKEN_AZURE)'
