@@ -17,6 +17,7 @@ schedules:
 pool:
   vmImage: 'windows-latest'
 
+#Assigning variables from Environment
 variables:
 - group: global_variables
 
@@ -50,20 +51,25 @@ variables:
   value: $[variables.var_g_TOKEN_AZURE]
 
 steps:
+
+#Installing Nuget
 - task: NuGetToolInstaller@1
   displayName: 'Nuget Install'
   inputs:
     versionSpec: 
     checkLatest: true
 
+#List of Files in $(Build.SourcesDirectory)
 - task: CmdLine@2
-  displayName: 'Pre-Build Check - $(Build.SourcesDirectory)'
+  displayName: 'Pre-Build File List in $(Build.SourcesDirectory)'
   inputs:
     script: |
-      echo "File List - Ingrid-CI-Build"
+      echo "File List - $(Build.SourcesDirectory)"
+      
       cd $(Build.SourcesDirectory)
       dir /b /s /A-D /o:gn
 
+#Nuget Restore
 - task: NuGetCommand@2
   displayName: 'NuGet Restore'
   inputs:
@@ -73,6 +79,7 @@ steps:
     nugetConfigPath: './Apps/Core/Vb/NuGet.config'
     externalFeedCredentials: 'ingrid'
 
+#Replacing SALT Key
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: V_BRIDGEKEY.SALT'
   inputs:
@@ -81,6 +88,7 @@ steps:
     parameterReplaceText: '= "$(var_g_Salt)"'
     parameterTypeOfSearch: 'filesSearchPattern'
 
+#Replacing Syncfusion Key
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: V_BRIDGEKEY.SYNCFUSION'
   inputs:
@@ -89,6 +97,7 @@ steps:
     parameterReplaceText: '= "$(var_g_SyncfusionKey)"'
     parameterTypeOfSearch: 'filesSearchPattern'
 
+#Replacing BetterStack Key
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: V_BRIDGEKEY.BETTERSTACK_LOG'
   inputs:
@@ -97,6 +106,7 @@ steps:
     parameterReplaceText: 'sourceToken: "$(var_g_BetterStack_Log)"'
     parameterTypeOfSearch: 'filesSearchPattern'
 
+#Replacing Version: Major
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: {VERSION_MAJOR}'
   inputs:
@@ -105,6 +115,7 @@ steps:
     parameterReplaceText: '$(var_g_Ingridversion_major)'
     parameterTypeOfSearch: 'filesSearchPattern'
 
+#Replacing Version: Minor
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: {VERSION_MINOR}'
   inputs:
@@ -113,6 +124,7 @@ steps:
     parameterReplaceText: '$(var_g_Ingridversion_minor)'
     parameterTypeOfSearch: 'filesSearchPattern'
 
+#Replacing Version: Build
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: {VERSION_BUILD}'
   inputs:
@@ -121,6 +133,7 @@ steps:
     parameterReplaceText: '$(var_g_Ingridversion_build)'
     parameterTypeOfSearch: 'filesSearchPattern'
 
+#Replacing Version: Revision
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: {VERSION_REVISION}'
   inputs:
@@ -129,6 +142,7 @@ steps:
     parameterReplaceText: '$(var_g_Ingridversion_revision)'
     parameterTypeOfSearch: 'filesSearchPattern'
 
+#Checking new value from variables
 - task: CmdLine@2
   displayName: 'Check Text Replacement'
   inputs:
@@ -139,6 +153,7 @@ steps:
       echo Build: $(var_g_Ingridversion_build)
       echo Revision: $(var_g_Ingridversion_revision)
 
+#Review content of code
 - task: CmdLine@2
   displayName: 'Reviewing Codes'
   inputs:
@@ -152,6 +167,7 @@ steps:
       echo "---------------------------"
       more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
 
+#Build Ingrid App
 - task: VSBuild@1
   displayName: 'VSBuild - Midnight Build'
   inputs:
@@ -197,6 +213,7 @@ steps:
 #  inputs:
 #    filePath: '$(System.DefaultWorkingDirectory)\Script\publish.ps1'
 
+#List of File in $(Build.SourcesDirectory)
 - task: CmdLine@2
   displayName: 'File List - Post Build $(Build.SourcesDirectory)'
   inputs:
@@ -216,6 +233,7 @@ steps:
       echo "---------------------------"
       more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
 
+#Updating Version for next build
 - task: update-variablegroup-variable@0
   displayName: 'Prepare Versioning For Next Build'
   inputs:
