@@ -1,4 +1,4 @@
-name: Replacing Text
+name: ReplacingText
 
 on: [push, pull_request]
 
@@ -13,7 +13,7 @@ jobs:
         uses: thiagodnf/string-replacer@v1.0.2
         with:
           find: '= V_BRIDGE_KEY.SYNCFUSION()'
-          replace: '= "$(var_g_SyncfusionKey)"'
+          replace: '= Test'
           include: |
             Apps/**/*.vb
           exclude: |
