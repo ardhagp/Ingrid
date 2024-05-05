@@ -1,0 +1,21 @@
+name: Replacing Text
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+     
+      - uses: actions/checkout@main
+     
+      - name: Find and Replace
+        uses: thiagodnf/string-replacer@v1.0.2
+        with:
+          find: '= V_BRIDGE_KEY.SYNCFUSION()'
+          replace: '= "$(var_g_SyncfusionKey)"'
+          include: |
+            Apps/**/*.vb
+          exclude: |
+            .git/**
+            node_modules/**
