@@ -1,21 +1,21 @@
-name: ReplacingText
+name: GitGuardian scan
 
 on: [push, pull_request]
 
 jobs:
-  build:
-    runs-on: windows-latest
+  scanning:
+    name: GitGuardian scan
+    runs-on: ubuntu-latest
     steps:
-     
-      - uses: actions/checkout@main
-     
-      - name: Find and Replace
-        uses: thiagodnf/string-replacer@v1.0.2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          find: '= V_BRIDGE_KEY.SYNCFUSION()'
-          replace: '= Test'
-          include: |
-            Apps/**/*.vb
-          exclude: |
-            .git/**
-            node_modules/**
+          fetch-depth: 0 # fetch all history so multiple commits can be scanned
+      - name: GitGuardian scan
+        uses: GitGuardian/ggshield/actions/secret@v1.27.0
+        env:
+          GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
+          GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
+          GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
