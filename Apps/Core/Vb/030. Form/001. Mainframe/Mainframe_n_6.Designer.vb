@@ -913,7 +913,7 @@ Partial Class Mainframe_n_6
         BtnExecute.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         BtnExecute.Appearance = Windows.Forms.ButtonAppearance.Office2016Colorful
         BtnExecute.BackColor = SystemColors.Control
-        BtnExecute.BackgroundImage = Ingrid.My.Resources.Resources.for_treeview_playbutton_512
+        BtnExecute.BackgroundImage = My.Resources.Resources.for_treeview_playbutton_512
         BtnExecute.BackgroundImageLayout = ImageLayout.Stretch
         BtnExecute.BeforeTouchSize = New Size(54, 63)
         BtnExecute.KeepFocusRectangle = False
@@ -979,7 +979,7 @@ Partial Class Mainframe_n_6
         ' PctProfile
         ' 
         PctProfile.BackColor = Color.White
-        PctProfile.BackgroundImage = Ingrid.My.Resources.Resources.PCTPRV_001_512_icon
+        PctProfile.BackgroundImage = My.Resources.Resources.PCTPRV_001_512_icon
         PctProfile.BackgroundImageLayout = ImageLayout.Zoom
         PctProfile.ErrorImage = Nothing
         PctProfile.InitialImage = Nothing
