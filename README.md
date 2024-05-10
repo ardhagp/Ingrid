@@ -1,7 +1,6 @@
 > [!IMPORTANT]
 > This page is intended for developers who want to collaborate to improving Ingrid.
->
-> If you are **_non developer_** and want to use Ingrid in your computer please refer to this [WIKI](https://github.com/ardhagp/Ingrid/wiki) page.
+> If you are **_non developer_** and want to use Ingrid in your computer please refer to this [WIKI Install Page](https://github.com/ardhagp/Ingrid/wiki) page.
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**About Project & Status**</span>
