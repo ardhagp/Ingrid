@@ -29,10 +29,10 @@ jobs:
         uses: security-code-scan/security-code-scan-add-action@f8ff4f2763ed6f229eded80b1f9af82ae7f32a0d
 
       - name: Restore dependencies
-        run: dotnet restore ./Apps/Components/Ingrid-Launcher/IngridLauncher.vbproj
+        run: dotnet restore ./Apps/Core/Vb/Ingrid.vbproj
 
       - name: Build
-        run: msbuild ./Apps/Core/Vb/Ingrid App.sln -t:rebuild -verbosity:diag -property:Configuration=Release
+        run: msbuild ./Apps/Core/Vb/Ingrid.vbproj -t:rebuild -verbosity:diag -property:Configuration=Release
 
       - name: Convert sarif for uploading to GitHub
         uses: security-code-scan/security-code-scan-results-action@cdb3d5e639054395e45bf401cba8688fcaf7a687
