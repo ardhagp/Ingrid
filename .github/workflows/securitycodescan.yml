@@ -32,7 +32,7 @@ jobs:
         run: dotnet restore ./Apps/Components/Ingrid-Launcher/IngridLauncher.vbproj
 
       - name: Build
-        run: dotnet build --no-restore **\*.sln
+        run: dotnet build ./Apps/Core/Vb/Ingrid App.sln
 
       - name: Convert sarif for uploading to GitHub
         uses: security-code-scan/security-code-scan-results-action@cdb3d5e639054395e45bf401cba8688fcaf7a687
