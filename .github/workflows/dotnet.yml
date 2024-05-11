@@ -1,7 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: .NET Build
+name: CI
 
 on:
   push:
@@ -26,4 +26,4 @@ jobs:
     - name: Build
       run: msbuild ./Apps/Core/Vb/Ingrid.vbproj -t:rebuild -verbosity:diag -property:Configuration=Release
     - name: Test
-      run: dotnet test ./Apps/Core/Vb/Ingrid App.sln --no-build --verbosity normal
+      run: dotnet test ./Apps/Core/Vb/Ingrid.vbproj --no-build --verbosity normal
