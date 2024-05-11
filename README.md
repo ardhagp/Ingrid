@@ -1,13 +1,14 @@
 > [!IMPORTANT]
 > This page is intended for developers who want to collaborate to improving Ingrid.
-> If you are **_non developer_** and want to use Ingrid in your computer please refer to this [WIKI Install Page](https://github.com/ardhagp/Ingrid/wiki) page.
+> If you are **_non developer_** and want to use Ingrid in your computer please see this [WIKI How to Install Page](https://github.com/ardhagp/Ingrid/wiki/02.-How-to-Install).
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**About Project & Status**</span>
 Ingrid is a Desktop Application for Windows OS that has many modules for every purposes, made by your request.
 
-[![built with Codeium](https://codeium.com/badges/main)](https://codeium.com) [![streak](https://codeium.com/badges/v2/user/ardhagp/streak)](https://codeium.com/profile/ardhagp) [![CI](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet.yml) [![Build Status](https://dev.azure.com/cagakmelon/Ingrid/_apis/build/status%2Fgithub-linked%2Fscheduled%2Fci-build?branchName=master)](https://dev.azure.com/cagakmelon/Ingrid/_build/latest?definitionId=12&branchName=master) [![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) [![Ingrid Web](https://cronitor.io/badges/Md00mr/production/9SJ4jVW0r8b4oLx3tPo7e6TZl5M.svg)](https://ardhagp.github.io/Ingrid/) [![Static Badge](https://img.shields.io/badge/Download-Installer-gold)](https://ardhagp.github.io/Ingrid/Ingrid.zip)
+[![built with Codeium](https://codeium.com/badges/main)](https://codeium.com) [![streak](https://codeium.com/badges/v2/user/ardhagp/streak)](https://codeium.com/profile/ardhagp) [![CI](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet.yml) [![Build Status](https://dev.azure.com/cagakmelon/Ingrid/_apis/build/status%2Fgithub-linked%2Fscheduled%2Fci-build?branchName=master)](https://dev.azure.com/cagakmelon/Ingrid/_build/latest?definitionId=12&branchName=master) [![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) [![Ingrid Web](https://cronitor.io/badges/Md00mr/production/9SJ4jVW0r8b4oLx3tPo7e6TZl5M.svg)](https://ardhagp.github.io/Ingrid/) [![Static Badge](https://img.shields.io/badge/Download-Ingrid.zip-gold)](https://ardhagp.github.io/Ingrid/Ingrid.zip)
 
+![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**Tools**</span>
 <span style="color:orange">1.</span>	Visual Studio Community Edition ([Download](https://visualstudio.microsoft.com/downloads/)) <br/>
 <span style="color:orange">2.</span>	.NET 7 ([Download](https://dotnet.microsoft.com/en-us/download/dotnet/7.0))<br/>
@@ -33,7 +34,7 @@ Then type this json structure.
 ```
 or simply by editing _secrets.json_ in this directory:
 ```
-%APPDATA%\Microsoft\UserSecrets\{guid}\
+%APPDATA%\Microsoft\UserSecrets\f4e0ab0f-a60a-41b1-b56d-d9adae7b959d\
 ```
 ----
 What if Manage User Secrets context menu doesn't show up?
@@ -70,7 +71,7 @@ To obtain BetterStack Key, please sign up <span style="color:orange">**BetterSta
 ![](https://res.cloudinary.com/cagakmelon/image/upload/v1712380400/apps/ingrid-assets/readme.md/2024-04-06_120426.jpg)
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
-#   <span style="color:darkorange">**About MIT License**</span>
+#   <span style="color:darkorange">**About License**</span>
 This application is released under the [MIT license]($/Ingrid/LICENSE). You can use the code for any purpose, including commercial projects.
 
 ![MIT License](https://res.cloudinary.com/cagakmelon/image/upload/v1697064703/apps/ingrid-assets/readme.md/license.png)
