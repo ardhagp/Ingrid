@@ -9,7 +9,7 @@ Ingrid is a Desktop Application for Windows OS that has many modules for every p
 [![built with Codeium](https://codeium.com/badges/main)](https://codeium.com) [![streak](https://codeium.com/badges/v2/user/ardhagp/streak)](https://codeium.com/profile/ardhagp) [![CI](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet.yml) [![Build Status](https://dev.azure.com/cagakmelon/Ingrid/_apis/build/status%2Fgithub-linked%2Fscheduled%2Fci-build?branchName=master)](https://dev.azure.com/cagakmelon/Ingrid/_build/latest?definitionId=12&branchName=master) [![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) [![Ingrid Web](https://cronitor.io/badges/Md00mr/production/9SJ4jVW0r8b4oLx3tPo7e6TZl5M.svg)](https://ardhagp.github.io/Ingrid/) [![Static Badge](https://img.shields.io/badge/Download-Ingrid.zip-gold)](https://ardhagp.github.io/Ingrid/Ingrid.zip)
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
-#   <span style="color:darkorange">**Tools**</span>
+#   <span style="color:darkorange">**Tools You Need**</span>
 <span style="color:orange">1.</span>	Visual Studio Community Edition ([Download](https://visualstudio.microsoft.com/downloads/)) <br/>
 <span style="color:orange">2.</span>	.NET 7 ([Download](https://dotnet.microsoft.com/en-us/download/dotnet/7.0))<br/>
 <span style="color:orange">3.</span>  SQL Server 2022 Express / Developer Edition ([Download](https://www.microsoft.com/en-us/sql-server/sql-server-downloads))<br/>
@@ -41,7 +41,7 @@ What if Manage User Secrets context menu doesn't show up?
 
 ![Missing User Secrets context menu](https://res.cloudinary.com/cagakmelon/image/upload/v1711475296/apps/ingrid-assets/readme.md/2024-03-27_002550.png)
 
-No worries, you are still able to manage by using Dev PowerShell with this command :
+No worries, you are still able to manage by using Dev PowerShell with this command:
 
 | <span style="color:darkorange">_Dev PowerShell Commands_</span> | <span style="color:darkorange">_Function_</span> |
 | -- | -- |
@@ -50,12 +50,14 @@ No worries, you are still able to manage by using Dev PowerShell with this comma
 | dotnet user-secrets set KeyName "KeyValue" | Set KeyName and KeyValue |
 | dotnet user-secrets remove KeyName | Remove specified KeyName |
 
-then type this command using PowerShell
+then type this command using PowerShell:
 ```
 dotnet user-secrets set KEYS:SALT "<input random characters including Upper and Lower Case, Symbols and Space>"
 dotnet user-secrets set KEYS:SYNCFUSION "<input your Syncfusion Key>"
 dotnet user-secrets set KEYS:BETTERSTACK_LOG "<input your BetterStack Key>"
 ```
+> [!WARNING]
+> You should use sha256 hash for your _KEYS:SALT_ to prevent error when decrypting stored password.
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 ## About Keys :
