@@ -179,6 +179,15 @@ steps:
     Contents: '**'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
+- task: ArchiveFiles@2
+  displayName: 'Compressing Files to.. $(build.ArtifactStagingDirectory)'
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(build.ArtifactStagingDirectory)/Ingrid.zip'
+    replaceExistingArchive: true
+
 #Upload Artifact prepare for Relase via FTP
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact.. ingrid-beta'
