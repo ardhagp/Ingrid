@@ -4,7 +4,7 @@
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**About Project & Status**</span>
-Ingrid is a Desktop App for Windows OS that has multi purposes by your request.
+Ingrid is a Desktop App for Windows OS that has many modules for every purposes, made by your request.
 
 [![built with Codeium](https://codeium.com/badges/main)](https://codeium.com) [![streak](https://codeium.com/badges/v2/user/ardhagp/streak)](https://codeium.com/profile/ardhagp) [![CI](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet.yml) [![Build Status](https://dev.azure.com/cagakmelon/Ingrid/_apis/build/status%2Fgithub-linked%2Fscheduled%2Fci-build?branchName=master)](https://dev.azure.com/cagakmelon/Ingrid/_build/latest?definitionId=12&branchName=master) [![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) [![Ingrid Web](https://cronitor.io/badges/Md00mr/production/9SJ4jVW0r8b4oLx3tPo7e6TZl5M.svg)](https://ardhagp.github.io/Ingrid/) [![Static Badge](https://img.shields.io/badge/Download-Installer-gold)](https://www.iupdt.my.id/Ingrid.zip)
 
