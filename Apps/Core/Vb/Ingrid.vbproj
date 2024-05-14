@@ -3,7 +3,7 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Ingrid.Mainframe_n_6</StartupObject>
+    <StartupObject>Ingrid.My.MyApplication</StartupObject>
     <MyType>WindowsForms</MyType>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
