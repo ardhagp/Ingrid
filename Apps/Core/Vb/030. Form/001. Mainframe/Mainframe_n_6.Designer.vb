@@ -171,7 +171,7 @@ Partial Class Mainframe_n_6
         ' Ms_mainframe
         ' 
         Ms_mainframe.BackColor = Color.White
-        Ms_mainframe.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Ms_mainframe.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Ms_mainframe.ImageScalingSize = New Size(24, 24)
         Ms_mainframe.Items.AddRange(New ToolStripItem() {APPSYSTEM, WORKSPACE, HELP, USERMENU, SUPPORT})
         Ms_mainframe.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow
@@ -348,7 +348,7 @@ Partial Class Mainframe_n_6
         ' 
         ' BuymeacoffeToolStripMenuItem
         ' 
-        BuymeacoffeToolStripMenuItem.Font = New Font("Segoe UI", 12.0F, FontStyle.Underline, GraphicsUnit.Point)
+        BuymeacoffeToolStripMenuItem.Font = New Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point)
         BuymeacoffeToolStripMenuItem.ForeColor = Color.Blue
         BuymeacoffeToolStripMenuItem.Name = "BuymeacoffeToolStripMenuItem"
         BuymeacoffeToolStripMenuItem.Size = New Size(306, 40)
@@ -417,8 +417,8 @@ Partial Class Mainframe_n_6
         SUPPORT.ForeColor = Color.Blue
         SUPPORT.Name = "SUPPORT"
         SUPPORT.Overflow = ToolStripItemOverflow.AsNeeded
-        SUPPORT.Size = New Size(97, 36)
-        SUPPORT.Text = "ONLINE"
+        SUPPORT.Size = New Size(161, 36)
+        SUPPORT.Text = "UPDATE / HELP"
         ' 
         ' pnl_mainframe_left
         ' 
@@ -834,7 +834,7 @@ Partial Class Mainframe_n_6
         ' 
         ' lblFile
         ' 
-        lblFile.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        lblFile.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         lblFile.ForeColor = Color.White
         lblFile.Location = New Point(4, 163)
         lblFile.Margin = New Padding(4, 0, 4, 0)
@@ -846,7 +846,7 @@ Partial Class Mainframe_n_6
         ' 
         ' lblData
         ' 
-        lblData.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        lblData.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         lblData.ForeColor = Color.White
         lblData.Location = New Point(4, 70)
         lblData.Margin = New Padding(4, 0, 4, 0)
@@ -859,7 +859,7 @@ Partial Class Mainframe_n_6
         ' lblFileStorage
         ' 
         lblFileStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        lblFileStorage.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        lblFileStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         lblFileStorage.ForeColor = Color.White
         lblFileStorage.Location = New Point(99, 163)
         lblFileStorage.Margin = New Padding(4, 0, 4, 0)
@@ -872,7 +872,7 @@ Partial Class Mainframe_n_6
         ' lblDataStorage
         ' 
         lblDataStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        lblDataStorage.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        lblDataStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         lblDataStorage.ForeColor = Color.White
         lblDataStorage.Location = New Point(101, 70)
         lblDataStorage.Margin = New Padding(4, 0, 4, 0)
@@ -931,7 +931,7 @@ Partial Class Mainframe_n_6
         Txt_shortcut.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         Txt_shortcut.AutoCompleteMode = AutoCompleteMode.Suggest
         Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
-        Txt_shortcut.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_shortcut.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_shortcut.Location = New Point(4, 17)
         Txt_shortcut.Margin = New Padding(4, 5, 4, 5)
         Txt_shortcut.MaxLength = 255
@@ -1012,7 +1012,7 @@ Partial Class Mainframe_n_6
         ' LblPosition
         ' 
         LblPosition.AutoSize = True
-        LblPosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        LblPosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         LblPosition.ForeColor = Color.Yellow
         LblPosition.Location = New Point(187, 157)
         LblPosition.Margin = New Padding(4, 0, 4, 0)
@@ -1119,7 +1119,7 @@ Partial Class Mainframe_n_6
         TxtRunning.BackColor = Color.White
         TxtRunning.BorderStyle = BorderStyle.FixedSingle
         TxtRunning.Dock = DockStyle.Top
-        TxtRunning.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtRunning.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TxtRunning.Location = New Point(0, 42)
         TxtRunning.Margin = New Padding(4, 5, 4, 5)
         TxtRunning.MaxLength = 255
@@ -1163,7 +1163,7 @@ Partial Class Mainframe_n_6
         ' 
         ' Tmdi_
         ' 
-        Tmdi_.ActiveTabFont = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Tmdi_.ActiveTabFont = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Tmdi_.AttachedTo = Me
         Tmdi_.CloseButtonBackColor = Color.Red
         Tmdi_.CloseButtonColor = Color.White
@@ -1174,7 +1174,7 @@ Partial Class Mainframe_n_6
         Tmdi_.NeedUpdateHostedForm = False
         Tmdi_.ShowCloseButton = True
         Tmdi_.ShowCloseButtonBackColor = True
-        Tmdi_.TabFont = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Tmdi_.TabFont = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Tmdi_.TabStyle = GetType(Windows.Forms.Tools.TabRendererIE7)
         Tmdi_.ThemeName = "TabRendererIE7"
         Tmdi_.ThemesEnabled = True
@@ -1182,7 +1182,7 @@ Partial Class Mainframe_n_6
         ' 
         ' Mainframe_n_6
         ' 
-        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1120, 935)
         Controls.Add(spl_)
