@@ -172,12 +172,14 @@ Partial Class Mainframe_n_6
         ' 
         Ms_mainframe.BackColor = Color.White
         Ms_mainframe.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Ms_mainframe.ImageScalingSize = New Size(24, 24)
         Ms_mainframe.Items.AddRange(New ToolStripItem() {APPSYSTEM, WORKSPACE, HELP, USERMENU, SUPPORT})
         Ms_mainframe.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow
         Ms_mainframe.Location = New Point(0, 0)
         Ms_mainframe.MdiWindowListItem = WORKSPACE
         Ms_mainframe.Name = "Ms_mainframe"
-        Ms_mainframe.Size = New Size(784, 29)
+        Ms_mainframe.Padding = New Padding(9, 3, 0, 3)
+        Ms_mainframe.Size = New Size(1120, 42)
         Ms_mainframe.TabIndex = 5
         Ms_mainframe.Text = "MenuStrip"
         ' 
@@ -187,62 +189,62 @@ Partial Class Mainframe_n_6
         APPSYSTEM.ImageTransparentColor = SystemColors.ActiveBorder
         APPSYSTEM.MergeIndex = 0
         APPSYSTEM.Name = "APPSYSTEM"
-        APPSYSTEM.Size = New Size(50, 25)
+        APPSYSTEM.Size = New Size(71, 36)
         APPSYSTEM.Text = "&APP"
         ' 
         ' Ms_start_Login
         ' 
         Ms_start_Login.Name = "Ms_start_Login"
         Ms_start_Login.ShortcutKeys = Keys.Control Or Keys.Shift Or Keys.L
-        Ms_start_Login.Size = New Size(230, 26)
+        Ms_start_Login.Size = New Size(343, 40)
         Ms_start_Login.Text = "Login"
         ' 
         ' Ms_start_Logout
         ' 
         Ms_start_Logout.Name = "Ms_start_Logout"
         Ms_start_Logout.ShortcutKeys = Keys.Control Or Keys.Shift Or Keys.O
-        Ms_start_Logout.Size = New Size(230, 26)
+        Ms_start_Logout.Size = New Size(343, 40)
         Ms_start_Logout.Text = "Logout"
         ' 
         ' Ms_g_line1
         ' 
         Ms_g_line1.Name = "Ms_g_line1"
-        Ms_g_line1.Size = New Size(227, 6)
+        Ms_g_line1.Size = New Size(340, 6)
         ' 
         ' Ms_start_Connection
         ' 
         Ms_start_Connection.DropDownItems.AddRange(New ToolStripItem() {Ms_start_connection_app, Ms_start_connection_folder})
         Ms_start_Connection.Name = "Ms_start_Connection"
-        Ms_start_Connection.Size = New Size(230, 26)
+        Ms_start_Connection.Size = New Size(343, 40)
         Ms_start_Connection.Text = "Connection"
         ' 
         ' Ms_start_connection_app
         ' 
         Ms_start_connection_app.Name = "Ms_start_connection_app"
-        Ms_start_connection_app.Size = New Size(166, 26)
+        Ms_start_connection_app.Size = New Size(251, 40)
         Ms_start_connection_app.Text = "Open &App"
         ' 
         ' Ms_start_connection_folder
         ' 
         Ms_start_connection_folder.Name = "Ms_start_connection_folder"
-        Ms_start_connection_folder.Size = New Size(166, 26)
+        Ms_start_connection_folder.Size = New Size(251, 40)
         Ms_start_connection_folder.Text = "Open &Folder"
         ' 
         ' Ms_start_Settings
         ' 
         Ms_start_Settings.Name = "Ms_start_Settings"
-        Ms_start_Settings.Size = New Size(230, 26)
+        Ms_start_Settings.Size = New Size(343, 40)
         Ms_start_Settings.Text = "&Settings"
         ' 
         ' Ms_g_line2
         ' 
         Ms_g_line2.Name = "Ms_g_line2"
-        Ms_g_line2.Size = New Size(227, 6)
+        Ms_g_line2.Size = New Size(340, 6)
         ' 
         ' Ms_start_Exit
         ' 
         Ms_start_Exit.Name = "Ms_start_Exit"
-        Ms_start_Exit.Size = New Size(230, 26)
+        Ms_start_Exit.Size = New Size(343, 40)
         Ms_start_Exit.Text = "&Exit"
         ' 
         ' WORKSPACE
@@ -250,56 +252,56 @@ Partial Class Mainframe_n_6
         WORKSPACE.DropDownItems.AddRange(New ToolStripItem() {Ms_workspace_Cascade, Ms_workspace_TileVertical, Ms_workspace_TileHorizontal, ToolStripSeparator1, Ms_workspace_InputCommand, Ms_workspace_Maximize, ToolStripMenuItem1, Ms_workspace_CloseAll})
         WORKSPACE.MergeIndex = 800
         WORKSPACE.Name = "WORKSPACE"
-        WORKSPACE.Size = New Size(113, 25)
+        WORKSPACE.Size = New Size(164, 36)
         WORKSPACE.Text = "&WORKSPACE"
         ' 
         ' Ms_workspace_Cascade
         ' 
         Ms_workspace_Cascade.Name = "Ms_workspace_Cascade"
-        Ms_workspace_Cascade.Size = New Size(246, 26)
+        Ms_workspace_Cascade.Size = New Size(368, 40)
         Ms_workspace_Cascade.Text = "&Cascade"
         ' 
         ' Ms_workspace_TileVertical
         ' 
         Ms_workspace_TileVertical.Name = "Ms_workspace_TileVertical"
-        Ms_workspace_TileVertical.Size = New Size(246, 26)
+        Ms_workspace_TileVertical.Size = New Size(368, 40)
         Ms_workspace_TileVertical.Text = "Tile &Vertical"
         ' 
         ' Ms_workspace_TileHorizontal
         ' 
         Ms_workspace_TileHorizontal.Name = "Ms_workspace_TileHorizontal"
-        Ms_workspace_TileHorizontal.Size = New Size(246, 26)
+        Ms_workspace_TileHorizontal.Size = New Size(368, 40)
         Ms_workspace_TileHorizontal.Text = "Tile &Horizontal"
         ' 
         ' ToolStripSeparator1
         ' 
         ToolStripSeparator1.Name = "ToolStripSeparator1"
-        ToolStripSeparator1.Size = New Size(243, 6)
+        ToolStripSeparator1.Size = New Size(365, 6)
         ' 
         ' Ms_workspace_InputCommand
         ' 
         Ms_workspace_InputCommand.Name = "Ms_workspace_InputCommand"
         Ms_workspace_InputCommand.ShortcutKeys = Keys.Control Or Keys.J
-        Ms_workspace_InputCommand.Size = New Size(246, 26)
+        Ms_workspace_InputCommand.Size = New Size(368, 40)
         Ms_workspace_InputCommand.Text = "Input Command"
         ' 
         ' Ms_workspace_Maximize
         ' 
         Ms_workspace_Maximize.Name = "Ms_workspace_Maximize"
         Ms_workspace_Maximize.ShortcutKeys = Keys.Control Or Keys.M
-        Ms_workspace_Maximize.Size = New Size(246, 26)
+        Ms_workspace_Maximize.Size = New Size(368, 40)
         Ms_workspace_Maximize.Text = "Maximize"
         ' 
         ' ToolStripMenuItem1
         ' 
         ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        ToolStripMenuItem1.Size = New Size(243, 6)
+        ToolStripMenuItem1.Size = New Size(365, 6)
         ' 
         ' Ms_workspace_CloseAll
         ' 
         Ms_workspace_CloseAll.Name = "Ms_workspace_CloseAll"
         Ms_workspace_CloseAll.ShortcutKeys = Keys.Control Or Keys.Shift Or Keys.F4
-        Ms_workspace_CloseAll.Size = New Size(246, 26)
+        Ms_workspace_CloseAll.Size = New Size(368, 40)
         Ms_workspace_CloseAll.Text = "Close All"
         ' 
         ' HELP
@@ -307,7 +309,7 @@ Partial Class Mainframe_n_6
         HELP.DropDownItems.AddRange(New ToolStripItem() {ContentsToolStripMenuItem, AppsCollectionToolStripMenuItem, ToolStripSeparator8, BuymeacoffeToolStripMenuItem, AboutToolStripMenuItem})
         HELP.MergeIndex = 801
         HELP.Name = "HELP"
-        HELP.Size = New Size(58, 25)
+        HELP.Size = New Size(83, 36)
         HELP.Text = "&HELP"
         ' 
         ' ContentsToolStripMenuItem
@@ -315,47 +317,47 @@ Partial Class Mainframe_n_6
         ContentsToolStripMenuItem.AccessibleRole = AccessibleRole.Link
         ContentsToolStripMenuItem.Name = "ContentsToolStripMenuItem"
         ContentsToolStripMenuItem.ShortcutKeys = Keys.Control Or Keys.F1
-        ContentsToolStripMenuItem.Size = New Size(205, 26)
+        ContentsToolStripMenuItem.Size = New Size(306, 40)
         ContentsToolStripMenuItem.Text = "&Contents"
         ' 
         ' AppsCollectionToolStripMenuItem
         ' 
         AppsCollectionToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {PhotoResizerToolStripMenuItem, KeyGeneratorToolStripMenuItem})
         AppsCollectionToolStripMenuItem.Name = "AppsCollectionToolStripMenuItem"
-        AppsCollectionToolStripMenuItem.Size = New Size(205, 26)
+        AppsCollectionToolStripMenuItem.Size = New Size(306, 40)
         AppsCollectionToolStripMenuItem.Text = "In-App Tools"
         ' 
         ' PhotoResizerToolStripMenuItem
         ' 
         PhotoResizerToolStripMenuItem.Name = "PhotoResizerToolStripMenuItem"
-        PhotoResizerToolStripMenuItem.Size = New Size(195, 26)
+        PhotoResizerToolStripMenuItem.Size = New Size(293, 40)
         PhotoResizerToolStripMenuItem.Text = "Photo Compress"
         ' 
         ' KeyGeneratorToolStripMenuItem
         ' 
         KeyGeneratorToolStripMenuItem.Enabled = False
         KeyGeneratorToolStripMenuItem.Name = "KeyGeneratorToolStripMenuItem"
-        KeyGeneratorToolStripMenuItem.Size = New Size(195, 26)
+        KeyGeneratorToolStripMenuItem.Size = New Size(293, 40)
         KeyGeneratorToolStripMenuItem.Text = "Key Generator"
         KeyGeneratorToolStripMenuItem.Visible = False
         ' 
         ' ToolStripSeparator8
         ' 
         ToolStripSeparator8.Name = "ToolStripSeparator8"
-        ToolStripSeparator8.Size = New Size(202, 6)
+        ToolStripSeparator8.Size = New Size(303, 6)
         ' 
         ' BuymeacoffeToolStripMenuItem
         ' 
         BuymeacoffeToolStripMenuItem.Font = New Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point)
         BuymeacoffeToolStripMenuItem.ForeColor = Color.Blue
         BuymeacoffeToolStripMenuItem.Name = "BuymeacoffeToolStripMenuItem"
-        BuymeacoffeToolStripMenuItem.Size = New Size(205, 26)
+        BuymeacoffeToolStripMenuItem.Size = New Size(306, 40)
         BuymeacoffeToolStripMenuItem.Text = "Buy me a coffee.."
         ' 
         ' AboutToolStripMenuItem
         ' 
         AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        AboutToolStripMenuItem.Size = New Size(205, 26)
+        AboutToolStripMenuItem.Size = New Size(306, 40)
         AboutToolStripMenuItem.Text = "&About"
         ' 
         ' USERMENU
@@ -365,46 +367,46 @@ Partial Class Mainframe_n_6
         USERMENU.DropDownItems.AddRange(New ToolStripItem() {NotificationToolStripMenuItem, MyAccountToolStripMenuItem, ToolStripSeparator2, LoginToolStripMenuItem, LogoutToolStripMenuItem})
         USERMENU.MergeIndex = 999
         USERMENU.Name = "USERMENU"
-        USERMENU.Size = New Size(117, 25)
+        USERMENU.Size = New Size(174, 36)
         USERMENU.Text = "NOT LOGGED"
         ' 
         ' NotificationToolStripMenuItem
         ' 
         NotificationToolStripMenuItem.Image = CType(resources.GetObject("NotificationToolStripMenuItem.Image"), Image)
         NotificationToolStripMenuItem.Name = "NotificationToolStripMenuItem"
-        NotificationToolStripMenuItem.Size = New Size(230, 26)
+        NotificationToolStripMenuItem.Size = New Size(343, 40)
         NotificationToolStripMenuItem.Text = "Notification"
         ' 
         ' MyAccountToolStripMenuItem
         ' 
         MyAccountToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ChangePasswordToolStripMenuItem})
         MyAccountToolStripMenuItem.Name = "MyAccountToolStripMenuItem"
-        MyAccountToolStripMenuItem.Size = New Size(230, 26)
+        MyAccountToolStripMenuItem.Size = New Size(343, 40)
         MyAccountToolStripMenuItem.Text = "Profile Settings"
         ' 
         ' ChangePasswordToolStripMenuItem
         ' 
         ChangePasswordToolStripMenuItem.Name = "ChangePasswordToolStripMenuItem"
-        ChangePasswordToolStripMenuItem.Size = New Size(203, 26)
+        ChangePasswordToolStripMenuItem.Size = New Size(304, 40)
         ChangePasswordToolStripMenuItem.Text = "Change Password"
         ' 
         ' ToolStripSeparator2
         ' 
         ToolStripSeparator2.Name = "ToolStripSeparator2"
-        ToolStripSeparator2.Size = New Size(227, 6)
+        ToolStripSeparator2.Size = New Size(340, 6)
         ' 
         ' LoginToolStripMenuItem
         ' 
         LoginToolStripMenuItem.Name = "LoginToolStripMenuItem"
         LoginToolStripMenuItem.ShortcutKeys = Keys.Control Or Keys.Shift Or Keys.L
-        LoginToolStripMenuItem.Size = New Size(230, 26)
+        LoginToolStripMenuItem.Size = New Size(343, 40)
         LoginToolStripMenuItem.Text = "Login"
         ' 
         ' LogoutToolStripMenuItem
         ' 
         LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
         LogoutToolStripMenuItem.ShortcutKeys = Keys.Control Or Keys.Shift Or Keys.O
-        LogoutToolStripMenuItem.Size = New Size(230, 26)
+        LogoutToolStripMenuItem.Size = New Size(343, 40)
         LogoutToolStripMenuItem.Text = "Logout"
         ' 
         ' SUPPORT
@@ -415,8 +417,8 @@ Partial Class Mainframe_n_6
         SUPPORT.ForeColor = Color.Blue
         SUPPORT.Name = "SUPPORT"
         SUPPORT.Overflow = ToolStripItemOverflow.AsNeeded
-        SUPPORT.Size = New Size(46, 25)
-        SUPPORT.Text = "WIKI"
+        SUPPORT.Size = New Size(161, 36)
+        SUPPORT.Text = "UPDATE / HELP"
         ' 
         ' pnl_mainframe_left
         ' 
@@ -426,9 +428,10 @@ Partial Class Mainframe_n_6
         pnl_mainframe_left.Controls.Add(Pnl_command_top)
         pnl_mainframe_left.Controls.Add(PnlProfile)
         pnl_mainframe_left.Dock = DockStyle.Left
-        pnl_mainframe_left.Location = New Point(0, 58)
+        pnl_mainframe_left.Location = New Point(0, 81)
+        pnl_mainframe_left.Margin = New Padding(4, 5, 4, 5)
         pnl_mainframe_left.Name = "pnl_mainframe_left"
-        pnl_mainframe_left.Size = New Size(297, 481)
+        pnl_mainframe_left.Size = New Size(423, 822)
         pnl_mainframe_left.TabIndex = 11
         ' 
         ' Tv_mainframe
@@ -440,7 +443,8 @@ Partial Class Mainframe_n_6
         Tv_mainframe.ImageIndex = 0
         Tv_mainframe.ImageList = Imglst_mainframe
         Tv_mainframe.Indent = 19
-        Tv_mainframe.Location = New Point(0, 48)
+        Tv_mainframe.Location = New Point(0, 80)
+        Tv_mainframe.Margin = New Padding(4, 5, 4, 5)
         Tv_mainframe.Name = "Tv_mainframe"
         TreeNode1.ImageKey = "for_treeview_performace_16.png"
         TreeNode1.Name = "nd_folder"
@@ -729,7 +733,7 @@ Partial Class Mainframe_n_6
         TreeNode62.Text = "System Settings"
         Tv_mainframe.Nodes.AddRange(New TreeNode() {TreeNode21, TreeNode29, TreeNode37, TreeNode43, TreeNode46, TreeNode50, TreeNode55, TreeNode57, TreeNode62})
         Tv_mainframe.SelectedImageIndex = 0
-        Tv_mainframe.Size = New Size(295, 73)
+        Tv_mainframe.Size = New Size(421, 143)
         Tv_mainframe.StateImageList = Imglst_mainframe
         Tv_mainframe.TabIndex = 2
         ' 
@@ -765,9 +769,10 @@ Partial Class Mainframe_n_6
         PnlStorage.Controls.Add(lblDataStorage)
         PnlStorage.Controls.Add(lblStorage)
         PnlStorage.Dock = DockStyle.Bottom
-        PnlStorage.Location = New Point(0, 121)
+        PnlStorage.Location = New Point(0, 223)
+        PnlStorage.Margin = New Padding(4, 5, 4, 5)
         PnlStorage.Name = "PnlStorage"
-        PnlStorage.Size = New Size(295, 166)
+        PnlStorage.Size = New Size(421, 277)
         PnlStorage.TabIndex = 6
         PnlStorage.Visible = False
         ' 
@@ -785,13 +790,14 @@ Partial Class Mainframe_n_6
         pgFileStorage.ForegroundImage = Nothing
         pgFileStorage.GradientEndColor = Color.FromArgb(CByte(22), CByte(165), CByte(220))
         pgFileStorage.GradientStartColor = Color.FromArgb(CByte(22), CByte(165), CByte(220))
-        pgFileStorage.Location = New Point(3, 124)
+        pgFileStorage.Location = New Point(4, 207)
+        pgFileStorage.Margin = New Padding(4, 5, 4, 5)
         pgFileStorage.MultipleColors = New Color() {Color.Empty}
         pgFileStorage.Name = "pgFileStorage"
         pgFileStorage.ProgressFallbackStyle = Windows.Forms.Tools.ProgressBarStyles.Metro
         pgFileStorage.ProgressStyle = Windows.Forms.Tools.ProgressBarStyles.Metro
         pgFileStorage.SegmentWidth = 12
-        pgFileStorage.Size = New Size(287, 23)
+        pgFileStorage.Size = New Size(410, 38)
         pgFileStorage.Step = 1
         pgFileStorage.TabIndex = 10001
         pgFileStorage.TabStop = False
@@ -812,13 +818,14 @@ Partial Class Mainframe_n_6
         pgDataStorage.ForegroundImage = Nothing
         pgDataStorage.GradientEndColor = Color.FromArgb(CByte(22), CByte(165), CByte(220))
         pgDataStorage.GradientStartColor = Color.FromArgb(CByte(22), CByte(165), CByte(220))
-        pgDataStorage.Location = New Point(3, 68)
+        pgDataStorage.Location = New Point(4, 113)
+        pgDataStorage.Margin = New Padding(4, 5, 4, 5)
         pgDataStorage.MultipleColors = New Color() {Color.Empty}
         pgDataStorage.Name = "pgDataStorage"
         pgDataStorage.ProgressFallbackStyle = Windows.Forms.Tools.ProgressBarStyles.Metro
         pgDataStorage.ProgressStyle = Windows.Forms.Tools.ProgressBarStyles.Metro
         pgDataStorage.SegmentWidth = 12
-        pgDataStorage.Size = New Size(287, 23)
+        pgDataStorage.Size = New Size(410, 38)
         pgDataStorage.Step = 1
         pgDataStorage.TabIndex = 10000
         pgDataStorage.TabStop = False
@@ -829,9 +836,10 @@ Partial Class Mainframe_n_6
         ' 
         lblFile.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         lblFile.ForeColor = Color.White
-        lblFile.Location = New Point(3, 98)
+        lblFile.Location = New Point(4, 163)
+        lblFile.Margin = New Padding(4, 0, 4, 0)
         lblFile.Name = "lblFile"
-        lblFile.Size = New Size(62, 23)
+        lblFile.Size = New Size(89, 38)
         lblFile.TabIndex = 0
         lblFile.Text = "File :"
         lblFile.TextAlign = ContentAlignment.MiddleLeft
@@ -840,9 +848,10 @@ Partial Class Mainframe_n_6
         ' 
         lblData.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         lblData.ForeColor = Color.White
-        lblData.Location = New Point(3, 42)
+        lblData.Location = New Point(4, 70)
+        lblData.Margin = New Padding(4, 0, 4, 0)
         lblData.Name = "lblData"
-        lblData.Size = New Size(62, 23)
+        lblData.Size = New Size(89, 38)
         lblData.TabIndex = 0
         lblData.Text = "Data :"
         lblData.TextAlign = ContentAlignment.MiddleLeft
@@ -852,9 +861,10 @@ Partial Class Mainframe_n_6
         lblFileStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblFileStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         lblFileStorage.ForeColor = Color.White
-        lblFileStorage.Location = New Point(69, 98)
+        lblFileStorage.Location = New Point(99, 163)
+        lblFileStorage.Margin = New Padding(4, 0, 4, 0)
         lblFileStorage.Name = "lblFileStorage"
-        lblFileStorage.Size = New Size(221, 23)
+        lblFileStorage.Size = New Size(316, 38)
         lblFileStorage.TabIndex = 0
         lblFileStorage.Text = "{0} / {1}"
         lblFileStorage.TextAlign = ContentAlignment.MiddleRight
@@ -864,9 +874,10 @@ Partial Class Mainframe_n_6
         lblDataStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblDataStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         lblDataStorage.ForeColor = Color.White
-        lblDataStorage.Location = New Point(71, 42)
+        lblDataStorage.Location = New Point(101, 70)
+        lblDataStorage.Margin = New Padding(4, 0, 4, 0)
         lblDataStorage.Name = "lblDataStorage"
-        lblDataStorage.Size = New Size(221, 23)
+        lblDataStorage.Size = New Size(316, 38)
         lblDataStorage.TabIndex = 0
         lblDataStorage.Text = "{0} / {1}"
         lblDataStorage.TextAlign = ContentAlignment.MiddleRight
@@ -877,8 +888,13 @@ Partial Class Mainframe_n_6
         lblStorage.Dock = DockStyle.Top
         lblStorage.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point)
         lblStorage.Location = New Point(0, 0)
+        lblStorage.Margin = New Padding(4, 0, 4, 0)
         lblStorage.Name = "lblStorage"
+<<<<<<< HEAD
         lblStorage.Size = New Size(295, 32)
+=======
+        lblStorage.Size = New Size(421, 53)
+>>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         lblStorage.TabIndex = 0
         lblStorage.Text = "Storage"
         lblStorage.TextAlign = ContentAlignment.MiddleCenter
@@ -891,8 +907,9 @@ Partial Class Mainframe_n_6
         Pnl_command_top.Controls.Add(Txt_shortcut)
         Pnl_command_top.Dock = DockStyle.Top
         Pnl_command_top.Location = New Point(0, 0)
+        Pnl_command_top.Margin = New Padding(4, 5, 4, 5)
         Pnl_command_top.Name = "Pnl_command_top"
-        Pnl_command_top.Size = New Size(295, 48)
+        Pnl_command_top.Size = New Size(421, 80)
         Pnl_command_top.TabIndex = 1
         ' 
         ' BtnExecute
@@ -902,11 +919,12 @@ Partial Class Mainframe_n_6
         BtnExecute.BackColor = SystemColors.Control
         BtnExecute.BackgroundImage = My.Resources.Resources.for_treeview_playbutton_512
         BtnExecute.BackgroundImageLayout = ImageLayout.Stretch
-        BtnExecute.BeforeTouchSize = New Size(38, 38)
+        BtnExecute.BeforeTouchSize = New Size(54, 63)
         BtnExecute.KeepFocusRectangle = False
-        BtnExecute.Location = New Point(252, 5)
+        BtnExecute.Location = New Point(360, 8)
+        BtnExecute.Margin = New Padding(4, 5, 4, 5)
         BtnExecute.Name = "BtnExecute"
-        BtnExecute.Size = New Size(38, 38)
+        BtnExecute.Size = New Size(54, 63)
         BtnExecute.TabIndex = 2
         BtnExecute.ThemeName = "Office2016Colorful"
         BtnExecute.UseVisualStyle = True
@@ -918,10 +936,15 @@ Partial Class Mainframe_n_6
         Txt_shortcut.AutoCompleteMode = AutoCompleteMode.Suggest
         Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
         Txt_shortcut.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_shortcut.Location = New Point(3, 10)
+        Txt_shortcut.Location = New Point(4, 17)
+        Txt_shortcut.Margin = New Padding(4, 5, 4, 5)
         Txt_shortcut.MaxLength = 255
         Txt_shortcut.Name = "Txt_shortcut"
+<<<<<<< HEAD
         Txt_shortcut.Size = New Size(243, 29)
+=======
+        Txt_shortcut.Size = New Size(345, 39)
+>>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         Txt_shortcut.TabIndex = 0
         Txt_shortcut.Tag = "txt"
         Txt_shortcut.XOAutoTrim = False
@@ -954,9 +977,10 @@ Partial Class Mainframe_n_6
         PnlProfile.Controls.Add(LblEmpNumber)
         PnlProfile.Controls.Add(LblWelcome)
         PnlProfile.Dock = DockStyle.Bottom
-        PnlProfile.Location = New Point(0, 287)
+        PnlProfile.Location = New Point(0, 500)
+        PnlProfile.Margin = New Padding(4, 5, 4, 5)
         PnlProfile.Name = "PnlProfile"
-        PnlProfile.Size = New Size(295, 192)
+        PnlProfile.Size = New Size(421, 320)
         PnlProfile.TabIndex = 3
         PnlProfile.Visible = False
         ' 
@@ -967,9 +991,10 @@ Partial Class Mainframe_n_6
         PctProfile.BackgroundImageLayout = ImageLayout.Zoom
         PctProfile.ErrorImage = Nothing
         PctProfile.InitialImage = Nothing
-        PctProfile.Location = New Point(10, 49)
+        PctProfile.Location = New Point(14, 82)
+        PctProfile.Margin = New Padding(4, 5, 4, 5)
         PctProfile.Name = "PctProfile"
-        PctProfile.Size = New Size(107, 126)
+        PctProfile.Size = New Size(153, 210)
         PctProfile.SizeMode = PictureBoxSizeMode.StretchImage
         PctProfile.TabIndex = 0
         PctProfile.TabStop = False
@@ -982,9 +1007,10 @@ Partial Class Mainframe_n_6
         PctbxFrame.BorderStyle = BorderStyle.FixedSingle
         PctbxFrame.ErrorImage = Nothing
         PctbxFrame.InitialImage = Nothing
-        PctbxFrame.Location = New Point(5, 44)
+        PctbxFrame.Location = New Point(7, 73)
+        PctbxFrame.Margin = New Padding(4, 5, 4, 5)
         PctbxFrame.Name = "PctbxFrame"
-        PctbxFrame.Size = New Size(117, 136)
+        PctbxFrame.Size = New Size(166, 225)
         PctbxFrame.SizeMode = PictureBoxSizeMode.Zoom
         PctbxFrame.TabIndex = 5
         PctbxFrame.TabStop = False
@@ -996,9 +1022,14 @@ Partial Class Mainframe_n_6
         LblPosition.AutoSize = True
         LblPosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         LblPosition.ForeColor = Color.Yellow
-        LblPosition.Location = New Point(131, 94)
+        LblPosition.Location = New Point(187, 157)
+        LblPosition.Margin = New Padding(4, 0, 4, 0)
         LblPosition.Name = "LblPosition"
+<<<<<<< HEAD
         LblPosition.Size = New Size(84, 21)
+=======
+        LblPosition.Size = New Size(127, 32)
+>>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         LblPosition.TabIndex = 4
         LblPosition.Text = "Loading..."
         LblPosition.XOCustomElipsis = False
@@ -1008,9 +1039,14 @@ Partial Class Mainframe_n_6
         LblEmployeeName.AutoSize = True
         LblEmployeeName.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
         LblEmployeeName.ForeColor = Color.White
-        LblEmployeeName.Location = New Point(130, 69)
+        LblEmployeeName.Location = New Point(186, 115)
+        LblEmployeeName.Margin = New Padding(4, 0, 4, 0)
         LblEmployeeName.Name = "LblEmployeeName"
+<<<<<<< HEAD
         LblEmployeeName.Size = New Size(100, 25)
+=======
+        LblEmployeeName.Size = New Size(152, 40)
+>>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         LblEmployeeName.TabIndex = 3
         LblEmployeeName.Text = "Loading..."
         LblEmployeeName.XOCustomElipsis = False
@@ -1020,9 +1056,14 @@ Partial Class Mainframe_n_6
         LblEmpNumber.AutoSize = True
         LblEmpNumber.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
         LblEmpNumber.ForeColor = Color.White
-        LblEmpNumber.Location = New Point(130, 44)
+        LblEmpNumber.Location = New Point(186, 73)
+        LblEmpNumber.Margin = New Padding(4, 0, 4, 0)
         LblEmpNumber.Name = "LblEmpNumber"
+<<<<<<< HEAD
         LblEmpNumber.Size = New Size(100, 25)
+=======
+        LblEmpNumber.Size = New Size(152, 40)
+>>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         LblEmpNumber.TabIndex = 2
         LblEmpNumber.Text = "Loading..."
         LblEmpNumber.XOCustomElipsis = False
@@ -1034,8 +1075,13 @@ Partial Class Mainframe_n_6
         LblWelcome.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point)
         LblWelcome.ForeColor = Color.Black
         LblWelcome.Location = New Point(0, 0)
+        LblWelcome.Margin = New Padding(4, 0, 4, 0)
         LblWelcome.Name = "LblWelcome"
+<<<<<<< HEAD
         LblWelcome.Size = New Size(295, 27)
+=======
+        LblWelcome.Size = New Size(421, 45)
+>>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         LblWelcome.TabIndex = 1
         LblWelcome.TextAlign = ContentAlignment.MiddleCenter
         LblWelcome.XOCustomElipsis = False
@@ -1043,17 +1089,19 @@ Partial Class Mainframe_n_6
         ' St_mainframe
         ' 
         St_mainframe.BackColor = Color.White
+        St_mainframe.ImageScalingSize = New Size(24, 24)
         St_mainframe.Items.AddRange(New ToolStripItem() {Ts_status, Ts_caps, Ts_connection})
-        St_mainframe.Location = New Point(0, 539)
+        St_mainframe.Location = New Point(0, 903)
         St_mainframe.Name = "St_mainframe"
-        St_mainframe.Size = New Size(784, 22)
+        St_mainframe.Padding = New Padding(1, 0, 20, 0)
+        St_mainframe.Size = New Size(1120, 32)
         St_mainframe.TabIndex = 13
         St_mainframe.Text = "Stt1"
         ' 
         ' Ts_status
         ' 
         Ts_status.Name = "Ts_status"
-        Ts_status.Size = New Size(677, 17)
+        Ts_status.Size = New Size(970, 25)
         Ts_status.Spring = True
         Ts_status.TextAlign = ContentAlignment.MiddleLeft
         ' 
@@ -1062,12 +1110,12 @@ Partial Class Mainframe_n_6
         Ts_caps.AutoSize = False
         Ts_caps.DisplayStyle = ToolStripItemDisplayStyle.Text
         Ts_caps.Name = "Ts_caps"
-        Ts_caps.Size = New Size(20, 17)
+        Ts_caps.Size = New Size(20, 25)
         ' 
         ' Ts_connection
         ' 
         Ts_connection.Name = "Ts_connection"
-        Ts_connection.Size = New Size(72, 17)
+        Ts_connection.Size = New Size(109, 25)
         Ts_connection.Text = "Disconected"
         ' 
         ' TmrNotif
@@ -1095,11 +1143,16 @@ Partial Class Mainframe_n_6
         TxtRunning.BorderStyle = BorderStyle.FixedSingle
         TxtRunning.Dock = DockStyle.Top
         TxtRunning.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtRunning.Location = New Point(0, 29)
+        TxtRunning.Location = New Point(0, 42)
+        TxtRunning.Margin = New Padding(4, 5, 4, 5)
         TxtRunning.MaxLength = 255
         TxtRunning.Name = "TxtRunning"
         TxtRunning.ReadOnly = True
+<<<<<<< HEAD
         TxtRunning.Size = New Size(784, 29)
+=======
+        TxtRunning.Size = New Size(1120, 39)
+>>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         TxtRunning.TabIndex = 99
         TxtRunning.TabStop = False
         TxtRunning.Tag = "txt"
@@ -1128,9 +1181,10 @@ Partial Class Mainframe_n_6
         ' 
         spl_.BackColor = Color.Azure
         spl_.BorderStyle = BorderStyle.FixedSingle
-        spl_.Location = New Point(297, 58)
+        spl_.Location = New Point(423, 81)
+        spl_.Margin = New Padding(4, 5, 4, 5)
         spl_.Name = "spl_"
-        spl_.Size = New Size(4, 481)
+        spl_.Size = New Size(5, 822)
         spl_.TabIndex = 9999
         spl_.TabStop = False
         ' 
@@ -1155,9 +1209,9 @@ Partial Class Mainframe_n_6
         ' 
         ' Mainframe_n_6
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(784, 561)
+        ClientSize = New Size(1120, 935)
         Controls.Add(spl_)
         Controls.Add(pnl_mainframe_left)
         Controls.Add(St_mainframe)
@@ -1167,7 +1221,8 @@ Partial Class Mainframe_n_6
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         IsMdiContainer = True
         MainMenuStrip = Ms_mainframe
-        MinimumSize = New Size(800, 600)
+        Margin = New Padding(4, 5, 4, 5)
+        MinimumSize = New Size(1133, 963)
         Name = "Mainframe_n_6"
         StartPosition = FormStartPosition.CenterScreen
         Text = "INGRID"
