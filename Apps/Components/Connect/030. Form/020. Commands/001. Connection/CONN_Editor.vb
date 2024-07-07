@@ -24,7 +24,7 @@ Public Class CONN_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub LoadData()
-        Commands.CONN.Editor.GETRowValue(V_FORMAttrib.RowID, Txt_ConnectionName, Txt_Address, Txt_Port, Txt_Username, Txt_Password, _OldPassword, Txt_DataStorage, Txt_FileStorage, Chk_Default)
+        Commands.CONN.Editor.GETRowValue(V_FORMAttrib.RowID, Txt_ConnectionName, Cbo_DBEngine, Txt_Address, Txt_Port, Txt_Username, Txt_Password, _OldPassword, Txt_DataStorage, Txt_FileStorage, Chk_Default)
     End Sub
 
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
@@ -45,7 +45,7 @@ Public Class CONN_Editor
             Return
         End If
 
-        If (Commands.CONN.Editor.PUSHData(Txt_ConnectionName.Text, Txt_Address.Text, Txt_Port.Text, Txt_Username.Text, Txt_Password.Text, Txt_DataStorage.Text, Txt_FileStorage.Text, Chk_Default.Checked, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, _PWDChange)) Then
+        If (Commands.CONN.Editor.PUSHData(Txt_ConnectionName.Text, Cbo_DBEngine.Text, Txt_Address.Text, Txt_Port.Text, Txt_Username.Text, Txt_Password.Text, Txt_DataStorage.Text, Txt_FileStorage.Text, Chk_Default.Checked, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, _PWDChange)) Then
             SLFStatus.Text = "Success"
             RaiseEvent RecordSaved()
         Else

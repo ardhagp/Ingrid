@@ -20,18 +20,19 @@ Partial Class CONN
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(CONN))
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CONN))
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DgnConnection = New dgn(components)
+        Btn_Close = New btn(components)
         id = New DataGridViewTextBoxColumn()
         connectionname = New DataGridViewTextBoxColumn()
+        databaseengine = New DataGridViewTextBoxColumn()
         serveraddress = New DataGridViewTextBoxColumn()
         serverport = New DataGridViewTextBoxColumn()
         defaultconnection = New DataGridViewCheckBoxColumn()
         spring = New DataGridViewTextBoxColumn()
-        Btn_Close = New btn(components)
         PnlBottomButton.SuspendLayout()
         PnlFind.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -93,23 +94,23 @@ Partial Class CONN
         ' 
         DgnConnection.AllowUserToAddRows = False
         DgnConnection.AllowUserToDeleteRows = False
-        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(244), CByte(237), CByte(153))
-        DgnConnection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(215), CByte(212), CByte(129))
+        DgnConnection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DgnConnection.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnConnection.BorderStyle = BorderStyle.None
         DgnConnection.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnConnection.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = Color.YellowGreen
-        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
-        DataGridViewCellStyle5.SelectionForeColor = Color.Black
-        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
-        DgnConnection.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.YellowGreen
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle2.SelectionForeColor = Color.Black
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        DgnConnection.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         DgnConnection.ColumnHeadersHeight = 43
         DgnConnection.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DgnConnection.Columns.AddRange(New DataGridViewColumn() {id, connectionname, serveraddress, serverport, defaultconnection, spring})
+        DgnConnection.Columns.AddRange(New DataGridViewColumn() {id, connectionname, databaseengine, serveraddress, serverport, defaultconnection, spring})
         DgnConnection.Dock = DockStyle.Fill
         DgnConnection.EnableHeadersVisualStyles = False
         DgnConnection.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
@@ -118,20 +119,41 @@ Partial Class CONN
         DgnConnection.Name = "DgnConnection"
         DgnConnection.ReadOnly = True
         DgnConnection.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = Color.YellowGreen
-        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle6.SelectionForeColor = Color.Black
-        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-        DgnConnection.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.YellowGreen
+        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle3.SelectionForeColor = Color.Black
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        DgnConnection.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DgnConnection.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnConnection.Size = New Size(915, 446)
-        DgnConnection.XOGroupFirstRows = False
-        DgnConnection.XOGunakanNomorBaris = True
         DgnConnection.StandardTab = True
         DgnConnection.TabIndex = 997
+        DgnConnection.XOGroupFirstRows = False
+        DgnConnection.XOGunakanNomorBaris = True
+        ' 
+        ' Btn_Close
+        ' 
+        Btn_Close.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Btn_Close.BackColor = Color.Red
+        Btn_Close.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
+        Btn_Close.FlatAppearance.BorderSize = 2
+        Btn_Close.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
+        Btn_Close.FlatStyle = FlatStyle.Flat
+        Btn_Close.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Btn_Close.ForeColor = Color.White
+        Btn_Close.Location = New Point(803, 11)
+        Btn_Close.Name = "Btn_Close"
+        Btn_Close.Size = New Size(100, 40)
+        Btn_Close.TabIndex = 1
+        Btn_Close.Text = "&Close"
+        Btn_Close.UseVisualStyleBackColor = False
+        Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
+        Btn_Close.XOTampilkanFocusBorder = False
+        Btn_Close.XOValidasiSemuaInput = False
+        Btn_Close.XOValidasiSemuaInputTag = Nothing
         ' 
         ' id
         ' 
@@ -141,6 +163,7 @@ Partial Class CONN
         id.Name = "id"
         id.ReadOnly = True
         id.Visible = False
+        id.Width = 44
         ' 
         ' connectionname
         ' 
@@ -150,6 +173,13 @@ Partial Class CONN
         connectionname.Name = "connectionname"
         connectionname.ReadOnly = True
         connectionname.Width = 132
+        ' 
+        ' databaseengine
+        ' 
+        databaseengine.DataPropertyName = "DATABASEENGINE"
+        databaseengine.HeaderText = "DB ENGINE"
+        databaseengine.Name = "databaseengine"
+        databaseengine.ReadOnly = True
         ' 
         ' serveraddress
         ' 
@@ -189,27 +219,6 @@ Partial Class CONN
         spring.Name = "spring"
         spring.ReadOnly = True
         ' 
-        ' Btn_Close
-        ' 
-        Btn_Close.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Btn_Close.BackColor = Color.Red
-        Btn_Close.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
-        Btn_Close.FlatAppearance.BorderSize = 2
-        Btn_Close.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
-        Btn_Close.FlatStyle = FlatStyle.Flat
-        Btn_Close.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Btn_Close.ForeColor = Color.White
-        Btn_Close.Location = New Point(803, 11)
-        Btn_Close.Name = "Btn_Close"
-        Btn_Close.Size = New Size(100, 40)
-        Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-        Btn_Close.XOTampilkanFocusBorder = False
-        Btn_Close.XOValidasiSemuaInput = False
-        Btn_Close.XOValidasiSemuaInputTag = Nothing
-        Btn_Close.TabIndex = 1
-        Btn_Close.Text = "&Close"
-        Btn_Close.UseVisualStyleBackColor = False
-        ' 
         ' CONN
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -235,11 +244,12 @@ Partial Class CONN
     End Sub
 
     Friend WithEvents DgnConnection As dgn
+    Friend WithEvents Btn_Close As btn
     Friend WithEvents id As DataGridViewTextBoxColumn
     Friend WithEvents connectionname As DataGridViewTextBoxColumn
+    Friend WithEvents databaseengine As DataGridViewTextBoxColumn
     Friend WithEvents serveraddress As DataGridViewTextBoxColumn
     Friend WithEvents serverport As DataGridViewTextBoxColumn
     Friend WithEvents defaultconnection As DataGridViewCheckBoxColumn
     Friend WithEvents spring As DataGridViewTextBoxColumn
-    Friend WithEvents Btn_Close As btn
 End Class

@@ -1096,7 +1096,6 @@ Partial Class Mainframe_n_6
         ' 
         ' TmrNotif
         ' 
-        TmrNotif.Enabled = True
         TmrNotif.Interval = 1000
         ' 
         ' TmrStatus

@@ -251,6 +251,7 @@ Public Class Mainframe_n_6
     <SupportedOSPlatform("windows")>
     Private Sub Mainframe_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            TmrNotif.Enabled = True
             RaiseEvent IngridFrameOpen()
 
             Bridge.Security.WRITELOG.SENDLOG("Ingrid Main App is opened.", Bridge.Security.WRITELOG.LogType.Information)

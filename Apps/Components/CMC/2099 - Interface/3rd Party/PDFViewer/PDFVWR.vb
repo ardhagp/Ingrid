@@ -16,6 +16,9 @@ Public Class PDFVWR
     <SupportedOSPlatform("windows")>
     Private Sub PDFVWR_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call ActivateLicenses()
+
+        'use this line for old version of pdf handler
+        'PDFContent.RenderingEngine = Syncfusion.Windows.Forms.PdfViewer.PdfRenderingEngine.SfPdf
     End Sub
 
     Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click

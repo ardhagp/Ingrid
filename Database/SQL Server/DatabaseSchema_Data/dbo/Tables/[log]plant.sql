@@ -27,34 +27,6 @@ ADD SENSITIVITY CLASSIFICATION TO
     WITH (LABEL = 'Confidential - GDPR', LABEL_ID = '989ADC05-3F3F-0588-A635-F475B994915B', INFORMATION_TYPE = 'Contact Info', INFORMATION_TYPE_ID = '5C503E21-22C6-81FA-620B-F369B8EC38D1');
 
 
-
-
-GO
-ADD SENSITIVITY CLASSIFICATION TO
-    [dbo].[[log]]plant].[plant_postalcode]
-    WITH (LABEL = 'Confidential - GDPR', LABEL_ID = '989ADC05-3F3F-0588-A635-F475B994915B', INFORMATION_TYPE = 'Contact Info', INFORMATION_TYPE_ID = '5C503E21-22C6-81FA-620B-F369B8EC38D1');
-
-
-GO
-ADD SENSITIVITY CLASSIFICATION TO
-    [dbo].[[log]]plant].[plant_city]
-    WITH (LABEL = 'Confidential - GDPR', LABEL_ID = '989ADC05-3F3F-0588-A635-F475B994915B', INFORMATION_TYPE = 'Contact Info', INFORMATION_TYPE_ID = '5C503E21-22C6-81FA-620B-F369B8EC38D1');
-
-
-
-
-GO
-ADD SENSITIVITY CLASSIFICATION TO
-    [dbo].[[log]]plant].[plant_postalcode]
-    WITH (LABEL = 'Confidential - GDPR', LABEL_ID = '989ADC05-3F3F-0588-A635-F475B994915B', INFORMATION_TYPE = 'Contact Info', INFORMATION_TYPE_ID = '5C503E21-22C6-81FA-620B-F369B8EC38D1');
-
-
-GO
-ADD SENSITIVITY CLASSIFICATION TO
-    [dbo].[[log]]plant].[plant_city]
-    WITH (LABEL = 'Confidential - GDPR', LABEL_ID = '989ADC05-3F3F-0588-A635-F475B994915B', INFORMATION_TYPE = 'Contact Info', INFORMATION_TYPE_ID = '5C503E21-22C6-81FA-620B-F369B8EC38D1');
-
-
 GO
 EXECUTE sp_addextendedproperty @name = N'sys_sensitivity_label_name', @value = N'Confidential - GDPR', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'[log]plant', @level2type = N'COLUMN', @level2name = N'plant_city';
 
