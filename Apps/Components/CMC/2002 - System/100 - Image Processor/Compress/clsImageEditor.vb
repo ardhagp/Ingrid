@@ -212,12 +212,7 @@ Namespace ImageEditor.Proccessor
 
                 wmFont = New Font("Verdana", 14, FontStyle.Bold)
 
-                If bmp.Width > bmp.Height Then
-                    DesiredWidth = bmp.Width * 0.5
-                Else
-                    DesiredWidth = bmp.Width * 0.5
-                End If
-
+                DesiredWidth = bmp.Width * 0.5
                 DesiredWidth2 = bmp.Width * 0.25
                 DesireHeight = bmp.Height * 0.5
 
