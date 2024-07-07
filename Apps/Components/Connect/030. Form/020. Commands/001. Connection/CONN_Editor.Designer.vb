@@ -20,11 +20,13 @@ Partial Class CONN_Editor
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(CONN_Editor))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CONN_Editor))
         BtnSave = New btn(components)
         BtnCancel = New btn(components)
         TbctlBasic = New tbctl(components)
         tp1_ = New TabPage()
+        Cbo_DBEngine = New cbo(components)
+        ULbl1 = New ULbl()
         ULbl_FileStorage = New ULbl()
         ULbl_DataStorage = New ULbl()
         Txt_FileStorage = New txt(components)
@@ -90,13 +92,13 @@ Partial Class CONN_Editor
         BtnSave.Margin = New Padding(4, 3, 4, 3)
         BtnSave.Name = "BtnSave"
         BtnSave.Size = New Size(117, 46)
+        BtnSave.TabIndex = 10
+        BtnSave.Text = "&Save"
+        BtnSave.UseVisualStyleBackColor = False
         BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
         BtnSave.XOTampilkanFocusBorder = False
         BtnSave.XOValidasiSemuaInput = False
         BtnSave.XOValidasiSemuaInputTag = Nothing
-        BtnSave.TabIndex = 9
-        BtnSave.Text = "&Save"
-        BtnSave.UseVisualStyleBackColor = False
         ' 
         ' BtnCancel
         ' 
@@ -107,25 +109,25 @@ Partial Class CONN_Editor
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
         BtnCancel.Location = New Point(434, 8)
         BtnCancel.Margin = New Padding(4, 3, 4, 3)
         BtnCancel.Name = "BtnCancel"
         BtnCancel.Size = New Size(117, 46)
+        BtnCancel.TabIndex = 11
+        BtnCancel.Text = "&Close"
+        BtnCancel.UseVisualStyleBackColor = False
         BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
         BtnCancel.XOTampilkanFocusBorder = False
         BtnCancel.XOValidasiSemuaInput = False
         BtnCancel.XOValidasiSemuaInputTag = Nothing
-        BtnCancel.TabIndex = 10
-        BtnCancel.Text = "&Close"
-        BtnCancel.UseVisualStyleBackColor = False
         ' 
         ' TbctlBasic
         ' 
         TbctlBasic.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         TbctlBasic.Controls.Add(tp1_)
-        TbctlBasic.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TbctlBasic.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TbctlBasic.Location = New Point(14, 7)
         TbctlBasic.Margin = New Padding(4, 3, 4, 3)
         TbctlBasic.Name = "TbctlBasic"
@@ -135,6 +137,8 @@ Partial Class CONN_Editor
         ' 
         ' tp1_
         ' 
+        tp1_.Controls.Add(Cbo_DBEngine)
+        tp1_.Controls.Add(ULbl1)
         tp1_.Controls.Add(ULbl_FileStorage)
         tp1_.Controls.Add(ULbl_DataStorage)
         tp1_.Controls.Add(Txt_FileStorage)
@@ -159,10 +163,35 @@ Partial Class CONN_Editor
         tp1_.Text = "CONFIG"
         tp1_.UseVisualStyleBackColor = True
         ' 
+        ' Cbo_DBEngine
+        ' 
+        Cbo_DBEngine.DropDownStyle = ComboBoxStyle.DropDownList
+        Cbo_DBEngine.FlatStyle = FlatStyle.Flat
+        Cbo_DBEngine.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Cbo_DBEngine.FormattingEnabled = True
+        Cbo_DBEngine.Items.AddRange(New Object() {"MYSQL", "SQL SERVER"})
+        Cbo_DBEngine.Location = New Point(214, 65)
+        Cbo_DBEngine.Name = "Cbo_DBEngine"
+        Cbo_DBEngine.Size = New Size(306, 29)
+        Cbo_DBEngine.TabIndex = 2
+        ' 
+        ' ULbl1
+        ' 
+        ULbl1.BackColor = Color.AliceBlue
+        ULbl1.Location = New Point(8, 65)
+        ULbl1.Margin = New Padding(4, 3, 4, 3)
+        ULbl1.Name = "ULbl1"
+        ULbl1.Size = New Size(197, 33)
+        ULbl1.SLFText = "DB Engine"
+        ULbl1.SLFTextAdjuster = False
+        ULbl1.SLFTextBorder = False
+        ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Default
+        ULbl1.TabIndex = 1010
+        ' 
         ' ULbl_FileStorage
         ' 
         ULbl_FileStorage.BackColor = Color.MistyRose
-        ULbl_FileStorage.Location = New Point(8, 265)
+        ULbl_FileStorage.Location = New Point(8, 309)
         ULbl_FileStorage.Margin = New Padding(5, 6, 5, 6)
         ULbl_FileStorage.Name = "ULbl_FileStorage"
         ULbl_FileStorage.Size = New Size(197, 33)
@@ -175,7 +204,7 @@ Partial Class CONN_Editor
         ' ULbl_DataStorage
         ' 
         ULbl_DataStorage.BackColor = Color.MistyRose
-        ULbl_DataStorage.Location = New Point(8, 225)
+        ULbl_DataStorage.Location = New Point(8, 269)
         ULbl_DataStorage.Margin = New Padding(5, 6, 5, 6)
         ULbl_DataStorage.Name = "ULbl_DataStorage"
         ULbl_DataStorage.Size = New Size(197, 33)
@@ -188,12 +217,14 @@ Partial Class CONN_Editor
         ' Txt_FileStorage
         ' 
         Txt_FileStorage.BackColor = Color.White
-        Txt_FileStorage.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_FileStorage.Location = New Point(214, 265)
+        Txt_FileStorage.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_FileStorage.Location = New Point(214, 309)
         Txt_FileStorage.Margin = New Padding(4, 3, 4, 3)
         Txt_FileStorage.MaxLength = 255
         Txt_FileStorage.Name = "Txt_FileStorage"
         Txt_FileStorage.Size = New Size(306, 29)
+        Txt_FileStorage.TabIndex = 8
+        Txt_FileStorage.Tag = "txt"
         Txt_FileStorage.XOAutoTrim = True
         Txt_FileStorage.XOHarusDiisi = True
         Txt_FileStorage.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -213,18 +244,18 @@ Partial Class CONN_Editor
         Txt_FileStorage.XOSQLText = ""
         Txt_FileStorage.XOTanpaSpasi = False
         Txt_FileStorage.XOValidasiField = Nothing
-        Txt_FileStorage.TabIndex = 6
-        Txt_FileStorage.Tag = "txt"
         ' 
         ' Txt_DataStorage
         ' 
         Txt_DataStorage.BackColor = Color.White
-        Txt_DataStorage.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_DataStorage.Location = New Point(214, 225)
+        Txt_DataStorage.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_DataStorage.Location = New Point(214, 269)
         Txt_DataStorage.Margin = New Padding(4, 3, 4, 3)
         Txt_DataStorage.MaxLength = 255
         Txt_DataStorage.Name = "Txt_DataStorage"
         Txt_DataStorage.Size = New Size(306, 29)
+        Txt_DataStorage.TabIndex = 7
+        Txt_DataStorage.Tag = "txt"
         Txt_DataStorage.XOAutoTrim = True
         Txt_DataStorage.XOHarusDiisi = True
         Txt_DataStorage.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -244,33 +275,33 @@ Partial Class CONN_Editor
         Txt_DataStorage.XOSQLText = ""
         Txt_DataStorage.XOTanpaSpasi = False
         Txt_DataStorage.XOValidasiField = Nothing
-        Txt_DataStorage.TabIndex = 5
-        Txt_DataStorage.Tag = "txt"
         ' 
         ' Chk_Default
         ' 
         Chk_Default.AutoSize = True
         Chk_Default.BackColor = Color.Transparent
         Chk_Default.FlatStyle = FlatStyle.Flat
-        Chk_Default.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        Chk_Default.Location = New Point(214, 306)
+        Chk_Default.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Chk_Default.Location = New Point(214, 350)
         Chk_Default.Margin = New Padding(4, 3, 4, 3)
         Chk_Default.Name = "Chk_Default"
         Chk_Default.Size = New Size(204, 25)
-        Chk_Default.TabIndex = 7
+        Chk_Default.TabIndex = 9
         Chk_Default.Text = "Set as Default Connection"
         Chk_Default.UseVisualStyleBackColor = False
         ' 
         ' Txt_Password
         ' 
         Txt_Password.BackColor = Color.White
-        Txt_Password.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Password.Location = New Point(214, 185)
+        Txt_Password.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Password.Location = New Point(214, 229)
         Txt_Password.Margin = New Padding(4, 3, 4, 3)
         Txt_Password.MaxLength = 255
         Txt_Password.Name = "Txt_Password"
         Txt_Password.PasswordChar = "●"c
         Txt_Password.Size = New Size(306, 29)
+        Txt_Password.TabIndex = 6
+        Txt_Password.Tag = "txt"
         Txt_Password.XOAutoTrim = False
         Txt_Password.XOHarusDiisi = True
         Txt_Password.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -290,18 +321,18 @@ Partial Class CONN_Editor
         Txt_Password.XOSQLText = ""
         Txt_Password.XOTanpaSpasi = False
         Txt_Password.XOValidasiField = Nothing
-        Txt_Password.TabIndex = 4
-        Txt_Password.Tag = "txt"
         ' 
         ' Txt_Username
         ' 
         Txt_Username.BackColor = Color.White
-        Txt_Username.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Username.Location = New Point(214, 144)
+        Txt_Username.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Username.Location = New Point(214, 188)
         Txt_Username.Margin = New Padding(4, 3, 4, 3)
         Txt_Username.MaxLength = 255
         Txt_Username.Name = "Txt_Username"
         Txt_Username.Size = New Size(306, 29)
+        Txt_Username.TabIndex = 5
+        Txt_Username.Tag = "txt"
         Txt_Username.XOAutoTrim = True
         Txt_Username.XOHarusDiisi = True
         Txt_Username.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -321,13 +352,11 @@ Partial Class CONN_Editor
         Txt_Username.XOSQLText = ""
         Txt_Username.XOTanpaSpasi = False
         Txt_Username.XOValidasiField = Nothing
-        Txt_Username.TabIndex = 3
-        Txt_Username.Tag = "txt"
         ' 
         ' ULbl_Password
         ' 
         ULbl_Password.BackColor = Color.AliceBlue
-        ULbl_Password.Location = New Point(8, 185)
+        ULbl_Password.Location = New Point(8, 229)
         ULbl_Password.Margin = New Padding(5, 6, 5, 6)
         ULbl_Password.Name = "ULbl_Password"
         ULbl_Password.Size = New Size(197, 33)
@@ -340,7 +369,7 @@ Partial Class CONN_Editor
         ' ULbl_Username
         ' 
         ULbl_Username.BackColor = Color.AliceBlue
-        ULbl_Username.Location = New Point(8, 144)
+        ULbl_Username.Location = New Point(8, 188)
         ULbl_Username.Margin = New Padding(5, 6, 5, 6)
         ULbl_Username.Name = "ULbl_Username"
         ULbl_Username.Size = New Size(197, 33)
@@ -353,7 +382,7 @@ Partial Class CONN_Editor
         ' ULbl_Port
         ' 
         ULbl_Port.BackColor = Color.AliceBlue
-        ULbl_Port.Location = New Point(8, 104)
+        ULbl_Port.Location = New Point(8, 148)
         ULbl_Port.Margin = New Padding(5, 6, 5, 6)
         ULbl_Port.Name = "ULbl_Port"
         ULbl_Port.Size = New Size(197, 33)
@@ -366,12 +395,15 @@ Partial Class CONN_Editor
         ' Txt_Port
         ' 
         Txt_Port.BackColor = Color.White
-        Txt_Port.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Port.Location = New Point(214, 104)
+        Txt_Port.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Port.Location = New Point(214, 148)
         Txt_Port.Margin = New Padding(4, 3, 4, 3)
         Txt_Port.MaxLength = 255
         Txt_Port.Name = "Txt_Port"
         Txt_Port.Size = New Size(114, 29)
+        Txt_Port.TabIndex = 4
+        Txt_Port.Tag = "txt"
+        Txt_Port.TextAlign = HorizontalAlignment.Center
         Txt_Port.XOAutoTrim = True
         Txt_Port.XOHarusDiisi = True
         Txt_Port.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -391,14 +423,11 @@ Partial Class CONN_Editor
         Txt_Port.XOSQLText = ""
         Txt_Port.XOTanpaSpasi = False
         Txt_Port.XOValidasiField = Nothing
-        Txt_Port.TabIndex = 2
-        Txt_Port.Tag = "txt"
-        Txt_Port.TextAlign = HorizontalAlignment.Center
         ' 
         ' ULbl_Address
         ' 
         ULbl_Address.BackColor = Color.AliceBlue
-        ULbl_Address.Location = New Point(8, 63)
+        ULbl_Address.Location = New Point(8, 107)
         ULbl_Address.Margin = New Padding(5, 6, 5, 6)
         ULbl_Address.Name = "ULbl_Address"
         ULbl_Address.Size = New Size(197, 33)
@@ -424,12 +453,14 @@ Partial Class CONN_Editor
         ' Txt_ConnectionName
         ' 
         Txt_ConnectionName.BackColor = Color.White
-        Txt_ConnectionName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_ConnectionName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_ConnectionName.Location = New Point(214, 23)
         Txt_ConnectionName.Margin = New Padding(4, 3, 4, 3)
         Txt_ConnectionName.MaxLength = 255
         Txt_ConnectionName.Name = "Txt_ConnectionName"
         Txt_ConnectionName.Size = New Size(306, 29)
+        Txt_ConnectionName.TabIndex = 0
+        Txt_ConnectionName.Tag = "txt"
         Txt_ConnectionName.XOAutoTrim = True
         Txt_ConnectionName.XOHarusDiisi = True
         Txt_ConnectionName.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -449,18 +480,18 @@ Partial Class CONN_Editor
         Txt_ConnectionName.XOSQLText = ""
         Txt_ConnectionName.XOTanpaSpasi = False
         Txt_ConnectionName.XOValidasiField = Nothing
-        Txt_ConnectionName.TabIndex = 0
-        Txt_ConnectionName.Tag = "txt"
         ' 
         ' Txt_Address
         ' 
         Txt_Address.BackColor = Color.White
-        Txt_Address.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Address.Location = New Point(214, 63)
+        Txt_Address.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Address.Location = New Point(214, 107)
         Txt_Address.Margin = New Padding(4, 3, 4, 3)
         Txt_Address.MaxLength = 255
         Txt_Address.Name = "Txt_Address"
         Txt_Address.Size = New Size(306, 29)
+        Txt_Address.TabIndex = 3
+        Txt_Address.Tag = "txt"
         Txt_Address.XOAutoTrim = True
         Txt_Address.XOHarusDiisi = True
         Txt_Address.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -480,8 +511,6 @@ Partial Class CONN_Editor
         Txt_Address.XOSQLText = ""
         Txt_Address.XOTanpaSpasi = False
         Txt_Address.XOValidasiField = Nothing
-        Txt_Address.TabIndex = 1
-        Txt_Address.Tag = "txt"
         ' 
         ' Btn_Test
         ' 
@@ -491,20 +520,20 @@ Partial Class CONN_Editor
         Btn_Test.FlatAppearance.BorderSize = 2
         Btn_Test.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
         Btn_Test.FlatStyle = FlatStyle.Flat
-        Btn_Test.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Btn_Test.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Btn_Test.ForeColor = Color.White
         Btn_Test.Location = New Point(14, 8)
         Btn_Test.Margin = New Padding(4, 3, 4, 3)
         Btn_Test.Name = "Btn_Test"
         Btn_Test.Size = New Size(117, 46)
+        Btn_Test.TabIndex = 12
+        Btn_Test.Text = "Test"
+        Btn_Test.UseVisualStyleBackColor = False
+        Btn_Test.Visible = False
         Btn_Test.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
         Btn_Test.XOTampilkanFocusBorder = False
         Btn_Test.XOValidasiSemuaInput = False
         Btn_Test.XOValidasiSemuaInputTag = Nothing
-        Btn_Test.TabIndex = 8
-        Btn_Test.Text = "Test"
-        Btn_Test.UseVisualStyleBackColor = False
-        Btn_Test.Visible = False
         ' 
         ' CONN_Editor
         ' 
@@ -549,4 +578,6 @@ Partial Class CONN_Editor
     Friend WithEvents Txt_DataStorage As txt
     Friend WithEvents ULbl_FileStorage As ULbl
     Friend WithEvents ULbl_DataStorage As ULbl
+    Friend WithEvents ULbl1 As ULbl
+    Friend WithEvents Cbo_DBEngine As cbo
 End Class

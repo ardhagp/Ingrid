@@ -20,22 +20,22 @@ Partial Class DAR_RPTFilter
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        BtnShow = New CMCv.btn(components)
-        BtnCancel = New CMCv.btn(components)
-        ChkFrom = New CMCv.chk(components)
-        DtpFrom = New CMCv.dtp(components)
-        ChkTo = New CMCv.chk(components)
-        DtpTo = New CMCv.dtp(components)
-        ChkArea = New CMCv.chk(components)
-        CboArea = New CMCv.cbo(components)
-        CboActivity = New CMCv.cbo(components)
-        ChkActivity = New CMCv.chk(components)
-        CboBy = New CMCv.cbo(components)
-        ChkBy = New CMCv.chk(components)
-        TxtDescription = New CMCv.txt(components)
-        LblNote = New CMCv.lbl(components)
-        RdoColor = New CMCv.rdo(components)
-        RdoBlackWhite = New CMCv.rdo(components)
+        BtnShow = New btn(components)
+        BtnCancel = New btn(components)
+        ChkFrom = New chk(components)
+        DtpFrom = New dtp(components)
+        ChkTo = New chk(components)
+        DtpTo = New dtp(components)
+        ChkArea = New chk(components)
+        CboArea = New cbo(components)
+        CboActivity = New cbo(components)
+        ChkActivity = New chk(components)
+        CboBy = New cbo(components)
+        ChkBy = New chk(components)
+        TxtDescription = New txt(components)
+        LblNote = New lbl(components)
+        RdoColor = New rdo(components)
+        RdoBlackWhite = New rdo(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -107,13 +107,13 @@ Partial Class DAR_RPTFilter
         BtnShow.Margin = New Padding(4, 3, 4, 3)
         BtnShow.Name = "BtnShow"
         BtnShow.Size = New Size(117, 46)
-        BtnShow.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        BtnShow.XOTampilkanFocusBorder = False
-        BtnShow.XOValidasiSemuaInput = False
-        BtnShow.XOValidasiSemuaInputTag = Nothing
         BtnShow.TabIndex = 99
         BtnShow.Text = "&Show"
         BtnShow.UseVisualStyleBackColor = False
+        BtnShow.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
+        BtnShow.XOTampilkanFocusBorder = False
+        BtnShow.XOValidasiSemuaInput = False
+        BtnShow.XOValidasiSemuaInputTag = Nothing
         ' 
         ' BtnCancel
         ' 
@@ -124,19 +124,19 @@ Partial Class DAR_RPTFilter
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
         BtnCancel.Location = New Point(378, 8)
         BtnCancel.Margin = New Padding(4, 3, 4, 3)
         BtnCancel.Name = "BtnCancel"
         BtnCancel.Size = New Size(117, 46)
-        BtnCancel.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        BtnCancel.XOTampilkanFocusBorder = False
-        BtnCancel.XOValidasiSemuaInput = False
-        BtnCancel.XOValidasiSemuaInputTag = Nothing
         BtnCancel.TabIndex = 98
         BtnCancel.Text = "&Cancel"
         BtnCancel.UseVisualStyleBackColor = False
+        BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
+        BtnCancel.XOTampilkanFocusBorder = False
+        BtnCancel.XOValidasiSemuaInput = False
+        BtnCancel.XOValidasiSemuaInputTag = Nothing
         ' 
         ' ChkFrom
         ' 
@@ -161,15 +161,15 @@ Partial Class DAR_RPTFilter
         DtpFrom.MinDate = New Date(1918, 6, 24, 0, 0, 0, 0)
         DtpFrom.Name = "DtpFrom"
         DtpFrom.Size = New Size(321, 29)
-        DtpFrom.XOResetOnDisabled = True
         DtpFrom.TabIndex = 5
+        DtpFrom.XOResetOnDisabled = True
         ' 
         ' ChkTo
         ' 
         ChkTo.AutoSize = True
         ChkTo.BackColor = Color.Transparent
         ChkTo.FlatStyle = FlatStyle.Flat
-        ChkTo.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkTo.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         ChkTo.Location = New Point(47, 84)
         ChkTo.Margin = New Padding(4, 3, 4, 3)
         ChkTo.Name = "ChkTo"
@@ -180,15 +180,15 @@ Partial Class DAR_RPTFilter
         ' 
         ' DtpTo
         ' 
-        DtpTo.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DtpTo.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         DtpTo.Location = New Point(144, 80)
         DtpTo.Margin = New Padding(4, 3, 4, 3)
         DtpTo.MaxDate = New Date(2028, 6, 24, 0, 0, 0, 0)
         DtpTo.MinDate = New Date(1918, 6, 24, 0, 0, 0, 0)
         DtpTo.Name = "DtpTo"
         DtpTo.Size = New Size(321, 29)
-        DtpTo.XOResetOnDisabled = True
         DtpTo.TabIndex = 6
+        DtpTo.XOResetOnDisabled = True
         ' 
         ' ChkArea
         ' 
@@ -276,6 +276,8 @@ Partial Class DAR_RPTFilter
         TxtDescription.MaxLength = 255
         TxtDescription.Name = "TxtDescription"
         TxtDescription.Size = New Size(321, 29)
+        TxtDescription.TabIndex = 10
+        TxtDescription.Tag = "txt"
         TxtDescription.XOAutoTrim = False
         TxtDescription.XOHarusDiisi = False
         TxtDescription.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -284,19 +286,17 @@ Partial Class DAR_RPTFilter
         TxtDescription.XOHightlightSaatFokusWarna = Color.LightYellow
         TxtDescription.XOIsBlank = True
         TxtDescription.XOIsSearchBox = False
-        TxtDescription.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
+        TxtDescription.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
         TxtDescription.XOPilihSemuaSaatFokus = False
         TxtDescription.XOPwdLengthMin = 8
         TxtDescription.XOPwdStrengthCalculate = False
         TxtDescription.XOPwdStrengthScore = 0
         TxtDescription.XOPwdStrengthText = Nothing
-        TxtDescription.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
+        TxtDescription.XORestriction = ControlCodeBase.enuRestriction.None
         TxtDescription.XOSearchBoxText = "Type then press Enter"
         TxtDescription.XOSQLText = ""
         TxtDescription.XOTanpaSpasi = False
         TxtDescription.XOValidasiField = Nothing
-        TxtDescription.TabIndex = 10
-        TxtDescription.Tag = "txt"
         ' 
         ' LblNote
         ' 
@@ -305,9 +305,9 @@ Partial Class DAR_RPTFilter
         LblNote.Margin = New Padding(4, 0, 4, 0)
         LblNote.Name = "LblNote"
         LblNote.Size = New Size(327, 60)
-        LblNote.XOCustomElipsis = False
         LblNote.TabIndex = 1007
         LblNote.Text = "Note : The more specific your filter," & vbCrLf & "the more faster report will load."
+        LblNote.XOCustomElipsis = False
         ' 
         ' RdoColor
         ' 

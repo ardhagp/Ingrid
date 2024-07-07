@@ -24,7 +24,7 @@ Partial Class Mainframe_n_6
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Mainframe_n_6))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Mainframe_n_6))
         Dim TreeNode1 As TreeNode = New TreeNode("Dashboard")
         Dim TreeNode2 As TreeNode = New TreeNode("MCTG - Material Catalog")
         Dim TreeNode3 As TreeNode = New TreeNode("MMGR - Material Group")
@@ -879,10 +879,10 @@ Partial Class Mainframe_n_6
         lblStorage.Location = New Point(0, 0)
         lblStorage.Name = "lblStorage"
         lblStorage.Size = New Size(295, 32)
-        lblStorage.XOCustomElipsis = False
         lblStorage.TabIndex = 0
         lblStorage.Text = "Storage"
         lblStorage.TextAlign = ContentAlignment.MiddleCenter
+        lblStorage.XOCustomElipsis = False
         ' 
         ' Pnl_command_top
         ' 
@@ -922,6 +922,8 @@ Partial Class Mainframe_n_6
         Txt_shortcut.MaxLength = 255
         Txt_shortcut.Name = "Txt_shortcut"
         Txt_shortcut.Size = New Size(243, 29)
+        Txt_shortcut.TabIndex = 0
+        Txt_shortcut.Tag = "txt"
         Txt_shortcut.XOAutoTrim = False
         Txt_shortcut.XOHarusDiisi = False
         Txt_shortcut.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -941,8 +943,6 @@ Partial Class Mainframe_n_6
         Txt_shortcut.XOSQLText = Nothing
         Txt_shortcut.XOTanpaSpasi = False
         Txt_shortcut.XOValidasiField = Nothing
-        Txt_shortcut.TabIndex = 0
-        Txt_shortcut.Tag = "txt"
         ' 
         ' PnlProfile
         ' 
@@ -971,10 +971,10 @@ Partial Class Mainframe_n_6
         PctProfile.Name = "PctProfile"
         PctProfile.Size = New Size(107, 126)
         PctProfile.SizeMode = PictureBoxSizeMode.StretchImage
-        PctProfile.XOTampilkanBorder = False
-        PctProfile.XOWarnaBorder = Color.DodgerBlue
         PctProfile.TabIndex = 0
         PctProfile.TabStop = False
+        PctProfile.XOTampilkanBorder = False
+        PctProfile.XOWarnaBorder = Color.DodgerBlue
         ' 
         ' PctbxFrame
         ' 
@@ -986,10 +986,10 @@ Partial Class Mainframe_n_6
         PctbxFrame.Name = "PctbxFrame"
         PctbxFrame.Size = New Size(117, 136)
         PctbxFrame.SizeMode = PictureBoxSizeMode.Zoom
-        PctbxFrame.XOTampilkanBorder = False
-        PctbxFrame.XOWarnaBorder = Color.Black
         PctbxFrame.TabIndex = 5
         PctbxFrame.TabStop = False
+        PctbxFrame.XOTampilkanBorder = False
+        PctbxFrame.XOWarnaBorder = Color.Black
         ' 
         ' LblPosition
         ' 
@@ -999,9 +999,9 @@ Partial Class Mainframe_n_6
         LblPosition.Location = New Point(131, 94)
         LblPosition.Name = "LblPosition"
         LblPosition.Size = New Size(84, 21)
-        LblPosition.XOCustomElipsis = False
         LblPosition.TabIndex = 4
         LblPosition.Text = "Loading..."
+        LblPosition.XOCustomElipsis = False
         ' 
         ' LblEmployeeName
         ' 
@@ -1011,9 +1011,9 @@ Partial Class Mainframe_n_6
         LblEmployeeName.Location = New Point(130, 69)
         LblEmployeeName.Name = "LblEmployeeName"
         LblEmployeeName.Size = New Size(100, 25)
-        LblEmployeeName.XOCustomElipsis = False
         LblEmployeeName.TabIndex = 3
         LblEmployeeName.Text = "Loading..."
+        LblEmployeeName.XOCustomElipsis = False
         ' 
         ' LblEmpNumber
         ' 
@@ -1023,9 +1023,9 @@ Partial Class Mainframe_n_6
         LblEmpNumber.Location = New Point(130, 44)
         LblEmpNumber.Name = "LblEmpNumber"
         LblEmpNumber.Size = New Size(100, 25)
-        LblEmpNumber.XOCustomElipsis = False
         LblEmpNumber.TabIndex = 2
         LblEmpNumber.Text = "Loading..."
+        LblEmpNumber.XOCustomElipsis = False
         ' 
         ' LblWelcome
         ' 
@@ -1036,9 +1036,9 @@ Partial Class Mainframe_n_6
         LblWelcome.Location = New Point(0, 0)
         LblWelcome.Name = "LblWelcome"
         LblWelcome.Size = New Size(295, 27)
-        LblWelcome.XOCustomElipsis = False
         LblWelcome.TabIndex = 1
         LblWelcome.TextAlign = ContentAlignment.MiddleCenter
+        LblWelcome.XOCustomElipsis = False
         ' 
         ' St_mainframe
         ' 
@@ -1072,7 +1072,6 @@ Partial Class Mainframe_n_6
         ' 
         ' TmrNotif
         ' 
-        TmrNotif.Enabled = True
         TmrNotif.Interval = 1000
         ' 
         ' TmrStatus
@@ -1101,6 +1100,10 @@ Partial Class Mainframe_n_6
         TxtRunning.Name = "TxtRunning"
         TxtRunning.ReadOnly = True
         TxtRunning.Size = New Size(784, 29)
+        TxtRunning.TabIndex = 99
+        TxtRunning.TabStop = False
+        TxtRunning.Tag = "txt"
+        TxtRunning.Visible = False
         TxtRunning.XOAutoTrim = False
         TxtRunning.XOHarusDiisi = False
         TxtRunning.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -1120,10 +1123,6 @@ Partial Class Mainframe_n_6
         TxtRunning.XOSQLText = ""
         TxtRunning.XOTanpaSpasi = False
         TxtRunning.XOValidasiField = Nothing
-        TxtRunning.TabIndex = 99
-        TxtRunning.TabStop = False
-        TxtRunning.Tag = "txt"
-        TxtRunning.Visible = False
         ' 
         ' spl_
         ' 
