@@ -531,8 +531,6 @@
     <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="2002 - System\000 - Security\clsSecurity.vb" />
-    <Compile Remove="2002 - System\000 - Security\mdlSecurity.vb" />
     <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableMenuStrip.Designer.vb" />
     <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableMenuStrip.vb" />
     <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableStatusStrip.Designer.vb" />

@@ -110,7 +110,7 @@ Module Globals
 #Region "Get App Version"
 
     ''' <summary>
-    ''' Fungsi untuk mendapatkan versi app
+    ''' Return App Version
     ''' </summary>
     ''' <returns>String</returns>
     ''' <remarks></remarks>

@@ -270,6 +270,10 @@ Public Class Mainframe_n_6
             Call FirstLoad()
             V_USERAttrib.UID = String.Empty
 
+            'Retrieve app version
+            V_APPVer = GETAPPVERSION()
+            Text += " - Ver. " & V_APPVer
+
             If Mainframe.Database.Connect(_PRODUCTIONMODE) Then
                 Ts_connection.Text = "Connected"
                 V_LOGApp.Run()
@@ -282,9 +286,6 @@ Public Class Mainframe_n_6
             'splash.Close()
 
             Call CommandAutoComplete() 'TODO: Raised Error
-
-            V_APPVer = GETAPPVERSION()
-            Text += " - Ver. " & V_APPVer
 
             If Not (LibSQL.Commands.DBIC.Applications.IsCompanyExist) OrElse Not (LibSQL.Commands.DBIC.Applications.IsDepartmentExist) Then
                 DISPLAY(frmFistGuide,, "First Guide", "", True, Me)

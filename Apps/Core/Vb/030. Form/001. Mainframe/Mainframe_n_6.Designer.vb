@@ -890,11 +890,7 @@ Partial Class Mainframe_n_6
         lblStorage.Location = New Point(0, 0)
         lblStorage.Margin = New Padding(4, 0, 4, 0)
         lblStorage.Name = "lblStorage"
-<<<<<<< HEAD
-        lblStorage.Size = New Size(295, 32)
-=======
         lblStorage.Size = New Size(421, 53)
->>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         lblStorage.TabIndex = 0
         lblStorage.Text = "Storage"
         lblStorage.TextAlign = ContentAlignment.MiddleCenter
@@ -940,11 +936,7 @@ Partial Class Mainframe_n_6
         Txt_shortcut.Margin = New Padding(4, 5, 4, 5)
         Txt_shortcut.MaxLength = 255
         Txt_shortcut.Name = "Txt_shortcut"
-<<<<<<< HEAD
-        Txt_shortcut.Size = New Size(243, 29)
-=======
         Txt_shortcut.Size = New Size(345, 39)
->>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         Txt_shortcut.TabIndex = 0
         Txt_shortcut.Tag = "txt"
         Txt_shortcut.XOAutoTrim = False
@@ -1025,11 +1017,7 @@ Partial Class Mainframe_n_6
         LblPosition.Location = New Point(187, 157)
         LblPosition.Margin = New Padding(4, 0, 4, 0)
         LblPosition.Name = "LblPosition"
-<<<<<<< HEAD
-        LblPosition.Size = New Size(84, 21)
-=======
         LblPosition.Size = New Size(127, 32)
->>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         LblPosition.TabIndex = 4
         LblPosition.Text = "Loading..."
         LblPosition.XOCustomElipsis = False
@@ -1042,11 +1030,7 @@ Partial Class Mainframe_n_6
         LblEmployeeName.Location = New Point(186, 115)
         LblEmployeeName.Margin = New Padding(4, 0, 4, 0)
         LblEmployeeName.Name = "LblEmployeeName"
-<<<<<<< HEAD
-        LblEmployeeName.Size = New Size(100, 25)
-=======
         LblEmployeeName.Size = New Size(152, 40)
->>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         LblEmployeeName.TabIndex = 3
         LblEmployeeName.Text = "Loading..."
         LblEmployeeName.XOCustomElipsis = False
@@ -1059,11 +1043,7 @@ Partial Class Mainframe_n_6
         LblEmpNumber.Location = New Point(186, 73)
         LblEmpNumber.Margin = New Padding(4, 0, 4, 0)
         LblEmpNumber.Name = "LblEmpNumber"
-<<<<<<< HEAD
-        LblEmpNumber.Size = New Size(100, 25)
-=======
         LblEmpNumber.Size = New Size(152, 40)
->>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         LblEmpNumber.TabIndex = 2
         LblEmpNumber.Text = "Loading..."
         LblEmpNumber.XOCustomElipsis = False
@@ -1077,11 +1057,7 @@ Partial Class Mainframe_n_6
         LblWelcome.Location = New Point(0, 0)
         LblWelcome.Margin = New Padding(4, 0, 4, 0)
         LblWelcome.Name = "LblWelcome"
-<<<<<<< HEAD
-        LblWelcome.Size = New Size(295, 27)
-=======
         LblWelcome.Size = New Size(421, 45)
->>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         LblWelcome.TabIndex = 1
         LblWelcome.TextAlign = ContentAlignment.MiddleCenter
         LblWelcome.XOCustomElipsis = False
@@ -1148,11 +1124,7 @@ Partial Class Mainframe_n_6
         TxtRunning.MaxLength = 255
         TxtRunning.Name = "TxtRunning"
         TxtRunning.ReadOnly = True
-<<<<<<< HEAD
-        TxtRunning.Size = New Size(784, 29)
-=======
         TxtRunning.Size = New Size(1120, 39)
->>>>>>> cd214b1b100d67ffef6ce66eaff2efa11255826e
         TxtRunning.TabIndex = 99
         TxtRunning.TabStop = False
         TxtRunning.Tag = "txt"
