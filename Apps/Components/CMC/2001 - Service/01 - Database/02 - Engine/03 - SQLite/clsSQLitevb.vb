@@ -95,7 +95,7 @@ Namespace Database.Engine
                     v_FilePath(0) = Replace(v_FilePath(0), "\", "\\")
                     'v_FilePath(0) = Replace(v_FilePath(0), ".db", "")
 
-                    v_CS(0) = V_SQLite.SQLite_Basic(v_FilePath(0))
+                    v_CS(0) = V_SQLite.SQLiteBasic(v_FilePath(0))
 
                     V_CONN(1) = New SQLite.SQLiteConnection(v_CS(0)) 'OleDb.OleDbConnection(_CS(0))
                     V_CONN(1).Open()
@@ -111,7 +111,7 @@ Namespace Database.Engine
                     v_FilePath(1) = Replace(v_FilePath(1), "\", "\\")
                     'v_FilePath(1) = Replace(v_FilePath(0), ".db", "")
 
-                    v_CS(1) = V_SQLite.SQLite_Basic(v_FilePath(1))
+                    v_CS(1) = V_SQLite.SQLiteBasic(v_FilePath(1))
 
                     V_CONN(2) = New SQLite.SQLiteConnection(v_CS(1))
                     V_CONN(2).Open()

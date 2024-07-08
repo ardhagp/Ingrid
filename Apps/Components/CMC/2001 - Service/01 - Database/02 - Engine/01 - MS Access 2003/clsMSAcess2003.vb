@@ -72,7 +72,7 @@ Namespace Database.Engine
                 Dim V_FileInfo As New OperatingSystem.File.Info
 
                 If OperatingSystem.File.Info.IsExists(_FilePath(0)) Then
-                    _CS(0) = _MSA2003C.Microsoft_OLEDB_Standard(_FilePath(0), "admin", "")
+                    _CS(0) = _MSA2003C.MicrosoftOLEDBStandard(_FilePath(0), "admin", "")
 
                     _CONN(0) = New OleDb.OleDbConnection(_CS(0))
                     _CONN(0).Open()
@@ -81,7 +81,7 @@ Namespace Database.Engine
                 _FilePath(1) = Application.StartupPath & "\Resources\ERRLOG.mdb"
 
                 If OperatingSystem.File.Info.IsExists(_FilePath(1)) Then
-                    _CS(1) = _MSA2003C.Microsoft_OLEDB_Standard(_FilePath(1), "admin", "")
+                    _CS(1) = _MSA2003C.MicrosoftOLEDBStandard(_FilePath(1), "admin", "")
 
                     _CONN(1) = New OleDb.OleDbConnection(_CS(1))
                     _CONN(1).Open()
