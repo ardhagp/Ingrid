@@ -62,7 +62,7 @@ Namespace Commands.ACGR
             V_CBO_Index = AccountingBook.SelectedValue.ToString
 
             'Tampilkan data awal / tanpa filter / ForceRefresh=True
-            If (Find.XOSQLText = String.Empty) Or (ForceRefresh = True) Then
+            If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh = True) Then
                 V_DBR_MSSQL2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.[[ac]]account] acc " &
                                                         "where acc.account_book = '{0}' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", V_CBO_Index)
                 V_DBR_MSSQL2008(0).DataGrid = Assets

@@ -10,7 +10,7 @@ Namespace Commands.PLNT
         Public Shared Sub DisplayData(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             Dim _Where As String = "where "
 
-            If (Find.XOSQLText = String.Empty) Or (ForceRefresh = True) Then
+            If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh = True) Then
                 _Where = String.Format("")
             Else
                 _Where += String.Format("(p.plant_code like '%{0}%') or (p.plant_name like '%{0}%') or (p.plant_name2 like '%{0}%') or (p.plant_postalcode like '%{0}%')", Find.XOSQLText)

@@ -16,50 +16,50 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckDBCatalog() As Boolean
             Try
-                Dim v_DBPath As String = Nothing
-                Dim v_DBExists(3) As Boolean
+                Dim var_dbpath As String = Nothing
+                Dim var_dbexists(3) As Boolean
 
-                Dim v_Location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
+                Dim var_location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
 
-                System.IO.Directory.CreateDirectory(v_Location & "\Resources")
+                System.IO.Directory.CreateDirectory(var_location & "\Resources")
 
-                v_DBPath = v_Location & "\Resources\CATALOG.mdf"
-                If OperatingSystem.File.Info.IsExists(v_DBPath) Then
-                    v_DBExists(1) = True
+                var_dbpath = var_location & "\Resources\CATALOG.mdf"
+                If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                    var_dbexists(1) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\CATALOG.mdf", v_Location & "\Resources\CATALOG.mdf", True)
-                    If OperatingSystem.File.Info.IsExists(v_DBPath) Then
-                        v_DBExists(1) = True
+                    System.IO.File.Copy(Application.StartupPath & "\Resources\CATALOG.mdf", var_location & "\Resources\CATALOG.mdf", True)
+                    If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                        var_dbexists(1) = True
                     Else
-                        v_DBExists(1) = False
+                        var_dbexists(1) = False
                     End If
                 End If
 
-                v_DBPath = v_Location & "\Resources\DEV_CATALOG.mdf"
-                If OperatingSystem.File.Info.IsExists(v_DBPath) Then
-                    v_DBExists(2) = True
+                var_dbpath = var_location & "\Resources\DEV_CATALOG.mdf"
+                If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                    var_dbexists(2) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\DEV_CATALOG.mdf", v_Location & "\Resources\DEV_CATALOG.mdf", True)
-                    If OperatingSystem.File.Info.IsExists(v_DBPath) Then
-                        v_DBExists(2) = True
+                    System.IO.File.Copy(Application.StartupPath & "\Resources\DEV_CATALOG.mdf", var_location & "\Resources\DEV_CATALOG.mdf", True)
+                    If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                        var_dbexists(2) = True
                     Else
-                        v_DBExists(2) = False
+                        var_dbexists(2) = False
                     End If
                 End If
 
-                v_DBPath = v_Location & "\Resources\ERRLOG.mdf"
-                If OperatingSystem.File.Info.IsExists(v_DBPath) Then
-                    v_DBExists(3) = True
+                var_dbpath = var_location & "\Resources\ERRLOG.mdf"
+                If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                    var_dbexists(3) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\ERRLOG.mdf", v_Location & "\Resources\ERRLOG.mdf", True)
-                    If OperatingSystem.File.Info.IsExists(v_DBPath) Then
-                        v_DBExists(3) = True
+                    System.IO.File.Copy(Application.StartupPath & "\Resources\ERRLOG.mdf", var_location & "\Resources\ERRLOG.mdf", True)
+                    If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                        var_dbexists(3) = True
                     Else
-                        v_DBExists(3) = False
+                        var_dbexists(3) = False
                     End If
                 End If
 
-                If ((v_DBExists(1)) AndAlso (v_DBExists(3))) OrElse ((v_DBExists(2)) AndAlso (v_DBExists(3))) Then
+                If ((var_dbexists(1)) AndAlso (var_dbexists(3))) OrElse ((var_dbexists(2)) AndAlso (var_dbexists(3))) Then
                     Return True
                 Else
                     Return False
@@ -74,7 +74,7 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub Open(Optional ByVal IsProductionMode As Boolean = False)
             Try
-                Dim v_Location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
+                Dim var_location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
 
                 If Not (CheckDBCatalog()) Then
                     Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, "File configuration Not found", 0, "", GETAPPVERSION, False, True, False)
@@ -83,9 +83,9 @@ Namespace Database.Engine
                 End If
 
                 If (IsProductionMode) Then
-                    v_FilePath(0) = v_Location & "\Resources\CATALOG.mdf"
+                    v_FilePath(0) = var_location & "\Resources\CATALOG.mdf"
                 Else
-                    v_FilePath(0) = v_Location & "\Resources\DEV_CATALOG.mdf"
+                    v_FilePath(0) = var_location & "\Resources\DEV_CATALOG.mdf"
                 End If
 
                 Dim V_FileInfo As New OperatingSystem.File.Info
@@ -99,7 +99,7 @@ Namespace Database.Engine
                     '    GoTo FileNotFound
                 End If
 
-                v_FilePath(1) = v_Location & "\Resources\ERRLOG.mdf"
+                v_FilePath(1) = var_location & "\Resources\ERRLOG.mdf"
 
                 If OperatingSystem.File.Info.IsExists(v_FilePath(1)) Then
                     v_CS(1) = v_LocalDB.LocalDBInitialCatalog(v_FilePath(1))

@@ -11,7 +11,7 @@ Namespace Commands.POST
             'ReDim V_DBR_MSSQL2008(2)
             Dim _Where As String = "where "
 
-            If (Find.XOSQLText = String.Empty) And (ForceRefresh = True) Then
+            If (Find.XOSQLText = String.Empty) AndAlso (ForceRefresh = True) Then
                 _Where = String.Format("")
             Else
                 _Where += String.Format("(c.company_code Like '%{0}%') or (d.departement_code like '%{0}%') or (ps.position_code like '%{0}%') or (ps.position_name like '%{0}%')", Find.XOSQLText)

@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Globalization
 Imports System.Management
 Imports System.Runtime.InteropServices
 Imports System.Runtime.Versioning
@@ -271,15 +272,15 @@ Public Class txt
     Private Function SQLSafeText(ByVal txtControl As txt) As String
         Dim _SQLSafeText As String = txtControl.Text
 
-        If (txtControl.XOIsSearchBox = True) And (txtControl.Text = txtControl.XOSearchBoxText) Then
+        If (txtControl.XOIsSearchBox = True) AndAlso (txtControl.Text = txtControl.XOSearchBoxText) Then
             _SQLSafeText = String.Empty
         End If
 
         _SQLSafeText = _SQLSafeText.Replace("'", "").Replace(";", "").Replace("--", "").Replace("drop table ", "").Replace("update ", "").Replace("insert into ", "").Replace("--", "").Replace("xp_", "").Trim
         If XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA Then
-            _SQLSafeText = _SQLSafeText.ToUpper
+            _SQLSafeText = _SQLSafeText.ToUpper(CultureInfo.CurrentCulture)
         ElseIf XOJenisKapital = ControlCodeBase.enuJenisKapital.kecilsemua Then
-            _SQLSafeText = _SQLSafeText.ToLower
+            _SQLSafeText = _SQLSafeText.ToLower(CultureInfo.CurrentCulture)
         End If
         Return _SQLSafeText
     End Function
@@ -353,7 +354,7 @@ Public Class txt
 
         If (_Num.Upper > 0 AndAlso _Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
             _Bonus.Combo = 25
-        ElseIf (_Num.Upper > 0 AndAlso _Num.Numbers > 0) Or (_Num.Upper > 0 AndAlso _Num.Symbols > 0) Or (_Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
+        ElseIf (_Num.Upper > 0 AndAlso _Num.Numbers > 0) OrElse (_Num.Upper > 0 AndAlso _Num.Symbols > 0) Or (_Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
             _Bonus.Combo = 15
         End If
 
@@ -461,13 +462,13 @@ Public Class txt
     End Sub
 
     Private Sub txt_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
-        If Me.XOHightlightSaatFokus And Me.ReadOnly = False Then
+        If Me.XOHightlightSaatFokus AndAlso Me.ReadOnly = False Then
             MyBase.BackColor = Me.XOHightlightSaatFokusWarna
         End If
     End Sub
 
     Private Sub txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
-        If Me.XOHightlightSaatFokus And Not Me.Focused And Me.ReadOnly = False Then
+        If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Me.ReadOnly = False Then
             MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
         End If
     End Sub
@@ -491,13 +492,13 @@ Public Class txt
     Public Sub FontSearchBox(ByVal OnFocus As Boolean)
         Try
             If Me.XOIsSearchBox = True Then
-                If OnFocus = True And Me.Text = Me.XOSearchBoxText Then
+                If OnFocus = True AndAlso Me.Text = Me.XOSearchBoxText Then
                     Me.Text = ""
                     Me.Font = New System.Drawing.Font(Me.Font, System.Drawing.FontStyle.Regular)
                     Me.ForeColor = System.Drawing.SystemColors.WindowText
-                ElseIf OnFocus = True And Me.Text = String.Empty Then
+                ElseIf OnFocus = True AndAlso Me.Text = String.Empty Then
 
-                ElseIf OnFocus = False And Me.Text = String.Empty Then
+                ElseIf OnFocus = False AndAlso Me.Text = String.Empty Then
                     Me.Font = New System.Drawing.Font(Me.Font, System.Drawing.FontStyle.Italic)
                     Me.ForeColor = System.Drawing.Color.LightGray
                     Me.Text = Me.XOSearchBoxText

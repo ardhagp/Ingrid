@@ -7,7 +7,7 @@ Namespace Commands.MMTY
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
-            If (Find.XOSQLText = String.Empty) Or (ForceRefresh = True) Then
+            If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh = True) Then
                 V_DBR_MSSQL2008(0).Query = "select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from dbo.[[log]]material] m where " &
                     "m.material_materialtype = mt.materialtype_id)) + '  item(s)') as itemcount from dbo.[[log]]materialtype] mt"
             Else
