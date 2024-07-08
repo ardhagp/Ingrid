@@ -88,10 +88,6 @@ Public Class MODS_Editor
         Me.Close()
     End Sub
 
-    Private Sub TxtName_TextChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub TxtCode_TextChanged(sender As Object, e As EventArgs) Handles TxtCode.TextChanged
         If (V_FORMAttrib.IsNew) Then
             TxtID.Text = CMCv.Security.Encrypt.MD5(TxtCode.XOSQLText.ToUpper)

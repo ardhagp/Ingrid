@@ -185,10 +185,7 @@ Public Class POST
                     _item_sub(7) = New ToolStripMenuItem() With {.Name = "FindToolStripMenuItem", .Text = "Find", .ShortcutKeys = Keys.Control + Keys.F, .ShortcutKeyDisplayString = "Ctrl+F"}
                     _s_item.DropDown.Items.Add(_item_sub(7))
                     AddHandler _item_sub(7).Click, AddressOf FindToolStripMenuItem_Clicked
-
             End Select
-
-
         Next
     End Sub
 #End Region
