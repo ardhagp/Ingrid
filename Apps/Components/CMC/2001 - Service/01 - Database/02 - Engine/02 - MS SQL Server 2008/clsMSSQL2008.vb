@@ -41,7 +41,7 @@ Namespace Database.Engine
         Public Function Open(ByVal Fields As Properties.Fields, Optional ByVal Splash As Form = Nothing) As Boolean
             Dim V_Success As Boolean
             Try
-                V_CONN(1) = New SqlClient.SqlConnection(V_MSSQL2008.MS_SQL2008_Standard(Fields.ServerAddress, Fields.Port, Fields.DataStorage, Fields.Username, Fields.Password))
+                V_CONN(1) = New SqlClient.SqlConnection(V_MSSQL2008.MSSQL2008Standard(Fields.ServerAddress, Fields.Port, Fields.DataStorage, Fields.Username, Fields.Password))
                 V_CONN(1).Open()
                 V_Success = True
             Catch ex As SqlClient.SqlException
