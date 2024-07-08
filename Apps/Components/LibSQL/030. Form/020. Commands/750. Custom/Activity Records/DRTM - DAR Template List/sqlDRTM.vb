@@ -13,7 +13,7 @@ Namespace Commands.DRTM
             Try
                 Dim _Where As String = String.Format("where ")
 
-                If (Find.XOSQLText = String.Empty) And (ForceRefresh = True) Then
+                If (Find.XOSQLText = String.Empty) AndAlso (ForceRefresh = True) Then
                     _Where += "tpl.template_module = (select mdl.module_id from dbo.[[sys]]module] mdl where mdl.module_code = 'DAR') "
                 Else
                     _Where += "tpl.template_module = (select mdl.module_id from dbo.[[sys]]module] mdl where mdl.module_code = 'DAR') and "

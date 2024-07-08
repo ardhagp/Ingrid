@@ -16,36 +16,36 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckDBCatalog() As Boolean
             Try
-                Dim _DBPath As String = Nothing
-                Dim _DBExists(2) As Boolean
+                Dim var_dbpath As String = Nothing
+                Dim var_dbexists(2) As Boolean
 
                 System.IO.Directory.CreateDirectory(Application.StartupPath & "\Resources")
 
-                _DBPath = Application.StartupPath & "\Resources\CATALOG.mdb"
-                If OperatingSystem.File.Info.IsExists(_DBPath) Then
-                    _DBExists(1) = True
+                var_dbpath = Application.StartupPath & "\Resources\CATALOG.mdb"
+                If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                    var_dbexists(1) = True
                 Else
                     'My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\Resources", My.Resources.catalog, True)
-                    _DBExists(1) = False
+                    var_dbexists(1) = False
                 End If
 
-                _DBPath = Application.StartupPath & "\Resources\DEV_CATALOG.mdb"
-                If OperatingSystem.File.Info.IsExists(_DBPath) Then
-                    _DBExists(2) = True
+                var_dbpath = Application.StartupPath & "\Resources\DEV_CATALOG.mdb"
+                If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                    var_dbexists(2) = True
                 Else
                     'My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\Resources", My.Resources.dev_catalog, True)
-                    _DBExists(2) = False
+                    var_dbexists(2) = False
                 End If
 
-                _DBPath = Application.StartupPath & "\Resources\ERRLOG.mdb"
-                If OperatingSystem.File.Info.IsExists(_DBPath) Then
-                    _DBExists(2) = True
+                var_dbpath = Application.StartupPath & "\Resources\ERRLOG.mdb"
+                If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                    var_dbexists(2) = True
                 Else
                     'My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\Resources", My.Resources.errlog, True)
-                    _DBExists(2) = False
+                    var_dbexists(2) = False
                 End If
 
-                If (_DBExists(1)) AndAlso (_DBExists(2)) Then
+                If (var_dbexists(1)) AndAlso (var_dbexists(2)) Then
                     Return True
                 Else
                     Return False
@@ -98,13 +98,14 @@ Namespace Database.Engine
             Try
                 _DR(0) = GETDATAROW("SELECT LIST.SERVERADDRESS, LIST.USERNAME, LIST.PASSWORD, LIST.ACCEPTEDLINECONNECTION FROM LIST WHERE LIST.ID =1;", _CONN(0), _CMD(0))
 
-                Fields.ServerAddress = _DR(0).GetString(0)
-                Fields.Username = _DR(0).GetString(1)
-                'Fields.Password = V_SECDecrypt.Rijndael(_DR(0).GetString(2))
-                Fields.Password = CMCv.Security.Decrypt.AES(_DR(0).GetString(2))
-                Fields.Port = _DR(0).GetValue(3)
-                Fields.DataStorage = _DR(0).GetString(4)
-                Fields.FileStorage = _DR(0).GetString(5)
+                With _DR(0)
+                    Fields.ServerAddress = .GetString(0)
+                    Fields.Username = .GetString(1)
+                    Fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
+                    Fields.Port = .GetValue(3)
+                    Fields.DataStorage = .GetString(4)
+                    Fields.FileStorage = .GetString(5)
+                End With
 
                 Return Fields
             Catch ex As System.Data.OleDb.OleDbException
