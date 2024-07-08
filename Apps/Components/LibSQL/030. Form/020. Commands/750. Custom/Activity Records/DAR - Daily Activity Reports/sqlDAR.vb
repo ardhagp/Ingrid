@@ -24,7 +24,7 @@ Namespace Commands.DAR
                 V_DBR_MSSQL2008(0).Query = String.Format("select count(mods.modulesettings_id) from dbo.[[sys]]modulesettings] mods inner join " &
                                                         "dbo.[[sys]]module] mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') " &
                                                         "and (mods.modulesettings_user = '{0}') and (mods.modulesettings_attribute = '{1}')", UID, _Attribute(_Row))
-                _IsExist = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+                _IsExist = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
 
                 If _IsExist = 0 Then
                     V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.[[sys]]modulesettings](modulesettings_id, modulesettings_module," &
@@ -35,13 +35,13 @@ Namespace Commands.DAR
                 End If
             Next
 
-            Dim _Value As Object
+            Dim _Value As Boolean
 
             V_DBR_MSSQL2008(0).Query = String.Format("select mods.modulesettings_value from dbo.[[sys]]modulesettings] mods inner join dbo.[[sys]]module] " &
                                                     "mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') and " &
                                                     "(mods.modulesettings_user = '{0}') and (mods.modulesettings_attribute = '{1}')", UID, "ViewPhotoTab")
 
-            _Value = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _Value = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
 
             Return _Value
         End Function
@@ -84,7 +84,7 @@ Namespace Commands.DAR
                 If cboByFilter.Items.Count = 0 Then
                     _EID = "-1"
                 Else
-                    _EID = cboByFilter.SelectedValue()
+                    _EID = cboByFilter.SelectedValue().ToString
                 End If
 
                 If (Find.XOSQLText = String.Empty) AndAlso (ForceRefresh) Then
@@ -255,7 +255,7 @@ Namespace Commands.DAR
                     If V_DBR_MSSQL2008(2).DataGrid.RowCount = 0 Then
                         _ContentID = "-1"
                     Else
-                        _ContentID = V_DBR_MSSQL2008(2).DataGrid.CurrentRow.Cells("employeeactivity_id").Value
+                        _ContentID = V_DBR_MSSQL2008(2).DataGrid.CurrentRow.Cells("employeeactivity_id").Value.ToString
                     End If
                     Call DisplayPhotoGrid(_ContentID, PhotoGrid)
                     Call DisplayFileGrid(_ContentID, FileGrid)
@@ -301,9 +301,6 @@ Namespace Commands.DAR
         <SupportedOSPlatform("windows")>
         Public Shared Function GETPDFFile(ByVal RowID As String, Optional ByVal RecordYear As String = "") As Object
             Dim _File As Object
-            'Dim _RecordYear As String = Nothing -- should be used for get archive year
-
-            '_RecordYear = CDbl(RecordYear)
 
             V_DBR_MSSQL2008(1).Query = String.Format("select fi.file_content from db_universe_erp_file.dbo.[[sto]]file] fi where fi.file_id = '{0}'", RowID)
 
@@ -332,7 +329,7 @@ Namespace Commands.DAR
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select count(ff.filefeedback_id) as [islike] from db_universe_erp_file.dbo.[[sto]]filefeedback] ff " &
                                                         "where ff.filefeedback_file = '{0}' and ff.filefeedback_employee = '{1}';", FileID, EID)
-                V_Result = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+                V_Result = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
 
             Catch ex As Exception
                 V_Result = 0
@@ -395,7 +392,7 @@ Namespace Commands.DAR
         <SupportedOSPlatform("windows")>
         Public Shared Function GETTemplateContent(ByVal ListOfTemplate As CMCv.cbo) As String
             V_DBR_MSSQL2008(1).Query = String.Format("select tp.template_text1 from dbo.[[doc]]template] tp where tp.template_id = '{0}'", ListOfTemplate.SelectedValue)
-            Return V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            Return V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -407,26 +404,26 @@ Namespace Commands.DAR
 
             V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_datetime from dbo.[[doc]]employeeactivity] ea " &
                                                     "where ea.employeeactivity_id = '{0}'", RowID)
-            V_DatePart(0) = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            V_DatePart(0) = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
 
             V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_time from dbo.[[doc]]employeeactivity] ea " &
                                                     "where ea.employeeactivity_id = '{0}'", RowID)
 
-            V_TimeParts(0) = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            V_TimeParts(0) = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), TimeSpan)
             V_DatePart(2) = Convert.ToString(V_TimeParts(0))
             V_TimePart = V_DatePart(2).Split(":")
-            V_DatePart(1) = V_TimePart(0) & ":" & +V_TimePart(1)
+            V_DatePart(1) = V_TimePart(0) & ":" & +Convert.ToDouble(V_TimePart(1))
 
             DatePart.Value = Convert.ToDateTime(V_DatePart(0))
             TimePart.Text = V_DatePart(1)
 
             V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_datetime_end from dbo.[[doc]]employeeactivity] ea " &
                                                     "where ea.employeeactivity_id = '{0}'", RowID)
-            V_DatePart(0) = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            V_DatePart(0) = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
 
             V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_time_end from dbo.[[doc]]employeeactivity] ea " &
                                                     "where ea.employeeactivity_id = '{0}'", RowID)
-            V_TimeParts(0) = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            V_TimeParts(0) = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), TimeSpan)
 
             V_DatePart(2) = Convert.ToString(V_TimeParts(0))
             V_TimePart = V_DatePart(2).Split(":")
@@ -445,13 +442,13 @@ Namespace Commands.DAR
 
             V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_description from dbo.[[doc]]employeeactivity] ea " &
                                                     "where ea.employeeactivity_id = '{0}'", RowID)
-            TemplateContent.Text = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            TemplateContent.Text = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
 
             Dim _Feedback As Object
             V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_feedback from dbo.[[doc]]employeeactivity] ea " &
                                                     "where ea.employeeactivity_id = '{0}'", RowID)
             _Feedback = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
-            FeedBack.Text = IIf(IsDBNull(_Feedback), "", _Feedback)
+            FeedBack.Text = IIf(IsDBNull(_Feedback), "", _Feedback).ToString
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -465,9 +462,6 @@ Namespace Commands.DAR
             _DS = V_DBE_MSSQL2008.GETDATASET(V_DBR_MSSQL2008(2), "TPhotoFileEditor")
 
             Return _DS
-
-            'V_DBR_MSSQL2008(2).DataGrid = FileGrid
-            'V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(2), "TPhotoFileEditor")
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -481,13 +475,10 @@ Namespace Commands.DAR
             _DS = V_DBE_MSSQL2008.GETDATASET(V_DBR_MSSQL2008(2), "TFileEditor")
 
             Return _DS
-
-            'V_DBR_MSSQL2008(2).DataGrid = FileGrid
-            'V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(2), "TPhotoFileEditor")
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PUSHData(ByVal AreaAffected As String, ByVal ActivityTemplate As String, ByVal DatePart As String, ByVal TimePart As String, ByVal DatePartEnd As String, ByVal TimePartEnd As String, ByVal Content As String, ByVal Feedback As String, ByVal UserID As String, ByVal RowID As String, ByVal IsNew As Boolean, Optional ExtendedQuery As String = "")
+        Public Shared Function PUSHData(ByVal AreaAffected As String, ByVal ActivityTemplate As String, ByVal DatePart As String, ByVal TimePart As String, ByVal DatePartEnd As String, ByVal TimePartEnd As String, ByVal Content As String, ByVal Feedback As String, ByVal UserID As String, ByVal RowID As String, ByVal IsNew As Boolean, Optional ExtendedQuery As String = "") As Boolean
             Dim V_Success As Boolean
 
             Try
@@ -507,8 +498,6 @@ Namespace Commands.DAR
                                                             "employeeactivity_lastupdate = (select usr.user_employee from dbo.[[sys]]user] usr " &
                                                             "where usr.user_id = '{7}'), employeeactivity_feedback = '{9}', " &
                                                             "employeeactivity_updateon = (select getdate()) where employeeactivity_id = '{8}';", DatePart, TimePart, DatePartEnd, TimePartEnd, AreaAffected, ActivityTemplate, Content, UserID, RowID, Feedback)
-
-                    '--update dbo.[[doc]]employeeactivity] set employeeactivity_datetime_end = employeeactivity_datetime, employeeactivity_time_end = employeeactivity_time where (employeeactivity_datetime_end is null and employeeactivity_time_end is null);
 
                     V_DBR_MSSQL2008(1).Query += String.Format("update db_universe_erp_file.dbo.[[sto]]file] set file_parentdate = '{0}' " &
                                                              "where file_parent = '{1}';", DatePart, RowID)
@@ -534,7 +523,7 @@ Namespace Commands.DAR
 
             Try
                 For Each Row As DataGridViewRow In FileGrid.Rows
-                    If Row.Cells("photo_status").Value = "Add" Then
+                    If Row.Cells("photo_status").Value Is "Add" Then
 
                         Dim Query As String = String.Empty
 
@@ -553,7 +542,7 @@ Namespace Commands.DAR
                         _CMD.Parameters.AddWithValue("@ParentDate", ParentDate)
 
                         Dim _MemoryStream = New MemoryStream()
-                        Dim _Image As Image = Row.Cells("photo_content").Value
+                        Dim _Image As Image = CType(Row.Cells("photo_content").Value, Image)
                         Dim _PhotoByte As Byte() = Nothing
 
                         _Image.Save(_MemoryStream, Imaging.ImageFormat.Jpeg) ', Row.Cells("file_content").Value)
@@ -583,7 +572,7 @@ Namespace Commands.DAR
 
             Try
                 For Each Row As DataGridViewRow In FileGrid.Rows
-                    If Row.Cells("file_status").Value = "Add" Then
+                    If Row.Cells("file_status").Value Is "Add" Then
 
                         Dim Query As String = String.Empty
 
@@ -602,7 +591,7 @@ Namespace Commands.DAR
                         _CMD.Parameters.AddWithValue("@ParentDate", ParentDate)
 
                         Dim _FileStream As FileStream = Nothing
-                        _FileStream = New FileStream(Row.Cells("file_content").Value, FileMode.Open, FileAccess.Read)
+                        _FileStream = New FileStream(Row.Cells("file_content").Value.ToString, FileMode.Open, FileAccess.Read)
 
                         Dim _MemoryStream = New MemoryStream()
                         _FileStream.CopyTo(_MemoryStream)

@@ -54,7 +54,7 @@ Module Globals
             Dim propertyInfo As PropertyInfo = systemType.GetProperty("DoubleBuffered", BindingFlags.Instance Or BindingFlags.NonPublic)
             propertyInfo.SetValue(GridView, True, Nothing)
         Catch ex As Exception
-            PUSHERRORDATA("[DblBuffer] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, True)
+            PUSHERRORDATA("[DblBuffer] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message.ToString, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
             PUSHERRORDATASHOW()
         End Try
     End Sub
@@ -85,7 +85,7 @@ Module Globals
                 FormName.Dispose()
             End If
         Catch ex As Exception
-            Call PUSHERRORDATA("[Display] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, True)
+            Call PUSHERRORDATA("[Display] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
             Call PUSHERRORDATASHOW()
         End Try
     End Sub
@@ -107,7 +107,7 @@ Module Globals
             V_APPVer = V_Major & "." & V_Minor & "." & V_Build & "." & V_Revision
             Return V_APPVer
         Catch ex As Exception
-            PUSHERRORDATA("[GETAPPVERSION] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, "0.0.0", False, True, True)
+            PUSHERRORDATA("[GETAPPVERSION] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, "0.0.0", False, True, True)
             PUSHERRORDATASHOW()
             V_APPVer = "0.0.0"
             Return V_APPVer
@@ -130,7 +130,7 @@ Module Globals
     ''' <param name="SaveError">True/False</param>
     ''' <param name="ResumeNext">Lanjutkan saat terjadi kesalahan</param>
     ''' <remarks></remarks>
-    Public Sub PUSHERRORDATA(ByVal FromSender As String, ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As Integer, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
+    Public Sub PUSHERRORDATA(ByVal FromSender As String, ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As String, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
         With ErrorCatcher
             .FromSender = FromSender
             .Type = ErrorType

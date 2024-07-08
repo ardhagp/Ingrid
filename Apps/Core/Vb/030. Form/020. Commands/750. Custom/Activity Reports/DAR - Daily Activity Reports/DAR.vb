@@ -509,7 +509,7 @@ Public Class DAR
             Clipboard.SetImage(CopyPicture)
         End If
         CopyPicture = Nothing
-        CopyPicture.Dispose()
+        'CopyPicture.Dispose()
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -533,7 +533,7 @@ Public Class DAR
             End If
         End If
         SavePicture = Nothing
-        SavePicture.Dispose()
+        'SavePicture.Dispose()
     End Sub
 
     <SupportedOSPlatform("windows")>

@@ -32,7 +32,7 @@ Namespace Commands.ACGR
             Dim _CompanyID As String = String.Empty
 
             If Not Company.Items.Count = 0 Then
-                _CompanyID = Company.SelectedValue
+                _CompanyID = Company.SelectedValue.ToString
             End If
 
             V_DBR_MSSQL2008(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as [book_bookname] from dbo.[[ac]]book] ab inner join dbo.[[man]]company] cm on ab.book_company = cm.company_id " &
@@ -59,7 +59,7 @@ Namespace Commands.ACGR
         Public Shared Sub GETAccountList(ByVal Assets As dgn, ByVal Liability As dgn, ByVal Equity As dgn, ByVal Revenue As dgn, ByVal Expense As dgn, ByVal AccountingBook As cbo, ByVal Find As txt, Optional ForceRefresh As Boolean = False)
             Dim V_CBO_Index As String
             'Isikan index combobox dengan data dari mainframe
-            V_CBO_Index = AccountingBook.SelectedValue
+            V_CBO_Index = AccountingBook.SelectedValue.ToString
 
             'Tampilkan data awal / tanpa filter / ForceRefresh=True
             If (Find.XOSQLText = String.Empty) Or (ForceRefresh = True) Then
@@ -159,7 +159,7 @@ Namespace Commands.ACGR
         Public Shared Sub FILLAccountingBook(ByVal AccountingBook As cbo, ByVal Company As cbo)
             Dim _CompanyID As String = String.Empty
             If Not Company.Items.Count = 0 Then
-                _CompanyID = Company.SelectedValue
+                _CompanyID = Company.SelectedValue.ToString
             End If
 
             V_DBR_MSSQL2008(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as [book_bookname] from dbo.[[ac]]book] ab inner join dbo.[[man]]company] cm on ab.book_company = cm.company_id " &
@@ -194,7 +194,7 @@ Namespace Commands.ACGR
         Public Shared Function GETCompanyID(ByVal RowID As String) As String
             Dim _CompanyID As String
             V_DBR_MSSQL2008(1).Query = String.Format("select ab.book_company from dbo.[[ac]]account] ac inner join dbo.[[ac]]book] ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", RowID)
-            _CompanyID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            _CompanyID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
             Return _CompanyID
         End Function
 
@@ -208,7 +208,7 @@ Namespace Commands.ACGR
         Public Shared Function GETAccountBookID(ByVal RowID As String) As String
             Dim _AccountBookID As String
             V_DBR_MSSQL2008(1).Query = String.Format("select ab.book_id from dbo.[[ac]]account] ac inner join dbo.[[ac]]book] ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", RowID)
-            _AccountBookID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            _AccountBookID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
             Return _AccountBookID
         End Function
 
@@ -222,7 +222,7 @@ Namespace Commands.ACGR
         Public Shared Function GETAccountGroupID(ByVal RowID As String) As String
             Dim V_AccountGroupID As String
             V_DBR_MSSQL2008(1).Query = String.Format("select ac.account_group from dbo.[[ac]]account] ac inner join dbo.[[ac]]book] ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", RowID)
-            V_AccountGroupID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            V_AccountGroupID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
             Return V_AccountGroupID
         End Function
 
@@ -236,7 +236,7 @@ Namespace Commands.ACGR
         Public Shared Function GETAccountNumber(ByVal RowID As String) As String
             Dim V_AccountNumber As String
             V_DBR_MSSQL2008(1).Query = String.Format("select ac.account_num from dbo.[[ac]]account] ac inner join dbo.[[ac]]book] ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", RowID)
-            V_AccountNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            V_AccountNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
             Return V_AccountNumber
         End Function
 
@@ -250,7 +250,7 @@ Namespace Commands.ACGR
         Public Shared Function GETAccountName(ByVal RowID As String) As String
             Dim V_AccountNumber As String
             V_DBR_MSSQL2008(1).Query = String.Format("select ac.account_name from dbo.[[ac]]account] ac inner join dbo.[[ac]]book] ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", RowID)
-            V_AccountNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            V_AccountNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
             Return V_AccountNumber
         End Function
 
@@ -258,7 +258,7 @@ Namespace Commands.ACGR
         Public Shared Function GETEnableTransaction(ByVal RowID As String) As Boolean
             Dim V_EnableTransaction As Boolean
             V_DBR_MSSQL2008(1).Query = String.Format("select ac.account_enable from dbo.[[ac]]account] ac inner join dbo.[[ac]]book] ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", RowID)
-            V_EnableTransaction = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            V_EnableTransaction = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
             Return V_EnableTransaction
         End Function
 
@@ -275,7 +275,7 @@ Namespace Commands.ACGR
 
             V_DBR_MSSQL2008(1).Query = String.Format("select count(ac.account_id) as [rows] from dbo.[[ac]]account] ac {0}", V_Where)
 
-            V_IsDuplicate = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            V_IsDuplicate = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
 
             If V_IsDuplicate > 0 Then
                 Return True
