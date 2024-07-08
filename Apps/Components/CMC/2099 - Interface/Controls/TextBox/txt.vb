@@ -432,10 +432,6 @@ Public Class txt
         End If
     End Sub
 
-    Private Sub txt_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles Me.KeyPress
-
-    End Sub
-
     Private Sub txt_Leave(sender As Object, e As System.EventArgs) Handles Me.Leave
         _varFlagAutoSelect = False
     End Sub
@@ -446,10 +442,6 @@ Public Class txt
             Me.Text = Me.Text.Trim()
         End If
 
-        'If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
-        '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
-        'ElseIf Me.XOHightlightSaatFokus AndAlso Not Me.Focused Then
-        '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
         If Me.ReadOnly = False Then
             If Me.XOHarusDiisi = True AndAlso Me.Text.Trim = "" Then
                 MyBase.BackColor = Me.XOHarusDiisiWarnaLatar

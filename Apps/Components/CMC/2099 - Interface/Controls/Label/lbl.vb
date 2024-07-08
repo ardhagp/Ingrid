@@ -22,20 +22,4 @@ Public Class lbl
             _varCustomElipsis = value
         End Set
     End Property
-
-    'Private _varTypeOfElipsis As TextFormatFlags
-    'Public Property SLFTypeOfElipsis As TextFormatFlags
-    '    Get
-    '        Return _varTypeOfElipsis
-    '    End Get
-    '    Set(value As TextFormatFlags)
-    '        _varTypeOfElipsis = value
-    '    End Set
-    'End Property
-
-    Private Sub lbl_TextChanged(sender As Object, e As EventArgs) Handles Me.TextChanged
-
-    End Sub
-
-
 End Class

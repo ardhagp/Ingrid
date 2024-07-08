@@ -51,10 +51,6 @@ Public Class EPLS_Position
         End If
     End Sub
 
-    Private Sub TxtFind_TextChanged(sender As Object, e As EventArgs) Handles TxtFind.TextChanged
-
-    End Sub
-
     <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
