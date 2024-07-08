@@ -55,7 +55,7 @@ Namespace Commands.CCIN
             V_DBR_MSSQL2008(1).Query = String.Format("select count(c.company_id) as [isduplicate] from dbo.[[man]]company] c {0}", V_Where)
 
 
-            V_IsDuplicate = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            V_IsDuplicate = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
 
             If V_IsDuplicate = 0 Then
                 Return False
@@ -90,7 +90,7 @@ Namespace Commands.CCIN
         Public Shared Function GETCompanyCode(ByVal RowID As String) As String
             Dim _Code As String
             V_DBR_MSSQL2008(0).Query = String.Format("select c.company_code from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
-            _Code = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _Code = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
             Return _Code
         End Function
 
@@ -98,7 +98,7 @@ Namespace Commands.CCIN
         Public Shared Function GETCompanyName(ByVal RowID As String) As String
             Dim _Name As String
             V_DBR_MSSQL2008(0).Query = String.Format("select c.company_name from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
-            _Name = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _Name = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
             Return _Name
         End Function
 
@@ -106,7 +106,7 @@ Namespace Commands.CCIN
         Public Shared Function GETSearchTerm1(ByVal RowID As String) As String
             Dim _SearchTerm As String
             V_DBR_MSSQL2008(0).Query = String.Format("select c.company_searchterm1 from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
-            _SearchTerm = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _SearchTerm = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
             Return _SearchTerm
         End Function
 
@@ -114,7 +114,7 @@ Namespace Commands.CCIN
         Public Shared Function GETSearchTerm2(ByVal RowID As String) As String
             Dim _SearchTerm As String
             V_DBR_MSSQL2008(0).Query = String.Format("select c.company_searchterm2 from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
-            _SearchTerm = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _SearchTerm = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
             Return _SearchTerm
         End Function
 
@@ -122,7 +122,7 @@ Namespace Commands.CCIN
         Public Shared Function GETDescription(ByVal RowID As String) As String
             Dim _Desciption As String
             V_DBR_MSSQL2008(0).Query = String.Format("select c.company_description from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
-            _Desciption = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _Desciption = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
             Return _Desciption
         End Function
     End Class

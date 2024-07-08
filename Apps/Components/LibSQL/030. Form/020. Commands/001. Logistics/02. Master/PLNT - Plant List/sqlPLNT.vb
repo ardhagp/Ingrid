@@ -43,7 +43,7 @@ Namespace Commands.PLNT
     Public Class Editor
         <SupportedOSPlatform("windows")>
         Public Shared Function IsDuplicate(ByVal CompanyCode As String, ByVal PlantCode As String, Optional ByVal RowID As String = "") As Boolean
-            RowID = 0
+            RowID = "0"
             Dim V_IsDuplicate As Boolean
 
             Try
@@ -53,7 +53,7 @@ Namespace Commands.PLNT
                     V_DBR_MSSQL2008(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.[[sys]]module] mods where mods.module_code = '{0}' and mods.module_id <> '{1}'")
                 End If
 
-                V_IsDuplicate = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+                V_IsDuplicate = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
 
                 Return V_IsDuplicate
             Catch ex As Exception

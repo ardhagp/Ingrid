@@ -6,7 +6,7 @@ Imports CMCv
 Namespace Commands.REMS
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayGrid(ByVal ProgressGrid As DataGridView, ByVal DoneGrid As DataGridView, ByVal VerifiedGrid As DataGridView, ByVal TodoStatusBar As stt, Optional ByVal ShowAll As Boolean = False)
+        Public Shared Sub DisplayGrid(ByVal ProgressGrid As dgn, ByVal DoneGrid As dgn, ByVal VerifiedGrid As dgn, ByVal TodoStatusBar As stt, Optional ByVal ShowAll As Boolean = False)
 
             Try
                 Dim _Where As String = "where td.todos_iscomplete = 0 "

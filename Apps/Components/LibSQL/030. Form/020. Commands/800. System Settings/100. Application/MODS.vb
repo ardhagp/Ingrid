@@ -43,7 +43,7 @@ Namespace Commands.MODS
                     V_DBR_MSSQL2008(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.[[sys]]module] mods where mods.module_code = '{0}' and mods.module_id <> '{1}'", Code.ToUpper, RowID.ToUpper)
                 End If
 
-                _IsDuplicate = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+                _IsDuplicate = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
 
                 Return _IsDuplicate
             Catch ex As Exception
@@ -65,7 +65,7 @@ Namespace Commands.MODS
             Dim _Code As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_code from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
-            _Code = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _Code = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
 
             Return _Code
         End Function
@@ -75,7 +75,7 @@ Namespace Commands.MODS
             Dim _Name As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_name from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
-            _Name = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _Name = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
 
             Return _Name
         End Function
@@ -85,19 +85,19 @@ Namespace Commands.MODS
             Dim _GroupID As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_modulegroup from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
-            _GroupID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _GroupID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
 
             Return _GroupID
         End Function
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GETMODDescription(ByVal RowID As String) As String
-            Dim _Description As Object
+            Dim _Description As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_description from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
-            _Description = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _Description = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
 
-            Return IIf(IsDBNull(_Description), "", _Description)
+            Return _Description
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -106,7 +106,7 @@ Namespace Commands.MODS
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_issystem from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
-                _IsSystem = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+                _IsSystem = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
 
                 Return _IsSystem
             Catch ex As Exception
@@ -120,7 +120,7 @@ Namespace Commands.MODS
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_ismaintenance from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
-                _IsLocked = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+                _IsLocked = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
 
                 Return _IsLocked
             Catch ex As Exception

@@ -3,7 +3,7 @@
 Namespace SystemLog.Activity
 
     Public Class User
-        ReadOnly _DBR_MSSQL2008(1)
+        ReadOnly _DBR_MSSQL2008(1) As String
 
         <SupportedOSPlatform("windows")>
         Public Sub LoginFailed(ByVal Username As String)
@@ -37,7 +37,7 @@ Namespace SystemLog.Activity
     End Class
 
     Public Class Application
-        ReadOnly _DBR_MSSQL2008(1)
+        ReadOnly _DBR_MSSQL2008(1) As String
 
         <SupportedOSPlatform("windows")>
         Public Sub Run()
