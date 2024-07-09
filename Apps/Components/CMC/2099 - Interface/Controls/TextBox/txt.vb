@@ -354,7 +354,7 @@ Public Class txt
 
         If (_Num.Upper > 0 AndAlso _Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
             _Bonus.Combo = 25
-        ElseIf (_Num.Upper > 0 AndAlso _Num.Numbers > 0) OrElse (_Num.Upper > 0 AndAlso _Num.Symbols > 0) Or (_Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
+        ElseIf (_Num.Upper > 0 AndAlso _Num.Numbers > 0) OrElse (_Num.Upper > 0 AndAlso _Num.Symbols > 0) OrElse (_Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
             _Bonus.Combo = 15
         End If
 
