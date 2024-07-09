@@ -68,6 +68,7 @@ steps:
     command: 'restore'
     restoreSolution: '**/*.sln'
     feedsToUse: 'config'
+    noCache: false
     nugetConfigPath: './Apps/Core/Vb/NuGet.config'
     externalFeedCredentials: 'ingrid'
 
