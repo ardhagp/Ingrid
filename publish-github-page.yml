@@ -205,22 +205,28 @@ steps:
     publishLocation: 'Container'
 
 #Direct publish to Github Pages
-- task: GitHubPagesPublish@1
-  displayName: 'Publishing App To Github Pages'
-  inputs:
-    docPath: '$(build.ArtifactStagingDirectory)\*'
-    githubusername: 'ardhagp'
-    githubemail: '$(var_g_Email)'
-    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
-    repositoryname: 'Ingrid'
-    branchname: 'publish'
-    commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
-
-#This task is alternative to publish Ingrid App to Github Page
-#- task: PowerShell@2
-#  displayName: 'Executing Powershell'
+#- task: GitHubPagesPublish@1
+#  displayName: 'Publishing App To Github Pages'
 #  inputs:
-#    filePath: '$(System.DefaultWorkingDirectory)\Script\publish.ps1'
+#    docPath: '$(build.ArtifactStagingDirectory)\*'
+#    githubusername: 'ardhagp'
+#    githubemail: '$(var_g_Email)'
+#    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
+#    repositoryname: 'Ingrid'
+#    branchname: 'publish'
+#    commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
+
+- task: AzureStaticWebApp@0
+  displayName: 'Publishing Static Web App'
+  inputs:
+    workingDirectory: '$(build.ArtifactStagingDirectory)\*'
+    app_location: '/'
+    api_location: '/api'
+    skip_app_build: true
+    skip_api_build: true
+    is_static_export: true
+    azure_static_web_apps_api_token: '$(var_g_TOKEN_SWA)'
+    production_branch: 'publish'
 
 #List of File in $(Build.SourcesDirectory)
 - task: CmdLine@2
