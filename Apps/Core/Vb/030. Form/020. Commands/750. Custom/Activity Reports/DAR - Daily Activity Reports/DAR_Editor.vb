@@ -13,6 +13,7 @@ Public Class DAR_Editor
     Private _DS(2) As DataSet
     Private _PhotoByte As Byte()
     Private _ExtQuery As String
+    Private varHour, varMinute As String
 #End Region
 
 #Region "Sub Collections"
@@ -93,13 +94,19 @@ Public Class DAR_Editor
 
         DgnPictureList.XOGETNewColor()
 
+        If Now.Hour.ToString.Length = 1 Then
+            varHour = "0" & Now.Hour
+        ElseIf Now.Minute.ToString.Length = 1 Then
+            varMinute = "0" & Now.Minute
+        End If
+
         If (V_FORMAttrib.IsNew) Then
             V_FORMAttrib.RowID = CMCv.Security.Encrypt.MD5()
-            MebStart.Text = If(Convert.ToString(Now.Hour).Length = 0, "00", If(Convert.ToString(Now.Hour).Length = 1, "0" & Now.Hour, Now.Hour)) & ":" & If(Convert.ToString(Now.Minute).Length = 0, "00", If(Convert.ToString(Now.Minute).Length = 1, "0" & Now.Minute, Now.Minute))
+            MebStart.Text = varHour & ":" & varMinute
             MebEnd.Text = MebStart.Text
             TxtContent.Text = String.Empty
             ChkAddNew.Visible = True
-            DtpStart.MinDate = "01/01/" & Year(Now())
+            DtpStart.MinDate = CType("01/01/" & Year(Now()), Date)
         Else
             Call LoadData()
             ChkAddNew.Visible = False
@@ -164,13 +171,13 @@ Public Class DAR_Editor
             Return
         End If
 
-        If (Commands.DAR.Editor.PUSHData(CboArea.SelectedValue, CboTemplate.SelectedValue, DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, MebStart.Text.Replace(".", ":"), DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, MebEnd.Text.Replace(".", ":"), TxtContent.XOSQLText, TxtFeedback.XOSQLText, V_USERAttrib.UID, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, _ExtQuery)) Then
+        If (Commands.DAR.Editor.PUSHData(CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, MebStart.Text.Replace(".", ":"), DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, MebEnd.Text.Replace(".", ":"), TxtContent.XOSQLText, TxtFeedback.XOSQLText, V_USERAttrib.UID, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, _ExtQuery)) Then
             _ExtQuery = String.Empty
             Mainframe_n_6.Ts_status.Text = "Success"
 
             Dim _NewPhotoAdded As Integer = 0
             For Each _Row As DataGridViewRow In DgnPictureList.Rows
-                If _Row.Cells("photo_status").Value = "Add" Then
+                If _Row.Cells("photo_status").Value.ToString Is "Add" Then
                     _NewPhotoAdded += 1
                 End If
             Next
@@ -189,7 +196,7 @@ Public Class DAR_Editor
             'Add new File
             Dim _NewFileAdded As Integer = 0
             For Each _Row As DataGridViewRow In DgnFileList.Rows
-                If _Row.Cells("file_status").Value = "Add" Then
+                If _Row.Cells("file_status").Value.ToString Is "Add" Then
                     _NewFileAdded += 1
                 End If
             Next
@@ -324,10 +331,10 @@ Public Class DAR_Editor
     <SupportedOSPlatform("windows")>
     Private Sub DgnPictureList_SLF_Selected() Handles DgnPictureList.XOSelected
         If DgnPictureList.RowCount <> 0 Then
-            If DgnPictureList.CurrentRow.Cells("photo_status").Value = "Add" Then
-                PctbxPhoto.Image = DgnPictureList.CurrentRow.Cells("photo_content").Value
+            If DgnPictureList.CurrentRow.Cells("photo_status").Value.ToString Is "Add" Then
+                PctbxPhoto.Image = CType(DgnPictureList.CurrentRow.Cells("photo_content").Value, Image)
             Else
-                _PhotoByte = DgnPictureList.CurrentRow.Cells("photo_content").Value
+                _PhotoByte = CType(DgnPictureList.CurrentRow.Cells("photo_content").Value, Byte())
                 Dim _PhotoStream = New System.IO.MemoryStream(_PhotoByte)
 
                 PctbxPhoto.Image = System.Drawing.Image.FromStream(_PhotoStream)

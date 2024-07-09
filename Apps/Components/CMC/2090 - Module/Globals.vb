@@ -104,7 +104,7 @@ Module Globals
 
     '        Return Message
     '    Catch ex As Exception
-    '        Call PUSHERRORDATA("[CREATESECURITY] $\Ingrid\Apps\Components\CMC\2090 - Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+    '        Call PUSHERRORDATA("[CREATESECURITY] $\Ingrid\Apps\Components\CMC\2090 - Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
     '        PUSHERRORDATASHOW()
     '        Return Nothing
     '    End Try

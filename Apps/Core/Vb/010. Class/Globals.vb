@@ -2,7 +2,7 @@
 
     Public Class GlobalRecord
         Property IsNew As Boolean
-        Property RowID As Object
+        Property RowID As String
         Property Hash As String
         Property Password As String
         Property IsChangePasswordForm As Boolean

@@ -43,7 +43,7 @@ Namespace Commands.MODS
                     V_DBR_MSSQL2008(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.[[sys]]module] mods where mods.module_code = '{0}' and mods.module_id <> '{1}'", Code.ToUpper, RowID.ToUpper)
                 End If
 
-                _IsDuplicate = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                _IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Boolean)
 
                 Return _IsDuplicate
             Catch ex As Exception
@@ -106,7 +106,7 @@ Namespace Commands.MODS
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_issystem from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
-                _IsSystem = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                _IsSystem = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Boolean)
 
                 Return _IsSystem
             Catch ex As Exception
@@ -120,7 +120,7 @@ Namespace Commands.MODS
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_ismaintenance from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
-                _IsLocked = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                _IsLocked = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Boolean)
 
                 Return _IsLocked
             Catch ex As Exception

@@ -37,13 +37,13 @@ Namespace Application
                 Dim _IsRoot As Integer = 0
                 V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) from dbo.[[sys]]user] usr where (usr.user_id = '{0}') and (usr.user_root = 1)", UID)
 
-                _IsRoot = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+                _IsRoot = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
                 If _IsRoot = 1 Then
                     Return True
                 Else
                     V_DBR_MSSQL2008(1).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from dbo.[[sys]]useraccess] uac inner join dbo.[[sys]]module] mo on mo.module_id = uac.useraccess_module where (mo.module_code = '{0}') and (uac.useraccess_user = '{1}') and ({2} = 1)", TCode, UID, V_TypeOfAccess)
-                    V_View = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+                    V_View = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
                     If V_View = 0 Then
                         Return False
@@ -67,7 +67,7 @@ Namespace Application
 
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select count(mo.module_id) from dbo.[[sys]]module] mo where mo.module_code = '{0}'", TCODE)
-                V_isExist = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+                V_isExist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
 
                 Return V_isExist
             Catch ex As Exception
@@ -81,7 +81,7 @@ Namespace Application
 
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select count(mo.module_id) from dbo.[[sys]]module] mo where mo.module_code = '{0}' and mo.module_ismaintenance = 'true'", TCODE)
-                V_isLocked = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+                V_isLocked = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
 
                 Return V_isLocked
             Catch ex As Exception
@@ -111,7 +111,7 @@ Namespace Application
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_uploadpdf from db_universe_erp.dbo.[[sys]]settings] s")
 
-                V_SettingValue = Convert.ToDouble(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                V_SettingValue = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Double)
             Catch ex As Exception
                 V_SettingValue = 0.9
             End Try
@@ -126,7 +126,7 @@ Namespace Application
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_uploadphoto from db_universe_erp.dbo.[[sys]]settings] s")
 
-                V_SettingValue = Convert.ToDouble(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                V_SettingValue = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Double)
             Catch ex As Exception
                 V_SettingValue = 0.9
             End Try
@@ -141,7 +141,7 @@ Namespace Application
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_minpasswordlength from db_universe_erp.dbo.[[sys]]settings] s")
 
-                V_MinPasswordLength = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                V_MinPasswordLength = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
             Catch ex As Exception
                 V_MinPasswordLength = 8
             End Try
@@ -156,7 +156,7 @@ Namespace Application
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select s.settings_showwatermark from dbo.[[sys]]settings] s where s.settings_id = 1")
-                V_Value = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                V_Value = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
                 V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_textmark from db_universe_erp.dbo.[[sys]]settings] s")
 
@@ -182,7 +182,7 @@ Namespace Application
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select count(nt.notification_id) as [new_notification] from dbo.[[sys]]notification] nt where (nt.notification_employee = '{0}') and (nt.notification_isread = 0)", EmployeeID)
-                V_isExist = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                V_isExist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
                 Return V_isExist
             Catch ex As Exception
@@ -200,7 +200,7 @@ Namespace Application
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select s.settings_showrunningtext from dbo.[[sys]]settings] s where s.settings_id = 1")
-                V_Value = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                V_Value = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
                 If V_Value = 1 AndAlso (IsAdministrator) Then
                     Return True
@@ -225,7 +225,7 @@ Namespace Application
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_showstorage from dbo.[[sys]]settings] s")
-                V_Value = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                V_Value = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
                 If V_Value = 1 AndAlso (IsAdmininstrator) Then
                     Return True
@@ -247,7 +247,7 @@ Namespace Application
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp'")
-                V_Size = Convert.ToDouble(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                V_Size = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Double)
 
                 Return V_Size
             Catch ex As Exception
@@ -261,7 +261,7 @@ Namespace Application
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp_file'")
-                V_Size = Convert.ToDouble(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query, "db_universe_erp_file"))
+                V_Size = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query, "db_universe_erp_file"), Double)
 
                 Return V_Size
             Catch ex As Exception
@@ -285,10 +285,10 @@ Namespace Application
                 'Line 1 For Production
                 If SizeType = 1 Then
                     V_DBR_MSSQL2008(0).Query = String.Format("SELECT max_db_size_in_gb = CASE WHEN engine_edition = 4 THEN CASE WHEN d.sversion_name LIKE '%203%' THEN (10 * 1024)  WHEN d.sversion_name LIKE '%202%' THEN (10 * 1024)  WHEN d.sversion_name LIKE '%201%' THEN (10 * 1024) WHEN d.sversion_name LIKE '%2008 R2%' THEN (10 * 1024) WHEN d.sversion_name LIKE '%2008%' THEN (4 * 1024) WHEN d.sversion_name LIKE '%2005%' THEN (4 * 1024) END ELSE '0' END FROM (SELECT sversion_name = v.ver, engine_edition = SERVERPROPERTY('EngineEdition'), edition = SERVERPROPERTY('Edition'), server_name = SERVERPROPERTY('ServerName') FROM (SELECT ver = @@VERSION) v) d")
-                    V_Size = Convert.ToDouble(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query, DBName))
+                    V_Size = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query, DBName), Double)
                 Else
                     V_DBR_MSSQL2008(0).Query = "select sv.var_value from [dbo].[[sys]]variables] sv where sv.var_name = 'drive_free_space'"
-                    V_Size = Convert.ToDouble(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query, DBName))
+                    V_Size = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query, DBName), Double)
                 End If
 
 
@@ -314,7 +314,7 @@ Namespace Application
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select f.file_content from db_universe_erp_file.dbo.[[sto]]file] f where f.file_parent = '{0}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'", EmployeeID)
-                V_Bytes = System.Text.Encoding.Default.GetBytes(Convert.ToChar(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)))
+                V_Bytes = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Byte())
 
                 If Not IsNothing(V_Bytes) Then
                     V_Photo = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(V_Bytes)
@@ -339,7 +339,7 @@ Namespace Application
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_showprofile from dbo.[[sys]]settings] s")
-                V_Value = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                V_Value = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
                 If V_Value = 1 AndAlso (IsAdministrator) Then
                     Return True

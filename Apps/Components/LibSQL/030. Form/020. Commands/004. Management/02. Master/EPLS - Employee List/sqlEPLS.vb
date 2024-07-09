@@ -149,7 +149,7 @@ Namespace Commands.EPLS
 
             V_DBR_MSSQL2008(1).Query = String.Format("select e.employee_birthdate from dbo.[[man]]employee] e where e.employee_id = '{0}'", RowID)
 
-            V_BirthDate = Convert.ToDateTime(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+            V_BirthDate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Date)
 
             Return V_BirthDate
         End Function
@@ -238,7 +238,7 @@ Namespace Commands.EPLS
 
             V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_active from dbo.[[man]]employee] em where (em.employee_id = '{0}')", RowID)
 
-            V_ActiveEmployee = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+            V_ActiveEmployee = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
 
             Return V_ActiveEmployee
         End Function
@@ -262,7 +262,7 @@ Namespace Commands.EPLS
             Dim V_IsHavePhoto As Integer
 
             V_DBR_MSSQL2008(0).Query = String.Format("select count(f.file_id) as total from db_universe_erp_file.dbo.[[sto]]file] f where (f.file_parent = '{0}') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');", RowID)
-            V_IsHavePhoto = convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+            V_IsHavePhoto = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
             Return V_IsHavePhoto
         End Function
@@ -274,7 +274,7 @@ Namespace Commands.EPLS
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select f.file_content from db_universe_erp_file.dbo.[[sto]]file] f where f.file_parent = '{0}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'", RowID)
-                V_Bytes = System.Text.Encoding.Default.GetBytes(Convert.ToChar(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)))
+                V_Bytes = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Byte())
 
                 If Not IsNothing(V_Bytes) Then
                     V_Photo = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(V_Bytes)
@@ -295,7 +295,7 @@ Namespace Commands.EPLS
             Else
                 V_DBR_MSSQL2008(1).Query = String.Format("select count(em.employee_personalid) from dbo.[[man]]employee] em where (em.employee_personalid = '{0}' and em.employee_id <> '{1}')", PersonalID, EmployeeID)
             End If
-            V_IsExist = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+            V_IsExist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
             If V_IsExist = 0 Then
                 Return False
@@ -309,7 +309,7 @@ Namespace Commands.EPLS
             Dim V_IsExist As Integer
 
             V_DBR_MSSQL2008(1).Query = String.Format("select count(ps.position_id) as [rows] from dbo.[[man]]position] ps where (ps.position_id = '{0}')", PositionID)
-            V_IsExist = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+            V_IsExist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
             If V_IsExist = 0 Then
                 Return False
@@ -335,7 +335,7 @@ Namespace Commands.EPLS
             V_DBR_MSSQL2008(1).Query = String.Format("select count(em.employee_id) as [rows] from dbo.[[man]]employee] em inner join dbo.[[man]]position] ps on ps.position_id = em.employee_position " &
                                                     "inner join dbo.[[man]]departement] dp on dp.departement_id = ps.position_departement {0}", V_Where)
 
-            V_IsDuplicate = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+            V_IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
             If V_IsDuplicate = 0 Then
                 Return False

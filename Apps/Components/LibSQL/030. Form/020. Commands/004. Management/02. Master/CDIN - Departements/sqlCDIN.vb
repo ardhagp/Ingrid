@@ -56,7 +56,7 @@ Namespace Commands.CDIN
 
             V_DBR_MSSQL2008(0).Query = String.Format("select count(d.departement_id) as [rows] from dbo.[[man]]departement] d {0}", _Where)
 
-            _IsDuplicate = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+            _IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
             If _IsDuplicate = 0 Then
                 Return False

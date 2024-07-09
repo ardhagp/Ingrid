@@ -258,7 +258,7 @@ Namespace Commands.ACGR
         Public Shared Function GETEnableTransaction(ByVal RowID As String) As Boolean
             Dim V_EnableTransaction As Boolean
             V_DBR_MSSQL2008(1).Query = String.Format("select ac.account_enable from dbo.[[ac]]account] ac inner join dbo.[[ac]]book] ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", RowID)
-            V_EnableTransaction = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+            V_EnableTransaction = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
             Return V_EnableTransaction
         End Function
 
@@ -275,7 +275,7 @@ Namespace Commands.ACGR
 
             V_DBR_MSSQL2008(1).Query = String.Format("select count(ac.account_id) as [rows] from dbo.[[ac]]account] ac {0}", V_Where)
 
-            V_IsDuplicate = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+            V_IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
             If V_IsDuplicate > 0 Then
                 Return True

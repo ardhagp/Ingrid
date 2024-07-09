@@ -65,7 +65,7 @@ Namespace Database.Engine
                     Return False
                 End If
             Catch ex As Exception
-                Call PUSHERRORDATA("[CheckDBCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[CheckDBCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
                 Return False
             End Try
@@ -77,7 +77,7 @@ Namespace Database.Engine
                 Dim var_location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
 
                 If Not (CheckDBCatalog()) Then
-                    Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, "File configuration Not found", 0, "", GETAPPVERSION, False, True, False)
+                    Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, "File configuration Not found", 0.ToString, "", GETAPPVERSION, False, True, False)
                     Call PUSHERRORDATASHOW()
                     Return
                 End If
@@ -113,7 +113,7 @@ Namespace Database.Engine
                 '                MsgBox("One Of your components has been missing", MsgBoxStyle.OkOnly, "Ingrid Supporting App")
                 'Application.Exit()
             Catch ex As Exception
-                Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
             End Try
         End Sub
@@ -123,17 +123,18 @@ Namespace Database.Engine
             Try
                 v_DR(1) = GETDATAROW("Select LIST.SERVERADDRESS, LIST.USERNAME, LIST.PASSWORD, LIST.SERVERPORT, LIST.DBFORDATA, LIST.DBFORFILE FROM LIST WHERE LIST.DEFAULTCONNECTION =1;")
 
-                Fields.ServerAddress = v_DR(1).GetString(0)
-                Fields.Username = v_DR(1).GetString(1)
-                'Fields.Password = V_SECDecrypt.Rijndael(v_DR(1).GetString(2))
-                Fields.Password = CMCv.Security.Decrypt.AES(v_DR(1).GetString(2))
-                Fields.Port = v_DR(1).GetValue(3)
-                Fields.DataStorage = v_DR(1).GetString(4)
-                Fields.FileStorage = v_DR(1).GetString(5)
+                With v_DR(1)
+                    Fields.ServerAddress = .GetString(0)
+                    Fields.Username = .GetString(1)
+                    Fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
+                    Fields.Port = CType(.GetValue(3), Integer)
+                    Fields.DataStorage = .GetString(4)
+                    Fields.FileStorage = .GetString(5)
+                End With
 
                 Return Fields
             Catch ex As Exception
-                Call PUSHERRORDATA("[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
                 Return Nothing
             End Try
@@ -145,7 +146,7 @@ Namespace Database.Engine
                 Dim NowDateTime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
                 Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & ErrorCatcher.Type & "','" & ErrorCatcher.Message & "'," & ErrorCatcher.Number & ",'" & ErrorCatcher.InternalStackTrace & "'," & ErrorCatcher.EnableErrorReporting & ",'" & NowDateTime & "');")
             Catch ex As Exception
-                PUSHERRORDATA("[SaveErrorData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+                PUSHERRORDATA("[SaveErrorData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 PUSHERRORDATASHOW()
             End Try
         End Sub
@@ -167,7 +168,7 @@ Namespace Database.Engine
 
                 Return v_DR(0)
             Catch ex As SqlClient.SqlException
-                Call PUSHERRORDATA("[GETDATAROW] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.StackTrace, ex.ErrorCode, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GETDATAROW] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.StackTrace, ex.ErrorCode.ToString, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
                 Return Nothing
             End Try
@@ -189,7 +190,7 @@ Namespace Database.Engine
 
                 Return v_ROWValue
             Catch ex As Exception
-                Call PUSHERRORDATA("[GETVALUE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GETVALUE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
                 Return Nothing
             End Try
@@ -207,7 +208,7 @@ Namespace Database.Engine
 
                 GC.Collect()
 
-                Dim v_DS As New DataSet
+                Dim varDataset As New DataSet
                 Dim v_BS As New BindingSource
 
                 If (v_CMD(1) Is Nothing) Then 'Or (_CMD = Nothing) Then
@@ -223,9 +224,9 @@ Namespace Database.Engine
                 v_CMD(1).CommandText = DBR.Query
 
                 v_DA(1) = New SqlClient.SqlDataAdapter(v_CMD(1))
-                v_DA(1).Fill(v_DS, TableName)
+                v_DA(1).Fill(varDataset, TableName)
 
-                v_BS = New BindingSource(v_DS, TableName)
+                v_BS = New BindingSource(varDataset, TableName)
 
                 If Not (DBR.DataGrid Is Nothing) Then
                     DBR.DataGrid.DataSource = v_BS
@@ -244,13 +245,13 @@ Namespace Database.Engine
                 End If
 
             Catch ex As SqlClient.SqlException
-                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
             Catch ex As InvalidCastException
-                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
             Catch ex As Exception
-                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
             End Try
         End Sub
@@ -266,7 +267,7 @@ Namespace Database.Engine
 
                 v_CMD(1).ExecuteNonQuery()
             Catch ex As SqlClient.SqlException
-                Call PUSHERRORDATA("[PUSHDATA] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.ErrorCode, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[PUSHDATA] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.ErrorCode.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
             End Try
         End Sub

@@ -28,7 +28,7 @@ Public Class frmImports
         Dim FileLoaded As Integer = 0
 
         od.Filter = "Comma Separated Values|*.csv"
-        od.InitialDirectory = Environment.SpecialFolder.MyDocuments
+        od.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString
         FileLoaded = od.ShowDialog()
         If FileLoaded <> System.Windows.Forms.DialogResult.Cancel Then
             _varOriginalSourceFile = od.FileName

@@ -32,7 +32,7 @@ Public Class PDFVWR
     End Enum
 
     Public Sub PDFVWR_LoadDocument(ByVal FS As Object, ByVal FileName As String)
-        PDFContent.Load(FS)
+        PDFContent.Load(CType(FS, Stream))
     End Sub
 
     Public Sub PDFVWR_EnableFileOpen(ByVal EnableProperties As IsActive)

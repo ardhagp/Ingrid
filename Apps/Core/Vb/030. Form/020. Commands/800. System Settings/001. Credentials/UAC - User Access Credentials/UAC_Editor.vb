@@ -29,8 +29,8 @@ Public Class UAC_Editor
 #End Region
 
     Private Sub _AddinEmployee_RecordSelected() Handles _AddinEmployee.RecordSelected
-        TxtEmployeeNumber.Text = IIf(IsDBNull(V_FORMAttrib.Field02), "", V_FORMAttrib.Field02)
-        TxtEmployeeFullName.Text = V_FORMAttrib.Field03
+        TxtEmployeeNumber.Text = IIf(IsDBNull(V_FORMAttrib.Field02), "", V_FORMAttrib.Field02).ToString
+        TxtEmployeeFullName.Text = V_FORMAttrib.Field03.ToString
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -98,7 +98,7 @@ Public Class UAC_Editor
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Call CheckAllInput()
 
-        If ((V_FORMAttrib.IsNew) AndAlso (V_FORMAttrib.Field01 = String.Empty)) Then
+        If ((V_FORMAttrib.IsNew) AndAlso (V_FORMAttrib.Field01.ToString Is String.Empty)) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Employee data selected.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
@@ -117,7 +117,7 @@ Public Class UAC_Editor
 
         Call CheckPWDChange()
 
-        If (Commands.UAC.Editor.PUSHData(V_FORMAttrib.Field01, TxtUsername.XOSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, V_FORMAttrib.RowID, V_FORMAttrib.Hash, _PWDChange)) Then
+        If (Commands.UAC.Editor.PUSHData(V_FORMAttrib.Field01.ToString, TxtUsername.XOSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, V_FORMAttrib.RowID, V_FORMAttrib.Hash, _PWDChange)) Then
             RaiseEvent RecordSaved()
             Mainframe_n_6.Ts_status.Text = "Success"
         Else

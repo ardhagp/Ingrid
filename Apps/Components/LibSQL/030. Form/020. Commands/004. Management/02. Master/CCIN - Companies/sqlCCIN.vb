@@ -55,7 +55,7 @@ Namespace Commands.CCIN
             V_DBR_MSSQL2008(1).Query = String.Format("select count(c.company_id) as [isduplicate] from dbo.[[man]]company] c {0}", V_Where)
 
 
-            V_IsDuplicate = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+            V_IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
             If V_IsDuplicate = 0 Then
                 Return False

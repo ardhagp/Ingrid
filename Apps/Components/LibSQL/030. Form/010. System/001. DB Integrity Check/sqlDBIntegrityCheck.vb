@@ -24,7 +24,7 @@ Namespace Commands.DBIC
 
             V_DBR_MSSQL2008(0).Query = String.Format("select count(c.company_id) as [company_count] from dbo.[[man]]company] as c")
 
-            V_IsExist = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+            V_IsExist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
             If V_IsExist > 0 Then
                 Return True
@@ -39,7 +39,7 @@ Namespace Commands.DBIC
 
             V_DBR_MSSQL2008(0).Query = String.Format("select count(d.departement_id) as [department_count] from dbo.[[man]]departement] as d")
 
-            V_IsExist = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+            V_IsExist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
             If V_IsExist > 0 Then
                 Return True

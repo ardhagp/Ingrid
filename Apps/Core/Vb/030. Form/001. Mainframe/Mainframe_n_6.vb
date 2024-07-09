@@ -46,26 +46,26 @@ Public Class Mainframe_n_6
     <SupportedOSPlatform("windows")>
     Private Sub CommandAutoComplete()
         Try
-            Dim V_DS As New DataSet
-            Dim V_List As New AutoCompleteStringCollection
+            Dim varDataset As New DataSet
+            Dim varList As New AutoCompleteStringCollection
 
             'Txt_shortcut.AutoCompleteSource = Nothing
             Txt_shortcut.AutoCompleteMode = AutoCompleteMode.SuggestAppend
 
-            V_DS = _SQL_Modules.DisplayAutoComplete '.DisplayAutoComplete(V_FORMAttrib.RowID, DgnPictureList)
+            varDataset = _SQL_Modules.DisplayAutoComplete '.DisplayAutoComplete(V_FORMAttrib.RowID, DgnPictureList)
 
-            If V_DS Is Nothing Then
+            If varDataset Is Nothing Then
                 Exit Sub
             End If
 
-            For i As Integer = 0 To V_DS.Tables("TCMD").Rows.Count - 1
-                V_List.Add(V_DS.Tables("TCMD").Rows(i).Item("module_code"))
+            For i As Integer = 0 To varDataset.Tables("TCMD").Rows.Count - 1
+                varList.Add(varDataset.Tables("TCMD").Rows(i).Item("module_code").ToString)
             Next
 
-            Txt_shortcut.AutoCompleteCustomSource = V_List
+            Txt_shortcut.AutoCompleteCustomSource = varList
             Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
         Catch ex As Exception
-            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, True)
+            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
         End Try
     End Sub
 
@@ -113,7 +113,7 @@ Public Class Mainframe_n_6
                 Next
             End If
         Catch ex As Exception
-            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, True)
+            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
             PUSHERRORDATASHOW()
         End Try
     End Sub
@@ -241,7 +241,7 @@ Public Class Mainframe_n_6
             Display(V_UAC_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Change My Account", "Update your account username or password", True)
 
         Catch ex As Exception
-            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, True)
+            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
             PUSHERRORDATASHOW()
         End Try
     End Sub
@@ -254,7 +254,7 @@ Public Class Mainframe_n_6
             TmrNotif.Enabled = True
             RaiseEvent IngridFrameOpen()
 
-            Bridge.Security.WRITELOG.SENDLOG("Ingrid Main App is opened.", Bridge.Security.WRITELOG.LogType.Information)
+            Bridge.Security.Writelog.Sendlog("Ingrid Main App is opened.", Bridge.Security.Writelog.LogType.Information)
 
             Call ActivateLicenses()
 
@@ -291,7 +291,7 @@ Public Class Mainframe_n_6
                 DISPLAY(frmFistGuide,, "First Guide", "", True, Me)
             End If
         Catch ex As Exception
-            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
             PUSHERRORDATASHOW()
         End Try
     End Sub
@@ -304,7 +304,7 @@ Public Class Mainframe_n_6
         Try
             With Tv_mainframe.SelectedNode
                 If .Name = "nd_file" Then
-                    Call EnterCommand(.Tag)
+                    Call EnterCommand(.Tag.ToString)
                 End If
             End With
         Catch ex As Exception
@@ -458,27 +458,27 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub GetStorage()
-        Dim V_DataCurrentSize As Double
-        Dim V_FileCurrentSize As Double
-        Dim V_FreeSpace As String
+        Dim V_DataCurrentSize As Integer
+        Dim V_FileCurrentSize As Integer
+        Dim V_FreeSpace As Integer
 
         PnlStorage.Visible = LibSQL.Application.StorageSense.Show(V_USERAttrib.IsAdministrator)
 
         If (PnlStorage.Visible) Then
             PnlStorage.Height = 158
 
-            V_FreeSpace = LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp")
+            V_FreeSpace = CType(LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp"), Integer)
             pgDataStorage.Maximum = V_FreeSpace
 
-            V_DataCurrentSize = LibSQL.Application.StorageSense.DataCurrentSize
+            V_DataCurrentSize = CType(LibSQL.Application.StorageSense.DataCurrentSize, Integer)
             pgDataStorage.Value = V_DataCurrentSize
 
             lblDataStorage.Text = String.Format("{0} / {1}", IIf(V_DataCurrentSize < 1024, V_DataCurrentSize & " MB", Math.Round((V_DataCurrentSize / 1024), 2) & " GB"), Math.Round((V_FreeSpace / 1024), 2) & " GB")
 
-            V_FreeSpace = LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp_file")
+            V_FreeSpace = CType(LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp_file"), Integer)
             pgFileStorage.Maximum = V_FreeSpace
 
-            V_FileCurrentSize = LibSQL.Application.StorageSense.FileCurrentSize
+            V_FileCurrentSize = CType(LibSQL.Application.StorageSense.FileCurrentSize, Integer)
             pgFileStorage.Value = V_FileCurrentSize
 
             lblFileStorage.Text = String.Format("{0} / {1}", IIf(V_FileCurrentSize < 1024, V_FileCurrentSize & " MB", Math.Round((V_FileCurrentSize / 1024), 2) & " GB"), Math.Round((V_FreeSpace / 1024), 2) & " GB")

@@ -20,7 +20,7 @@ Public Class MODS
         V_FORMAttrib.RowID = "-1"
 
         If DgnMODS.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnMODS.CurrentRow.Cells("module_id").Value
+            V_FORMAttrib.RowID = DgnMODS.CurrentRow.Cells("module_id").Value.ToString
         End If
     End Sub
 #End Region

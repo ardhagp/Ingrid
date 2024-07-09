@@ -60,15 +60,15 @@ Public Class POST_Editor
         If (CboDepartement.Items.Count = 0) OrElse (TxtPositionCode.XOSQLText = String.Empty) OrElse (TxtPositionName.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Departement selected, Postition Code and Position Description are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf ((V_FORMAttrib.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
+        ElseIf ((V_FORMAttrib.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
+        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (LibSQL.Commands.POST.Editor.PUSHData(CboDepartement.SelectedValue, TxtPositionCode.XOSQLText, TxtPositionName.XOSQLText, TxtPositionDescription.XOSQLText, V_FORMAttrib.RowID)) Then
+        If (LibSQL.Commands.POST.Editor.PUSHData(CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, TxtPositionName.XOSQLText, TxtPositionDescription.XOSQLText, V_FORMAttrib.RowID)) Then
             Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else

@@ -24,7 +24,7 @@ Namespace Commands.DAR
                 V_DBR_MSSQL2008(0).Query = String.Format("select count(mods.modulesettings_id) from dbo.[[sys]]modulesettings] mods inner join " &
                                                         "dbo.[[sys]]module] mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') " &
                                                         "and (mods.modulesettings_user = '{0}') and (mods.modulesettings_attribute = '{1}')", UID, _Attribute(_Row))
-                _IsExist = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                _IsExist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
                 If _IsExist = 0 Then
                     V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.[[sys]]modulesettings](modulesettings_id, modulesettings_module," &
@@ -41,7 +41,7 @@ Namespace Commands.DAR
                                                     "mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') and " &
                                                     "(mods.modulesettings_user = '{0}') and (mods.modulesettings_attribute = '{1}')", UID, "ViewPhotoTab")
 
-            _Value = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+            _Value = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Boolean)
 
             Return _Value
         End Function
@@ -329,7 +329,7 @@ Namespace Commands.DAR
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select count(ff.filefeedback_id) as [islike] from db_universe_erp_file.dbo.[[sto]]filefeedback] ff " &
                                                         "where ff.filefeedback_file = '{0}' and ff.filefeedback_employee = '{1}';", FileID, EID)
-                V_Result = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+                V_Result = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
             Catch ex As Exception
                 V_Result = 0
@@ -401,7 +401,6 @@ Namespace Commands.DAR
             Dim V_TimeParts(1) As TimeSpan
             Dim V_TimePart(3) As String
 
-
             V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_datetime from dbo.[[doc]]employeeactivity] ea " &
                                                     "where ea.employeeactivity_id = '{0}'", RowID)
             V_DatePart(0) = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
@@ -412,9 +411,9 @@ Namespace Commands.DAR
             V_TimeParts(0) = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), TimeSpan)
             V_DatePart(2) = Convert.ToString(V_TimeParts(0))
             V_TimePart = V_DatePart(2).Split(":")
-            V_DatePart(1) = V_TimePart(0) & ":" & +Convert.ToDouble(V_TimePart(1))
+            V_DatePart(1) = V_TimePart(0) & ":" & V_TimePart(1)
 
-            DatePart.Value = Convert.ToDateTime(V_DatePart(0))
+            DatePart.Value = CType(V_DatePart(0), Date)
             TimePart.Text = V_DatePart(1)
 
             V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_datetime_end from dbo.[[doc]]employeeactivity] ea " &
@@ -429,7 +428,7 @@ Namespace Commands.DAR
             V_TimePart = V_DatePart(2).Split(":")
             V_DatePart(1) = V_TimePart(0) & ":" & V_TimePart(1)
 
-            DatePartEnd.Value = Convert.ToDateTime(V_DatePart(0))
+            DatePartEnd.Value = CType(V_DatePart(0), Date)
             TimePartEnd.Text = V_DatePart(1)
 
             V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_areaaffected from dbo.[[doc]]employeeactivity] ea " &

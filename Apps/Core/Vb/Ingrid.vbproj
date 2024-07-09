@@ -92,6 +92,7 @@
     <AnalysisLevel>6.0</AnalysisLevel>
     <ApplicationIcon>Resources\ingrid_icon_2.ico</ApplicationIcon>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
   <ItemGroup>
     <Import Include="CMCv" />

@@ -85,7 +85,7 @@ Public Class MCTG
         C_MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS > View Attachment
-        C_MMSMenu.Visible("EventToolsViewAttachment", True)
+        C_MMSMenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
 
     End Sub
 

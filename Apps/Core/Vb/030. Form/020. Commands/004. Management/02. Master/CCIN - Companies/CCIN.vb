@@ -28,7 +28,7 @@ Public Class CCIN
         If DgnCCIN.RowCount = 0 Then
             V_FORMAttrib.RowID = "-1"
         Else
-            V_FORMAttrib.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value
+            V_FORMAttrib.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
         End If
     End Sub
 #End Region

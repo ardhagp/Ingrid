@@ -61,7 +61,7 @@ Module Globals
             Dim propertyInfo As PropertyInfo = systemType.GetProperty("DoubleBuffered", bindingAttr:=BindingFlags.Instance Or BindingFlags.NonPublic)
             propertyInfo.SetValue(GridView, True, Nothing)
         Catch ex As Exception
-            PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, True)
+            PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
             PUSHERRORDATASHOW()
         End Try
     End Sub
@@ -80,7 +80,7 @@ Module Globals
     ''' <param name="SaveError">True/False</param>
     ''' <param name="ResumeNext">Lanjutkan saat terjadi kesalahan</param>
     ''' <remarks></remarks>
-    Public Sub PUSHERRORDATA(ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As Integer, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
+    Public Sub PUSHERRORDATA(ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As String, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
         With ErrorCatcher
             .Type = ErrorType
             .Message = ErrorMessage
@@ -118,14 +118,18 @@ Module Globals
     Public Function GETAPPVERSION() As String
         Try
             Dim V_Major, V_Minor, V_Build, V_Revision As Integer
-            V_Major = My.Application.Info.Version.Major
-            V_Minor = My.Application.Info.Version.Minor
-            V_Build = My.Application.Info.Version.Build
-            V_Revision = My.Application.Info.Version.Revision
+
+            With My.Application.Info.Version
+                V_Major = .Major
+                V_Minor = .Minor
+                V_Build = .Build
+                V_Revision = .Revision
+            End With
+
             V_APPVer = V_Major & "." & V_Minor & "." & V_Build & "." & V_Revision
             Return V_APPVer
         Catch ex As Exception
-            PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, "0.0.0", False, True, True)
+            PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, "0.0.0", False, True, True)
             PUSHERRORDATASHOW()
             v_APPVer = " - Failed Getting Version"
             Return v_APPVer
@@ -208,7 +212,7 @@ Module Globals
                 formName.Dispose()
             End If
         Catch ex As Exception
-            PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, False)
+            PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
             PUSHERRORDATASHOW()
         End Try
     End Sub
@@ -250,7 +254,7 @@ Module Globals
                 FormName.Dispose()
             End If
         Catch ex As Exception
-            Call PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, True)
+            Call PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
             Call PUSHERRORDATASHOW()
         End Try
     End Sub

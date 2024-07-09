@@ -67,6 +67,7 @@
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <AnalysisLevel>6.0-recommended</AnalysisLevel>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>portable</DebugType>

@@ -19,7 +19,7 @@ Public Class UAC
         V_FORMAttrib.RowID = "-1"
 
         If DgnUAC.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnUAC.CurrentRow.Cells("user_id").Value
+            V_FORMAttrib.RowID = DgnUAC.CurrentRow.Cells("user_id").Value.ToString
         End If
     End Sub
 #End Region

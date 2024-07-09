@@ -45,7 +45,7 @@ Public Class ACGR
             If .Rows.Count < 1 Then
                 V_FORMAttrib.RowID = "-1"
             Else
-                V_FORMAttrib.RowID = .CurrentRow.Cells(0).Value
+                V_FORMAttrib.RowID = .CurrentRow.Cells(0).Value.ToString
             End If
             Return V_FORMAttrib.RowID
         End With

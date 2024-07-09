@@ -70,15 +70,15 @@
 
         ' Event triggered by Button type.
         Select Case ButtonType
-            Case 1
+            Case CType(1, MessageTypes)
                 PnlBottomButton.Visible = False
                 PnlBottomButtonYesNo.Visible = True
                 PnlBottomButtonOkOnly.Visible = False
-            Case 2
+            Case CType(2, MessageTypes)
                 PnlBottomButton.Visible = True
                 PnlBottomButtonYesNo.Visible = False
                 PnlBottomButtonOkOnly.Visible = False
-            Case 3
+            Case CType(3, MessageTypes)
                 PnlBottomButton.Visible = False
                 PnlBottomButtonYesNo.Visible = False
                 PnlBottomButtonOkOnly.Visible = True

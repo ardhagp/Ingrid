@@ -41,14 +41,14 @@ Public Class DAR_RPTContainer
             Rv_.LocalReport.DataSources.Clear()
             Rv_.LocalReport.DataSources.Add(_DSo)
             Rv_.LocalReport.ReportEmbeddedResource = "ingrid.DAR_RContent.rdlc"
-            Rv_.LocalReport.SetParameters(New ReportParameter("paramCreator", _Creator))
-            Rv_.LocalReport.SetParameters(New ReportParameter("paramColor", _Color))
-            Rv_.LocalReport.SetParameters(New ReportParameter("paramVersion", _Version))
+            Rv_.LocalReport.SetParameters(CType(New ReportParameter("paramCreator", _Creator), ReportParameter))
+            Rv_.LocalReport.SetParameters(CType(New ReportParameter("paramColor", _Color.ToString), ReportParameter))
+            Rv_.LocalReport.SetParameters(CType(New ReportParameter("paramVersion", _Version), ReportParameter))
             Rv_.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout)
             Rv_.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth
             Rv_.RefreshReport()
         Catch ex As Exception
-            Call PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult, ex.StackTrace, GETAPPVERSION, False, True, True)
+            Call PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, True)
             Call PUSHERRORDATASHOW()
         End Try
 

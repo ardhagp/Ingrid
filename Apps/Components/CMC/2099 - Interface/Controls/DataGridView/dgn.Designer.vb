@@ -66,7 +66,7 @@ Partial Class dgn
             ' get the row number in leading zero format, 
             '  where the width of the number = the width of the maximum number
             Dim RowNumWidth As Integer = Me.RowCount.ToString().Length
-            Dim RowNumber As String = RowNumWidth
+            Dim RowNumber As String = RowNumWidth.ToString
             'StringBuilder(RowNumber = New StringBuilder(RowNumWidth))
             'RowNumber.Append(e.RowIndex + 1)
             RowNumber &= e.RowIndex + 1
@@ -81,13 +81,13 @@ Partial Class dgn
 
             ' adjust the width of the column that contains the row header cells 
             If Me.RowHeadersWidth < (Sz.Width + 20) Then
-                Me.RowHeadersWidth = (Sz.Width + 20)
+                Me.RowHeadersWidth = CType((Sz.Width + 20), Integer)
             End If
             'If (Me.RowHeadersWidth < (Int())(Sz.Width + 20)) Then
             '    Me.RowHeadersWidth = (Int())(Sz.Width + 20)
 
             ' draw the row number6
-            e.Graphics.DrawString(e.RowIndex + 1, Me.Font, System.Drawing.SystemBrushes.ControlText, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + ((e.RowBounds.Height - Sz.Height) / 2))
+            e.Graphics.DrawString(CType(e.RowIndex + 1, String), Me.Font, System.Drawing.SystemBrushes.ControlText, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + ((e.RowBounds.Height - Sz.Height) / 2))
             'Else
             '    e.Graphics.DrawString("", Me.Font, SystemBrushes.ControlText, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + ((e.RowBounds.Height - Sz.Height) / 2))
         End If

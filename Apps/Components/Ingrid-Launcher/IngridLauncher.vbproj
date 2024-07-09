@@ -18,6 +18,7 @@
     <AssemblyVersion>2.10.20167.1127</AssemblyVersion>
     <ApplicationIcon>Resources\ingrid_icon_2.ico</ApplicationIcon>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineDebug>True</DefineDebug>
