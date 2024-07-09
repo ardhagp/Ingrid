@@ -95,15 +95,21 @@ Public Class DAR_Editor
         DgnPictureList.XOGETNewColor()
 
         If Now.Hour.ToString.Length = 1 Then
-            varHour = "0" & Now.Hour
-        ElseIf Now.Minute.ToString.Length = 1 Then
-            varMinute = "0" & Now.Minute
+            varHour = "0" & Now.Hour.ToString
+        ElseIf Now.Hour.ToString.Length = 2 Then
+            varHour = Now.Hour.ToString
+        End If
+
+        If Now.Minute.ToString.Length = 1 Then
+            varMinute = "0" & Now.Minute.ToString
+        ElseIf Now.Minute.ToString.Length = 2 Then
+            varMinute = Now.Minute.ToString
         End If
 
         If (V_FORMAttrib.IsNew) Then
             V_FORMAttrib.RowID = CMCv.Security.Encrypt.MD5()
             MebStart.Text = varHour & ":" & varMinute
-            MebEnd.Text = MebStart.Text
+            MebEnd.Text = varHour & ":" & varMinute
             TxtContent.Text = String.Empty
             ChkAddNew.Visible = True
             DtpStart.MinDate = CType("01/01/" & Year(Now()), Date)
