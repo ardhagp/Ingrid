@@ -225,7 +225,7 @@ Public Class txt
         End Set
     End Property
 
-    Private _varJenisKapital As String
+    Private _varJenisKapital As ControlCodeBase.enuJenisKapital
     <Category("Text"),
     Description("Isi akan diubah menjadi kapital semua")>
     Public Property XOJenisKapital As ControlCodeBase.enuJenisKapital
@@ -415,16 +415,16 @@ Public Class txt
         If Me.XOPilihSemuaSaatFokus Then
             Me.Select(0, Me.Text.Length)
         End If
-        If Not HasKeyboard() Then
-            'Call OSK
-            Dim OSKProccess As Process = Nothing
-            If OSKProccess Is Nothing OrElse OSKProccess.HasExited Then
-                If OSKProccess IsNot Nothing AndAlso OSKProccess.HasExited Then
-                    OSKProccess.Close()
-                End If
-                OSKProccess = Process.Start("osk")
-            End If
-        End If
+        'If Not HasKeyboard() Then
+        '    'Call OSK
+        '    Dim OSKProccess As Process = Nothing
+        '    If OSKProccess Is Nothing OrElse OSKProccess.HasExited Then
+        '        If OSKProccess IsNot Nothing AndAlso OSKProccess.HasExited Then
+        '            OSKProccess.Close()
+        '        End If
+        '        OSKProccess = Process.Start("osk")
+        '    End If
+        'End If
     End Sub
 
     Private Sub txt_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
@@ -519,13 +519,13 @@ Public Class txt
         End If
     End Sub
 
-    <SupportedOSPlatform("windows")>
-    Private Shared Function HasKeyboard()
-        Dim searcher As New ManagementObjectSearcher("root\CIMV2", "SELECT * FROM Win32_Keyboard")
-        Dim result = From mobj In searcher.Get()
-                     Select mobj Where mobj("Status").ToString() = 0
-        Return Not IsNothing(result)
-    End Function
+    '<SupportedOSPlatform("windows")>
+    'Private Shared Function HasKeyboard() As IEnumerable
+    '    Dim searcher As New ManagementObjectSearcher("root\CIMV2", "SELECT * FROM Win32_Keyboard")
+    '    Dim result = From mobj In searcher.Get()
+    '                 Select mobj Where mobj("Status").ToString() = 0
+    '    Return Not IsNothing(result)
+    'End Function
 
     <SupportedOSPlatform("windows")>
     Public Sub ClearSearch()

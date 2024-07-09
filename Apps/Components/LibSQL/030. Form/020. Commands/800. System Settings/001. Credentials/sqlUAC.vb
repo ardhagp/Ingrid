@@ -28,7 +28,7 @@ Namespace Commands.UAC
             Dim _Exist As Integer
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", Username, CMCv.Security.Encrypt.MD5(Password))
-                _Exist = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+                _Exist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
                 If _Exist = 0 Then
                     _UID = String.Empty
@@ -170,7 +170,7 @@ Namespace Commands.UAC
             End If
 
             V_DBR_MSSQL2008(0).Query = ""
-            _IsAuth = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+            _IsAuth = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
             If _IsAuth = 0 Then
                 Return False
@@ -216,7 +216,7 @@ Namespace Commands.UAC
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select u.user_root from dbo.[[sys]]user] u where u.user_id = '{0}'", UID)
-                _IsAdministrator = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query))
+                _IsAdministrator = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Boolean)
             Catch ex As Exception
                 _IsAdministrator = False
             End Try
@@ -381,7 +381,7 @@ Namespace Commands.UAC
 
             V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_locked from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
 
-            _Locked = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+            _Locked = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
 
             Return _Locked
         End Function
@@ -392,7 +392,7 @@ Namespace Commands.UAC
 
             V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_root from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
 
-            _Root = Convert.ToBoolean(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+            _Root = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
 
             Return _Root
         End Function
@@ -406,7 +406,7 @@ Namespace Commands.UAC
             Else
                 V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_id <> '{1}')", Username, RowID)
             End If
-            _IsDuplicate = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query))
+            _IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
             If _IsDuplicate = 0 Then
                 Return False
@@ -445,7 +445,7 @@ Namespace Commands.UAC
                     For Each Row As DataGridViewRow In UAC.Rows
                         V_DBR_MSSQL2008(3).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from dbo.[[sys]]useraccess] uac inner join dbo.[[sys]]module] mo on mo.module_id = uac.useraccess_module " &
                                                                 "where uac.useraccess_user = '{0}' and mo.module_code = '{1}'", RowID, Row.Cells("module_code").Value)
-                        _Exist = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(3).Query))
+                        _Exist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(3).Query), Integer)
 
                         If _Exist = 0 Then
                             _EQuery = String.Format("insert into dbo.[[sys]]useraccess](useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &

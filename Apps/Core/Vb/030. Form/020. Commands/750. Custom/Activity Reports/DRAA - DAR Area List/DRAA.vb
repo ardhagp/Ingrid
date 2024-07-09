@@ -45,7 +45,7 @@ Public Class DRAA
         _MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.No)
 
         'Menampilkan Menu TOOLS > View Attachment
-        _MMSMenu.Visible("EventToolsViewAttachment", False)
+        _MMSMenu.Visible("EventToolsViewAttachment", CType(False, CMCv.UI.View.MenuStrip.ShowItem))
 
     End Sub
 
@@ -64,7 +64,7 @@ Public Class DRAA
         V_FORMAttrib.RowID = "-1"
 
         If DgnArea.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnArea.CurrentRow.Cells("affectedarea_id").Value
+            V_FORMAttrib.RowID = DgnArea.CurrentRow.Cells("affectedarea_id").Value.ToString
         End If
     End Sub
 

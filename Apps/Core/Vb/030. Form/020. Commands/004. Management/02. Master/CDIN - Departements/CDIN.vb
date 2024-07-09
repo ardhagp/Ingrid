@@ -18,7 +18,7 @@ Public Class CDIN
         If DgnCDIN.RowCount = 0 Then
             V_FORMAttrib.RowID = "-1"
         Else
-            V_FORMAttrib.RowID = DgnCDIN.CurrentRow.Cells("departement_id").Value
+            V_FORMAttrib.RowID = DgnCDIN.CurrentRow.Cells("departement_id").Value.ToString
         End If
     End Sub
 

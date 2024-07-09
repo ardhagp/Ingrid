@@ -15,7 +15,7 @@ Namespace Database.Connect
         ''' <param name="Password">Kata sandi</param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Function MicrosoftOLEDBStandard(ByVal DatabasePath As String, ByVal Username As String, ByVal Password As String)
+        Function Microsoftoledbstandard(ByVal DatabasePath As String, ByVal Username As String, ByVal Password As String) As String
 #End Region
 
 #Region "ODBC"
@@ -27,7 +27,7 @@ Namespace Database.Connect
         ''' <param name="Password">Kata sandi</param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Function MicrosoftODBCStandard(ByVal DatabasePath As String, ByVal Username As String, ByVal Password As String)
+        Function Microsoftodbcstandard(ByVal DatabasePath As String, ByVal Username As String, ByVal Password As String) As String
 #End Region
     End Interface
 
@@ -43,7 +43,7 @@ Namespace Database.Connect
         ''' <param name="Password">Password</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MSSQL2008Standard(ByVal ServerAddress As String, ByVal ServerPort As Integer, ByVal DatabaseName As String, ByVal Username As String, ByVal Password As String)
+        Function Mssql2008standard(ByVal ServerAddress As String, ByVal ServerPort As Integer, ByVal DatabaseName As String, ByVal Username As String, ByVal Password As String) As String
 
         ''' <summary>
         ''' Koneksi SQL Server 2008 Trusted Connection
@@ -52,7 +52,7 @@ Namespace Database.Connect
         ''' <param name="DatabaseName">Nama database</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MSSQL2008TrustedConnection(ByVal ServerAddress As String, ByVal DatabaseName As String)
+        Function Mssql2008trustedconnection(ByVal ServerAddress As String, ByVal DatabaseName As String) As String
 #End Region
     End Interface
 
@@ -67,7 +67,7 @@ Namespace Database.Connect
         ''' <param name="Database">Database</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MySQLODBC51Standard(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String) As String
+        Function Mysqlodbc51standard(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String) As String
 #End Region
 
 #Region ".NET InactivatingPreparedStatement"
@@ -82,7 +82,7 @@ Namespace Database.Connect
         ''' <param name="IgnorePrepare">Ignore Prepare</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MySQLNETInactivatingPreparedStatement(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal IgnorePrepare As Options.IgnorePrepare) As String
+        Function Mysqlnetinactivatingpreparedstatement(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal IgnorePrepare As Options.IgnorePrepare) As String
 #End Region
 
 #Region ".NET NamedPipes"
@@ -96,7 +96,7 @@ Namespace Database.Connect
         ''' <param name="Database">Database</param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Function MySQLNETNamedPipes(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String)
+        Function Mysqlnetnamedpipes(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String) As String
 #End Region
 
 #Region ".NET NetworkProtocol"
@@ -269,7 +269,7 @@ Namespace Database.Connect
         ''' <param name="Password">Kata sandi</param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Public Function MicrosoftODBCStandard(DatabasePath As String, Username As String, Password As String) As Object Implements IMsaccess2003connections.MicrosoftODBCStandard
+        Public Function Microsoftodbcstandard(DatabasePath As String, Username As String, Password As String) As String Implements IMsaccess2003connections.Microsoftodbcstandard
             _RESULT = "Driver={Microsoft Access Driver (*.mdb)};Dbq=" & DatabasePath & ";Uid=" & Username & ";Pwd=" & Password & ";"
             Return _RESULT
         End Function
@@ -282,7 +282,7 @@ Namespace Database.Connect
         ''' <param name="Password"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Public Function MicrosoftOLEDBStandard(DatabasePath As String, Username As String, Password As String) As Object Implements IMsaccess2003connections.MicrosoftOLEDBStandard
+        Public Function Microsoftoledbstandard(DatabasePath As String, Username As String, Password As String) As String Implements IMsaccess2003connections.Microsoftoledbstandard
             _RESULT = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & DatabasePath & ";User Id=" & Username & ";Password=" & Password & ";"
             Return _RESULT
         End Function
@@ -301,7 +301,7 @@ Namespace Database.Connect
         ''' <param name="Password"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Public Function MSSQL2008Standard(ServerAddress As String, ByVal ServerPort As Integer, ByVal DatabaseName As String, Username As String, Password As String) As Object Implements IMssqlserver2008connections.MSSQL2008Standard
+        Public Function Mssql2008standard(ServerAddress As String, ByVal ServerPort As Integer, ByVal DatabaseName As String, Username As String, Password As String) As String Implements IMssqlserver2008connections.Mssql2008standard
             _RESULT = String.Format("Server = {0},{1}; Database = {2}; User Id = {3}; Password = {4};", ServerAddress.Trim, ServerPort, DatabaseName, Username.Trim, Password)
             Return _RESULT
         End Function
@@ -313,7 +313,7 @@ Namespace Database.Connect
         ''' <param name="DatabaseName"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Public Function MSSQL2008TrustedConnection(ServerAddress As String, DatabaseName As String) As Object Implements IMssqlserver2008connections.MSSQL2008TrustedConnection
+        Public Function Mssql2008trustedconnection(ServerAddress As String, DatabaseName As String) As String Implements IMssqlserver2008connections.Mssql2008trustedconnection
             _RESULT = "Server = " & ServerAddress.Trim & "; Database = " & DatabaseName & "; Trusted_Connection = True;"
             Return _RESULT
         End Function
@@ -322,11 +322,11 @@ Namespace Database.Connect
     Public Class MySQLConnection
         Implements IMysqlconnections
 
-        Public Function MySQLNETInactivatingPreparedStatement(ServerAddress As String, Username As String, Password As String, Database As String, IgnorePrepare As Options.IgnorePrepare) As String Implements IMysqlconnections.MySQLNETInactivatingPreparedStatement
+        Public Function Mysqlnetinactivatingpreparedstatement(ServerAddress As String, Username As String, Password As String, Database As String, IgnorePrepare As Options.IgnorePrepare) As String Implements IMysqlconnections.Mysqlnetinactivatingpreparedstatement
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQLNETNamedPipes(ServerAddress As String, Username As String, Password As String, Database As String) As Object Implements IMysqlconnections.MySQLNETNamedPipes
+        Public Function Mysqlnetnamedpipes(ServerAddress As String, Username As String, Password As String, Database As String) As String Implements IMysqlconnections.Mysqlnetnamedpipes
             Throw New NotImplementedException()
         End Function
 
@@ -362,7 +362,7 @@ Namespace Database.Connect
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQLODBC51Standard(ServerAddress As String, Username As String, Password As String, Database As String) As String Implements IMysqlconnections.MySQLODBC51Standard
+        Public Function Mysqlodbc51standard(ServerAddress As String, Username As String, Password As String, Database As String) As String Implements IMysqlconnections.Mysqlodbc51standard
             Throw New NotImplementedException()
         End Function
     End Class

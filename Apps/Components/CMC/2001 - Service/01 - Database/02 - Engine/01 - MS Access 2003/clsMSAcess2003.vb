@@ -102,14 +102,14 @@ Namespace Database.Engine
                     Fields.ServerAddress = .GetString(0)
                     Fields.Username = .GetString(1)
                     Fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
-                    Fields.Port = .GetValue(3)
+                    Fields.Port = CType(.GetValue(3), Integer)
                     Fields.DataStorage = .GetString(4)
                     Fields.FileStorage = .GetString(5)
                 End With
 
                 Return Fields
             Catch ex As System.Data.OleDb.OleDbException
-                Call PUSHERRORDATA("[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.ErrorCode, ex.StackTrace, GETAPPVERSION, False, , False)
+                Call PUSHERRORDATA("[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.ErrorCode.ToString, ex.StackTrace, GETAPPVERSION, False, , False)
                 Call PUSHERRORDATASHOW()
                 Return Nothing
             End Try
@@ -140,7 +140,7 @@ Namespace Database.Engine
 
                 Return varDatareader
             Catch ex As System.Data.OleDb.OleDbException
-                Call PUSHERRORDATA("[GETDATAROW] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.StackTrace, ex.ErrorCode, GETAPPVERSION, False, , False)
+                Call PUSHERRORDATA("[GETDATAROW] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.StackTrace, ex.ErrorCode.ToString, GETAPPVERSION, False, , False)
                 Call PUSHERRORDATASHOW()
                 Return Nothing
             End Try
@@ -155,7 +155,7 @@ Namespace Database.Engine
                 .CommandText = Query}
                 MyCommand.ExecuteNonQuery()
             Catch ex As System.Data.OleDb.OleDbException
-                Call PUSHERRORDATA("[PUSHDATA] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.ErrorCode, ex.StackTrace, GETAPPVERSION, False, False, False)
+                Call PUSHERRORDATA("[PUSHDATA] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.ErrorCode.ToString, ex.StackTrace, GETAPPVERSION, False, False, False)
                 Call PUSHERRORDATASHOW()
             End Try
         End Sub

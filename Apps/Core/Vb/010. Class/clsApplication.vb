@@ -9,12 +9,12 @@ Namespace Application
 
         <SupportedOSPlatform("windows")>
         Public Function User(ByVal TCODE As String, ByVal UID As String, ByVal TypeOfAccess As LibSQL.Application.Access.TypeOfAccess, Optional Status As stt = Nothing) As Boolean
-            Dim _AccessValue As Integer
+            Dim _AccessValue As Boolean
 
             Try
-                _AccessValue = _SQL.User(TCODE, UID, TypeOfAccess)
+                _AccessValue = CType(_SQL.User(TCODE, UID, TypeOfAccess), Boolean)
 
-                If _AccessValue = 0 Then
+                If _AccessValue = False Then
                     SystemSounds.Exclamation.Play()
                 End If
 
@@ -34,10 +34,10 @@ Namespace Application
 
         <SupportedOSPlatform("windows")>
         Public Shared Function IsModuleReady(ByVal TCODE As String) As Boolean
-            Dim _IsModuleReady As Integer
+            Dim _IsModuleReady As Boolean
 
             Try
-                _IsModuleReady = LibSQL.Application.Modules.Exist(TCODE)
+                _IsModuleReady = CType(LibSQL.Application.Modules.Exist(TCODE), Boolean)
 
                 Return _IsModuleReady
             Catch ex As Exception
@@ -51,7 +51,7 @@ Namespace Application
 
             Try
 
-                _IsModuleLocked = LibSQL.Application.Modules.Locked(TCODE)
+                _IsModuleLocked = CType(LibSQL.Application.Modules.Locked(TCODE), Boolean)
 
                 Return _IsModuleLocked
             Catch ex As Exception

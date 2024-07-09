@@ -45,7 +45,7 @@
                 Exit Function
             End If
 
-            While (_PhotoLength >= 1024 And size.Length - 1)
+            While (_PhotoLength >= 1024 AndAlso CType(size.Length - 1, Boolean))
                 _Order += 1
                 _PhotoLength /= 1024
             End While
@@ -53,7 +53,7 @@
             Dim _MaximumPhotoLength As Double = ((1024 ^ 2) * MaxSize) '1 indicate 1000KB or 1MB
             Dim _MaximumPhotoLengthDisplay As Double = _MaximumPhotoLength
 
-            While (_MaximumPhotoLengthDisplay >= 1024 And size.Length - 1)
+            While (_MaximumPhotoLengthDisplay >= 1024 AndAlso CType(size.Length - 1, Boolean))
                 _MaximumOrder += 1
                 _MaximumPhotoLengthDisplay /= 1024
             End While

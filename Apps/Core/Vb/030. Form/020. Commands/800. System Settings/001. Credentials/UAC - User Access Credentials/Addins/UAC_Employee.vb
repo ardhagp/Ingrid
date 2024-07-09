@@ -10,7 +10,7 @@ Public Class UAC_Employee
     Private Sub GETTableID()
         V_FORMAttrib.RowID = "-1"
         If DgnAddinEmployee.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnAddinEmployee.CurrentRow.Cells("employee_id").Value
+            V_FORMAttrib.RowID = DgnAddinEmployee.CurrentRow.Cells("employee_id").Value.ToString
         End If
     End Sub
 

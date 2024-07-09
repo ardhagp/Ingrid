@@ -61,7 +61,7 @@ Public Class MODS_Editor
             Return
         End If
 
-        If (Commands.MODS.Editor.PUSHData(TxtID.XOSQLText, CboGroup.SelectedValue, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, V_FORMAttrib.RowID)) Then
+        If (Commands.MODS.Editor.PUSHData(TxtID.XOSQLText, CboGroup.SelectedValue.ToString, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, V_FORMAttrib.RowID)) Then
             RaiseEvent RecordSaved()
             Mainframe_n_6.Ts_status.Text = "Success"
         Else

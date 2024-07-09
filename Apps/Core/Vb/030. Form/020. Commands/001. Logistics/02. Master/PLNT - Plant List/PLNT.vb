@@ -24,7 +24,7 @@ Public Class PLNT
         V_FORMAttrib.RowID = "-1"
 
         If DgnPLNT.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnPLNT.CurrentRow.Cells("plant_id").Value
+            V_FORMAttrib.RowID = DgnPLNT.CurrentRow.Cells("plant_id").Value.ToString
         End If
     End Sub
 

@@ -63,7 +63,7 @@ Public Class dgn
     Private Sub dgn_CellFormatting(sender As Object, e As Windows.Forms.DataGridViewCellFormattingEventArgs) Handles Me.CellFormatting
         If XOGroupFirstRows = True Then
             If e.RowIndex > 0 And e.ColumnIndex = 0 Then
-                If MyBase.Item(0, e.RowIndex - 1).Value = e.Value Then
+                If MyBase.Item(0, e.RowIndex - 1).Value Is e.Value Then
                     e.Value = String.Empty
                     'MyBase.AdvancedCellBorderStyle.Top = Windows.Forms.DataGridViewAdvancedCellBorderStyle.None
                     'MyBase.Rows(e.RowIndex).DefaultCellStyle.BackColor = System.Drawing.Color.White

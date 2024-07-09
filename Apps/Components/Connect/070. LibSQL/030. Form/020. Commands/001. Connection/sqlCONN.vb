@@ -57,7 +57,7 @@ Namespace Commands.CONN
             FileStorage.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
             V_DBR_SQLITE(1).Query = String.Format("select serverlist.DEFAULTCONNECTION from serverlist where serverlist.ID ='{0}'", RowID)
-            IsDefault.Checked = Convert.ToBoolean(V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query))
+            IsDefault.Checked = CType(V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query), Boolean)
         End Sub
 
         <SupportedOSPlatform("windows")>

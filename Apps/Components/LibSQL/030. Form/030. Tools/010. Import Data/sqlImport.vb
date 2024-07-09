@@ -9,7 +9,7 @@ Namespace Tools.Import.SharedFunction
 
         <SupportedOSPlatform("windows")>
         Public Function TotalRows(ByVal Query As String, ByVal Keyword As String) As Integer
-            _ROWCOUNT = Convert.ToInt16(V_DBE_MSSQL2008.GETVALUE(Query.Replace("%n", Keyword)))
+            _ROWCOUNT = CType(V_DBE_MSSQL2008.GETVALUE(Query.Replace("%n", Keyword)), Integer)
             Return _ROWCOUNT
         End Function
     End Class

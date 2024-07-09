@@ -107,7 +107,7 @@ Namespace ImageEditor.Proccessor
                 Dim _MemoryStream = New MemoryStream()
 
                 _MemoryStream.SetLength(File.Length)
-                File.Read(_MemoryStream.GetBuffer, 0, File.Length)
+                File.Read(_MemoryStream.GetBuffer, 0, CType(File.Length, Integer))
 
                 _MemoryStream.Flush()
                 File.Close()
@@ -203,12 +203,12 @@ Namespace ImageEditor.Proccessor
                 Dim _WaterText As String = Text
                 Dim canvas As Graphics = Graphics.FromImage(bmp)
                 Dim StringSizeF As SizeF,
-    DesiredWidth As Single,
-    DesiredWidth2 As Single,
-    DesireHeight As Single,
+    DesiredWidth As Double,
+    DesiredWidth2 As Double,
+    DesireHeight As Double,
     wmFont As Font,
-    RequiredFontSize As Single,
-    Ratio As Single
+    RequiredFontSize As Double,
+    Ratio As Double
 
                 wmFont = New Font("Verdana", 14, FontStyle.Bold)
 
@@ -220,15 +220,15 @@ Namespace ImageEditor.Proccessor
                 Ratio = StringSizeF.Width / wmFont.SizeInPoints
                 RequiredFontSize = DesiredWidth / Ratio
 
-                wmFont = New Font("Verdana", RequiredFontSize, FontStyle.Bold)
+                wmFont = New Font("Verdana", CType(RequiredFontSize, Single), CType(FontStyle.Bold, FontStyle))
 
                 canvas.DrawString(_WaterText,
         wmFont,
-        New SolidBrush(Color.FromArgb(128, 0, 0, 0)), DesiredWidth2 + 2, DesireHeight + 2)
+        New SolidBrush(Color.FromArgb(128, 0, 0, 0)), CType(DesiredWidth2 + 2, Single), CType(DesireHeight + 2, Single))
 
                 canvas.DrawString(_WaterText,
         wmFont,
-        New SolidBrush(Color.FromArgb(128, 255, 255, 255)), DesiredWidth2, DesireHeight)
+        CType(New SolidBrush(Color.FromArgb(128, 255, 255, 255)), Brush), CType(DesiredWidth2, Single), CType(DesireHeight, Single))
 
                 bmp.SetResolution(96, 96)
 

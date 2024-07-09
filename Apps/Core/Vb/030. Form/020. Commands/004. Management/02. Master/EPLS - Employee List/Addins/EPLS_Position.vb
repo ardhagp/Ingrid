@@ -10,7 +10,7 @@ Public Class EPLS_Position
     Private Sub GETTableID()
         V_FORMAttrib.RowID = "-1"
         If DgnAddinPosition.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnAddinPosition.CurrentRow.Cells("employee_id").Value
+            V_FORMAttrib.RowID = DgnAddinPosition.CurrentRow.Cells("employee_id").Value.ToString
         End If
     End Sub
 

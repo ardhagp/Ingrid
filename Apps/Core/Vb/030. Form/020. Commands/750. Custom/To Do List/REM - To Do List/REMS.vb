@@ -22,8 +22,8 @@ Public Class REMS
         _MMSMenu.LoadIn(Me)
         _MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
         _MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
-        _MMSMenu.Visible("EventToolsViewAttachment", True)
-        _MMSMenu.Checked("EventToolsViewAttachment", True)
+        _MMSMenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
+        _MMSMenu.Checked("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
     End Sub
 
     <SupportedOSPlatform("windows")>
