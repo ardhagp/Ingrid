@@ -73,7 +73,7 @@ steps:
 - task: NuGetCommand@2
   displayName: 'NuGet Restore'
   inputs:
-    command: 'restore'
+    command: 'restore --locked-mode'
     restoreSolution: '**/*.sln'
     feedsToUse: 'config'
     nugetConfigPath: './Apps/Core/Vb/NuGet.config'
