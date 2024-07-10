@@ -67,6 +67,16 @@ https://templatemo.com/tm-557-grad-school
     window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
     cronitor('config', { clientKey: '579cad261adcd9e6ce1f19318986b094' });
 </script>
+
+<script>
+function showUpdateWarning(){
+if (confirm("Make sure you close and save your work before updating Ingrid!")){
+  window.open('./IngridLauncher.application', '_self')
+}else{
+  return false
+}
+}
+</script>
     
   </head>
 
@@ -101,7 +111,7 @@ https://templatemo.com/tm-557-grad-school
               <h6>Multi Purpose Application</h6>
               <h2>Run <em>Your App</em> Now!</h2>
                   <div class="main-button">
-                  <div class=""><a href="./setup.exe" target="_self">Web Install</a> <a href="./IngridLauncher.application" target="_self">Update</a>
+                  <div class=""><a href="./setup.exe" target="_self">Web Install</a> <a onclick="showUpdateWarning()" href="#" target="_self">Update</a>
                   </div>
               </div>
             </div>
