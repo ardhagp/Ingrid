@@ -270,7 +270,7 @@ Namespace Commands.DAR
             ReDim V_DBR_MSSQL2008(5)
             Dim _CONTENTID As String = ContentID
 
-            V_DBR_MSSQL2008(4).Query = String.Format("select fi.file_id, fi.file_content, (convert(varchar(25),fi.file_content_size) + ' KB') " &
+            V_DBR_MSSQL2008(4).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, (convert(varchar(25),fi.file_content_size) + ' KB') " &
                                                     "as [file_content_size], (convert(varchar(3),fi.file_score) + ' like(s)') as [file_score], " &
                                                     "fi.file_datetime, fi.file_uploader, (select em.employee_fullname from dbo.[[man]]employee] em where " &
                                                     "em.employee_id = fi.file_uploader) as [employee_fullname], (select em.employee_nickname " &
@@ -286,7 +286,7 @@ Namespace Commands.DAR
             ReDim V_DBR_MSSQL2008(6)
             Dim _CONTENTID As String = ContentID
 
-            V_DBR_MSSQL2008(5).Query = String.Format("select fi.file_id, fi.file_tag, '' as [file_content], " &
+            V_DBR_MSSQL2008(5).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, '' as [file_content], " &
                                                     "(convert(varchar(25),fi.file_content_size) + ' KB') as [file_content_size], " &
                                                     "(convert(varchar(3),fi.file_score) + ' like(s)') as [file_score], fi.file_datetime, " &
                                                     "fi.file_uploader, (select em.employee_fullname from dbo.[[man]]employee] em where " &
@@ -454,7 +454,7 @@ Namespace Commands.DAR
         Public Function DisplayPhotoGrid(ByVal RowID As String, ByVal FileGrid As dgn) As DataSet
             _DS = New DataSet
             'ReDim V_DBR_MSSQL2008(3)
-            V_DBR_MSSQL2008(2).Query = String.Format("select fi.file_id, fi.file_content, fi.file_datetime, fi.file_uploader " &
+            V_DBR_MSSQL2008(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                     "from db_universe_erp_file.dbo.[[sto]]file] fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'jpg') order by fi.file_datetime;", RowID)
 
@@ -467,7 +467,7 @@ Namespace Commands.DAR
         Public Function DisplayFileGrid(ByVal RowID As String, ByVal FileGrid As dgn) As DataSet
             _DS = New DataSet
             'ReDim V_DBR_MSSQL2008(3)
-            V_DBR_MSSQL2008(2).Query = String.Format("select fi.file_id, fi.file_tag, fi.file_content, fi.file_datetime, fi.file_uploader " &
+            V_DBR_MSSQL2008(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                     "from db_universe_erp_file.dbo.[[sto]]file] fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'pdf') order by fi.file_datetime;", RowID)
 
@@ -527,8 +527,8 @@ Namespace Commands.DAR
                         Dim Query As String = String.Empty
 
                         _CMD = New SqlClient.SqlCommand
-                        Query = "insert into db_universe_erp_file.dbo.[[sto]]file]([file_id], file_parent, file_filetype, file_content, file_tag, " &
-                            "file_datetime, file_attribute, file_uploader, file_parentdate) values(@ID, @ParentID, 'jpg', @FileContent, '', @DateNow, " &
+                        Query = "insert into db_universe_erp_file.dbo.[[sto]]file]([file_id], file_parent, file_filename, file_filetype, file_content, file_tag, " &
+                            "file_datetime, file_attribute, file_uploader, file_parentdate) values(@ID, @ParentID, @FileName, 'jpg', @FileContent, '', @DateNow, " &
                             "'module=DAR;', @Uploader,@ParentDate);"
 
                         _CMD.CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY " &
@@ -537,6 +537,7 @@ Namespace Commands.DAR
 
                         _CMD.Parameters.AddWithValue("@ID", Row.Cells("photo_id").Value)
                         _CMD.Parameters.AddWithValue("@ParentID", RowID)
+                        _CMD.Parameters.AddWithValue("@FileName", Row.Cells("photo_filename").Value)
                         _CMD.Parameters.AddWithValue("@Uploader", Row.Cells("photo_uploader").Value)
                         _CMD.Parameters.AddWithValue("@ParentDate", ParentDate)
 
@@ -576,8 +577,8 @@ Namespace Commands.DAR
                         Dim Query As String = String.Empty
 
                         _CMD = New SqlClient.SqlCommand
-                        Query = "insert into db_universe_erp_file.dbo.[[sto]]file]([file_id], file_parent, file_filetype, file_content, file_tag, " &
-                            "file_datetime, file_attribute, file_uploader,file_parentdate) values(@ID, @ParentID, 'pdf', @FileContent, @Tag, @DateNow, " &
+                        Query = "insert into db_universe_erp_file.dbo.[[sto]]file]([file_id], file_parent, file_filename, file_filetype, file_content, file_tag, " &
+                            "file_datetime, file_attribute, file_uploader,file_parentdate) values(@ID, @ParentID, @FileName, 'pdf', @FileContent, @Tag, @DateNow, " &
                             "'module=DAR;', @Uploader, @ParentDate);"
 
                         _CMD.CommandText = "RETRY: BEGIN TRANSACTION BEGIN TRY " & Query & " COMMIT TRANSACTION END TRY " &
@@ -585,6 +586,7 @@ Namespace Commands.DAR
 
                         _CMD.Parameters.AddWithValue("@ID", Row.Cells("file_id").Value)
                         _CMD.Parameters.AddWithValue("@ParentID", RowID)
+                        _CMD.Parameters.AddWithValue("@FileName", Row.Cells("file_filename").Value)
                         _CMD.Parameters.AddWithValue("@Uploader", Row.Cells("file_uploader").Value)
                         _CMD.Parameters.AddWithValue("@Tag", Row.Cells("file_tag").Value)
                         _CMD.Parameters.AddWithValue("@ParentDate", ParentDate)

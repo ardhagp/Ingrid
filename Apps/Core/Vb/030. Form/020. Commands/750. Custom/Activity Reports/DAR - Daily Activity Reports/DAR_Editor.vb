@@ -1,7 +1,9 @@
 ﻿Imports System.Data
 Imports System.IO
 Imports System.Runtime.Versioning
+Imports System.Text
 Imports CMCv
+Imports Serilog.Sinks.Http
 
 Public Class DAR_Editor
 #Region "Variables"
@@ -46,10 +48,10 @@ Public Class DAR_Editor
         DgnPictureList.Rows.Clear()
         TxtPhotoPath.Clear()
 
-        _DS(0) = _SQL.DisplayPhotoGrid(V_FORMAttrib.RowID, DgnPictureList)
+        _DS(0) = _SQL.DisplayPhotoGrid(V_FORMAttrib.RowID.ToString, DgnPictureList)
 
         For i As Integer = 0 To _DS(0).Tables("TPhotoFileEditor").Rows.Count - 1
-            DgnPictureList.Rows.Add(_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_id"), _DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_datetime"), _DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_content"), "", _DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_uploader"))
+            DgnPictureList.Rows.Add(_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_id"), _DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_filename"), _DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_datetime"), _DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_content"), "", _DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_uploader"))
         Next
 
         If DgnPictureList.RowCount = 0 Then
@@ -62,10 +64,10 @@ Public Class DAR_Editor
         _DS(1) = New DataSet
 
         DblBuffer(DgnFileList)
-        _DS(1) = _SQL.DisplayFileGrid(V_FORMAttrib.RowID, DgnFileList)
+        _DS(1) = _SQL.DisplayFileGrid(V_FORMAttrib.RowID.ToString, DgnFileList)
 
         For i As Integer = 0 To _DS(1).Tables("TFileEditor").Rows.Count - 1
-            DgnFileList.Rows.Add(_DS(1).Tables("TFileEditor").Rows(i).Item("file_id"), _DS(1).Tables("TFileEditor").Rows(i).Item("file_tag"), _DS(1).Tables("TFileEditor").Rows(i).Item("file_datetime"), _DS(1).Tables("TFileEditor").Rows(i).Item("file_content"), "", _DS(1).Tables("TFileEditor").Rows(i).Item("file_uploader"))
+            DgnFileList.Rows.Add(_DS(1).Tables("TFileEditor").Rows(i).Item("file_id"), _DS(1).Tables("TFileEditor").Rows(i).Item("file_filename"), _DS(1).Tables("TFileEditor").Rows(i).Item("file_tag"), _DS(1).Tables("TFileEditor").Rows(i).Item("file_datetime"), _DS(1).Tables("TFileEditor").Rows(i).Item("file_content"), "", _DS(1).Tables("TFileEditor").Rows(i).Item("file_uploader"))
         Next
     End Sub
 #End Region
@@ -177,7 +179,7 @@ Public Class DAR_Editor
             Return
         End If
 
-        If (Commands.DAR.Editor.PUSHData(CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, MebStart.Text.Replace(".", ":"), DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, MebEnd.Text.Replace(".", ":"), TxtContent.XOSQLText, TxtFeedback.XOSQLText, V_USERAttrib.UID, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, _ExtQuery)) Then
+        If (Commands.DAR.Editor.PUSHData(CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, CType(DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, String), CType(MebStart.Text.Replace(".", ":"), String), CType(DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, String), CType(MebEnd.Text.Replace(".", ":"), String), TxtContent.XOSQLText, TxtFeedback.XOSQLText, V_USERAttrib.UID, V_FORMAttrib.RowID.ToString, V_FORMAttrib.IsNew, _ExtQuery)) Then
             _ExtQuery = String.Empty
             Mainframe_n_6.Ts_status.Text = "Success"
 
@@ -189,7 +191,7 @@ Public Class DAR_Editor
             Next
 
             If _NewPhotoAdded > 0 Then
-                If (Commands.DAR.Editor.PUSHPhoto(DgnPictureList, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, DtpStart.Value)) Then
+                If (Commands.DAR.Editor.PUSHPhoto(DgnPictureList, V_FORMAttrib.RowID.ToString, V_FORMAttrib.IsNew, DtpStart.Value)) Then
                     Mainframe_n_6.Ts_status.Text = "Success + All pictures has been added"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Success + With errors while adding pictures"
@@ -208,7 +210,7 @@ Public Class DAR_Editor
             Next
 
             If _NewFileAdded > 0 Then
-                If (Commands.DAR.Editor.PUSHFile(DgnFileList, V_FORMAttrib.RowID, V_FORMAttrib.IsNew, DtpStart.Value)) Then
+                If (Commands.DAR.Editor.PUSHFile(DgnFileList, V_FORMAttrib.RowID.ToString, V_FORMAttrib.IsNew, DtpStart.Value)) Then
                     Mainframe_n_6.Ts_status.Text = "Success + All file has been added"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Success + With errors while adding files"
@@ -236,7 +238,7 @@ Public Class DAR_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub LoadData()
-        Commands.DAR.Editor.GETRowValue(V_FORMAttrib.RowID, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
+        Commands.DAR.Editor.GETRowValue(V_FORMAttrib.RowID.ToString, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
         Call LoadAttachment()
     End Sub
 #End Region
@@ -279,7 +281,7 @@ Public Class DAR_Editor
             Dim _Date As Date = Now
             Dim _Photo As System.Drawing.Image = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(TxtPhotoPath.Text) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
 
-            Row = New Object() {CMCv.Security.Encrypt.MD5(), _Date, _Photo, "Add", V_USERAttrib.EID}
+            Row = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtPhotoPath.Text), _Date, _Photo, "Add", V_USERAttrib.EID}
 
             With DgnPictureList.Rows
                 .Add(Row)
@@ -312,7 +314,7 @@ Public Class DAR_Editor
         End If
 
         _DAR_SinglePhotoViewer = New DAR_SinglePhotoViewer(TxtPhotoPath.Text)
-        Display(_DAR_SinglePhotoViewer, IMAGEDB.Main.ImageLibrary.PCTPRV_ICON, "Photo Viewer", "Preview your photo", True)
+        DISPLAY(_DAR_SinglePhotoViewer, IMAGEDB.Main.ImageLibrary.PCTPRV_ICON, "Photo Viewer", "Preview your photo", True)
 
     End Sub
 
@@ -340,6 +342,10 @@ Public Class DAR_Editor
             If DgnPictureList.CurrentRow.Cells("photo_status").Value.ToString Is "Add" Then
                 PctbxPhoto.Image = CType(DgnPictureList.CurrentRow.Cells("photo_content").Value, Image)
             Else
+                'Dim string64 As String
+                'string64 = DgnPictureList.CurrentRow.Cells("photo_content").Value.ToString
+                '_PhotoByte = Convert.FromBase64String(string64)
+
                 _PhotoByte = CType(DgnPictureList.CurrentRow.Cells("photo_content").Value, Byte())
                 Dim _PhotoStream = New System.IO.MemoryStream(_PhotoByte)
 
@@ -388,7 +394,7 @@ Public Class DAR_Editor
             Dim V_Date As Date = Now
             'Dim _PDFFile As Object = New IO.FileStream(TxtFilePath.Text, FileMode.Open, FileAccess.Read) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
 
-            Row = New Object() {CMCv.Security.Encrypt.MD5(), CboFileTag.Text, V_Date, TxtFilePath.Text, "Add", V_USERAttrib.EID}
+            Row = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtFilePath.Text), CboFileTag.Text, V_Date, TxtFilePath.Text, "Add", V_USERAttrib.EID}
 
             With DgnFileList.Rows
                 .Add(Row)

@@ -239,7 +239,7 @@ Public Class DAR
         Call GETTableID()
         V_FORMAttrib.IsNew = False
 
-        If V_FORMAttrib.RowID = "-1" Then
+        If V_FORMAttrib.RowID Is "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             F_DAR_Editor = New DAR_Editor
@@ -258,12 +258,12 @@ Public Class DAR
             Return
         End If
         Call GETTableID()
-        If V_FORMAttrib.RowID = "-1" Then
+        If V_FORMAttrib.RowID Is "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             V_FORMAttrib.IsNew = False
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.DAR.View.DELETEData(V_FORMAttrib.RowID)) Then
+                If (Commands.DAR.View.DELETEData(V_FORMAttrib.RowID.ToString)) Then
                     Call GETDATA(True)
                     Call FillEmployee()
                     Mainframe_n_6.Ts_status.Text = "Success"
