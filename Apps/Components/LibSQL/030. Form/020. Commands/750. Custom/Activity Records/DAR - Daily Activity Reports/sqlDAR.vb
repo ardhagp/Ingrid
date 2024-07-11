@@ -535,11 +535,13 @@ Namespace Commands.DAR
                                                          "BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 " &
                                                          "BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", Query)
 
-                        _CMD.Parameters.AddWithValue("@ID", Row.Cells("photo_id").Value)
-                        _CMD.Parameters.AddWithValue("@ParentID", RowID)
-                        _CMD.Parameters.AddWithValue("@FileName", Row.Cells("photo_filename").Value)
-                        _CMD.Parameters.AddWithValue("@Uploader", Row.Cells("photo_uploader").Value)
-                        _CMD.Parameters.AddWithValue("@ParentDate", ParentDate)
+                        With _CMD
+                            .Parameters.AddWithValue("@ID", Row.Cells("photo_id").Value)
+                            .Parameters.AddWithValue("@ParentID", RowID)
+                            .Parameters.AddWithValue("@FileName", Row.Cells("photo_filename").Value)
+                            .Parameters.AddWithValue("@Uploader", Row.Cells("photo_uploader").Value)
+                            .Parameters.AddWithValue("@ParentDate", ParentDate)
+                        End With
 
                         Dim _MemoryStream = New MemoryStream()
                         Dim _Image As Image = CType(Row.Cells("photo_content").Value, Image)
@@ -550,9 +552,11 @@ Namespace Commands.DAR
 
                         Dim _ImageParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image)
                         _ImageParam.Value = _PhotoByte
-                        _CMD.Parameters.Add(_ImageParam)
 
-                        _CMD.Parameters.AddWithValue("@DateNow", Row.Cells("photo_datetime").Value)
+                        With _CMD
+                            .Parameters.Add(_ImageParam)
+                            .Parameters.AddWithValue("@DateNow", Row.Cells("photo_datetime").Value)
+                        End With
 
                         _Success = V_DBE_MSSQL2008.PUSHIMAGE(_CMD)
                     End If
@@ -584,12 +588,14 @@ Namespace Commands.DAR
                         _CMD.CommandText = "RETRY: BEGIN TRANSACTION BEGIN TRY " & Query & " COMMIT TRANSACTION END TRY " &
                             "BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH"
 
-                        _CMD.Parameters.AddWithValue("@ID", Row.Cells("file_id").Value)
-                        _CMD.Parameters.AddWithValue("@ParentID", RowID)
-                        _CMD.Parameters.AddWithValue("@FileName", Row.Cells("file_filename").Value)
-                        _CMD.Parameters.AddWithValue("@Uploader", Row.Cells("file_uploader").Value)
-                        _CMD.Parameters.AddWithValue("@Tag", Row.Cells("file_tag").Value)
-                        _CMD.Parameters.AddWithValue("@ParentDate", ParentDate)
+                        With _CMD
+                            .Parameters.AddWithValue("@ID", Row.Cells("file_id").Value)
+                            .Parameters.AddWithValue("@ParentID", RowID)
+                            .Parameters.AddWithValue("@FileName", Row.Cells("file_filename").Value)
+                            .Parameters.AddWithValue("@Uploader", Row.Cells("file_uploader").Value)
+                            .Parameters.AddWithValue("@Tag", Row.Cells("file_tag").Value)
+                            .Parameters.AddWithValue("@ParentDate", ParentDate)
+                        End With
 
                         Dim _FileStream As FileStream = Nothing
                         _FileStream = New FileStream(Row.Cells("file_content").Value.ToString, FileMode.Open, FileAccess.Read)
@@ -602,9 +608,11 @@ Namespace Commands.DAR
 
                         Dim _FileParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image)
                         _FileParam.Value = _FileByte
-                        _CMD.Parameters.Add(_FileParam)
 
-                        _CMD.Parameters.AddWithValue("@DateNow", Row.Cells("file_datetime").Value)
+                        With _CMD
+                            .Parameters.Add(_FileParam)
+                            .Parameters.AddWithValue("@DateNow", Row.Cells("file_datetime").Value)
+                        End With
 
                         _Success = V_DBE_MSSQL2008.PUSHIMAGE(_CMD)
                     End If
