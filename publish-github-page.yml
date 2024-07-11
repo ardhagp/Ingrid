@@ -6,14 +6,6 @@
 trigger:
 - none
 
-schedules:
-- cron: '0 0 * * *'
-  displayName: Daily midnight build
-  branches:
-    include:
-    - master
-  always: true
-
 pool:
   vmImage: 'windows-latest'
 
@@ -76,6 +68,7 @@ steps:
     command: 'restore'
     restoreSolution: '**/*.sln'
     feedsToUse: 'config'
+    noCache: false
     nugetConfigPath: './Apps/Core/Vb/NuGet.config'
     externalFeedCredentials: 'ingrid'
 
@@ -87,6 +80,7 @@ steps:
     parameterSearchText: '= V_BRIDGE_KEY.SALT()'
     parameterReplaceText: '= "$(var_g_Salt)"'
     parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Syncfusion Key
 - task: ReplaceInFilesTextByText@2
@@ -96,6 +90,7 @@ steps:
     parameterSearchText: '= V_BRIDGE_KEY.SYNCFUSION()'
     parameterReplaceText: '= "$(var_g_SyncfusionKey)"'
     parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
 
 #Replacing BetterStack Key
 - task: ReplaceInFilesTextByText@2
@@ -105,6 +100,7 @@ steps:
     parameterSearchText: 'sourceToken: KEYLOG.BETTERSTACK_LOG()'
     parameterReplaceText: 'sourceToken: "$(var_g_BetterStack_Log)"'
     parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.cs'
 
 #Replacing Version: Major
 - task: ReplaceInFilesTextByText@2
@@ -114,6 +110,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Major'
     parameterReplaceText: '$(var_g_Ingridversion_major)'
     parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Minor
 - task: ReplaceInFilesTextByText@2
@@ -123,6 +120,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Minor'
     parameterReplaceText: '$(var_g_Ingridversion_minor)'
     parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Build
 - task: ReplaceInFilesTextByText@2
@@ -132,6 +130,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Build'
     parameterReplaceText: '$(var_g_Ingridversion_build)'
     parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Revision
 - task: ReplaceInFilesTextByText@2
@@ -141,6 +140,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Revision'
     parameterReplaceText: '$(var_g_Ingridversion_revision)'
     parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
 
 #Checking new value from variables
 - task: CmdLine@2
@@ -187,6 +187,15 @@ steps:
     Contents: '**'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
+- task: ArchiveFiles@2
+  displayName: 'Compressing Files to.. $(build.ArtifactStagingDirectory)'
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(build.ArtifactStagingDirectory)/Ingrid.zip'
+    replaceExistingArchive: true
+
 #Upload Artifact prepare for Relase via FTP
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact.. ingrid-beta'
@@ -207,11 +216,17 @@ steps:
     branchname: 'publish'
     commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
 
-#This task is alternative to publish Ingrid App to Github Page
-#- task: PowerShell@2
-#  displayName: 'Executing Powershell'
+#- task: AzureStaticWebApp@0
+#  displayName: 'Publishing Static Web App'
 #  inputs:
-#    filePath: '$(System.DefaultWorkingDirectory)\Script\publish.ps1'
+#    workingDirectory: '$(build.ArtifactStagingDirectory)\*'
+#    app_location: '/'
+#    api_location: '/api'
+#    skip_app_build: true
+#    skip_api_build: true
+#    is_static_export: true
+#    azure_static_web_apps_api_token: '$(var_g_TOKEN_SWA)'
+#    production_branch: 'publish'
 
 #List of File in $(Build.SourcesDirectory)
 - task: CmdLine@2

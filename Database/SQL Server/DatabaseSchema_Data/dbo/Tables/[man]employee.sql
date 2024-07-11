@@ -11,13 +11,15 @@
     [employee_number]       VARCHAR (20)  NULL,
     [employee_nickname]     VARCHAR (5)   NULL,
     [employee_position]     CHAR (32)     NULL,
-    [employee_grade]        INT           NULL,
+    [employee_grade]        CHAR (32)     NULL,
     [employee_contracttype] CHAR (32)     NULL,
     [employee_active]       BIT           NULL,
     CONSTRAINT [PK_man_employee] PRIMARY KEY CLUSTERED ([employee_id] ASC),
     CONSTRAINT [FK_man_employee_man_contracttype] FOREIGN KEY ([employee_contracttype]) REFERENCES [dbo].[[man]]contracttype] ([contracttype_id]) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT [FK_man_employee_man_position] FOREIGN KEY ([employee_position]) REFERENCES [dbo].[[man]]position] ([position_id]) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
 
 
 GO

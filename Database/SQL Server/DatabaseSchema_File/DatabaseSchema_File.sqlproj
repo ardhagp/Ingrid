@@ -75,6 +75,7 @@
     <Build Include="dbo\Tables\[sto]filefeedback.sql" />
     <Build Include="dbo\Tables\[sto]file.sql" />
     <Build Include="dbo\Views\vw_dbsize.sql" />
+    <Build Include="dbo\Stored Procedures\sp_dbruncommand.sql" />
   </ItemGroup>
   <ItemGroup>
     <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\160\SqlSchemas\master.dacpac">

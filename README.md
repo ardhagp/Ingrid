@@ -1,38 +1,15 @@
+> [!IMPORTANT]
+> This page is intended for developers who want to collaborate to improving Ingrid.
+> If you are **_non developer_** and want to use Ingrid in your computer please see this [WIKI How to Install Page](https://github.com/ardhagp/Ingrid/wiki/02.-How-to-Install).
+
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
+#   <span style="color:darkorange">**About Project & Status**</span>
+Ingrid is a Desktop Application for Windows OS that has many modules for every purposes, made by your request.
 
-#   <span style="color:darkorange">**About**</span>
-----
-Multi purpose application
+[![dotnet CI Build](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet-ci-build.yml/badge.svg)](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet-ci-build.yml) [![Build Status](https://dev.azure.com/cagakmelon/Ingrid/_apis/build/status%2Fgithub-linked%2Fscheduled%2Fci-build?branchName=master)](https://dev.azure.com/cagakmelon/Ingrid/_build/latest?definitionId=12&branchName=master) [![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v3/monitor/182mi.svg)](https://ingrid.betteruptime.com/) [![Static Badge](https://img.shields.io/badge/Download-Ingrid.zip-gold)](https://ardhagp.github.io/Ingrid/Ingrid.zip)
 
-#   <span style="color:darkorange">**Project Status**</span>
-----
-| <span style="color:darkorange">_Information_</span> | <span style="color:darkorange">_Status_</span> |
-|--:|--|
-|License| [![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) |
-|Epics| [![Board Status](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/d8d5eb94-3f20-4331-b741-a71cad549752/_apis/work/boardbadge/618e4563-8610-4e05-baa7-5e30f40ea320?columnOptions=1)](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/_boards/board/t/d8d5eb94-3f20-4331-b741-a71cad549752/Epics/) |
-|Features| [![Board Status](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/d8d5eb94-3f20-4331-b741-a71cad549752/_apis/work/boardbadge/e555542b-4c40-4b49-839c-9f4f3facb8ff?columnOptions=1)](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/_boards/board/t/d8d5eb94-3f20-4331-b741-a71cad549752/Features/) |
-|Stories| [![Board Status](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/d8d5eb94-3f20-4331-b741-a71cad549752/_apis/work/boardbadge/531d42ad-5741-4fbf-b551-86a086c98e7f?columnOptions=1)](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/_boards/board/t/d8d5eb94-3f20-4331-b741-a71cad549752/Stories/) |
-|Offline Setup| [![Static Badge](https://img.shields.io/badge/Download-Installer-gold)](https://www.iupdt.my.id/Ingrid.zip) |
-
-----
-| <span style="color:darkorange">_TFVC_</span> | <span style="color:darkorange">_Status_</span> |
-|--:|--|
-|Last Check In| [![Build status](https://cagakmelon.visualstudio.com/Ingrid/_apis/build/status/www.iupdt.my.id/scheduled/CI-Build)](https://cagakmelon.visualstudio.com/Ingrid/_build/latest?definitionId=8) |
-|Midnight Build| [![Build status](https://cagakmelon.visualstudio.com/Ingrid/_apis/build/status/www.iupdt.my.id/scheduled/Midnight-Build-Beta)](https://cagakmelon.visualstudio.com/Ingrid/_build/latest?definitionId=1) |
-|Beta Version| ![Deployment](https://cagakmelon.vsrm.visualstudio.com/_apis/public/Release/badge/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/1/2) |
-|Stable Release| ![Deployment](https://cagakmelon.vsrm.visualstudio.com/_apis/public/Release/badge/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/2/3) |
-
-----
-| <span style="color:darkorange">_Git_</span> | <span style="color:darkorange">_Status_</span> |
-|--:|--|
-|Last Check In| _In Configuration_ |
-|Midnight Build| _In Configuration_ |
-|Beta Version| _In Configuration_ |
-|Stable Release| _In Configuration_ |
-----
-
-#   <span style="color:darkorange">**Tools**</span>
-----
+![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
+#   <span style="color:darkorange">**Tools You Need**</span>
 <span style="color:orange">1.</span>	Visual Studio Community Edition ([Download](https://visualstudio.microsoft.com/downloads/)) <br/>
 <span style="color:orange">2.</span>	.NET 7 ([Download](https://dotnet.microsoft.com/en-us/download/dotnet/7.0))<br/>
 <span style="color:orange">3.</span>  SQL Server 2022 Express / Developer Edition ([Download](https://www.microsoft.com/en-us/sql-server/sql-server-downloads))<br/>
@@ -57,14 +34,14 @@ Then type this json structure.
 ```
 or simply by editing _secrets.json_ in this directory:
 ```
-%APPDATA%\Microsoft\UserSecrets\{guid}\
+%APPDATA%\Microsoft\UserSecrets\f4e0ab0f-a60a-41b1-b56d-d9adae7b959d\
 ```
 ----
 What if Manage User Secrets context menu doesn't show up?
 
 ![Missing User Secrets context menu](https://res.cloudinary.com/cagakmelon/image/upload/v1711475296/apps/ingrid-assets/readme.md/2024-03-27_002550.png)
 
-No worries, you are still able to manage by using Dev PowerShell with this command :
+No worries, you are still able to manage by using Dev PowerShell with this command:
 
 | <span style="color:darkorange">_Dev PowerShell Commands_</span> | <span style="color:darkorange">_Function_</span> |
 | -- | -- |
@@ -73,13 +50,17 @@ No worries, you are still able to manage by using Dev PowerShell with this comma
 | dotnet user-secrets set KeyName "KeyValue" | Set KeyName and KeyValue |
 | dotnet user-secrets remove KeyName | Remove specified KeyName |
 
-then type this command using PowerShell
+then type this command using PowerShell:
 ```
 dotnet user-secrets set KEYS:SALT "<input random characters including Upper and Lower Case, Symbols and Space>"
 dotnet user-secrets set KEYS:SYNCFUSION "<input your Syncfusion Key>"
 dotnet user-secrets set KEYS:BETTERSTACK_LOG "<input your BetterStack Key>"
 ```
-## Keys :
+> [!WARNING]
+> You should use sha256 hash for your _KEYS:SALT_ to prevent error when decrypting stored password.
+
+![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
+## About Keys :
 ### 1. Syncfusion
 To obtain Syncfusion Key, please sign up with <span style="color:orange">**Community License**</span> and visit this page : [Syncfusion](https://www.syncfusion.com/account/downloads)
 Then follow this steps below :
@@ -91,15 +72,13 @@ To obtain BetterStack Key, please sign up <span style="color:orange">**BetterSta
 
 ![](https://res.cloudinary.com/cagakmelon/image/upload/v1712380400/apps/ingrid-assets/readme.md/2024-04-06_120426.jpg)
 
-#   <span style="color:darkorange">**About MIT License**</span>
-----
+![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
+#   <span style="color:darkorange">**About License**</span>
 This application is released under the [MIT license]($/Ingrid/LICENSE). You can use the code for any purpose, including commercial projects.
 
 ![MIT License](https://res.cloudinary.com/cagakmelon/image/upload/v1697064703/apps/ingrid-assets/readme.md/license.png)
 
+![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**Navigation**</span>
-----
-| <span style="color:darkcyan">Helpful Pages :</span> | [My Dashboard](https://cagakmelon.visualstudio.com/Ingrid/_dashboards/dashboard/0985ae4c-795d-4346-a81d-dcb33669aa7d) | [Wiki](https://cagakmelon.visualstudio.com/Ingrid/_wiki/wikis/Ingrid.wiki/1/Ingrid-WIKI) |
+| <span style="color:darkcyan">Helpful Pages :</span> | [Ingrid Web](https://ardhagp.github.io/Ingrid) | [Ingrid Wiki](https://github.com/ardhagp/Ingrid/wiki) |
 | -- | -- | -- |
-
-![End Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)

@@ -36,7 +36,7 @@ Partial Class Splash
         Me.Pctbx1.BackColor = System.Drawing.Color.White
         Me.Pctbx1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Pctbx1.ErrorImage = CType(resources.GetObject("Pctbx1.ErrorImage"), System.Drawing.Image)
-        Me.Pctbx1.Image = Global.ingrid.My.Resources.Resources.StartUp
+        Me.Pctbx1.Image = Global.Ingrid.My.Resources.Resources.StartUp
         Me.Pctbx1.InitialImage = CType(resources.GetObject("Pctbx1.InitialImage"), System.Drawing.Image)
         Me.Pctbx1.Location = New System.Drawing.Point(0, 0)
         Me.Pctbx1.Name = "Pctbx1"

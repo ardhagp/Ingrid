@@ -4,7 +4,15 @@
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net.
 
 trigger:
-- master
+- none
+
+schedules:
+- cron: '0 17 * * *'
+  displayName: Daily midnight build
+  branches:
+    include:
+    - master
+  always: true
 
 pool:
   vmImage: 'windows-latest'
@@ -68,6 +76,7 @@ steps:
     command: 'restore'
     restoreSolution: '**/*.sln'
     feedsToUse: 'config'
+    noCache: false
     nugetConfigPath: './Apps/Core/Vb/NuGet.config'
     externalFeedCredentials: 'ingrid'
 
