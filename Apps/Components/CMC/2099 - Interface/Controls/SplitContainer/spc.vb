@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class spc
+Public Class Spc
     Inherits System.Windows.Forms.SplitContainer
 
     <SupportedOSPlatform("windows")>

@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class gbx
+Public Class Gbx
     Inherits System.Windows.Forms.GroupBox
 
     <SupportedOSPlatform("windows")>

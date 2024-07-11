@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class meb
+Public Class Meb
     Inherits System.Windows.Forms.MaskedTextBox
 
     <SupportedOSPlatform("windows")>

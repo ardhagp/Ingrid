@@ -11,7 +11,7 @@ Imports System.Text.RegularExpressions
 ''' Custom komponen textbox. Dilengkapi dengan sekuensial validasi pada button clicked.
 ''' </summary>
 ''' <remarks></remarks>
-Public Class txt
+Public Class Txt
     Inherits System.Windows.Forms.TextBox
 
     <SupportedOSPlatform("windows")>

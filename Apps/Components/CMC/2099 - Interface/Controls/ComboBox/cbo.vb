@@ -5,7 +5,7 @@
 ''' <summary>
 ''' Custom combobox
 ''' </summary>
-Public Class cbo
+Public Class Cbo
     Inherits System.Windows.Forms.ComboBox
 
     <SupportedOSPlatform("windows")>

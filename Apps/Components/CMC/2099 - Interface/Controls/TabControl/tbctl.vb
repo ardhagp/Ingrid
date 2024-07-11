@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class tbctl
+Public Class Tbctl
     Inherits System.Windows.Forms.TabControl
 
     <SupportedOSPlatform("windows")>
