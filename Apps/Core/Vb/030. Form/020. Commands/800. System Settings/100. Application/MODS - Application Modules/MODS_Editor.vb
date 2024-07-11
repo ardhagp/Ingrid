@@ -61,7 +61,7 @@ Public Class MODS_Editor
             Return
         End If
 
-        If (Commands.MODS.Editor.PUSHData(TxtID.XOSQLText, CboGroup.SelectedValue, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, V_FORMAttrib.RowID)) Then
+        If (Commands.MODS.Editor.PUSHData(TxtID.XOSQLText, CboGroup.SelectedValue.ToString, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, V_FORMAttrib.RowID)) Then
             RaiseEvent RecordSaved()
             Mainframe_n_6.Ts_status.Text = "Success"
         Else
@@ -86,10 +86,6 @@ Public Class MODS_Editor
 
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
         Me.Close()
-    End Sub
-
-    Private Sub TxtName_TextChanged(sender As Object, e As EventArgs)
-
     End Sub
 
     Private Sub TxtCode_TextChanged(sender As Object, e As EventArgs) Handles TxtCode.TextChanged

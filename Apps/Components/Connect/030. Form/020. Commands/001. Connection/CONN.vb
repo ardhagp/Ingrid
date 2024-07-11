@@ -113,7 +113,7 @@ Public Class CONN
         Call GETTableID()
         V_FORMAttrib.IsNew = False
 
-        If V_FORMAttrib.RowID = "-1" Then
+        If V_FORMAttrib.RowID Is "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             V_CONN_Editor = New CONN_Editor
@@ -129,12 +129,12 @@ Public Class CONN
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles C_MMSMenu.EventDataDelete
         Call GETTableID()
-        If V_FORMAttrib.RowID = "-1" Then
+        If V_FORMAttrib.RowID Is "-1" Then
             Decision("no record selected", "error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             V_FORMAttrib.IsNew = False
-            If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnConnection.CurrentRow.Cells("connectionname").Value & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.CONN.View.DELETEData(V_FORMAttrib.RowID)) Then
+            If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnConnection.CurrentRow.Cells("connectionname").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If (Commands.CONN.View.DELETEData(V_FORMAttrib.RowID.ToString)) Then
                     Call GETDATA(True)
                     SLFStatus.Text = "Success"
                 Else

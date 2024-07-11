@@ -47,13 +47,13 @@ Public Class frmErrorReporting
     Private Function TypeOfFaultiesConverter(ByVal ErrorCatcher As Catcher.Error.Fields) As String
         Dim Result As String = ""
         Select Case ErrorCatcher.Type
-            Case 20010102
+            Case CType(20010102, Catcher.Error.Fields.TypeOfFaulties)
                 Result = "SupportServiceDatabaseEngine"
-            Case 200102
+            Case CType(200102, Catcher.Error.Fields.TypeOfFaulties)
                 Result = "SupportServiceSOAP"
-            Case 200103
+            Case CType(200103, Catcher.Error.Fields.TypeOfFaulties)
                 Result = "SupportServiceWeb"
-            Case 100100
+            Case CType(100100, Catcher.Error.Fields.TypeOfFaulties)
                 Result = "ApplicationRunTime"
         End Select
 

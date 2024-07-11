@@ -54,7 +54,7 @@ Public Class EPLS_Editor
             'Permissions
             TxtLogin.Text = Commands.UAC.Editor.GETUsernameByEmployeeID(V_FORMAttrib.RowID)
             V_FORMAttrib.Field01 = Commands.UAC.Editor.GETUIDByEmployeeID(V_FORMAttrib.RowID)
-            Commands.UAC.Editor.DisplayData(DgnModulesRoles, V_FORMAttrib.Field01)
+            Commands.UAC.Editor.DisplayData(DgnModulesRoles, V_FORMAttrib.Field01.ToString)
 
             TxtPersonalID.Focus()
 
@@ -109,7 +109,7 @@ Public Class EPLS_Editor
             Return
         End If
 
-        If (Commands.EPLS.Editor.PUSHData(TxtPersonalID.XOSQLText, _PositionID, TxtEmployeeNumber.XOSQLText, TxtFullName.XOSQLText, DtpBirthDate, TxtBirthPlace.XOSQLText, TxtAddress.XOSQLText, TxtEmployeeNickname.XOSQLText, ChkActiveEmployee.Checked, CboGender.SelectedItem, _Photo, _ChangePhoto, V_USERAttrib.EID, V_FORMAttrib.RowID)) Then
+        If (Commands.EPLS.Editor.PUSHData(TxtPersonalID.XOSQLText, _PositionID, TxtEmployeeNumber.XOSQLText, TxtFullName.XOSQLText, DtpBirthDate, TxtBirthPlace.XOSQLText, TxtAddress.XOSQLText, TxtEmployeeNickname.XOSQLText, ChkActiveEmployee.Checked, CboGender.SelectedItem.ToString, _Photo, _ChangePhoto, V_USERAttrib.EID, V_FORMAttrib.RowID)) Then
             Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else
@@ -135,10 +135,12 @@ Public Class EPLS_Editor
     End Sub
 
     Private Sub F_AddinPosition_RecordSelected() Handles F_AddinPosition.RecordSelected
-        TxtCompany.Text = V_FORMAttrib.Field01
-        TxtDepartement.Text = V_FORMAttrib.Field02
-        _PositionID = V_FORMAttrib.Field03
-        TxtPosition.Text = V_FORMAttrib.Field04
+        With V_FORMAttrib
+            TxtCompany.Text = .Field01.ToString
+            TxtDepartement.Text = .Field02.ToString
+            _PositionID = .Field03.ToString
+            TxtPosition.Text = .Field04.ToString
+        End With
     End Sub
 
     <SupportedOSPlatform("windows")>

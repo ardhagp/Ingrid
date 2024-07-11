@@ -21,17 +21,6 @@ Public Class MCTG
 #End Region
 
 #Region "Menu Strip Function"
-    Private Sub EventDataAddNew() Handles C_MMSMenu.EventDataAddNew
-
-    End Sub
-
-    Private Sub EventDataEdit() Handles C_MMSMenu.EventDataEdit
-
-    End Sub
-
-    Private Sub EventDataDelete() Handles C_MMSMenu.EventDataDelete
-
-    End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataRefresh() Handles C_MMSMenu.EventDataRefresh
@@ -74,9 +63,7 @@ Public Class MCTG
     <SupportedOSPlatform("windows")>
     Private Sub MCTG_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call LoadMenu()
-
         Call LoadDGN()
-
         Call ClearFind()
     End Sub
 #End Region
@@ -98,7 +85,7 @@ Public Class MCTG
         C_MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS > View Attachment
-        C_MMSMenu.Visible("EventToolsViewAttachment", True)
+        C_MMSMenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
 
     End Sub
 

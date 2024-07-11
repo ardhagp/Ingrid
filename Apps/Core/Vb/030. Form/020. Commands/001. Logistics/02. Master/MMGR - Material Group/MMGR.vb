@@ -28,37 +28,10 @@ Public Class MMGR
     End Sub
 
 #Region "Menu Strip Functions"
-    Private Sub AddNewToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub EditToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-    End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub RefreshToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Call GETDATA(True)
-    End Sub
-
-    Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub ImportsToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub ExportsToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub FindToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
     End Sub
 #End Region
 

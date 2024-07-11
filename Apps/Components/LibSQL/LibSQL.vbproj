@@ -29,6 +29,7 @@
     <Product>LibSQL</Product>
     <Copyright>ArdhaGp©2023</Copyright>
     <FileVersion>2.10.20167.1127</FileVersion>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DocumentationFile>LibSQL.xml</DocumentationFile>

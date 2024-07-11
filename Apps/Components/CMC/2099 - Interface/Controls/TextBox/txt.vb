@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Globalization
 Imports System.Management
 Imports System.Runtime.InteropServices
 Imports System.Runtime.Versioning
@@ -224,7 +225,7 @@ Public Class txt
         End Set
     End Property
 
-    Private _varJenisKapital As String
+    Private _varJenisKapital As ControlCodeBase.enuJenisKapital
     <Category("Text"),
     Description("Isi akan diubah menjadi kapital semua")>
     Public Property XOJenisKapital As ControlCodeBase.enuJenisKapital
@@ -271,15 +272,15 @@ Public Class txt
     Private Function SQLSafeText(ByVal txtControl As txt) As String
         Dim _SQLSafeText As String = txtControl.Text
 
-        If (txtControl.XOIsSearchBox = True) And (txtControl.Text = txtControl.XOSearchBoxText) Then
+        If (txtControl.XOIsSearchBox = True) AndAlso (txtControl.Text = txtControl.XOSearchBoxText) Then
             _SQLSafeText = String.Empty
         End If
 
         _SQLSafeText = _SQLSafeText.Replace("'", "").Replace(";", "").Replace("--", "").Replace("drop table ", "").Replace("update ", "").Replace("insert into ", "").Replace("--", "").Replace("xp_", "").Trim
         If XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA Then
-            _SQLSafeText = _SQLSafeText.ToUpper
+            _SQLSafeText = _SQLSafeText.ToUpper(CultureInfo.CurrentCulture)
         ElseIf XOJenisKapital = ControlCodeBase.enuJenisKapital.kecilsemua Then
-            _SQLSafeText = _SQLSafeText.ToLower
+            _SQLSafeText = _SQLSafeText.ToLower(CultureInfo.CurrentCulture)
         End If
         Return _SQLSafeText
     End Function
@@ -353,7 +354,7 @@ Public Class txt
 
         If (_Num.Upper > 0 AndAlso _Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
             _Bonus.Combo = 25
-        ElseIf (_Num.Upper > 0 AndAlso _Num.Numbers > 0) Or (_Num.Upper > 0 AndAlso _Num.Symbols > 0) Or (_Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
+        ElseIf (_Num.Upper > 0 AndAlso _Num.Numbers > 0) OrElse (_Num.Upper > 0 AndAlso _Num.Symbols > 0) OrElse (_Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
             _Bonus.Combo = 15
         End If
 
@@ -414,26 +415,22 @@ Public Class txt
         If Me.XOPilihSemuaSaatFokus Then
             Me.Select(0, Me.Text.Length)
         End If
-        If Not HasKeyboard() Then
-            'Call OSK
-            Dim OSKProccess As Process = Nothing
-            If OSKProccess Is Nothing OrElse OSKProccess.HasExited Then
-                If OSKProccess IsNot Nothing AndAlso OSKProccess.HasExited Then
-                    OSKProccess.Close()
-                End If
-                OSKProccess = Process.Start("osk")
-            End If
-        End If
+        'If Not HasKeyboard() Then
+        '    'Call OSK
+        '    Dim OSKProccess As Process = Nothing
+        '    If OSKProccess Is Nothing OrElse OSKProccess.HasExited Then
+        '        If OSKProccess IsNot Nothing AndAlso OSKProccess.HasExited Then
+        '            OSKProccess.Close()
+        '        End If
+        '        OSKProccess = Process.Start("osk")
+        '    End If
+        'End If
     End Sub
 
     Private Sub txt_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         If (e.Control And e.KeyCode = Windows.Forms.Keys.A) Then
             Me.SelectAll()
         End If
-    End Sub
-
-    Private Sub txt_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles Me.KeyPress
-
     End Sub
 
     Private Sub txt_Leave(sender As Object, e As System.EventArgs) Handles Me.Leave
@@ -446,10 +443,6 @@ Public Class txt
             Me.Text = Me.Text.Trim()
         End If
 
-        'If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
-        '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
-        'ElseIf Me.XOHightlightSaatFokus AndAlso Not Me.Focused Then
-        '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
         If Me.ReadOnly = False Then
             If Me.XOHarusDiisi = True AndAlso Me.Text.Trim = "" Then
                 MyBase.BackColor = Me.XOHarusDiisiWarnaLatar
@@ -469,13 +462,13 @@ Public Class txt
     End Sub
 
     Private Sub txt_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
-        If Me.XOHightlightSaatFokus And Me.ReadOnly = False Then
+        If Me.XOHightlightSaatFokus AndAlso Me.ReadOnly = False Then
             MyBase.BackColor = Me.XOHightlightSaatFokusWarna
         End If
     End Sub
 
     Private Sub txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
-        If Me.XOHightlightSaatFokus And Not Me.Focused And Me.ReadOnly = False Then
+        If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Me.ReadOnly = False Then
             MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
         End If
     End Sub
@@ -499,13 +492,13 @@ Public Class txt
     Public Sub FontSearchBox(ByVal OnFocus As Boolean)
         Try
             If Me.XOIsSearchBox = True Then
-                If OnFocus = True And Me.Text = Me.XOSearchBoxText Then
+                If OnFocus = True AndAlso Me.Text = Me.XOSearchBoxText Then
                     Me.Text = ""
                     Me.Font = New System.Drawing.Font(Me.Font, System.Drawing.FontStyle.Regular)
                     Me.ForeColor = System.Drawing.SystemColors.WindowText
-                ElseIf OnFocus = True And Me.Text = String.Empty Then
+                ElseIf OnFocus = True AndAlso Me.Text = String.Empty Then
 
-                ElseIf OnFocus = False And Me.Text = String.Empty Then
+                ElseIf OnFocus = False AndAlso Me.Text = String.Empty Then
                     Me.Font = New System.Drawing.Font(Me.Font, System.Drawing.FontStyle.Italic)
                     Me.ForeColor = System.Drawing.Color.LightGray
                     Me.Text = Me.XOSearchBoxText
@@ -526,13 +519,13 @@ Public Class txt
         End If
     End Sub
 
-    <SupportedOSPlatform("windows")>
-    Private Shared Function HasKeyboard()
-        Dim searcher As New ManagementObjectSearcher("root\CIMV2", "SELECT * FROM Win32_Keyboard")
-        Dim result = From mobj In searcher.Get()
-                     Select mobj Where mobj("Status").ToString() = 0
-        Return Not IsNothing(result)
-    End Function
+    '<SupportedOSPlatform("windows")>
+    'Private Shared Function HasKeyboard() As IEnumerable
+    '    Dim searcher As New ManagementObjectSearcher("root\CIMV2", "SELECT * FROM Win32_Keyboard")
+    '    Dim result = From mobj In searcher.Get()
+    '                 Select mobj Where mobj("Status").ToString() = 0
+    '    Return Not IsNothing(result)
+    'End Function
 
     <SupportedOSPlatform("windows")>
     Public Sub ClearSearch()

@@ -261,7 +261,7 @@ Public Class WorkspaceClass
             '    StatusBar.Items("ts_status").Text = ""
             'End If
         Catch ex As Exception
-            Call PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, 0, ex.StackTrace, GETAPPVERSION, , True, True)
+            Call PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, 0.ToString, ex.StackTrace, GETAPPVERSION, , True, True)
             Call PUSHERRORDATASHOW()
         End Try
     End Sub

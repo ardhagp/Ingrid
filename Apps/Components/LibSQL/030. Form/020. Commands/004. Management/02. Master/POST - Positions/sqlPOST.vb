@@ -11,7 +11,7 @@ Namespace Commands.POST
             'ReDim V_DBR_MSSQL2008(2)
             Dim _Where As String = "where "
 
-            If (Find.XOSQLText = String.Empty) And (ForceRefresh = True) Then
+            If (Find.XOSQLText = String.Empty) AndAlso (ForceRefresh = True) Then
                 _Where = String.Format("")
             Else
                 _Where += String.Format("(c.company_code Like '%{0}%') or (d.departement_code like '%{0}%') or (ps.position_code like '%{0}%') or (ps.position_name like '%{0}%')", Find.XOSQLText)
@@ -59,7 +59,7 @@ Namespace Commands.POST
             Dim _Departement As String = String.Empty
 
             If Not Company.Items.Count = 0 Then
-                _Departement = Company.SelectedValue
+                _Departement = Company.SelectedValue.ToString
             End If
 
             V_DBR_MSSQL2008(0).Query = String.Format("select d.departement_id, (d.departement_code + ' - ' + d.departement_name) as [departement_code] from dbo.[[man]]departement] d where d.departement_company = '{0}' " &
@@ -76,7 +76,7 @@ Namespace Commands.POST
 
             V_DBR_MSSQL2008(0).Query = String.Format("select d.departement_company from dbo.[[man]]position] ps inner join dbo.[[man]]departement] d on d.departement_id = ps.position_departement " &
                                                     "where ps.position_id = '{0}'", RowID)
-            V_CompanyID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            V_CompanyID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
             Return V_CompanyID
         End Function
 
@@ -85,7 +85,7 @@ Namespace Commands.POST
             Dim V_DepartementID As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_departement from dbo.[[man]]position] ps where ps.position_id = '{0}'", RowID)
-            V_DepartementID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            V_DepartementID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
             Return V_DepartementID
         End Function
 
@@ -94,7 +94,7 @@ Namespace Commands.POST
             Dim V_PostitionCode As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_code from dbo.[[man]]position] ps where ps.position_id = '{0}'", RowID)
-            V_PostitionCode = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            V_PostitionCode = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
 
             Return V_PostitionCode
         End Function
@@ -104,7 +104,7 @@ Namespace Commands.POST
             Dim V_PostitionName As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_name from dbo.[[man]]position] ps where ps.position_id = '{0}'", RowID)
-            V_PostitionName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            V_PostitionName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
 
             Return V_PostitionName
         End Function
@@ -114,7 +114,7 @@ Namespace Commands.POST
             Dim V_PostitionDescription As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_description from dbo.[[man]]position] ps where ps.position_id = '{0}'", RowID)
-            V_PostitionDescription = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            V_PostitionDescription = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
 
             Return V_PostitionDescription
         End Function
@@ -132,7 +132,7 @@ Namespace Commands.POST
 
             V_DBR_MSSQL2008(0).Query = String.Format("select (ps.position_id) as [rows] from dbo.[[man]]position] ps {0}", _Where)
 
-            _IsDuplicate = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
             If _IsDuplicate = 0 Then
                 Return False

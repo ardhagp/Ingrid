@@ -1,4 +1,5 @@
 ﻿Imports System
+Imports System.IO
 Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 Imports CMCv
@@ -27,13 +28,13 @@ Namespace Commands.UAC
             Dim _Exist As Integer
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", Username, CMCv.Security.Encrypt.MD5(Password))
-                _Exist = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+                _Exist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
                 If _Exist = 0 Then
                     _UID = String.Empty
                 Else
                     V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_id from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", Username, CMCv.Security.Encrypt.MD5(Password))
-                    _UID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+                    _UID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
 
                     V_DBR_MSSQL2008(1).Query = String.Format("update dbo.[[sys]]user] set user_lastlogin = getdate() where user_id = '{0}'", _UID)
                     V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(1).Query)
@@ -55,7 +56,7 @@ Namespace Commands.UAC
 
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_employee from dbo.[[sys]]user] usr where usr.user_id = '{0}';", UID)
-                _EID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+                _EID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
             Catch ex As Exception
                 _EID = String.Empty
             End Try
@@ -69,7 +70,7 @@ Namespace Commands.UAC
 
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_fullname from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", UID)
-                _FullName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+                _FullName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
             Catch ex As Exception
                 _FullName = String.Empty
             End Try
@@ -83,7 +84,7 @@ Namespace Commands.UAC
 
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_fullname from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", UID)
-                _FullName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+                _FullName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
             Catch ex As Exception
                 _FullName = String.Empty
             End Try
@@ -102,7 +103,7 @@ Namespace Commands.UAC
 
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_number from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", UID)
-                _EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+                _EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
             Catch ex As Exception
                 _EmployeeNumber = String.Empty
             End Try
@@ -121,7 +122,7 @@ Namespace Commands.UAC
 
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_gender from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", UID)
-                _EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+                _EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
             Catch ex As Exception
                 _EmployeeNumber = "MALE"
             End Try
@@ -141,7 +142,7 @@ Namespace Commands.UAC
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select p.position_name from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] emp on emp.employee_id = usr.user_employee " &
                                                         "inner join dbo.[[man]]position] p on p.position_id = emp.employee_position where (usr.[user_id] = '{0}')", UID)
-                _EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+                _EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
             Catch ex As Exception
                 _EmployeeNumber = "#ERROR"
             End Try
@@ -157,19 +158,19 @@ Namespace Commands.UAC
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETAccess(ByVal AuthType As enuAuthType, ByVal SysModule As String, ByVal UID As Integer) As Boolean
+        Public Shared Function GETAccess(ByVal AuthType As EnuAuthType, ByVal SysModule As String, ByVal UID As Integer) As Boolean
             Dim _IsAuth As Integer
 
-            If AuthType = enuAuthType.Read Then
+            If AuthType = EnuAuthType.Read Then
 
-            ElseIf AuthType = enuAuthType.Write Then
+            ElseIf AuthType = EnuAuthType.Write Then
 
-            ElseIf AuthType = enuAuthType.Execute Then
+            ElseIf AuthType = EnuAuthType.Execute Then
 
             End If
 
             V_DBR_MSSQL2008(0).Query = ""
-            _IsAuth = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _IsAuth = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
             If _IsAuth = 0 Then
                 Return False
@@ -191,13 +192,11 @@ Namespace Commands.UAC
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("SELECT f.file_content FROM db_universe_erp_file.dbo.[[sto]]file] f where f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_parent = '{0}' ;", _UID)
-                _FileStream = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+                _FileStream = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), FileStream)
 
                 If _FileStream IsNot Nothing Then
                     _Photo = ImageEditor.Proccessor.Compress.OutputAsImage(_FileStream)
                 End If
-
-
             Catch ex As Exception
                 _Photo = Nothing
             End Try
@@ -217,7 +216,7 @@ Namespace Commands.UAC
 
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("select u.user_root from dbo.[[sys]]user] u where u.user_id = '{0}'", UID)
-                _IsAdministrator = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+                _IsAdministrator = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Boolean)
             Catch ex As Exception
                 _IsAdministrator = False
             End Try
@@ -306,12 +305,12 @@ Namespace Commands.UAC
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GETUIDByEmployeeID(ByVal EmployeeID As String) As String
-            Dim _UID As Object
+            Dim _UID As String
 
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_id from dbo.[[sys]]user] usr where usr.user_employee = '{0}';", EmployeeID)
 
-                _UID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+                _UID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
                 IIf(IsDBNull(_UID), "", _UID)
 
             Catch ex As Exception
@@ -323,91 +322,77 @@ Namespace Commands.UAC
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GETEmployeeNumber(ByVal UserID As String) As String
-            Dim _EmployeeNumber As Object
+            Dim _EmployeeNumber As String
 
             V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_number from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
 
-            _EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
-
-            _EmployeeNumber = IIf(IsDBNull(_EmployeeNumber), "", _EmployeeNumber)
+            _EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
 
             Return _EmployeeNumber
         End Function
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GETEmployeeFullName(ByVal UserID As String) As String
-            Dim _EmployeeFullName As Object
+            Dim _EmployeeFullName As String
 
             V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_fullname from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
 
-            _EmployeeFullName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
-
-            _EmployeeFullName = IIf(IsDBNull(_EmployeeFullName), "", _EmployeeFullName)
+            _EmployeeFullName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
 
             Return _EmployeeFullName
         End Function
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GETUsernameByUserID(ByVal UserID As String) As String
-            Dim _Username As Object
+            Dim _Username As String
 
             V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_username from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
 
-            _Username = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
-
-            _Username = IIf(IsDBNull(_Username), "", _Username)
+            _Username = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
 
             Return _Username
         End Function
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GETUsernameByEmployeeID(ByVal EmployeeID As String) As String
-            Dim _Username As Object
+            Dim _Username As String
 
             V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_username from dbo.[[sys]]user] usr where usr.user_employee = '{0}'", EmployeeID)
 
-            _Username = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
-
-            _Username = IIf(IsDBNull(_Username), "", _Username)
+            _Username = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
 
             Return _Username
         End Function
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GETPassword(ByVal UserID As String) As String
-            Dim _Password As Object
+            Dim _Password As String
 
             V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_password from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
 
-            _Password = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
-
-            _Password = IIf(IsDBNull(_Password), "", _Password)
+            _Password = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
 
             Return _Password
         End Function
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GETLocked(ByVal UserID As String) As Boolean
-            Dim _Locked As Object
+            Dim _Locked As Boolean
 
             V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_locked from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
 
-            _Locked = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
-
-            _Locked = IIf(IsDBNull(_Locked), False, _Locked)
+            _Locked = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
 
             Return _Locked
         End Function
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GETAdministrator(ByVal UserID As String) As Boolean
-            Dim _Root As Object
+            Dim _Root As Boolean
 
             V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_root from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
 
-            _Root = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
-
-            _Root = IIf(IsDBNull(_Root), False, _Root)
+            _Root = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
 
             Return _Root
         End Function
@@ -421,7 +406,7 @@ Namespace Commands.UAC
             Else
                 V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_id <> '{1}')", Username, RowID)
             End If
-            _IsDuplicate = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query)
+            _IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
 
             If _IsDuplicate = 0 Then
                 Return False
@@ -460,7 +445,7 @@ Namespace Commands.UAC
                     For Each Row As DataGridViewRow In UAC.Rows
                         V_DBR_MSSQL2008(3).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from dbo.[[sys]]useraccess] uac inner join dbo.[[sys]]module] mo on mo.module_id = uac.useraccess_module " &
                                                                 "where uac.useraccess_user = '{0}' and mo.module_code = '{1}'", RowID, Row.Cells("module_code").Value)
-                        _Exist = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(3).Query)
+                        _Exist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(3).Query), Integer)
 
                         If _Exist = 0 Then
                             _EQuery = String.Format("insert into dbo.[[sys]]useraccess](useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &

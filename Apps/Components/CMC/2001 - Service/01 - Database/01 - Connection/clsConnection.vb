@@ -5,7 +5,7 @@ Namespace Database.Connect
     ''' Database connection string untuk berbagai provider
     ''' </summary>
     ''' <remarks></remarks>
-    Friend Interface IMSAccess2003Connections
+    Friend Interface IMsaccess2003connections
 #Region "OLEDB"
         ''' <summary>
         ''' Koneksi database Access 2003 menggunakan OLEDB
@@ -15,7 +15,7 @@ Namespace Database.Connect
         ''' <param name="Password">Kata sandi</param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Function Microsoft_OLEDB_Standard(ByVal DatabasePath As String, ByVal Username As String, ByVal Password As String)
+        Function Microsoftoledbstandard(ByVal DatabasePath As String, ByVal Username As String, ByVal Password As String) As String
 #End Region
 
 #Region "ODBC"
@@ -27,11 +27,11 @@ Namespace Database.Connect
         ''' <param name="Password">Kata sandi</param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Function Microsoft_ODBC_Standard(ByVal DatabasePath As String, ByVal Username As String, ByVal Password As String)
+        Function Microsoftodbcstandard(ByVal DatabasePath As String, ByVal Username As String, ByVal Password As String) As String
 #End Region
     End Interface
 
-    Friend Interface IMSSQLServer2008Connections
+    Friend Interface IMssqlserver2008connections
 #Region ".NET Standard"
 
         ''' <summary>
@@ -43,7 +43,7 @@ Namespace Database.Connect
         ''' <param name="Password">Password</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MS_SQL2008_Standard(ByVal ServerAddress As String, ByVal ServerPort As Integer, ByVal DatabaseName As String, ByVal Username As String, ByVal Password As String)
+        Function Mssql2008standard(ByVal ServerAddress As String, ByVal ServerPort As Integer, ByVal DatabaseName As String, ByVal Username As String, ByVal Password As String) As String
 
         ''' <summary>
         ''' Koneksi SQL Server 2008 Trusted Connection
@@ -52,11 +52,11 @@ Namespace Database.Connect
         ''' <param name="DatabaseName">Nama database</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MS_SQL2008_TrustedConnection(ByVal ServerAddress As String, ByVal DatabaseName As String)
+        Function Mssql2008trustedconnection(ByVal ServerAddress As String, ByVal DatabaseName As String) As String
 #End Region
     End Interface
 
-    Friend Interface IMySQLConnections
+    Friend Interface IMysqlconnections
 #Region "ODBC51"
         ''' <summary>
         ''' Konksi database ODBC51 Standard
@@ -67,7 +67,7 @@ Namespace Database.Connect
         ''' <param name="Database">Database</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MySQL_ODBC51_Standard(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String) As String
+        Function Mysqlodbc51standard(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String) As String
 #End Region
 
 #Region ".NET InactivatingPreparedStatement"
@@ -82,7 +82,7 @@ Namespace Database.Connect
         ''' <param name="IgnorePrepare">Ignore Prepare</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MySQL_NET_InactivatingPreparedStatement(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal IgnorePrepare As Options.IgnorePrepare) As String
+        Function Mysqlnetinactivatingpreparedstatement(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal IgnorePrepare As Options.IgnorePrepare) As String
 #End Region
 
 #Region ".NET NamedPipes"
@@ -96,7 +96,7 @@ Namespace Database.Connect
         ''' <param name="Database">Database</param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Function MySQL_NET_NamedPipes(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String)
+        Function Mysqlnetnamedpipes(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String) As String
 #End Region
 
 #Region ".NET NetworkProtocol"
@@ -111,7 +111,7 @@ Namespace Database.Connect
         ''' <param name="Protocol"></param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Function MySQL_NET_NetworkProtocol(ByVal ServerAddress As String, ByVal Port As Integer, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal Protocol As Options.Protocol) As String
+        Function MySQLNETNetworkProtocol(ByVal ServerAddress As String, ByVal Port As Integer, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal Protocol As Options.Protocol) As String
 #End Region
 
 #Region ".NET Standard"
@@ -125,7 +125,7 @@ Namespace Database.Connect
         ''' <param name="Database"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MySQL_NET_Standard(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String) As String
+        Function MySQLNETStandard(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String) As String
 #End Region
 
 #Region ".NET SpcifyingCharacterSet"
@@ -140,7 +140,7 @@ Namespace Database.Connect
         ''' <param name="CharSet"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MySQL_NET_SpecifyingCharacterSet(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal CharSet As Options.CharSet) As String
+        Function MySQLNETSpecifyingCharacterSet(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal CharSet As Options.CharSet) As String
 #End Region
 
 #Region ".NET SpecifyingCommandTimeout"
@@ -156,7 +156,7 @@ Namespace Database.Connect
         ''' <param name="Timeout"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MySQL_NET_SpecifyingCommandTimeout(ByVal ServerAddress As String, ByVal Port As Integer, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal Timeout As Integer) As String
+        Function MySQLNETSpecifyingCommandTimeout(ByVal ServerAddress As String, ByVal Port As Integer, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal Timeout As Integer) As String
 #End Region
 
 #Region ".NET SpecifyingPort"
@@ -171,7 +171,7 @@ Namespace Database.Connect
         ''' <param name="Database"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MySQL_NET_SpecifyingPort(ByVal ServerAddress As String, ByVal Port As Integer, ByVal Username As String, ByVal Password As String, ByVal Database As String) As String
+        Function MySQLNETSpecifyingPort(ByVal ServerAddress As String, ByVal Port As Integer, ByVal Username As String, ByVal Password As String, ByVal Database As String) As String
 #End Region
 
 #Region ".NET SpecifyingSharedMemoryName"
@@ -186,7 +186,7 @@ Namespace Database.Connect
         ''' <param name="SharedMemoryName"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MySQL_NET_SpecifyingSharedMemoryName(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal SharedMemoryName As Options.SharedMemoryName) As String
+        Function MySQLNETSpecifyingSharedMemoryName(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal SharedMemoryName As Options.SharedMemoryName) As String
 #End Region
 
 #Region ".NET UsingEncryption"
@@ -201,7 +201,7 @@ Namespace Database.Connect
         ''' <param name="Encryption"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MySQL_NET_UsingEncryption(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal Encryption As Options.Encryption) As String
+        Function MySQLNETUsingEncryption(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal Encryption As Options.Encryption) As String
 #End Region
 
 #Region ".NET UsingEncryptionAlternative"
@@ -216,51 +216,51 @@ Namespace Database.Connect
         ''' <param name="Encrypt"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function MySQL_NET_UsingEncryptionAlternative(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal Encrypt As Options.Encryption) As String
+        Function MySQLNETUsingEncryptionAlternative(ByVal ServerAddress As String, ByVal Username As String, ByVal Password As String, ByVal Database As String, ByVal Encrypt As Options.Encryption) As String
 #End Region
 
     End Interface
 
-    Friend Interface ILocalDBConnections
+    Friend Interface ILocaldbconnections
         ''' <summary>
         ''' 
         ''' </summary>
         ''' <returns></returns>
-        Function LocalDB_AutomaticInstance() As String
+        Function LocalDBAutomaticInstance() As String
 
         ''' <summary>
         ''' 
         ''' </summary>
         ''' <param name="DBFileName"></param>
         ''' <returns></returns>
-        Function LocalDB_AttachDB(ByVal DBFileName As String) As String
+        Function LocalDBAttachDB(ByVal DBFileName As String) As String
 
         ''' <summary>
         ''' 
         ''' </summary>
         ''' <param name="InstanceName"></param>
         ''' <returns></returns>
-        Function LocalDB_SpecifiedInstance(ByVal InstanceName As String) As String
+        Function LocalDBSpecifiedInstance(ByVal InstanceName As String) As String
 
         ''' <summary>
         ''' 
         ''' </summary>
         ''' <param name="DBFileName"></param>
         ''' <returns></returns>
-        Function LocalDB_InitialCatalog(ByVal DBFileName As String) As String
+        Function LocalDBInitialCatalog(ByVal DBFileName As String) As String
 
     End Interface
 
-    Friend Interface ISQLite
-        Function SQLite_Basic(ByVal DBFile As String) As String
+    Friend Interface ISqlite
+        Function SQLiteBasic(ByVal DBFile As String) As String
 
-        Function SQLite_OpenWithPassword(ByVal DBFile As String, ByVal Password As String) As String
+        Function SQLiteOpenWithPassword(ByVal DBFile As String, ByVal Password As String) As String
 
     End Interface
 
     '-----------------------------------------------------------------------------
     Public Class MSAccess2003Connection
-        Implements IMSAccess2003Connections
+        Implements IMsaccess2003connections
         ''' <summary>
         ''' Koneksi database Access 2003
         ''' </summary>
@@ -269,7 +269,7 @@ Namespace Database.Connect
         ''' <param name="Password">Kata sandi</param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Public Function Microsoft_ODBC_Standard(DatabasePath As String, Username As String, Password As String) As Object Implements IMSAccess2003Connections.Microsoft_ODBC_Standard
+        Public Function Microsoftodbcstandard(DatabasePath As String, Username As String, Password As String) As String Implements IMsaccess2003connections.Microsoftodbcstandard
             _RESULT = "Driver={Microsoft Access Driver (*.mdb)};Dbq=" & DatabasePath & ";Uid=" & Username & ";Pwd=" & Password & ";"
             Return _RESULT
         End Function
@@ -282,14 +282,14 @@ Namespace Database.Connect
         ''' <param name="Password"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Public Function Microsoft_OLEDB_Standard(DatabasePath As String, Username As String, Password As String) As Object Implements IMSAccess2003Connections.Microsoft_OLEDB_Standard
+        Public Function Microsoftoledbstandard(DatabasePath As String, Username As String, Password As String) As String Implements IMsaccess2003connections.Microsoftoledbstandard
             _RESULT = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & DatabasePath & ";User Id=" & Username & ";Password=" & Password & ";"
             Return _RESULT
         End Function
     End Class
 
     Public Class MSSQLServer2008Connection
-        Implements IMSSQLServer2008Connections
+        Implements IMssqlserver2008connections
 
         ''' <summary>
         ''' 
@@ -301,7 +301,7 @@ Namespace Database.Connect
         ''' <param name="Password"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Public Function MS_SQL2008_Standard(ServerAddress As String, ByVal ServerPort As Integer, ByVal DatabaseName As String, Username As String, Password As String) As Object Implements IMSSQLServer2008Connections.MS_SQL2008_Standard
+        Public Function Mssql2008standard(ServerAddress As String, ByVal ServerPort As Integer, ByVal DatabaseName As String, Username As String, Password As String) As String Implements IMssqlserver2008connections.Mssql2008standard
             _RESULT = String.Format("Server = {0},{1}; Database = {2}; User Id = {3}; Password = {4};", ServerAddress.Trim, ServerPort, DatabaseName, Username.Trim, Password)
             Return _RESULT
         End Function
@@ -313,94 +313,94 @@ Namespace Database.Connect
         ''' <param name="DatabaseName"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Public Function MS_SQL2008_TrustedConnection(ServerAddress As String, DatabaseName As String) As Object Implements IMSSQLServer2008Connections.MS_SQL2008_TrustedConnection
+        Public Function Mssql2008trustedconnection(ServerAddress As String, DatabaseName As String) As String Implements IMssqlserver2008connections.Mssql2008trustedconnection
             _RESULT = "Server = " & ServerAddress.Trim & "; Database = " & DatabaseName & "; Trusted_Connection = True;"
             Return _RESULT
         End Function
     End Class
 
     Public Class MySQLConnection
-        Implements IMySQLConnections
+        Implements IMysqlconnections
 
-        Public Function MySQL_NET_InactivatingPreparedStatement(ServerAddress As String, Username As String, Password As String, Database As String, IgnorePrepare As Options.IgnorePrepare) As String Implements IMySQLConnections.MySQL_NET_InactivatingPreparedStatement
+        Public Function Mysqlnetinactivatingpreparedstatement(ServerAddress As String, Username As String, Password As String, Database As String, IgnorePrepare As Options.IgnorePrepare) As String Implements IMysqlconnections.Mysqlnetinactivatingpreparedstatement
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQL_NET_NamedPipes(ServerAddress As String, Username As String, Password As String, Database As String) As Object Implements IMySQLConnections.MySQL_NET_NamedPipes
+        Public Function Mysqlnetnamedpipes(ServerAddress As String, Username As String, Password As String, Database As String) As String Implements IMysqlconnections.Mysqlnetnamedpipes
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQL_NET_NetworkProtocol(ServerAddress As String, Port As Integer, Username As String, Password As String, Database As String, Protocol As Options.Protocol) As String Implements IMySQLConnections.MySQL_NET_NetworkProtocol
+        Public Function MySQLNETNetworkProtocol(ServerAddress As String, Port As Integer, Username As String, Password As String, Database As String, Protocol As Options.Protocol) As String Implements IMysqlconnections.MySQLNETNetworkProtocol
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQL_NET_SpecifyingCharacterSet(ServerAddress As String, Username As String, Password As String, Database As String, CharSet As Options.CharSet) As String Implements IMySQLConnections.MySQL_NET_SpecifyingCharacterSet
+        Public Function MySQLNETSpecifyingCharacterSet(ServerAddress As String, Username As String, Password As String, Database As String, CharSet As Options.CharSet) As String Implements IMysqlconnections.MySQLNETSpecifyingCharacterSet
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQL_NET_SpecifyingCommandTimeout(ServerAddress As String, Port As Integer, Username As String, Password As String, Database As String, Timeout As Integer) As String Implements IMySQLConnections.MySQL_NET_SpecifyingCommandTimeout
+        Public Function MySQLNETSpecifyingCommandTimeout(ServerAddress As String, Port As Integer, Username As String, Password As String, Database As String, Timeout As Integer) As String Implements IMysqlconnections.MySQLNETSpecifyingCommandTimeout
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQL_NET_SpecifyingPort(ServerAddress As String, Port As Integer, Username As String, Password As String, Database As String) As String Implements IMySQLConnections.MySQL_NET_SpecifyingPort
+        Public Function MySQLNETSpecifyingPort(ServerAddress As String, Port As Integer, Username As String, Password As String, Database As String) As String Implements IMysqlconnections.MySQLNETSpecifyingPort
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQL_NET_SpecifyingSharedMemoryName(ServerAddress As String, Username As String, Password As String, Database As String, SharedMemoryName As Options.SharedMemoryName) As String Implements IMySQLConnections.MySQL_NET_SpecifyingSharedMemoryName
+        Public Function MySQLNETSpecifyingSharedMemoryName(ServerAddress As String, Username As String, Password As String, Database As String, SharedMemoryName As Options.SharedMemoryName) As String Implements IMysqlconnections.MySQLNETSpecifyingSharedMemoryName
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQL_NET_Standard(ServerAddress As String, Username As String, Password As String, Database As String) As String Implements IMySQLConnections.MySQL_NET_Standard
+        Public Function MySQLNETStandard(ServerAddress As String, Username As String, Password As String, Database As String) As String Implements IMysqlconnections.MySQLNETStandard
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQL_NET_UsingEncryption(ServerAddress As String, Username As String, Password As String, Database As String, Encryption As Options.Encryption) As String Implements IMySQLConnections.MySQL_NET_UsingEncryption
+        Public Function MySQLNETUsingEncryption(ServerAddress As String, Username As String, Password As String, Database As String, Encryption As Options.Encryption) As String Implements IMysqlconnections.MySQLNETUsingEncryption
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQL_NET_UsingEncryptionAlternative(ServerAddress As String, Username As String, Password As String, Database As String, Encrypt As Options.Encryption) As String Implements IMySQLConnections.MySQL_NET_UsingEncryptionAlternative
+        Public Function MySQLNETUsingEncryptionAlternative(ServerAddress As String, Username As String, Password As String, Database As String, Encrypt As Options.Encryption) As String Implements IMysqlconnections.MySQLNETUsingEncryptionAlternative
             Throw New NotImplementedException()
         End Function
 
-        Public Function MySQL_ODBC51_Standard(ServerAddress As String, Username As String, Password As String, Database As String) As String Implements IMySQLConnections.MySQL_ODBC51_Standard
+        Public Function Mysqlodbc51standard(ServerAddress As String, Username As String, Password As String, Database As String) As String Implements IMysqlconnections.Mysqlodbc51standard
             Throw New NotImplementedException()
         End Function
     End Class
 
     Public Class LocalDBConnection
-        Implements ILocalDBConnections
+        Implements ILocaldbconnections
 
-        Public Function LocalDB_AttachDB(DBFileName As String) As String Implements ILocalDBConnections.LocalDB_AttachDB
+        Public Function LocalDBAttachDB(DBFileName As String) As String Implements ILocaldbconnections.LocalDBAttachDB
             _RESULT = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=" & DBFileName & ";"
             Return _RESULT
         End Function
 
-        Public Function LocalDB_AutomaticInstance() As String Implements ILocalDBConnections.LocalDB_AutomaticInstance
+        Public Function LocalDBAutomaticInstance() As String Implements ILocaldbconnections.LocalDBAutomaticInstance
             _RESULT = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;"
             Return _RESULT
         End Function
 
-        Public Function LocalDB_SpecifiedInstance(InstanceName As String) As String Implements ILocalDBConnections.LocalDB_SpecifiedInstance
+        Public Function LocalDBSpecifiedInstance(InstanceName As String) As String Implements ILocaldbconnections.LocalDBSpecifiedInstance
             _RESULT = "Server=(localdb)\" & InstanceName & ";Integrated Security=true;"
             Return _RESULT
         End Function
 
-        Public Function LocalDB_InitialCatalog(DBFileName As String) As String Implements ILocalDBConnections.LocalDB_InitialCatalog
+        Public Function LocalDBInitialCatalog(DBFileName As String) As String Implements ILocaldbconnections.LocalDBInitialCatalog
             _RESULT = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=" & DBFileName & ";Encrypt=False; TrustServerCertificate=False;"
             Return _RESULT
         End Function
     End Class
 
     Public Class SQLiteConnection
-        Implements ISQLite
+        Implements ISqlite
 
-        Public Function SQLite_Basic(DBFile As String) As String Implements ISQLite.SQLite_Basic
+        Public Function SQLiteBasic(DBFile As String) As String Implements ISqlite.SQLiteBasic
             '_RESULT = "Data Source=" & DBFile & ";Version=3;Mode=ReadWrite;Journal Mode=Off;"
             _RESULT = "Data Source=" & DBFile & ";Version=3;Journal Mode=Persist;Synchronous=Full;Max Page Count=5000;"
             Return _RESULT
         End Function
 
-        Public Function SQLite_OpenWithPassword(DBFile As String, Password As String) As String Implements ISQLite.SQLite_OpenWithPassword
+        Public Function SQLiteOpenWithPassword(DBFile As String, Password As String) As String Implements ISqlite.SQLiteOpenWithPassword
             _RESULT = "Data Source=" & DBFile & ";Password=" & Password & ";"
             Return _RESULT
         End Function

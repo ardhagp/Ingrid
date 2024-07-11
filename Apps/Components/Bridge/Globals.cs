@@ -1,54 +1,18 @@
-﻿//using System;
-//using Sentry;
-//using System.Windows.Forms;
-//using BetterStack.Logs;
-//using Bridge.Security;
-using Microsoft.Extensions.Configuration;
-//using Microsoft.VisualBasic;
+﻿using Microsoft.Extensions.Configuration;
 using Serilog;
-//using System.Reflection.Metadata;
-//using System.Security.Cryptography.X509Certificates;
-//using System.Security.Principal;
 
 namespace Bridge.Security
 {
-    public class GETKEY
+    public class Getkey
     {
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public string SALT()
+        public string Salt()
         {
-            /*
-             * this code for .net 6, not working on .net 7
-             * 
-            ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
-
-            IConfiguration configuration = configurationBuilder.AddUserSecrets<GETKEY>().Build();
-
-            string? v = configuration.GetSection("KEYS")["SALT"];
-            string V_KEY = v;
-
-            if (V_KEY != null)
-            {
-                return V_KEY;
-            }
-            else
-            {
-                return "";
-            }
-            */
-            /*
-             * var config = new ConfigurationBuilder()
-                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("secret.json")
-                .AddUserSecrets<GETKEY>()
-                .Build();
-            */
-
             var config = new ConfigurationBuilder()
-                .AddUserSecrets<GETKEY>()
+                .AddUserSecrets<Getkey>()
                 .Build();
 
             var V_KEY = config.GetSection("KEYS")["SALT"];
@@ -63,30 +27,10 @@ namespace Bridge.Security
             }
         }
 
-        public string SYNCFUSION()
+        public string Syncfusion()
         {
-            /*
-             * this code for .net 6, not working on .net 7
-             * 
-            ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
-
-            IConfiguration configuration = configurationBuilder.AddUserSecrets<GETKEY>().Build();
-
-            string? v = configuration.GetSection("KEYS")["SYNCFUSION"];
-            string V_KEY = v;
-
-            if (V_KEY != null)
-            {
-                return V_KEY;
-            }
-            else
-            {
-                return "";
-            }
-            */
-
             var config = new ConfigurationBuilder()
-                .AddUserSecrets<GETKEY>()
+                .AddUserSecrets<Getkey>()
                 .Build();
 
             var V_KEY = config.GetSection("KEYS")["SYNCFUSION"];
@@ -101,29 +45,10 @@ namespace Bridge.Security
             }
         }
 
-        public string BETTERSTACK_LOG()
+        public string Betterstack_log()        
         {
-            /*
-             * this code for .net 6, not working on .net 7
-             * 
-            ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
-
-            IConfiguration configuration = configurationBuilder.AddUserSecrets<GETKEY>().Build();
-            
-            string? v = configuration.GetSection("KEYS")["BETTERSTACK_LOG"];
-            string V_KEY = v;
-
-            if (V_KEY != null) {
-                return V_KEY;
-            }
-            else
-            {
-                return "";
-            }
-            */
-
             var config = new ConfigurationBuilder()
-                .AddUserSecrets<GETKEY>()
+                .AddUserSecrets<Getkey>()
                 .Build();
 
             var V_KEY = config.GetSection("KEYS")["BETTERSTACK_LOG"];
@@ -139,7 +64,7 @@ namespace Bridge.Security
         }
     }
     
-    public class WRITELOG
+    public class Writelog
     {
 
         public enum LogType
@@ -148,25 +73,25 @@ namespace Bridge.Security
             Error
         }
 
-        public static async void SENDLOG(string Messages, LogType TypeOfLog)
+        public static async Task Sendlog(string Messages, LogType TypeOfLog)
         {
             try
             {
-                WRITELOGS(Messages, TypeOfLog);
+                await Writelogs(Messages, TypeOfLog);
             }
             catch (Exception ex)
             {
-                string a = ex.Message;                
+                await Writelogs(ex.Message,LogType.Error);
             }
         }
-        private static async void WRITELOGS(string Messages, LogType TypeOfLog)
+        private static async Task Writelogs(string Messages, LogType TypeOfLog)
         {
             await Task.Delay(0);
 
-            Bridge.Security.GETKEY KEYLOG = new Bridge.Security.GETKEY();
+            Bridge.Security.Getkey KEYLOG = new Bridge.Security.Getkey();
 
             Serilog.Log.Logger = new LoggerConfiguration()
-                .WriteTo.BetterStack(sourceToken: KEYLOG.BETTERSTACK_LOG())
+                .WriteTo.BetterStack(sourceToken: KEYLOG.Betterstack_log())
                 .MinimumLevel.Information()
                 .CreateLogger();
 

@@ -10,7 +10,7 @@ Namespace Commands.PLNT
         Public Shared Sub DisplayData(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             Dim _Where As String = "where "
 
-            If (Find.XOSQLText = String.Empty) Or (ForceRefresh = True) Then
+            If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh = True) Then
                 _Where = String.Format("")
             Else
                 _Where += String.Format("(p.plant_code like '%{0}%') or (p.plant_name like '%{0}%') or (p.plant_name2 like '%{0}%') or (p.plant_postalcode like '%{0}%')", Find.XOSQLText)
@@ -43,7 +43,7 @@ Namespace Commands.PLNT
     Public Class Editor
         <SupportedOSPlatform("windows")>
         Public Shared Function IsDuplicate(ByVal CompanyCode As String, ByVal PlantCode As String, Optional ByVal RowID As String = "") As Boolean
-            RowID = 0
+            RowID = "0"
             Dim V_IsDuplicate As Boolean
 
             Try
@@ -53,7 +53,7 @@ Namespace Commands.PLNT
                     V_DBR_MSSQL2008(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.[[sys]]module] mods where mods.module_code = '{0}' and mods.module_id <> '{1}'")
                 End If
 
-                V_IsDuplicate = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+                V_IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Boolean)
 
                 Return V_IsDuplicate
             Catch ex As Exception

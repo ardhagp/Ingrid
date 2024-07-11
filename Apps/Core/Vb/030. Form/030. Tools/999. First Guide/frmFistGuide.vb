@@ -2,10 +2,6 @@
     Private Field_Record As New Ingrid.Main.GlobalRecord
     Private _Step As Integer
 
-    Private Sub Txt_Company_TextChanged(sender As Object, e As EventArgs) Handles Txt_Company.TextChanged
-
-    End Sub
-
     Private Sub Btn_Process_Click(sender As Object, e As EventArgs) Handles Btn_Process.Click
         If _Step = 1 Then
 
@@ -83,10 +79,6 @@
         Gbx_Login.Visible = False
     End Sub
 
-    Private Sub Txt_Department_TextChanged(sender As Object, e As EventArgs) Handles Txt_Department.TextChanged
-
-    End Sub
-
     Private Sub Btn_Close_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
         If _Step = 1 Then
             Me.Close()
@@ -106,25 +98,6 @@
             _Step -= 1
             Lbl_Step.Text = String.Format("Step {0} :", _Step)
         End If
-    End Sub
-
-    Private Sub Txt_Position_TextChanged(sender As Object, e As EventArgs) Handles Txt_Position.TextChanged
-
-    End Sub
-
-    Private Sub Txt_EmployeeName_TextChanged(sender As Object, e As EventArgs) Handles Txt_EmployeeName.TextChanged
-
-    End Sub
-
-    Private Sub Txt_Username_TextChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Txt_Password_TextChanged(sender As Object, e As EventArgs) Handles Txt_Password.TextChanged
-    End Sub
-
-    Private Sub Txt_Password_KeyUp(sender As Object, e As KeyEventArgs) Handles Txt_Password.KeyUp
-
     End Sub
 
     Private Sub Btn_Check_Click(sender As Object, e As EventArgs) Handles Btn_Check.Click

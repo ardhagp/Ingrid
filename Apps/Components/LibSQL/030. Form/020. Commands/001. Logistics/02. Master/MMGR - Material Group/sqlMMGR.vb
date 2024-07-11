@@ -5,7 +5,7 @@ Namespace Commands.MMGR
     Public Class View
         <SupportedOSPlatform("windows")>
         Public Shared Sub DISPLAYDATA(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
-            If (Find.XOSQLText = String.Empty) Or (ForceRefresh = True) Then
+            If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh = True) Then
                 V_DBR_MSSQL2008(0).Query = "select mg.materialgroup_id, mg.materialgroup_description, mg.materialgroup_description2, mg.materialgroup_language from dbo.[[log]]materialgroup] mg order by mg.materialgroup_id"
             Else
                 V_DBR_MSSQL2008(0).Query = String.Format("select mg.materialgroup_id, mg.materialgroup_description, mg.materialgroup_description2, mg.materialgroup_language from dbo.[[log]]materialgroup] mg where " &

@@ -18,7 +18,7 @@ Public Class POST
         V_FORMAttrib.RowID = "-1"
 
         If DgnPOST.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnPOST.CurrentRow.Cells("position_id").Value
+            V_FORMAttrib.RowID = DgnPOST.CurrentRow.Cells("position_id").Value.ToString
         End If
     End Sub
 #End Region
@@ -134,12 +134,12 @@ Public Class POST
             Select Case _s_item.Name
                 Case "DATAToolStripMenuItem"
                     'Insert "Add New..."
-                    _item_sub(0) = New ToolStripMenuItem() With {.Name = "AddNewToolStripMenuItem", .Text = "Add New...", .ShortcutKeys = Keys.Control + Keys.N, .ShortcutKeyDisplayString = "Ctrl+N"}
+                    _item_sub(0) = New ToolStripMenuItem() With {.Name = "AddNewToolStripMenuItem", .Text = "Add New...", .ShortcutKeys = CType(Keys.Control + Keys.N, Keys), .ShortcutKeyDisplayString = "Ctrl+N"}
                     _s_item.DropDown.Items.Add(_item_sub(0))
                     AddHandler _item_sub(0).Click, AddressOf AddNewToolStripMenuItem_Clicked
 
                     'Insert "Edit..."
-                    _item_sub(1) = New ToolStripMenuItem() With {.Name = "EditToolStripMenuItem", .Text = "Edit...", .ShortcutKeys = Keys.Control + Keys.E, .ShortcutKeyDisplayString = "Ctrl+E"}
+                    _item_sub(1) = New ToolStripMenuItem() With {.Name = "EditToolStripMenuItem", .Text = "Edit...", .ShortcutKeys = CType(Keys.Control + Keys.E, Keys), .ShortcutKeyDisplayString = "Ctrl+E"}
                     _s_item.DropDown.Items.Add(_item_sub(1))
                     AddHandler _item_sub(1).Click, AddressOf EditToolStripMenuItem_Clicked
 
@@ -162,7 +162,7 @@ Public Class POST
                     _s_item.DropDown.Items.Add(_item_sep(1))
 
                     'Insert "Close"
-                    _item_sub(4) = New ToolStripMenuItem() With {.Name = "CloseToolStripMenuItem", .Text = "Close", .ShortcutKeys = Keys.Control + Keys.Q, .ShortcutKeyDisplayString = "Ctrl+Q"}
+                    _item_sub(4) = New ToolStripMenuItem() With {.Name = "CloseToolStripMenuItem", .Text = "Close", .ShortcutKeys = CType(Keys.Control + Keys.Q, Keys), .ShortcutKeyDisplayString = "Ctrl+Q"}
                     _s_item.DropDown.Items.Add(_item_sub(4))
                     AddHandler _item_sub(4).Click, AddressOf CloseToolStripMenuItem_Clicked
 
@@ -182,13 +182,10 @@ Public Class POST
                     _s_item.DropDown.Items.Add(_item_sep(2))
 
                     'Insert "Find"
-                    _item_sub(7) = New ToolStripMenuItem() With {.Name = "FindToolStripMenuItem", .Text = "Find", .ShortcutKeys = Keys.Control + Keys.F, .ShortcutKeyDisplayString = "Ctrl+F"}
+                    _item_sub(7) = New ToolStripMenuItem() With {.Name = "FindToolStripMenuItem", .Text = "Find", .ShortcutKeys = CType(Keys.Control + Keys.F, Keys), .ShortcutKeyDisplayString = "Ctrl+F"}
                     _s_item.DropDown.Items.Add(_item_sub(7))
                     AddHandler _item_sub(7).Click, AddressOf FindToolStripMenuItem_Clicked
-
             End Select
-
-
         Next
     End Sub
 #End Region

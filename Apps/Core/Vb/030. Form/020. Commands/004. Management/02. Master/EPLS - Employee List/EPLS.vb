@@ -19,7 +19,7 @@ Public Class EPLS
         V_FORMAttrib.RowID = "-1"
 
         If DgnEPLS.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnEPLS.CurrentRow.Cells("employee_id").Value
+            V_FORMAttrib.RowID = DgnEPLS.CurrentRow.Cells("employee_id").Value.ToString
         End If
     End Sub
 #End Region
@@ -68,7 +68,7 @@ Public Class EPLS
         If V_FORMAttrib.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+            If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (Commands.EPLS.View.DELETEDATA(V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"

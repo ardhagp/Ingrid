@@ -56,7 +56,7 @@ Namespace Commands.CDIN
 
             V_DBR_MSSQL2008(0).Query = String.Format("select count(d.departement_id) as [rows] from dbo.[[man]]departement] d {0}", _Where)
 
-            _IsDuplicate = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
 
             If _IsDuplicate = 0 Then
                 Return False
@@ -78,7 +78,7 @@ Namespace Commands.CDIN
         Public Shared Function GETCompanyID(ByVal RowID As String) As Object
             Dim _CompanyID As String
             V_DBR_MSSQL2008(0).Query = String.Format("select d.departement_company from dbo.[[man]]departement] d where d.departement_id = '{0}'", RowID)
-            _CompanyID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _CompanyID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
             Return _CompanyID
         End Function
 
@@ -86,7 +86,7 @@ Namespace Commands.CDIN
         Public Shared Function GETDeptCode(ByVal RowID As String) As Object
             Dim _DeptCode As String
             V_DBR_MSSQL2008(0).Query = String.Format("select d.departement_code from dbo.[[man]]departement] d where d.departement_id = '{0}'", RowID)
-            _DeptCode = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _DeptCode = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
             Return _DeptCode
         End Function
 
@@ -94,7 +94,7 @@ Namespace Commands.CDIN
         Public Shared Function GETDeptName(ByVal RowID As String) As Object
             Dim _DeptName As String
             V_DBR_MSSQL2008(0).Query = String.Format("select d.departement_name from dbo.[[man]]departement] d where d.departement_id = '{0}'", RowID)
-            _DeptName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _DeptName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
             Return _DeptName
         End Function
 
@@ -102,7 +102,7 @@ Namespace Commands.CDIN
         Public Shared Function GETDescription(ByVal RowID As String) As Object
             Dim _Description As String
             V_DBR_MSSQL2008(0).Query = String.Format("select d.departement_description from dbo.[[man]]departement] d where d.departement_id = '{0}'", RowID)
-            _Description = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query)
+            _Description = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
             Return _Description
         End Function
 

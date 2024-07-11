@@ -1,0 +1,260 @@
+# .NET Desktop
+# Build and run tests for .NET Desktop or Windows classic desktop solutions.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net.
+
+trigger:
+- none
+
+pool:
+  vmImage: 'windows-latest'
+
+#Assigning variables from Environment
+variables:
+- group: global_variables
+
+- name: var_p_Email
+  value: $[variables.var_g_Email]
+
+- name: var_p_Platform
+  value: $[variables.var_Platform]
+- name: var_p_BuildConfiguration
+  value: $[variables.var_BuildConfiguration]
+
+- name: var_p_Ingridversion_major
+  value: $[variables.var_g_Ingridversion_major]
+- name: var_p_Ingridversion_minor
+  value: $[variables.var_g_Ingridversion_minor]
+- name: var_p_Ingridversion_build
+  value: $[variables.var_g_Ingridversion_build]
+- name: var_p_Ingridversion_revision
+  value: $[variables.var_g_Ingridversion_revision]
+
+- name: var_p_BetterStack_Log
+  value: $[variables.var_g_BetterStack_Log]
+- name: var_p_SyncfusionKey
+  value: $[variables.var_g_SyncfusionKey]
+- name: var_p_Salt
+  value: $[variables.var_g_Salt]
+
+- name: var_p_TOKEN_GITHUB
+  value: $[variables.var_g_TOKEN_GITHUB]
+- name: var_p_TOKEN_AZURE
+  value: $[variables.var_g_TOKEN_AZURE]
+
+steps:
+
+#Installing Nuget
+- task: NuGetToolInstaller@1
+  displayName: 'Nuget Install'
+  inputs:
+    versionSpec: 
+    checkLatest: true
+
+#List of Files in $(Build.SourcesDirectory)
+- task: CmdLine@2
+  displayName: 'Pre-Build File List in $(Build.SourcesDirectory)'
+  inputs:
+    script: |
+      echo "File List - $(Build.SourcesDirectory)"
+      
+      cd $(Build.SourcesDirectory)
+      dir /b /s /A-D /o:gn
+
+#Nuget Restore
+- task: NuGetCommand@2
+  displayName: 'NuGet Restore'
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'config'
+    noCache: false
+    nugetConfigPath: './Apps/Core/Vb/NuGet.config'
+    externalFeedCredentials: 'ingrid'
+
+#Replacing SALT Key
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: V_BRIDGEKEY.SALT'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: '= V_BRIDGE_KEY.SALT()'
+    parameterReplaceText: '= "$(var_g_Salt)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
+
+#Replacing Syncfusion Key
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: V_BRIDGEKEY.SYNCFUSION'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: '= V_BRIDGE_KEY.SYNCFUSION()'
+    parameterReplaceText: '= "$(var_g_SyncfusionKey)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
+
+#Replacing BetterStack Key
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: V_BRIDGEKEY.BETTERSTACK_LOG'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'sourceToken: KEYLOG.BETTERSTACK_LOG()'
+    parameterReplaceText: 'sourceToken: "$(var_g_BetterStack_Log)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.cs'
+
+#Replacing Version: Major
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_MAJOR}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Major'
+    parameterReplaceText: '$(var_g_Ingridversion_major)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
+
+#Replacing Version: Minor
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_MINOR}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Minor'
+    parameterReplaceText: '$(var_g_Ingridversion_minor)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
+
+#Replacing Version: Build
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_BUILD}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Build'
+    parameterReplaceText: '$(var_g_Ingridversion_build)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
+
+#Replacing Version: Revision
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_REVISION}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Revision'
+    parameterReplaceText: '$(var_g_Ingridversion_revision)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
+
+#Checking new value from variables
+- task: CmdLine@2
+  displayName: 'Check Text Replacement'
+  inputs:
+    script: |
+      echo BetterStackLog: $(var_g_BetterStack_Log)
+      echo Major: $(var_g_Ingridversion_major)
+      echo Minor: $(var_g_Ingridversion_minor)
+      echo Build: $(var_g_Ingridversion_build)
+      echo Revision: $(var_g_Ingridversion_revision)
+
+#Review content of code
+- task: CmdLine@2
+  displayName: 'Reviewing Codes'
+  inputs:
+    script: |
+      echo "File List - Ingrid-CI-Build"
+      
+      cd $(Build.SourcesDirectory)
+      dir /b /s /A-D /o:gn
+      echo "---------------------------"
+      echo "Reading CMC\Globals.vb"
+      echo "---------------------------"
+      more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
+
+#Build Ingrid App
+- task: VSBuild@1
+  displayName: 'VSBuild - Midnight Build'
+  inputs:
+    solution: '**\*.sln'
+    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:InstallUrl="https://ardhagp.github.io/Ingrid/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
+    platform: '$(var_Platform)'
+    configuration: '$(var_BuildConfiguration)'
+    clean: true
+    maximumCpuCount: true
+    createLogFile: true
+
+#Prepare Artifact for Github Page and FTP Server
+- task: CopyFiles@2
+  displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
+    Contents: '**'
+    TargetFolder: '$(build.ArtifactStagingDirectory)'
+
+- task: ArchiveFiles@2
+  displayName: 'Compressing Files to.. $(build.ArtifactStagingDirectory)'
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(build.ArtifactStagingDirectory)/Ingrid.zip'
+    replaceExistingArchive: true
+
+#Upload Artifact prepare for Relase via FTP
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact.. ingrid-beta'
+  inputs:
+    PathtoPublish: '$(build.ArtifactStagingDirectory)'
+    ArtifactName: 'ingrid-beta'
+    publishLocation: 'Container'
+
+#Direct publish to Github Pages
+- task: GitHubPagesPublish@1
+  displayName: 'Publishing App To Github Pages'
+  inputs:
+    docPath: '$(build.ArtifactStagingDirectory)\*'
+    githubusername: 'ardhagp'
+    githubemail: '$(var_g_Email)'
+    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
+    repositoryname: 'Ingrid'
+    branchname: 'publish'
+    commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
+
+#- task: AzureStaticWebApp@0
+#  displayName: 'Publishing Static Web App'
+#  inputs:
+#    workingDirectory: '$(build.ArtifactStagingDirectory)\*'
+#    app_location: '/'
+#    api_location: '/api'
+#    skip_app_build: true
+#    skip_api_build: true
+#    is_static_export: true
+#    azure_static_web_apps_api_token: '$(var_g_TOKEN_SWA)'
+#    production_branch: 'publish'
+
+#List of File in $(Build.SourcesDirectory)
+- task: CmdLine@2
+  displayName: 'File List - Post Build $(Build.SourcesDirectory)'
+  inputs:
+    script: |
+      echo "---------------------------"
+      echo "Print File List - Post Build"
+      echo "---------------------------"
+      cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\
+      dir /b /s /A-D /o:gn
+      echo "---------------------------"
+      echo "Reading Artifact Directory"
+      echo "---------------------------"
+      cd $(build.ArtifactStagingDirectory)
+      dir /b /s /A-D /o:gn
+      echo "---------------------------"
+      echo "Reading Ingrid.Application"
+      echo "---------------------------"
+      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
+
+#Updating Version for next build
+- task: update-variablegroup-variable@0
+  displayName: 'Prepare Versioning For Next Build'
+  inputs:
+    variableGroupName: 'global_variables'
+    variableName: 'var_g_Ingridversion_revision'
+    variableDataType: 'int'
+    newVariableValueInInt: 1
+    usePAT: true
+    patValue: '$(var_g_TOKEN_AZURE)'

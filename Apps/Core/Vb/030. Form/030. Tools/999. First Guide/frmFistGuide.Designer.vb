@@ -107,7 +107,7 @@ Partial Class frmFistGuide
         ' Lbl_Step
         ' 
         Lbl_Step.AutoSize = True
-        Lbl_Step.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Lbl_Step.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Lbl_Step.Location = New Point(18, 18)
         Lbl_Step.Name = "Lbl_Step"
         Lbl_Step.Size = New Size(65, 21)
@@ -127,7 +127,7 @@ Partial Class frmFistGuide
         Gbx_Company.Controls.Add(Txt_Position)
         Gbx_Company.Controls.Add(Txt_Department)
         Gbx_Company.Controls.Add(Txt_Company)
-        Gbx_Company.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Gbx_Company.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Gbx_Company.Location = New Point(12, 42)
         Gbx_Company.Name = "Gbx_Company"
         Gbx_Company.Size = New Size(455, 349)
@@ -150,7 +150,7 @@ Partial Class frmFistGuide
         ' 
         ' Txt_EmployeeID
         ' 
-        Txt_EmployeeID.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_EmployeeID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_EmployeeID.Location = New Point(189, 184)
         Txt_EmployeeID.MaxLength = 255
         Txt_EmployeeID.Name = "Txt_EmployeeID"
@@ -231,7 +231,7 @@ Partial Class frmFistGuide
         ' 
         ' Txt_EmployeeName
         ' 
-        Txt_EmployeeName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_EmployeeName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_EmployeeName.Location = New Point(189, 145)
         Txt_EmployeeName.MaxLength = 255
         Txt_EmployeeName.Name = "Txt_EmployeeName"
@@ -260,7 +260,7 @@ Partial Class frmFistGuide
         ' 
         ' Txt_Position
         ' 
-        Txt_Position.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Position.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_Position.Location = New Point(189, 106)
         Txt_Position.MaxLength = 255
         Txt_Position.Name = "Txt_Position"
@@ -289,7 +289,7 @@ Partial Class frmFistGuide
         ' 
         ' Txt_Department
         ' 
-        Txt_Department.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Department.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_Department.Location = New Point(189, 67)
         Txt_Department.MaxLength = 255
         Txt_Department.Name = "Txt_Department"
@@ -318,7 +318,7 @@ Partial Class frmFistGuide
         ' 
         ' Txt_Company
         ' 
-        Txt_Company.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Company.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_Company.Location = New Point(189, 28)
         Txt_Company.MaxLength = 255
         Txt_Company.Name = "Txt_Company"
@@ -352,7 +352,7 @@ Partial Class frmFistGuide
         Btn_Close.FlatAppearance.BorderSize = 2
         Btn_Close.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         Btn_Close.FlatStyle = FlatStyle.Flat
-        Btn_Close.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Btn_Close.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Btn_Close.ForeColor = Color.White
         Btn_Close.Location = New Point(261, 11)
         Btn_Close.Name = "Btn_Close"
@@ -373,7 +373,7 @@ Partial Class frmFistGuide
         Gbx_Login.Controls.Add(ULbl6)
         Gbx_Login.Controls.Add(Txt_Password)
         Gbx_Login.Controls.Add(Txt_Username)
-        Gbx_Login.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Gbx_Login.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Gbx_Login.Location = New Point(12, 42)
         Gbx_Login.Name = "Gbx_Login"
         Gbx_Login.Size = New Size(455, 349)
@@ -388,7 +388,7 @@ Partial Class frmFistGuide
         Btn_Check.FlatAppearance.BorderSize = 2
         Btn_Check.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
         Btn_Check.FlatStyle = FlatStyle.Flat
-        Btn_Check.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Btn_Check.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Btn_Check.ForeColor = Color.White
         Btn_Check.Location = New Point(349, 159)
         Btn_Check.Name = "Btn_Check"
@@ -439,7 +439,7 @@ Partial Class frmFistGuide
         ' 
         ' Txt_Password
         ' 
-        Txt_Password.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Password.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_Password.Location = New Point(189, 67)
         Txt_Password.MaxLength = 255
         Txt_Password.Name = "Txt_Password"
@@ -469,7 +469,7 @@ Partial Class frmFistGuide
         ' 
         ' Txt_Username
         ' 
-        Txt_Username.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt_Username.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Txt_Username.Location = New Point(189, 28)
         Txt_Username.MaxLength = 255
         Txt_Username.Name = "Txt_Username"
@@ -500,7 +500,7 @@ Partial Class frmFistGuide
         ' 
         object_da28eea8_631c_4534_a532_605841b1d2bd.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         object_da28eea8_631c_4534_a532_605841b1d2bd.BackColor = Color.Transparent
-        object_da28eea8_631c_4534_a532_605841b1d2bd.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        object_da28eea8_631c_4534_a532_605841b1d2bd.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         object_da28eea8_631c_4534_a532_605841b1d2bd.ForeColor = Color.Black
         object_da28eea8_631c_4534_a532_605841b1d2bd.Location = New Point(12, 0)
         object_da28eea8_631c_4534_a532_605841b1d2bd.Margin = New Padding(4, 0, 4, 0)
@@ -514,7 +514,7 @@ Partial Class frmFistGuide
         ' Gbx_Modules
         ' 
         Gbx_Modules.Controls.Add(Dgn1)
-        Gbx_Modules.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Gbx_Modules.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Gbx_Modules.Location = New Point(12, 42)
         Gbx_Modules.Name = "Gbx_Modules"
         Gbx_Modules.Size = New Size(455, 349)
@@ -527,7 +527,7 @@ Partial Class frmFistGuide
         ' 
         Dgn1.AllowUserToAddRows = False
         Dgn1.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(240), CByte(190), CByte(165))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(208), CByte(249), CByte(176))
         Dgn1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Dgn1.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         Dgn1.BorderStyle = BorderStyle.None
@@ -535,7 +535,7 @@ Partial Class frmFistGuide
         Dgn1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -543,14 +543,14 @@ Partial Class frmFistGuide
         Dgn1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Dgn1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Dgn1.EnableHeadersVisualStyles = False
-        Dgn1.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Dgn1.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         Dgn1.Location = New Point(6, 63)
         Dgn1.Name = "Dgn1"
         Dgn1.ReadOnly = True
         Dgn1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle3.SelectionForeColor = Color.Black

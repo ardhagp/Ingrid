@@ -7,7 +7,7 @@ Namespace Commands.RESET
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Function PUSHData()
+        Public Shared Function PUSHData() As Boolean
             Dim _Success As Boolean
 
             Try

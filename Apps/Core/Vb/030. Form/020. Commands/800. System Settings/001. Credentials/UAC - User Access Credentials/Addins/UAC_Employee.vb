@@ -10,7 +10,7 @@ Public Class UAC_Employee
     Private Sub GETTableID()
         V_FORMAttrib.RowID = "-1"
         If DgnAddinEmployee.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnAddinEmployee.CurrentRow.Cells("employee_id").Value
+            V_FORMAttrib.RowID = DgnAddinEmployee.CurrentRow.Cells("employee_id").Value.ToString
         End If
     End Sub
 
@@ -49,10 +49,6 @@ Public Class UAC_Employee
         If e.KeyCode = Keys.Enter Then
             Call GETDATA()
         End If
-    End Sub
-
-    Private Sub TxtFind_TextChanged(sender As Object, e As EventArgs) Handles TxtFind.TextChanged
-
     End Sub
 
     <SupportedOSPlatform("windows")>
