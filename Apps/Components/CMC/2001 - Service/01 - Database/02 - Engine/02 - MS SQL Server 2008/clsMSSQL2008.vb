@@ -3,14 +3,14 @@ Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Namespace Database.Engine
-    Public Class MSSQL2008
+    Public Class Mssql2008
         Implements IDisposable
 
         Private ReadOnly varConnection(1) As SqlClient.SqlConnection
         Private ReadOnly varCommand(1) As SqlClient.SqlCommand
         Private varAdapter As SqlClient.SqlDataAdapter
 
-        Private ReadOnly V_MSSQL2008 As New Connect.MSSQLServer2008Connection
+        Private ReadOnly V_MSSQL2008 As New Connect.Mssqlserver2008connection
 
         Public Enum DatabaseID
             DbDefault

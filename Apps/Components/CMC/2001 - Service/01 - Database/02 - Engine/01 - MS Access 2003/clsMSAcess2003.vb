@@ -69,8 +69,6 @@ Namespace Database.Engine
                     varFilepath(0) = Application.StartupPath & "\Resources\DEV_CATALOG.mdb"
                 End If
 
-                Dim V_FileInfo As New OperatingSystem.File.Info
-
                 If OperatingSystem.File.Info.IsExists(varFilepath(0)) Then
                     varConnectionstring(0) = varMsa2003c.MicrosoftOLEDBStandard(varFilepath(0), "admin", "")
 

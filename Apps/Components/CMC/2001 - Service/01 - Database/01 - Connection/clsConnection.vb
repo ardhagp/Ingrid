@@ -288,7 +288,7 @@ Namespace Database.Connect
         End Function
     End Class
 
-    Public Class MSSQLServer2008Connection
+    Public Class Mssqlserver2008connection
         Implements IMssqlserver2008connections
 
         ''' <summary>
@@ -319,7 +319,7 @@ Namespace Database.Connect
         End Function
     End Class
 
-    Public Class MySQLConnection
+    Public Class Mysqlconnection
         Implements IMysqlconnections
 
         Public Function Mysqlnetinactivatingpreparedstatement(ServerAddress As String, Username As String, Password As String, Database As String, IgnorePrepare As Options.IgnorePrepare) As String Implements IMysqlconnections.Mysqlnetinactivatingpreparedstatement
