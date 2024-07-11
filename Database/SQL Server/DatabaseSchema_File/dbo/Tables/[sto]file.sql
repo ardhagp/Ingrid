@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[[sto]]file] (
     [file_id]           CHAR (32)       NOT NULL,
     [file_parent]       CHAR (32)       NULL,
+    [file_filename]     VARCHAR (255)   CONSTRAINT [DF_[sto]]file_file_filename] DEFAULT ('-') NULL,
     [file_filetype]     VARCHAR (5)     NULL,
     [file_content]      VARBINARY (MAX) NULL,
     [file_content_size] AS              (datalength([file_content])/(1024)),
@@ -12,4 +13,11 @@
     [file_parentdate]   DATE            NULL,
     CONSTRAINT [PK_[sto]]file] PRIMARY KEY CLUSTERED ([file_id] ASC)
 );
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_[sto]]file]
+    ON [dbo].[[sto]]file]([file_filename] ASC);
 

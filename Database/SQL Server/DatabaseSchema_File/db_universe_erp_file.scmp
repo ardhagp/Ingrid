@@ -33,6 +33,10 @@
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
+        <Name>AllowTableRecreation</Name>
+        <Value>True</Value>
+      </PropertyElementName>
+      <PropertyElementName>
         <Name>BackupDatabaseBeforeChanges</Name>
         <Value>False</Value>
       </PropertyElementName>
@@ -298,6 +302,10 @@
       </PropertyElementName>
       <PropertyElementName>
         <Name>RegisterDataTierApplication</Name>
+        <Value>False</Value>
+      </PropertyElementName>
+      <PropertyElementName>
+        <Name>PerformIndexOperationsOnline</Name>
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
