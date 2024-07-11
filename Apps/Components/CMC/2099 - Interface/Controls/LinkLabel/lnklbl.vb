@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class lnklbl
+Public Class Lnklbl
     Inherits System.Windows.Forms.LinkLabel
 
     <SupportedOSPlatform("windows")>

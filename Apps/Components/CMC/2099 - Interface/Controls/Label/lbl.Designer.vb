@@ -1,8 +1,8 @@
-﻿<System.Drawing.ToolboxBitmap(GetType(CMCv.lbl), "lbl.ico")> _
-Partial Class lbl
+﻿<System.Drawing.ToolboxBitmap(GetType(CMCv.Lbl), "lbl.ico")>
+Partial Class Lbl
     Inherits System.Windows.Forms.Label
 
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Public Sub New(ByVal container As System.ComponentModel.IContainer)
         MyClass.New()
 
@@ -14,7 +14,7 @@ Partial Class lbl
     End Sub
 
     'Component overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -31,7 +31,7 @@ Partial Class lbl
     'NOTE: The following procedure is required by the Component Designer
     'It can be modified using the Component Designer.
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New System.ComponentModel.Container()
     End Sub

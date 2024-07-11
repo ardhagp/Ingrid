@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Runtime.Versioning
 
-Public Class dtp
+Public Class Dtp
     Inherits System.Windows.Forms.DateTimePicker
 
     <SupportedOSPlatform("windows")>

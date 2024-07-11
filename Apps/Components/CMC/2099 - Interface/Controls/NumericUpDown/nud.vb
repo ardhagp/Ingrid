@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Runtime.Versioning
 
-Public Class nud
+Public Class Nud
     Inherits System.Windows.Forms.NumericUpDown
 
     <SupportedOSPlatform("windows")>

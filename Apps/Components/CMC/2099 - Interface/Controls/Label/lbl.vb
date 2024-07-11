@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class lbl
+Public Class Lbl
     Inherits System.Windows.Forms.Label
 
     <SupportedOSPlatform("windows")>
@@ -9,7 +9,6 @@ Public Class lbl
         Call ActivateLicenses()
         MyBase.Font = globalFontTxt
         Me.XOCustomElipsis = False
-        'Me.SLFTypeOfElipsis = TextFormatFlags.Default
         MyBase.DoubleBuffered = True
     End Sub
 

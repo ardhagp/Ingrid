@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class stt
+Public Class Stt
     Inherits System.Windows.Forms.StatusStrip
 
     <SupportedOSPlatform("windows")>
