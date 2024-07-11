@@ -2,7 +2,35 @@
 <html lang="en">
 
   <head>
+    <script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="173097" async="async" type="text/javascript"></script>
     
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NW43FNVG');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Clarity tracking code for https://ardhagp.github.io/Ingrid/ -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "max83u2s5b");
+</script>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CS50LPD571"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CS50LPD571');
+</script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -15,7 +43,8 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Favicon -->
-    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+    <!-- https://favicon.io/favicon-converter/ -->
+    <link rel='icon' type='image/png' sizes="32x32" href='favicon-32x32.png' />
     
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="assets/css/fontawesome.css">
@@ -29,22 +58,44 @@ TemplateMo 557 Grad School
 https://templatemo.com/tm-557-grad-school
 
 -->
+<!--
+  Additional custom script
+-->
+<!-- Cronitor RUM -->
+<script async src="https://rum.cronitor.io/script.js"></script>
+<script>
+    window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
+    cronitor('config', { clientKey: '579cad261adcd9e6ce1f19318986b094' });
+</script>
+
+<script>
+function showUpdateWarning(){
+if (confirm("Make sure you close and save your work before updating Ingrid!")){
+  window.open('./IngridLauncher.application', '_self')
+}else{
+  return false
+}
+}
+</script>
+    
   </head>
 
 <body>
-
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW43FNVG"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
    
   <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="https://ardhagp.github.io/Ingrid/" target="_self"><em>Ingrid</em> Desktop</a>
+      <a href="./" target="_self"><em>Ingrid</em> .NET</a>
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
-        <li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-7.0.18-windows-x64-installer" target="_self">Framework 7.0</a></li>
-        <li><a href="https://github.com/ardhagp/Ingrid" target="_blank">Source Code</a></li>
-        <li><a href="https://github.com/ardhagp/Ingrid/wiki" target="_blank">Knowledge Base</a></li>
+        <li><a href="./Ingrid.zip" target="_blank">Offline Installer</a></li>
+        <li><a href="https://ingrid.cronitorstatus.com/" target="_blank">Web Status</a></li>
       </ul>
     </nav>
   </header>
@@ -59,8 +110,8 @@ https://templatemo.com/tm-557-grad-school
           <div class="caption">
               <h6>Multi Purpose Application</h6>
               <h2>Run <em>Your App</em> Now!</h2>
-              <div class="main-button">
-                  <div class=""><a href="./setup.exe" target="_self">Install</a> <a href="./IngridLauncher.application" target="_self">Launch</a>
+                  <div class="main-button">
+                  <div class=""><a href="./setup.exe" target="_self">Web Install</a> <a onclick="showUpdateWarning()" href="#" target="_self">Update</a>
                   </div>
               </div>
             </div>
@@ -110,7 +161,7 @@ https://templatemo.com/tm-557-grad-school
               <div class="content-hide">
                 <p>Knowledge Base / Wiki will help you to understand how to run Ingrid, it will guide you step by step.</p>
                 <p class="hidden-sm">Knowledge Base / Wiki will help you to understand how to run Ingrid, it will guide you step by step.</p>
-                <div class=""><a href="https://github.com/ardhagp/Ingrid/wiki/" target="_self">Read Wiki</a></div>
+                <div class=""><a href="https://github.com/ardhagp/Ingrid/wiki/01.-Home" target="_self">Read Wiki</a></div>
             </div>
             </div>
           </div>
@@ -123,7 +174,7 @@ https://templatemo.com/tm-557-grad-school
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <p>ArdhaGp | <a href="" rel="sponsored" target="_self">Ingrid</a> | 2018 - Now | Design by : <a href="https://templatemo.com/tm-557-grad-school" rel="sponsored" target="_blank">TEMPLATEMO</a></p>
+          <p>ArdhaGp | <a href="" rel="sponsored" target="_self">Ingrid</a> | 2018 - Now | <a href="https://templatemo.com/tm-557-grad-school" rel="sponsored" target="_blank">TEMPLATEMO</a></p>
         </div>
       </div>
     </div>
