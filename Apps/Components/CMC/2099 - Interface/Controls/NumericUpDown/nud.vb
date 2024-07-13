@@ -22,10 +22,10 @@ Public Class Nud
 Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
     Public Property XOAutoTrim() As Boolean
         Get
-            Return _varAutoTrim
+            Return varAutotrim
         End Get
         Set(value As Boolean)
-            _varAutoTrim = value
+            varAutotrim = value
         End Set
     End Property
 
@@ -33,46 +33,46 @@ Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
     Description("Teksboks harus diisi")>
     Public Property XOHarusDiisi As Boolean
         Get
-            Return _varHarusDiisi
+            Return varHarusdiisi
         End Get
         Set(value As Boolean)
-            _varHarusDiisi = value
+            varHarusdiisi = value
         End Set
     End Property
 
-    Private _varHightlightSaatFokus As Boolean
+    Private varHightlightSaatFokus As Boolean
     <Category("Text"),
     Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
     Public Property XOHightlightSaatFokus() As Boolean
         Get
-            Return _varHightlightSaatFokus
+            Return varHightlightSaatFokus
         End Get
         Set(value As Boolean)
-            _varHightlightSaatFokus = value
+            varHightlightSaatFokus = value
         End Set
     End Property
 
-    Private _varHighlightSaatFokusWarna As System.Drawing.Color
+    Private varHighlightsaatfokuswarna As System.Drawing.Color
     <Category("Text"),
     Description("Warna highlight")>
     Public Property XOHightlightSaatFokusWarna() As System.Drawing.Color
         Get
-            Return _varHighlightSaatFokusWarna
+            Return varHighlightsaatfokuswarna
         End Get
         Set(value As System.Drawing.Color)
-            _varHighlightSaatFokusWarna = value
+            varHighlightsaatfokuswarna = value
         End Set
     End Property
 
-    Private _varPilihSemuaSaatFokus As Boolean
+    Private varPilihsemuasaatfokus As Boolean
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Memilih semua teks saat fokus")>
     Public Property XOPilihSemuaSaatFokus() As Boolean
         Get
-            Return _varPilihSemuaSaatFokus
+            Return varPilihsemuasaatfokus
         End Get
         Set(value As Boolean)
-            _varPilihSemuaSaatFokus = value
+            varPilihsemuasaatfokus = value
         End Set
     End Property
 

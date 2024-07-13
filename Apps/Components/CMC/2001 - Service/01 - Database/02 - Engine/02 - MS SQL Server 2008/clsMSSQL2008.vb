@@ -52,7 +52,7 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETDATAROW(ByVal Query As String, Optional ByVal DatabaseName As String = "db_universe_erp") As SqlClient.SqlDataReader ', ByVal MyConnection As SqlClient.SqlConnection, ByVal MyCommand As SqlClient.SqlCommand) As SqlClient.SqlDataReader
+        Public Function GETDATAROW(ByVal Query As String, ByVal DatabaseName As String) As SqlClient.SqlDataReader ', ByVal MyConnection As SqlClient.SqlConnection, ByVal MyCommand As SqlClient.SqlCommand) As SqlClient.SqlDataReader
             Dim varDatareader(1) As SqlClient.SqlDataReader
 
             Try
@@ -80,7 +80,7 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETVALUE(ByVal Query As String, Optional ByVal DatabaseName As String = "db_universe_erp") As Object
+        Public Function GETVALUE(ByVal Query As String, ByVal DatabaseName As String) As Object
             Try
                 Dim varRowvalue As Object
 
@@ -105,7 +105,7 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETDATASET(ByVal DBR As Adapter.MSSQL2008.Display.Request, ByVal TableName As String, Optional ByVal DatabaseName As String = "db_universe_erp") As DataSet
+        Public Function GETDATASET(ByVal DBR As Adapter.MSSQL2008.Display.Request, ByVal TableName As String, ByVal DatabaseName As String) As DataSet
             Dim varDataadapter(1) As SqlClient.SqlDataAdapter
 
             Try
@@ -140,7 +140,7 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub GETDATATABLE(ByVal DBR As Adapter.MSSQL2008.Display.Request, ByVal TableName As String, Optional ByVal DatabaseName As String = "db_universe_erp")
+        Public Sub GETDATATABLE(ByVal DBR As Adapter.MSSQL2008.Display.Request, ByVal TableName As String, ByVal DatabaseName As String)
 
             Dim varDataadapter(1) As SqlClient.SqlDataAdapter
 
@@ -195,7 +195,7 @@ Namespace Database.Engine
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub PUSHDATA(ByVal Query As String, Optional ByVal DatabaseName As String = "db_universe_erp")
+        Public Sub PUSHDATA(ByVal Query As String, ByVal DatabaseName As String)
             Try
                 varCommand(1) = New SqlClient.SqlCommand With {
                 .Connection = varConnection(1),
@@ -235,7 +235,7 @@ Namespace Database.Engine
             Return varSuccess
         End Function
 
-        Public Function FILLDATASET(ByVal Query As String, ByVal DataSetName As DataSet, ByVal TableName As String, Optional ByVal DatabaseName As String = "db_universe_erp") As DataSet
+        Public Function FILLDATASET(ByVal Query As String, ByVal DataSetName As DataSet, ByVal TableName As String, ByVal DatabaseName As String) As DataSet
             GC.Collect()
 
             Try

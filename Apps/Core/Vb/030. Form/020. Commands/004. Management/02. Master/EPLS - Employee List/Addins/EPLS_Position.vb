@@ -2,15 +2,15 @@
 
 Public Class EPLS_Position
 #Region "Variables"
-    Private _SQL As New Commands.EPLS.Addins.Browse.Position
+    Private clsSQL As New Commands.EPLS.Addins.Browse.Position
     Public Event RecordSelected()
 #End Region
 
 #Region "Subs Collections"
     Private Sub GETTableID()
-        V_FORMAttrib.RowID = "-1"
+        frmAttribute.RowID = "-1"
         If DgnAddinPosition.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnAddinPosition.CurrentRow.Cells("employee_id").Value.ToString
+            frmAttribute.RowID = DgnAddinPosition.CurrentRow.Cells("employee_id").Value.ToString
         End If
     End Sub
 
@@ -25,10 +25,10 @@ Public Class EPLS_Position
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             With DgnAddinPosition.CurrentRow
-                V_FORMAttrib.Field01 = .Cells("company_name").Value
-                V_FORMAttrib.Field02 = .Cells("departement_name").Value
-                V_FORMAttrib.Field03 = .Cells("position_id").Value
-                V_FORMAttrib.Field04 = .Cells("position_name").Value
+                frmAttribute.Field01 = .Cells("company_name").Value
+                frmAttribute.Field02 = .Cells("departement_name").Value
+                frmAttribute.Field03 = .Cells("position_id").Value
+                frmAttribute.Field04 = .Cells("position_name").Value
             End With
             RaiseEvent RecordSelected()
             Me.Close()

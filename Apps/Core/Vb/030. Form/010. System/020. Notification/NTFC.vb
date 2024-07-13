@@ -3,15 +3,15 @@
 Public Class NTFC
 
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.NTFC.View
+    Private clsSQL As New LibSQL.Commands.NTFC.View
 #End Region
 
 #Region "Subs Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA()
         DblBuffer(DgnNotification)
-        Commands.NTFC.View.DISPLAY(DgnNotification, V_USERAttrib.EID)
-        Mainframe_n_6.USERMENU.Text = V_USERAttrib.FirstName
+        Commands.NTFC.View.DISPLAY(DgnNotification, varUSERattribute.EID)
+        Mainframe_n_6.USERMENU.Text = varUSERattribute.FirstName
         Mainframe_n_6.NotificationToolStripMenuItem.Text = "0 Notification(s)"
     End Sub
 #End Region

@@ -7,45 +7,45 @@ Module Globals
 #Region "Activate Licenses"
     <SupportedOSPlatform("windows")>
     Public Sub ActivateLicenses()
-        Dim V_BRIDGE_KEY As New Bridge.Security.GETKEY
-        Dim V_SyncfusionKey As String = V_BRIDGE_KEY.SYNCFUSION()
+        Dim varKEYbridge As New Bridge.Security.Getkey
+        Dim varKEYsyncfusion As String = varKEYbridge.Syncfusion()
 
         'License for Syncfusion
-        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(V_SyncfusionKey)
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(varKEYsyncfusion)
     End Sub
 #End Region
 
 #Region "Variables"
-    Public V_FormImage(4) As System.Drawing.Image
-    Public Workspace As New WorkspaceClass
-    Public V_FileInfo As New CMCv.OperatingSystem.File.Info
-    Public FolderHandler As New CMCv.OperatingSystem.Folder
+    Public varFormimage(4) As System.Drawing.Image
+    Public varWorkspace As New WorkspaceClass
+    Public varFileinfo As New CMCv.OperatingSystem.File.Info
+    Public varFolderhandler As New CMCv.OperatingSystem.Folder
     'Public SecurityEngine As New Security.Engine
-    Public V_IMG_COMPRESS As New CMCv.ImageEditor.Proccessor.Compress
-    Public V_IMG_EDITOR As New CMCv.ImageEditor.Proccessor.Editor
-    Public V_USERAccess As New Application.Access
+    Public varIMGcompress As New CMCv.ImageEditor.Proccessor.Compress
+    Public varIMGeditor As New CMCv.ImageEditor.Proccessor.Editor
+    Public varUSERaccess As New Application.Access
     'Public V_SYSAPP As New Application.Modules
-    Public V_LOGUser As New LibSQL.SystemLog.Activity.User
-    Public V_LOGApp As New LibSQL.SystemLog.Activity.Application
-    Public V_ForceRefreshMainframeData As Boolean
-    'Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
+    Public varLoguser As New LibSQL.SystemLog.Activity.User
+    Public varLOGapp As New LibSQL.SystemLog.Activity.Application
+    Public varForcerefreshmainframedata As Boolean
+    'Public varBridgelog As New Bridge.Security.WRITELOG
 
 
-    Public V_SECEncrypt As New CMCv.Security.Encrypt
+    Public varSecurityencrypt As New CMCv.Security.Encrypt
 
-    Public ErrorCatcher As New Catcher.Error.Fields
+    Public clsErrorcatcher As New Catcher.Error.Fields
 
-    'Public ERL As Database.Engine.LocalDB
-    Public ERL As Database.Engine.SQLiteV3
-    Public WithEvents ERC As New frmErrorReporting
+    'Public varERL As Database.Engine.LocalDB
+    Public varERL As Database.Engine.SQLiteV3
+    Public WithEvents frmError As New frmErrorReporting
     'Public WithEvents TED As New frmTextEditor
-    Public WithEvents MSG As New frmDialogBox
+    Public WithEvents frmMessage As New frmDialogBox
 
-    Public V_APPVer As String
-    Public V_NETAppVer As Version
+    Public varVersionapplication As String
+    Public varNETappver As Version
 
-    Public V_FORMAttrib As New Ingrid.Main.GlobalRecord
-    Public V_USERAttrib As New Ingrid.Main.GlobalUser
+    Public frmAttribute As New Ingrid.Main.GlobalRecord
+    Public varUSERattribute As New Ingrid.Main.GlobalUser
 #End Region
 
     <SupportedOSPlatform("windows")>
@@ -81,7 +81,7 @@ Module Globals
     ''' <param name="ResumeNext">Lanjutkan saat terjadi kesalahan</param>
     ''' <remarks></remarks>
     Public Sub PUSHERRORDATA(ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As String, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
-        With ErrorCatcher
+        With clsErrorcatcher
             .Type = ErrorType
             .Message = ErrorMessage
             .Number = ErrorNumber
@@ -99,9 +99,9 @@ Module Globals
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
     Public Sub PUSHERRORDATASHOW()
-        ERC = New CMCv.frmErrorReporting(ErrorCatcher, ERL)
-        ERC.ShowDialog()
-        If Not (ERC.ResumeNext) Then
+        frmError = New CMCv.frmErrorReporting(clsErrorcatcher, varERL)
+        frmError.ShowDialog()
+        If Not (frmError.ResumeNext) Then
             End
         End If
     End Sub
@@ -117,22 +117,22 @@ Module Globals
     <SupportedOSPlatform("windows")>
     Public Function GETAPPVERSION() As String
         Try
-            Dim V_Major, V_Minor, V_Build, V_Revision As Integer
+            Dim varVersionmajor, varVersionminor, varVersionbuild, varVersionrevision As Integer
 
             With My.Application.Info.Version
-                V_Major = .Major
-                V_Minor = .Minor
-                V_Build = .Build
-                V_Revision = .Revision
+                varVersionmajor = .Major
+                varVersionminor = .Minor
+                varVersionbuild = .Build
+                varVersionrevision = .Revision
             End With
 
-            V_APPVer = V_Major & "." & V_Minor & "." & V_Build & "." & V_Revision
-            Return V_APPVer
+            varVersionapplication = varVersionmajor & "." & varVersionminor & "." & varVersionbuild & "." & varVersionrevision
+            Return varVersionapplication
         Catch ex As Exception
             PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, "0.0.0", False, True, True)
             PUSHERRORDATASHOW()
-            v_APPVer = " - Failed Getting Version"
-            Return v_APPVer
+            varVersionapplication = " - Failed Getting Version"
+            Return varVersionapplication
         End Try
     End Function
 #End Region
@@ -271,9 +271,9 @@ Module Globals
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
     Public Function Decision(ByVal Message As String, ByVal Title As String, ByVal MessageIcon As CMCv.frmDialogBox.MessageIcon, ByVal ButtonType As CMCv.frmDialogBox.MessageTypes) As DialogResult
-        MSG = New CMCv.frmDialogBox(Message, Title, MessageIcon, ButtonType)
-        Return MSG.ShowDialog()
-        MSG.Dispose()
+        frmMessage = New CMCv.frmDialogBox(Message, Title, MessageIcon, ButtonType)
+        Return frmMessage.ShowDialog()
+        frmMessage.Dispose()
     End Function
 #End Region
 

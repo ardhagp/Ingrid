@@ -43,49 +43,49 @@ Public Class Txt
 #Region "Properties"
     <Category("Text"),
     Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
-    Private _varAutoTrim As Boolean
+    Private varAutotrim As Boolean
     Public Property XOAutoTrim() As Boolean
         Get
-            Return _varAutoTrim
+            Return varAutotrim
         End Get
         Set(value As Boolean)
-            _varAutoTrim = value
+            varAutotrim = value
         End Set
     End Property
 
     <Category("Text"),
     Description("Teksboks harus diisi")>
-    Private _varHarusDiisi As Boolean
+    Private varHarusdiisi As Boolean
     Public Property XOHarusDiisi As Boolean
         Get
-            Return _varHarusDiisi
+            Return varHarusdiisi
         End Get
         Set(value As Boolean)
-            _varHarusDiisi = value
+            varHarusdiisi = value
         End Set
     End Property
 
-    Private _varHightlightSaatFokus As Boolean
+    Private varHightlightSaatFokus As Boolean
     <Category("Text"),
     Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
     Public Property XOHightlightSaatFokus() As Boolean
         Get
-            Return _varHightlightSaatFokus
+            Return varHightlightSaatFokus
         End Get
         Set(value As Boolean)
-            _varHightlightSaatFokus = value
+            varHightlightSaatFokus = value
         End Set
     End Property
 
-    Private _varHighlightSaatFokusWarna As System.Drawing.Color
+    Private varHighlightsaatfokuswarna As System.Drawing.Color
     <Category("Text"),
     Description("Warna highlight")>
     Public Property XOHightlightSaatFokusWarna() As System.Drawing.Color
         Get
-            Return _varHighlightSaatFokusWarna
+            Return varHighlightsaatfokuswarna
         End Get
         Set(value As System.Drawing.Color)
-            _varHighlightSaatFokusWarna = value
+            varHighlightsaatfokuswarna = value
         End Set
     End Property
 
@@ -161,16 +161,16 @@ Public Class Txt
         End Set
     End Property
 
-    Private _varHarusDiisiWarnaLatarDefault As System.Drawing.Color
-    Private _varHarusDiisiWarnaLatar As System.Drawing.Color
+    Private varHarusdiisiWarnaLatarDefault As System.Drawing.Color
+    Private varHarusdiisiWarnaLatar As System.Drawing.Color
     <Category("Text"),
     Description("Warna saat teksboks tidak diisi")>
     Public Property XOHarusDiisiWarnaLatar As System.Drawing.Color
         Get
-            Return _varHarusDiisiWarnaLatar
+            Return varHarusdiisiWarnaLatar
         End Get
         Set(value As System.Drawing.Color)
-            _varHarusDiisiWarnaLatar = value
+            varHarusdiisiWarnaLatar = value
         End Set
     End Property
 
@@ -178,10 +178,10 @@ Public Class Txt
     Description("Warna saat teksboks tidak diisi jika bernilai False")>
     Public Property XOHarusDiisiWarnaLatarDefault As System.Drawing.Color
         Get
-            Return _varHarusDiisiWarnaLatarDefault
+            Return varHarusdiisiWarnaLatarDefault
         End Get
         Set(value As System.Drawing.Color)
-            _varHarusDiisiWarnaLatarDefault = value
+            varHarusdiisiWarnaLatarDefault = value
         End Set
     End Property
 
@@ -197,15 +197,15 @@ Public Class Txt
         End Set
     End Property
 
-    Private _varPilihSemuaSaatFokus As Boolean
+    Private varPilihsemuasaatfokus As Boolean
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Memilih semua teks saat fokus")>
     Public Property XOPilihSemuaSaatFokus() As Boolean
         Get
-            Return _varPilihSemuaSaatFokus
+            Return varPilihsemuasaatfokus
         End Get
         Set(value As Boolean)
-            _varPilihSemuaSaatFokus = value
+            varPilihsemuasaatfokus = value
         End Set
     End Property
 
@@ -306,7 +306,7 @@ Public Class Txt
 #Region "Password Strength Indicator"
     Private _Password As String
     Private _ChrPassword() As Char
-    Private _MinPasswordLength As Integer = 8
+    Private varMinpasswordlength As Integer = 8
     Private _BaseScore As Integer
     Private _Score As Integer
     Private _Result As String
@@ -340,17 +340,7 @@ Public Class Txt
             End If
         Next
 
-        'If _Match1.Success Then
-        '        _Num.Upper += 1
-        '    ElseIf _Match2.Success Then
-        '    _Num.Numbers += 1
-        'ElseIf _Match3.Success Then
-        '    _Num.Symbols += 1
-        'End If
-        '    i += 1
-        'Next
-
-        _Num.Excess = _Password.Length - _MinPasswordLength
+        _Num.Excess = _Password.Length - varMinpasswordlength
 
         If (_Num.Upper > 0 AndAlso _Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
             _Bonus.Combo = 25
@@ -384,8 +374,8 @@ Public Class Txt
         _Result = String.Empty
         If _Password.Trim = "" Then
             _Result = "Password must not be empty"
-        ElseIf _Password.Length < _MinPasswordLength Then
-            _Result = "At least " & _MinPasswordLength & " characters please!"
+        ElseIf _Password.Length < varMinpasswordlength Then
+            _Result = "At least " & varMinpasswordlength & " characters please!"
         ElseIf _Score < 50 Then
             _Result = "Weak!"
         ElseIf (_Score >= 50 AndAlso _Score < 75) Then
@@ -415,16 +405,6 @@ Public Class Txt
         If Me.XOPilihSemuaSaatFokus Then
             Me.Select(0, Me.Text.Length)
         End If
-        'If Not HasKeyboard() Then
-        '    'Call OSK
-        '    Dim OSKProccess As Process = Nothing
-        '    If OSKProccess Is Nothing OrElse OSKProccess.HasExited Then
-        '        If OSKProccess IsNot Nothing AndAlso OSKProccess.HasExited Then
-        '            OSKProccess.Close()
-        '        End If
-        '        OSKProccess = Process.Start("osk")
-        '    End If
-        'End If
     End Sub
 
     Private Sub txt_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
@@ -518,14 +498,6 @@ Public Class Txt
             Me.XOIsBlank = False
         End If
     End Sub
-
-    '<SupportedOSPlatform("windows")>
-    'Private Shared Function HasKeyboard() As IEnumerable
-    '    Dim searcher As New ManagementObjectSearcher("root\CIMV2", "SELECT * FROM Win32_Keyboard")
-    '    Dim result = From mobj In searcher.Get()
-    '                 Select mobj Where mobj("Status").ToString() = 0
-    '    Return Not IsNothing(result)
-    'End Function
 
     <SupportedOSPlatform("windows")>
     Public Sub ClearSearch()

@@ -2,15 +2,15 @@
 
 Public Class UAC_Employee
 #Region "Variables"
-    Private _SQL As New Commands.UAC.Addins.Browse.Employee
+    Private clsSQL As New Commands.UAC.Addins.Browse.Employee
     Public Event RecordSelected()
 #End Region
 
 #Region "Subs Collections"
     Private Sub GETTableID()
-        V_FORMAttrib.RowID = "-1"
+        frmAttribute.RowID = "-1"
         If DgnAddinEmployee.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnAddinEmployee.CurrentRow.Cells("employee_id").Value.ToString
+            frmAttribute.RowID = DgnAddinEmployee.CurrentRow.Cells("employee_id").Value.ToString
         End If
     End Sub
 
@@ -31,9 +31,9 @@ Public Class UAC_Employee
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             With DgnAddinEmployee.CurrentRow
-                V_FORMAttrib.Field01 = .Cells("employee_id").Value
-                V_FORMAttrib.Field02 = .Cells("employee_number").Value
-                V_FORMAttrib.Field03 = .Cells("employee_fullname").Value
+                frmAttribute.Field01 = .Cells("employee_id").Value
+                frmAttribute.Field02 = .Cells("employee_number").Value
+                frmAttribute.Field03 = .Cells("employee_fullname").Value
             End With
             RaiseEvent RecordSelected()
             Me.Close()

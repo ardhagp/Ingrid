@@ -9,27 +9,27 @@ Imports System.Runtime.Versioning
 
 <SupportedOSPlatform("windows")>
 Module Globals
-    Public v_dbe_mssql2008 As New CMCv.Database.Engine.MSSQL2008
-    Public V_DBE_SQLite As New SQLiteV3
-    Public V_DB_Properties(1) As Fields
-    Public V_BRIDGE_LOG As New WRITELOG
+    Public varDBengine_mssql2008 As New CMCv.Database.Engine.Mssql2008
+    Public varDBengine_sqlite As New SQLiteV3
+    Public varDBproperties(1) As Fields
+    Public varBridgelog As New Writelog
 
-    Public V_DBR_SQLITE(1) As SQLite.Display.Request
-    Public V_DBP_SQLITE As New SQLite.Execute
+    Public varDBreader_sqlite(1) As SQLite.Display.Request
+    Public varDBdisplay_sqlite As New SQLite.Execute
 
-    Public V_SECEncrypt As New Security.Encrypt
+    Public varSecurityencrypt As New Security.Encrypt
 
-    Public V_Major As Integer = My.Application.Info.Version.Major
-    Public V_Minor As Integer = My.Application.Info.Version.Minor
-    Public V_Build As Integer = My.Application.Info.Version.Build
-    Public V_Revision As Integer = My.Application.Info.Version.Revision
-    Public V_APPVer As String = V_Major & "." & V_Minor & "." & V_Build & "." & V_Revision
+    Public varVersionmajor As Integer = My.Application.Info.Version.Major
+    Public varVersionminor As Integer = My.Application.Info.Version.Minor
+    Public varVersionbuild As Integer = My.Application.Info.Version.Build
+    Public varVersionrevision As Integer = My.Application.Info.Version.Revision
+    Public varVersionapplication As String = varVersionmajor & "." & varVersionminor & "." & varVersionbuild & "." & varVersionrevision
 
-    Public WithEvents MSG As New frmDialogBox
-    Public WithEvents ERC As New frmErrorReporting
-    Public ErrorCatcher As New Catcher.Error.Fields
+    Public WithEvents frmMessage As New frmDialogBox
+    Public WithEvents frmError As New frmErrorReporting
+    Public clsErrorcatcher As New Catcher.Error.Fields
 
-    Public V_FORMAttrib As New Connect.Main.GlobalRecord
+    Public frmAttribute As New Connect.Main.GlobalRecord
 
 #Region "Custom Message Box"
     ''' <summary>
@@ -42,9 +42,9 @@ Module Globals
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
     Public Function Decision(ByVal Message As String, ByVal Title As String, ByVal MessageIcon As CMCv.frmDialogBox.MessageIcon, ByVal ButtonType As CMCv.frmDialogBox.MessageTypes) As System.Windows.Forms.DialogResult
-        MSG = New CMCv.frmDialogBox(Message, Title, MessageIcon, ButtonType)
-        Return MSG.ShowDialog()
-        MSG.Dispose()
+        frmMessage = New CMCv.frmDialogBox(Message, Title, MessageIcon, ButtonType)
+        Return frmMessage.ShowDialog()
+        frmMessage.Dispose()
     End Function
 #End Region
 
@@ -99,18 +99,18 @@ Module Globals
     ''' <remarks></remarks>
     Public Function GETAPPVERSION() As String
         Try
-            Dim V_Major, V_Minor, V_Build, V_Revision As Integer
-            V_Major = My.Application.Info.Version.Major
-            V_Minor = My.Application.Info.Version.Minor
-            V_Build = My.Application.Info.Version.Build
-            V_Revision = My.Application.Info.Version.Revision
-            V_APPVer = V_Major & "." & V_Minor & "." & V_Build & "." & V_Revision
-            Return V_APPVer
+            Dim varVersionmajor, varVersionminor, varVersionbuild, varVersionrevision As Integer
+            varVersionmajor = My.Application.Info.Version.Major
+            varVersionminor = My.Application.Info.Version.Minor
+            varVersionbuild = My.Application.Info.Version.Build
+            varVersionrevision = My.Application.Info.Version.Revision
+            varVersionapplication = varVersionmajor & "." & varVersionminor & "." & varVersionbuild & "." & varVersionrevision
+            Return varVersionapplication
         Catch ex As Exception
             PUSHERRORDATA("[GETAPPVERSION] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, "0.0.0", False, True, True)
             PUSHERRORDATASHOW()
-            V_APPVer = "0.0.0"
-            Return V_APPVer
+            varVersionapplication = "0.0.0"
+            Return varVersionapplication
         End Try
     End Function
 #End Region
@@ -131,7 +131,7 @@ Module Globals
     ''' <param name="ResumeNext">Lanjutkan saat terjadi kesalahan</param>
     ''' <remarks></remarks>
     Public Sub PUSHERRORDATA(ByVal FromSender As String, ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As String, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
-        With ErrorCatcher
+        With clsErrorcatcher
             .FromSender = FromSender
             .Type = ErrorType
             .Message = ErrorMessage
@@ -149,10 +149,10 @@ Module Globals
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub PUSHERRORDATASHOW()
-        ERC = New CMCv.frmErrorReporting(ErrorCatcher, V_DBE_SQLite)
-        ERC.ShowDialog()
-        If Not (ERC.ResumeNext) Then
-            End
+        frmError = New CMCv.frmErrorReporting(clsErrorcatcher, varDBengine_sqlite)
+        frmError.ShowDialog()
+        If Not (frmError.ResumeNext) Then
+            Exit Sub
         End If
     End Sub
 #End Region

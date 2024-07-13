@@ -3,8 +3,8 @@
 Public Class MCTG
 
 #Region "Variables"
-    Private WithEvents C_MMSMenu As New UI.View.MenuStrip
-    Private _SQL As New Commands.MCTG.View
+    Private WithEvents clsMMSmenu As New UI.View.MenuStrip
+    Private clsSQL As New Commands.MCTG.View
 #End Region
 
 #Region "Sub Collections"
@@ -23,21 +23,21 @@ Public Class MCTG
 #Region "Menu Strip Function"
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataRefresh() Handles C_MMSMenu.EventDataRefresh
+    Private Sub EventDataRefresh() Handles clsMMSmenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
     End Sub
 
-    Private Sub EventDataClose() Handles C_MMSMenu.EventDataClose
+    Private Sub EventDataClose() Handles clsMMSmenu.EventDataClose
         Me.Close()
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventToolsImport() Handles C_MMSMenu.EventToolsImport
-        DISPLAY(New frmImports(Import.Data.DataType.TypeofImports.MaterialMasterCatalog), IMAGEDB.Main.ImageLibrary.IMPORTS_ICON, "Catalog Imports", "Imports your catalog data from other database", True)
+    Private Sub EventToolsImport() Handles clsMMSmenu.EventToolsImport
+        DISPLAY(New frmImports(Import.Data.DataType.TypeofImports.MaterialMastfrmErroratalog), IMAGEDB.Main.ImageLibrary.IMPORTS_ICON, "Catalog Imports", "Imports your catalog data from other database", True)
     End Sub
 
-    Private Sub EventToolsFind() Handles C_MMSMenu.EventToolsFind
+    Private Sub EventToolsFind() Handles clsMMSmenu.EventToolsFind
         TxtFind.Focus()
     End Sub
 #End Region
@@ -73,19 +73,19 @@ Public Class MCTG
     <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
         'Sisipkan ke dalam form
-        C_MMSMenu.LoadIn(Me)
+        clsMMSmenu.LoadIn(Me)
 
         'Menampilkan Menu DATA
-        C_MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        clsMMSmenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS
-        C_MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        clsMMSmenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu REPORTS
-        C_MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        clsMMSmenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS > View Attachment
-        C_MMSMenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
+        clsMMSmenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
 
     End Sub
 

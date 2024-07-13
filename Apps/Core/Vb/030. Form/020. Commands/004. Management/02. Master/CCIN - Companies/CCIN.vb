@@ -3,13 +3,13 @@ Imports CMCv
 
 Public Class CCIN
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.CCIN.View
-    Private WithEvents _CCIN_Editor As CCIN_Editor
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
+    Private clsSQL As New LibSQL.Commands.CCIN.View
+    Private WithEvents frmCCINeditor As CCIN_Editor
+    Private WithEvents clsMMSmenu As New CMCv.UI.View.MenuStrip
 #End Region
 
 #Region "Function Collections"
-
+    'TODO: Add Function
 #End Region
 
 #Region "Sub Collections"
@@ -26,43 +26,46 @@ Public Class CCIN
 
     Private Sub GETTableID()
         If DgnCCIN.RowCount = 0 Then
-            V_FORMAttrib.RowID = "-1"
+            frmAttribute.RowID = "-1"
         Else
-            V_FORMAttrib.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
+            frmAttribute.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
         End If
     End Sub
 #End Region
 
 #Region "Menu Strip Function"
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
-        V_FORMAttrib.IsNew = True
-        V_FORMAttrib.RowID = "-1"
-        _CCIN_Editor = New CCIN_Editor
-        Display(_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new company data", True)
+    Private Sub EventDataAddNew() Handles clsMMSmenu.EventDataAddNew
+        With frmAttribute
+            .IsNew = True
+            .RowID = "-1"
+        End With
+
+        frmCCINeditor = New CCIN_Editor
+        DISPLAY(frmCCINeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new company data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
+    Private Sub EventDataEdit() Handles clsMMSmenu.EventDataEdit
         Call GETTableID()
-        If V_FORMAttrib.RowID = "-1" Then
+        If frmAttribute.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            V_FORMAttrib.IsNew = False
-            _CCIN_Editor = New CCIN_Editor
-            Display(_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your company data", True)
+            frmAttribute.IsNew = False
+            frmCCINeditor = New CCIN_Editor
+            DISPLAY(frmCCINeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your company data", True)
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
+    Private Sub EventDataDelete() Handles clsMMSmenu.EventDataDelete
         Call GETTableID()
-        If V_FORMAttrib.RowID = "-1" Then
+        If frmAttribute.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            V_FORMAttrib.IsNew = False
+            frmAttribute.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.CCIN.View.DELETEDATA(V_FORMAttrib.RowID)) Then
+                If (LibSQL.Commands.CCIN.View.DELETEDATA(frmAttribute.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
@@ -73,16 +76,16 @@ Public Class CCIN
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
+    Private Sub EventDataRefresh() Handles clsMMSmenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
     End Sub
 
-    Private Sub EventDataClose() Handles _MMSMenu.EventDataClose
+    Private Sub EventDataClose() Handles clsMMSmenu.EventDataClose
         Me.Close()
     End Sub
 
-    Private Sub EventToolsFind() Handles _MMSMenu.EventToolsFind
+    Private Sub EventToolsFind() Handles clsMMSmenu.EventToolsFind
         TxtFind.Focus()
     End Sub
 #End Region
@@ -90,8 +93,10 @@ Public Class CCIN
 #Region "Form Events"
     <SupportedOSPlatform("windows")>
     Private Sub frmCompany_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _MMSMenu.LoadIn(Me)
-        _MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
+        With clsMMSmenu
+            .LoadIn(Me)
+            .ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
+        End With
         Call GETDATA(True)
     End Sub
 #End Region
@@ -113,7 +118,7 @@ Public Class CCIN
 #End Region
 
     <SupportedOSPlatform("windows")>
-    Private Sub _CCIN_Editor_RecordSaved() Handles _CCIN_Editor.RecordSaved
+    Private Sub _CCIN_Editor_RecordSaved() Handles frmCCINeditor.RecordSaved
         Call GETDATA(True)
     End Sub
 

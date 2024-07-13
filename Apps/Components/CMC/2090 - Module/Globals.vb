@@ -17,7 +17,7 @@ Module Globals
     Public V_BRIDGE_KEY As New Bridge.Security.GETKEY
 
     <SupportedOSPlatform("windows")>
-    Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
+    Public varBridgelog As New Bridge.Security.WRITELOG
 
     <SupportedOSPlatform("windows")>
     Public V_SALT As String = V_BRIDGE_KEY.SALT()
@@ -28,47 +28,45 @@ Module Globals
     ''' <summary>
     ''' This security will be retired
     ''' </summary>
-    Public V_SECEncrypt As New Security.Encrypt
+    Public varSecurityencrypt As New Security.Encrypt
 
     ''' <summary>
     ''' This security will be retired
     ''' </summary>
-    Public V_SECDecrypt As New Security.Decrypt
+    Public varSecuritydecrypt As New Security.Decrypt
 
     'new security
-    Public V_SEC_AES As System.Security.Cryptography.Aes
-    Public V_SEC_MD5 As System.Security.Cryptography.MD5
-    Public V_SEC_CRC32 As New System.IO.Hashing.Crc32
+    Public varSecurity_aes As System.Security.Cryptography.Aes
+    Public varSecurity_md5 As System.Security.Cryptography.MD5
+    Public varSecurity_crc32 As New System.IO.Hashing.Crc32
 
 #End Region
 
 #Region "Class Globals"
-    Public CBS As New ControlCodeBase
-    Public _CFILEInfo As New OperatingSystem.File.Info
+    Public varControlcodebase As New ControlCodeBase
+    Public varClassfileinfo As New OperatingSystem.File.Info
 
 #End Region
 
 #Region "Variabel Global"
-    Public _randomcolor As New Random
-    Public _varAutoTrim As Boolean
-    Public _varHarusDiisi As Boolean
+    Public varRandomcolor As New Random
+    Public varAutotrim As Boolean
+    Public varHarusdiisi As Boolean
 
-    'Public SEC As New Security.Engine
-
-    Public ERC As New frmErrorReporting
-    Public ERL As New Database.Engine.LocalDB
-    Public ErrorCatcher As Catcher.Error.Fields
+    Public frmError As New frmErrorReporting
+    Public varERL As New Database.Engine.LocalDB
+    Public clsErrorcatcher As Catcher.Error.Fields
 
     Public _APPVer As String
 #End Region
 
     Public Function GETAPPVERSION() As String
-        Dim V_Major, V_Minor, V_Build, V_Revision As Integer
-        V_Major = My.Application.Info.Version.Major
-        V_Minor = My.Application.Info.Version.Minor
-        V_Build = My.Application.Info.Version.Build
-        V_Revision = My.Application.Info.Version.Revision
-        _APPVer = V_Major & "." & V_Minor & "." & V_Build & "." & V_Revision
+        Dim varVersionmajor, varVersionminor, varVersionbuild, varVersionrevision As Integer
+        varVersionmajor = My.Application.Info.Version.Major
+        varVersionminor = My.Application.Info.Version.Minor
+        varVersionbuild = My.Application.Info.Version.Build
+        varVersionrevision = My.Application.Info.Version.Revision
+        _APPVer = varVersionmajor & "." & varVersionminor & "." & varVersionbuild & "." & varVersionrevision
         Return _APPVer
     End Function
 
@@ -80,42 +78,12 @@ Module Globals
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(V_SyncfusionKey)
     End Sub
 
-    'Public Function CREATESECURITY(ByVal IsEncrypt As Boolean, ByVal Message As String)
-    '    Try
-    '        SEC = New Security.Engine
-    '        Dim SECAlgorithm As Security.Engine.Algorithm = Security.Engine.Algorithm.Rijndael
-    '        Security.Engine.EncryptionAlgorithm = SECAlgorithm
-    '        Security.Engine.Key = ""
-
-    '        If (IsEncrypt) Then
-    '            If Security.Engine.EncryptString(Message) Then
-    '                Message = Security.Engine.Content
-    '            Else
-    '                Message = Security.Engine.CryptoException.Message
-    '            End If
-    '        Else
-    '            Security.Engine.Content = Message
-    '            If Security.Engine.DecryptString Then
-    '                Message = Security.Engine.Content
-    '            Else
-    '                Message = Security.Engine.CryptoException.Message
-    '            End If
-    '        End If
-
-    '        Return Message
-    '    Catch ex As Exception
-    '        Call PUSHERRORDATA("[CREATESECURITY] $\Ingrid\Apps\Components\CMC\2090 - Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
-    '        PUSHERRORDATASHOW()
-    '        Return Nothing
-    '    End Try
-    'End Function
-
     Public Sub GETMACHINENAME()
         'GET Machinge Name
     End Sub
 
     Public Sub PUSHERRORDATA(ByVal FromSender As String, ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As String, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
-        With ErrorCatcher
+        With clsErrorcatcher
             .FromSender = FromSender
             .Type = ErrorType
             .Message = ErrorMessage
@@ -130,13 +98,13 @@ Module Globals
 
     <SupportedOSPlatform("windows")>
     Public Sub PUSHERRORDATASHOW()
-        ERC = New frmErrorReporting(ErrorCatcher, )
-        ERC.SLFNamaForm.Text = "Lady Bug (Error Catcher)"
-        ERC.SLFSubNamaForm.Text = "Please check detail below and report to system administrator."
-        ERC.ShowDialog()
-        If Not (ERC.ResumeNext) Then
+        frmError = New frmErrorReporting(clsErrorcatcher, )
+        frmError.SLFNamaForm.Text = "Lady Bug (Error Catcher)"
+        frmError.SLFSubNamaForm.Text = "Please check detail below and report to system administrator."
+        frmError.ShowDialog()
+        If Not (frmError.ResumeNext) Then
             Process.GetCurrentProcess.Kill()
         End If
-        ERC.Dispose()
+        frmError.Dispose()
     End Sub
 End Module
