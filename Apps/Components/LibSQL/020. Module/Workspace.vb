@@ -1,7 +1,7 @@
 ﻿Imports System
 Imports System.Runtime.Versioning
 
-Public Class Workspace
+Public Class varWorkspace
     <SupportedOSPlatform("windows")>
     Public Shared Function GETModuleName(ByVal TCode As String) As String
         Dim varValue As String

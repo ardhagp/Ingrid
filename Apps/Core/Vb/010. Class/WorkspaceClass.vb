@@ -6,7 +6,7 @@ Public Class WorkspaceClass
     Private ReadOnly _CommandExist As Boolean
     Private ReadOnly _CommandRestricted As Boolean
     Private _TCode As String()
-    Private ReadOnly _SQL As New LibSQL.Workspace
+    Private ReadOnly _SQL As New LibSQL.varWorkspace
     Private _MODSName As String
     Private _MODSDesc As String
 #End Region
@@ -54,13 +54,13 @@ Public Class WorkspaceClass
 #End Region
 
     <SupportedOSPlatform("windows")>
-    Public Sub Open(ByVal Mainframe As Form, ByVal TCode As String, Optional StatusBar As CMCv.stt = Nothing)
+    Public Sub Open(ByVal Mainframe As Form, ByVal TCode As String, Optional StatusBar As CMCv.Stt = Nothing)
         Try
             _TCode = TCode.ToString.Split("-".ToCharArray, StringSplitOptions.RemoveEmptyEntries)
             '_CommandExist = True
             '_CommandRestricted = False
-            _MODSName = LibSQL.Workspace.GETModuleName(TCode)
-            _MODSDesc = LibSQL.Workspace.GETModuleDescription(TCode)
+            _MODSName = LibSQL.varWorkspace.GETModuleName(TCode)
+            _MODSDesc = LibSQL.varWorkspace.GETModuleDescription(TCode)
 
             Select Case _TCode(0)
                 'ACCOUNTING

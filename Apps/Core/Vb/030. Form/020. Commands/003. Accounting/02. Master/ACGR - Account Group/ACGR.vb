@@ -3,13 +3,12 @@
 Public Class ACGR
 
 #Region "Variables"
-    Private clsSQL As New LibSQL.Commands.ACGR.View
+    Private varSQLview As New LibSQL.Commands.ACGR.View
     Private varSelectedgroup As String = ""
     Private varISfirstload As Boolean = True
     Private varISclosing As Boolean = False
     Private WithEvents frmACGReditor As New ACGR_Editor
     Private WithEvents clsMMSmenu As New CMCv.UI.View.MenuStrip
-
 #End Region
 
 #Region "Sub Collections"
@@ -43,11 +42,11 @@ Public Class ACGR
     Private Function GetAccountID(ByVal GridTable As CMCv.Dgn) As String
         With GridTable
             If .Rows.Count < 1 Then
-                frmAttribute.RowID = "-1"
+                varFORMAttribute.RowID = "-1"
             Else
-                frmAttribute.RowID = .CurrentRow.Cells(0).Value.ToString
+                varFORMAttribute.RowID = .CurrentRow.Cells(0).Value.ToString
             End If
-            Return frmAttribute.RowID
+            Return varFORMAttribute.RowID
         End With
     End Function
 
@@ -80,9 +79,9 @@ Public Class ACGR
 #Region "Menu Strip Function"
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataAddNew() Handles clsMMSmenu.EventDataAddNew
-        With frmAttribute
-            .IsNew = True
+        With varFORMAttribute
             .RowID = "-1"
+            .IsNew = True
         End With
         frmACGReditor = New ACGR_Editor
         DISPLAY(frmACGReditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new account for each accounting book and accounting group", True)
@@ -92,9 +91,9 @@ Public Class ACGR
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataEdit() Handles clsMMSmenu.EventDataEdit
         Call GetTableID()
-        frmAttribute.IsNew = False
-        If frmAttribute.RowID = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+        varFORMAttribute.IsNew = False
+        If varFORMAttribute.RowID = "-1" Then
+            Decision("No record selected", "Error", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
         Else
             frmACGReditor = New ACGR_Editor
             DISPLAY(frmACGReditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your account data", True)
@@ -104,17 +103,15 @@ Public Class ACGR
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataDelete() Handles clsMMSmenu.EventDataDelete
         Call GetTableID()
-        If frmAttribute.RowID = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+        If varFORMAttribute.RowID = "-1" Then
+            Decision("No record selected", "Error", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
         Else
-            frmAttribute.IsNew = False
-            If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.ACGR.View.DELETEData(frmAttribute.RowID)) Then
-                    Call GETDATAGRID(True)
-                    Mainframe_n_6.Ts_status.Text = "Success"
-                Else
-                    Mainframe_n_6.Ts_status.Text = "Delete failed"
-                End If
+            varFORMAttribute.IsNew = False
+            If Decision("Do you want to delete this record?", "Delete", CMCv.frmDBdialogbox.MessageIcon.Question, CMCv.frmDBdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes AndAlso (LibSQL.Commands.ACGR.View.DELETEData(varFORMAttribute.RowID)) Then
+                Call GETDATAGRID(True)
+                Mainframe_n_6.Ts_status.Text = "Success"
+            Else
+                Mainframe_n_6.Ts_status.Text = "Delete failed"
             End If
         End If
         Call GetTableID()
