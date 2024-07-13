@@ -18,28 +18,28 @@ Public Class Meb
     End Sub
 
 #Region "Properti"
-    Private _varHarusDiisi As Boolean
+    Private varHarusdiisi As Boolean
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Maskeditbox harus diisi")>
     Public Property XOHarusDiisi As Boolean
         Get
-            Return _varHarusDiisi
+            Return varHarusdiisi
         End Get
         Set(value As Boolean)
-            _varHarusDiisi = value
+            varHarusdiisi = value
         End Set
     End Property
 
-    Private _varHarusDiisiWarnaLatarDefault As System.Drawing.Color
-    Private _varHarusDiisiWarnaLatar As System.Drawing.Color
+    Private varHarusdiisiWarnaLatarDefault As System.Drawing.Color
+    Private varHarusdiisiWarnaLatar As System.Drawing.Color
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Warna saat teksboks tidak diisi")>
     Public Property XOHarusDiisiWarnaLatar As System.Drawing.Color
         Get
-            Return _varHarusDiisiWarnaLatar
+            Return varHarusdiisiWarnaLatar
         End Get
         Set(value As System.Drawing.Color)
-            _varHarusDiisiWarnaLatar = value
+            varHarusdiisiWarnaLatar = value
         End Set
     End Property
 
@@ -47,46 +47,46 @@ Public Class Meb
     System.ComponentModel.Description("Warna saat teksboks tidak diisi jika bernilai False")>
     Public Property XOHarusDiisiWarnaLatarDefault As System.Drawing.Color
         Get
-            Return _varHarusDiisiWarnaLatarDefault
+            Return varHarusdiisiWarnaLatarDefault
         End Get
         Set(value As System.Drawing.Color)
-            _varHarusDiisiWarnaLatarDefault = value
+            varHarusdiisiWarnaLatarDefault = value
         End Set
     End Property
 
-    Private _varHightlightSaatFokus As Boolean
+    Private varHightlightSaatFokus As Boolean
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
     Public Property XOHightlightSaatFokus() As Boolean
         Get
-            Return _varHightlightSaatFokus
+            Return varHightlightSaatFokus
         End Get
         Set(value As Boolean)
-            _varHightlightSaatFokus = value
+            varHightlightSaatFokus = value
         End Set
     End Property
 
-    Private _varHighlightSaatFokusWarna As System.Drawing.Color
+    Private varHighlightsaatfokuswarna As System.Drawing.Color
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Warna highlight")>
     Public Property XOHightlightSaatFokusWarna() As System.Drawing.Color
         Get
-            Return _varHighlightSaatFokusWarna
+            Return varHighlightsaatfokuswarna
         End Get
         Set(value As System.Drawing.Color)
-            _varHighlightSaatFokusWarna = value
+            varHighlightsaatfokuswarna = value
         End Set
     End Property
 
-    Private _varPilihSemuaSaatFokus As Boolean
+    Private varPilihsemuasaatfokus As Boolean
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Memilih semua teks saat fokus")>
     Public Property XOPilihSemuaSaatFokus() As Boolean
         Get
-            Return _varPilihSemuaSaatFokus
+            Return varPilihsemuasaatfokus
         End Get
         Set(value As Boolean)
-            _varPilihSemuaSaatFokus = value
+            varPilihsemuasaatfokus = value
         End Set
     End Property
 #End Region
@@ -106,11 +106,7 @@ Public Class Meb
     End Sub
 
     Private Sub txt_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
-        'If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
-        '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
-        'ElseIf Me.XOHightlightSaatFokus AndAlso Not Me.Focused Then
-        '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
-        If XOHarusDiisi Then 'AndAlso Me.Text.Trim = "" Then
+        If XOHarusDiisi Then
             MyBase.BackColor = Me.XOHarusDiisiWarnaLatar
         Else
             MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault

@@ -6,12 +6,12 @@
 Public Class DRAA
 #Region "Variables"
     'SQL Class
-    Private _SQL As New Commands.DRAA.View
+    Private clsSQLview As New Commands.DRAA.View
 
     'Variabel -> Class
-    Private WithEvents _DRAA_Editor As New DRAA_Editor
-    Private WithEvents _DRAA_Reports As DAR_RPTFilter
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
+    Private WithEvents frmDRAAeditor As New DRAA_Editor
+    Private WithEvents frmDRAAreports As DAR_RPTFilter
+    Private WithEvents clsMMSmenu As New CMCv.UI.View.MenuStrip
 #End Region
 
     ''' <summary>
@@ -32,20 +32,22 @@ Public Class DRAA
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
-        'Sisipkan ke dalam form
-        _MMSMenu.LoadIn(Me)
+        With clsMMSmenu
+            'Sisipkan ke dalam form
+            .LoadIn(Me)
 
-        'Menampilkan Menu DATA
-        _MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+            'Menampilkan Menu DATA
+            .ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
-        'Menampilkan Menu TOOLS
-        _MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.No)
+            'Menampilkan Menu TOOLS
+            .ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.No)
 
-        'Menampilkan Menu REPORTS
-        _MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.No)
+            'Menampilkan Menu REPORTS
+            .ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.No)
 
-        'Menampilkan Menu TOOLS > View Attachment
-        _MMSMenu.Visible("EventToolsViewAttachment", CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+            'Menampilkan Menu TOOLS > View Attachment
+            .Visible("EventToolsViewAttachment", CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+        End With
 
     End Sub
 
@@ -61,10 +63,10 @@ Public Class DRAA
     ''' Get row ID on record clicked
     ''' </summary>
     Private Sub GETTableID()
-        V_FORMAttrib.RowID = "-1"
+        frmAttribute.RowID = "-1"
 
         If DgnArea.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnArea.CurrentRow.Cells("affectedarea_id").Value.ToString
+            frmAttribute.RowID = DgnArea.CurrentRow.Cells("affectedarea_id").Value.ToString
         End If
     End Sub
 

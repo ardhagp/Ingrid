@@ -4,8 +4,8 @@ Public Class frmErrorReporting
     'Private Catcher As New Catcher.Error.Fields
     Public ResumeNext As Boolean
 
-    'Private ERL As New Database.Engine.LocalDB
-    Private ERL As New Database.Engine.SQLiteV3
+    'Private varERL As New Database.Engine.LocalDB
+    Private varERL As New Database.Engine.SQLiteV3
 
     Public Sub New()
 
@@ -34,9 +34,9 @@ Public Class frmErrorReporting
             If DBEngine Is Nothing Then
                 Return
             End If
-            ERL = DBEngine
-            ERL.Open()
-            ERL.SaveErrorData(ErrorCatcher)
+            varERL = DBEngine
+            varERL.Open()
+            varERL.SaveErrorData(ErrorCatcher)
         End If
 
 

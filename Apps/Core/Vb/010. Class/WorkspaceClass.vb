@@ -45,7 +45,7 @@ Public Class WorkspaceClass
 
     'Tools
     Private WithEvents V_SAY As New SAY
-    Private WithEvents V_PHTRZ As New CMCv.PHTRZ
+    Private WithEvents frmPhotoresize As New CMCv.PHTRZ
 
     'DummVy
     Private WithEvents V_DUMMY As New Dummy
@@ -242,10 +242,10 @@ Public Class WorkspaceClass
                     End If
                 Case "PHTRZ"
                     If (Not (V_DUMMY.IsHandleCreated)) OrElse (IsNothing(V_DUMMY)) Then
-                        V_PHTRZ = New CMCv.PHTRZ
-                        Display(V_PHTRZ, IMAGEDB.Main.ImageLibrary.COMPRESS_ICON, _MODSName, _MODSDesc, True,)
+                        frmPhotoresize = New CMCv.PHTRZ
+                        Display(frmPhotoresize, IMAGEDB.Main.ImageLibrary.COMPRESS_ICON, _MODSName, _MODSDesc, True,)
                     Else
-                        V_PHTRZ.Focus()
+                        frmPhotoresize.Focus()
                     End If
 
                 Case "RESET"
@@ -267,6 +267,6 @@ Public Class WorkspaceClass
     End Sub
 
     Private Shared Sub V_MODS_DATACHANGED() Handles V_MODS.DATACHANGED
-        V_ForceRefreshMainframeData = True
+        varForcerefreshmainframedata = True
     End Sub
 End Class

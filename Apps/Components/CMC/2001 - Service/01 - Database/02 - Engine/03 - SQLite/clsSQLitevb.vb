@@ -13,6 +13,10 @@ Namespace Database.Engine
 
         Private ReadOnly varSqlite As New Connect.SQLiteConnection
 
+        Shared ReadOnly varBaseCatalog As String = "\Resources\catalog.db"
+        Shared ReadOnly varBaseDevCatalog As String = "\Resources\dev_catalog.db"
+        Shared ReadOnly varErrorlog As String = "\Resources\errlog.db"
+
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckDBCatalog() As Boolean
             Try
@@ -23,11 +27,11 @@ Namespace Database.Engine
 
                 System.IO.Directory.CreateDirectory(varLocation & "\Resources")
 
-                varDbpath = varLocation & "\Resources\catalog.db"
+                varDbpath = varLocation & varBaseCatalog
                 If OperatingSystem.File.Info.IsExists(varDbpath) Then
                     varDbexists(1) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\catalog.db", varLocation & "\Resources\catalog.db", True)
+                    System.IO.File.Copy(Application.StartupPath & varBaseCatalog, varLocation & varBaseCatalog, True)
                     If OperatingSystem.File.Info.IsExists(varDbpath) Then
                         varDbexists(1) = True
                     Else
@@ -35,11 +39,11 @@ Namespace Database.Engine
                     End If
                 End If
 
-                varDbpath = varLocation & "\Resources\dev_catalog.db"
+                varDbpath = varLocation & varBaseDevCatalog
                 If OperatingSystem.File.Info.IsExists(varDbpath) Then
                     varDbexists(2) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\dev_catalog.db", varLocation & "\Resources\dev_catalog.db", True)
+                    System.IO.File.Copy(Application.StartupPath & varBaseDevCatalog, varLocation & varBaseDevCatalog, True)
                     If OperatingSystem.File.Info.IsExists(varDbpath) Then
                         varDbexists(2) = True
                     Else
@@ -47,11 +51,11 @@ Namespace Database.Engine
                     End If
                 End If
 
-                varDbpath = varLocation & "\Resources\errlog.db"
+                varDbpath = varLocation & varErrorlog
                 If OperatingSystem.File.Info.IsExists(varDbpath) Then
                     varDbexists(3) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\errlog.db", varLocation & "\Resources\errlog.db", True)
+                    System.IO.File.Copy(Application.StartupPath & varErrorlog, varLocation & varErrorlog, True)
                     If OperatingSystem.File.Info.IsExists(varDbpath) Then
                         varDbexists(3) = True
                     Else
@@ -83,12 +87,10 @@ Namespace Database.Engine
                 End If
 
                 If (IsProductionMode) Then
-                    varFilepath(0) = varLocation & "\Resources\catalog.db"
+                    varFilepath(0) = varLocation & varBaseCatalog
                 Else
-                    varFilepath(0) = varLocation & "\Resources\dev_catalog.db"
+                    varFilepath(0) = varLocation & varBaseDevCatalog
                 End If
-
-                Dim var_fileinfo As New OperatingSystem.File.Info
 
                 If OperatingSystem.File.Info.IsExists(varFilepath(0)) Then
                     varFilepath(0) = Replace(varFilepath(0), "\", "\\")
@@ -99,7 +101,7 @@ Namespace Database.Engine
                     varConnection(1).Open()
                 End If
 
-                varFilepath(1) = varLocation & "\Resources\errlog.db"
+                varFilepath(1) = varLocation & varErrorlog
 
                 If OperatingSystem.File.Info.IsExists(varFilepath(1)) Then
                     varFilepath(1) = Replace(varFilepath(1), "\", "\\")
@@ -157,10 +159,10 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub SaveErrorData(ByVal ErrorCatcher As Catcher.Error.Fields)
+        Public Sub SaveErrorData(ByVal clsErrorcatcher As Catcher.Error.Fields)
             Try
                 Dim varNowdatetime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
-                Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & ErrorCatcher.Type & "','" & ErrorCatcher.Message & "'," & ErrorCatcher.Number & ",'" & ErrorCatcher.InternalStackTrace & "'," & ErrorCatcher.EnableErrorReporting & ",'" & varNowdatetime & "');")
+                Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & clsErrorcatcher.Type & "','" & clsErrorcatcher.Message & "'," & clsErrorcatcher.Number & ",'" & clsErrorcatcher.InternalStackTrace & "'," & clsErrorcatcher.EnableErrorReporting & ",'" & varNowdatetime & "');")
             Catch ex As Exception
                 PUSHERRORDATA("[SaveErrorData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
                 PUSHERRORDATASHOW()

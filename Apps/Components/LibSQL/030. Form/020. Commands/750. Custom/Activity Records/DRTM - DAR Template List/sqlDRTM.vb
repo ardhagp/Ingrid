@@ -4,44 +4,44 @@ Imports CMCv
 
 Namespace Commands.DRTM
     Public Class View
-        Public _IsEmpFilter As Boolean
-        Public _EID As String
-        Public _ContentID As String
+        Public varISemployeefilter As Boolean
+        Public varIDemployee As String
+        Public varIDcontent As String
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayGrid(ByVal Find As txt, ByVal DateGrid As dgn, ByVal ContentStatusBar As stt, Optional ByVal ForceRefresh As Boolean = False)
             Try
-                Dim _Where As String = String.Format("where ")
+                Dim varWhere As String = String.Format("where ")
 
                 If (Find.XOSQLText = String.Empty) AndAlso (ForceRefresh = True) Then
-                    _Where += "tpl.template_module = (select mdl.module_id from dbo.[[sys]]module] mdl where mdl.module_code = 'DAR') "
+                    varWhere += "tpl.template_module = (select mdl.module_id from dbo.[[sys]]module] mdl where mdl.module_code = 'DAR') "
                 Else
-                    _Where += "tpl.template_module = (select mdl.module_id from dbo.[[sys]]module] mdl where mdl.module_code = 'DAR') and "
+                    varWhere += "tpl.template_module = (select mdl.module_id from dbo.[[sys]]module] mdl where mdl.module_code = 'DAR') and "
 
-                    Dim _ContainText() As String = Find.XOSQLText.Split("||")
-                    Dim _Repeater As Integer = 0
+                    Dim varContaintext() As String = Find.XOSQLText.Split("||")
+                    Dim varRepeater As Integer = 0
 
-                    _Where += String.Format("(")
+                    varWhere += String.Format("(")
 
-                    For Each _Text As String In _ContainText
-                        If Not _Text = "" Then
-                            If _Repeater = 0 Then
-                                _Where += String.Format("tpl.template_text1 like '%{0}%'", _Text)
+                    For Each varText As String In varContaintext
+                        If Not varText = "" Then
+                            If varRepeater = 0 Then
+                                varWhere += String.Format("tpl.template_text1 like '%{0}%'", varText)
                             Else
-                                _Where += String.Format(" and tpl.template_text1 like '%{0}%'", _Text)
+                                varWhere += String.Format(" and tpl.template_text1 like '%{0}%'", varText)
                             End If
                         End If
-                        _Repeater += 1
+                        varRepeater += 1
                     Next
 
-                    _Where += String.Format(")")
+                    varWhere += String.Format(")")
                 End If
 
-                V_DBR_MSSQL2008(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from dbo.[[doc]]template] tpl {0} order by tpl.template_title", _Where)
+                varDBreader_mssql2008(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from dbo.[[doc]]template] tpl {0} order by tpl.template_title", varWhere)
 
-                V_DBR_MSSQL2008(0).DataGrid = DateGrid
-                V_DBR_MSSQL2008(0).StatusBar = ContentStatusBar
-                V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "TDARTemplate")
+                varDBreader_mssql2008(0).DataGrid = DateGrid
+                varDBreader_mssql2008(0).StatusBar = ContentStatusBar
+                varDBengine_mssql2008.GETDATATABLE(varDBreader_mssql2008(0), "TDARTemplate", "db_universe_erp")
 
             Catch ex As Exception
                 MsgBox(ex.ToString)
@@ -50,6 +50,6 @@ Namespace Commands.DRTM
     End Class
 
     Public Class Editor
-
+        'TODO: Build
     End Class
 End Namespace

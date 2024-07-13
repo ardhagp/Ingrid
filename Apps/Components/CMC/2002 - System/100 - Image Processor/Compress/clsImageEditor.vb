@@ -8,7 +8,7 @@ Namespace ImageEditor.Proccessor
         <SupportedOSPlatform("windows")>
         Public Shared Function OutputAsFile(ByVal File As String, ByVal SaveAs As String) As Boolean
             ' Get a bitmap.
-            Dim _Success As Boolean
+            Dim varSuccess As Boolean
             Try
                 Dim _Photo As New Bitmap(File)
                 Dim _TmpPhoto As New Bitmap(_Photo)
@@ -40,14 +40,14 @@ Namespace ImageEditor.Proccessor
                 _MemoryStream.Dispose()
                 _TmpPhoto.Dispose()
                 _Photo.Dispose()
-                _Success = True
+                varSuccess = True
             Catch ex As Exception
-                _Success = False
+                varSuccess = False
             End Try
 
             GC.Collect()
 
-            Return _Success
+            Return varSuccess
         End Function
 
         ''' <summary>

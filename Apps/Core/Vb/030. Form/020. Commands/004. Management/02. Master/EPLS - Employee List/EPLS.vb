@@ -3,9 +3,9 @@ Imports CMCv
 
 Public Class EPLS
 #Region "Variables"
-    Private _SQL As New Commands.EPLS.View
-    Private WithEvents F_EPLS_Editor As New EPLS_Editor
-    Private WithEvents C_MMSMenu As New UI.View.MenuStrip
+    Private clsSQL As New Commands.EPLS.View
+    Private WithEvents frmEPLSeditor As New EPLS_Editor
+    Private WithEvents clsMMSmenu As New UI.View.MenuStrip
 #End Region
 
 #Region "Subs Collections"
@@ -16,60 +16,60 @@ Public Class EPLS
     End Sub
 
     Private Sub GETTableID()
-        V_FORMAttrib.RowID = "-1"
+        frmAttribute.RowID = "-1"
 
         If DgnEPLS.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnEPLS.CurrentRow.Cells("employee_id").Value.ToString
+            frmAttribute.RowID = DgnEPLS.CurrentRow.Cells("employee_id").Value.ToString
         End If
     End Sub
 #End Region
 
 #Region "Menu Strip Functions"
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataAddNew() Handles C_MMSMenu.EventDataAddNew
-        If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+    Private Sub EventDataAddNew() Handles clsMMSmenu.EventDataAddNew
+        If Not (varUSERaccess.User("EPLS", varUSERattribute.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        V_FORMAttrib.IsNew = True
-        V_FORMAttrib.RowID = "-1"
+        frmAttribute.IsNew = True
+        frmAttribute.RowID = "-1"
 
-        F_EPLS_Editor = New EPLS_Editor
-        DISPLAY(F_EPLS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new employee data", True)
+        frmEPLSeditor = New EPLS_Editor
+        DISPLAY(frmEPLSeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new employee data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataEdit() Handles C_MMSMenu.EventDataEdit
-        If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+    Private Sub EventDataEdit() Handles clsMMSmenu.EventDataEdit
+        If Not (varUSERaccess.User("EPLS", varUSERattribute.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GETTableID()
-        V_FORMAttrib.IsNew = False
-        If V_FORMAttrib.RowID = "-1" Then
+        frmAttribute.IsNew = False
+        If frmAttribute.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            V_FORMAttrib.IsNew = False
-            F_EPLS_Editor = New EPLS_Editor
-            DISPLAY(F_EPLS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
+            frmAttribute.IsNew = False
+            frmEPLSeditor = New EPLS_Editor
+            DISPLAY(frmEPLSeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataDelete() Handles C_MMSMenu.EventDataDelete
-        If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+    Private Sub EventDataDelete() Handles clsMMSmenu.EventDataDelete
+        If Not (varUSERaccess.User("EPLS", varUSERattribute.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GETTableID()
-        If V_FORMAttrib.RowID = "-1" Then
+        If frmAttribute.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.EPLS.View.DELETEDATA(V_FORMAttrib.RowID)) Then
+                If (Commands.EPLS.View.DELETEDATA(frmAttribute.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
@@ -80,24 +80,26 @@ Public Class EPLS
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataRefresh() Handles C_MMSMenu.EventDataRefresh
+    Private Sub EventDataRefresh() Handles clsMMSmenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
     End Sub
 
-    Private Sub EventDataClose() Handles C_MMSMenu.EventDataClose
+    Private Sub EventDataClose() Handles clsMMSmenu.EventDataClose
         Me.Close()
     End Sub
 
-    Private Sub EventToolsFind() Handles C_MMSMenu.EventToolsFind
+    Private Sub EventToolsFind() Handles clsMMSmenu.EventToolsFind
         TxtFind.Focus()
     End Sub
 #End Region
 
     <SupportedOSPlatform("windows")>
     Private Sub EPLS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        C_MMSMenu.LoadIn(Me)
-        C_MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
+        With clsMMSmenu
+            .LoadIn(Me)
+            .ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
+        End With
         Call GETDATA()
         TxtFind.ClearSearch()
     End Sub
@@ -110,7 +112,7 @@ Public Class EPLS
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub F_EPLS_Editor_RecordSaved() Handles F_EPLS_Editor.RecordSaved
+    Private Sub F_EPLS_Editor_RecordSaved() Handles frmEPLSeditor.RecordSaved
         Call GETDATA()
     End Sub
 

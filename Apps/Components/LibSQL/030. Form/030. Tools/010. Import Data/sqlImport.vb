@@ -5,106 +5,105 @@ Imports CMCv
 
 Namespace Tools.Import.SharedFunction
     Class Calculate
-        Private _ROWCOUNT As Integer
+        Private varRowcount As Integer
 
         <SupportedOSPlatform("windows")>
         Public Function TotalRows(ByVal Query As String, ByVal Keyword As String) As Integer
-            _ROWCOUNT = CType(V_DBE_MSSQL2008.GETVALUE(Query.Replace("%n", Keyword)), Integer)
-            Return _ROWCOUNT
+            varRowcount = CType(varDBengine_mssql2008.GETVALUE(Query.Replace("%n", Keyword), "db_universe_erp"), Integer)
+            Return varRowcount
         End Function
     End Class
 End Namespace
 
 Namespace Tools.Import.MaterialMaster
     Public Class Catalog
-        ReadOnly _CAL As New Tools.Import.SharedFunction.Calculate
+        ReadOnly varCalculate As New Tools.Import.SharedFunction.Calculate
 
         <SupportedOSPlatform("windows")>
-        Public Function Execute(ByVal DisplayLogs As txt, ByVal FileLocation As String, Optional ByVal HeaderExist As Boolean = True) As Boolean
-            Dim IsSuccess As Boolean = True
-            Dim CSVValue As String()
-            Dim CSVRow As Integer
-            'Dim CSVRowFound As Integer
+        Public Function Execute(ByVal DisplayLogs As Txt, ByVal FileLocation As String, Optional ByVal HeaderExist As Boolean = True) As Boolean
+            Dim varISsuccess As Boolean = True
+            Dim varCSVvalue As String()
+            Dim varCSVrow As Integer
 
-            Dim Search As String = "SELECT COUNT(m.material_id) FROM dbo.[[log]]material] m WHERE m.material_id = '%n'"
+            Dim varSearch As String = "SELECT COUNT(m.material_id) FROM dbo.[[log]]material] m WHERE m.material_id = '%n'"
 
             If File.Exists(FileLocation) = True Then
                 DisplayLogs.AppendText("Done." & Environment.NewLine)
 
-                Dim CSVParser As New Microsoft.VisualBasic.FileIO.TextFieldParser(FileLocation) With {
+                Dim varCSVparser As New Microsoft.VisualBasic.FileIO.TextFieldParser(FileLocation) With {
                 .TextFieldType = FileIO.FieldType.Delimited,
                 .Delimiters = New String() {";"}
                 }
 
-                '_DBP_MSSQL2008.Query = "INSERT INTO dbo.material(material_id,material_materialtype,material_description,material_potext,material_materialgroup) VALUES "
-                CSVRow = 1
-                While Not CSVParser.EndOfData
-                    CSVValue = CSVParser.ReadFields
+                'varDBdisplay_mssql2008.Query = "INSERT INTO dbo.material(material_id,material_materialtype,material_description,material_potext,material_materialgroup) VALUES "
+                varCSVrow = 1
+                While Not varCSVparser.EndOfData
+                    varCSVvalue = varCSVparser.ReadFields
                     If HeaderExist = True Then
-                        If CSVRow = 1 Then
+                        If varCSVrow = 1 Then
                             DisplayLogs.AppendText("Skip Header Row.." & Environment.NewLine)
-                        ElseIf CSVRow > 1 Then
+                        ElseIf varCSVrow > 1 Then
                             'first row
-                            DisplayLogs.AppendText("Processing Line : " & CSVRow & ". ")
-                            If CSVRow = 2 Then
-                                If _CAL.TotalRows(Search, CSVValue(1)) = 0 Then
-                                    _DBP_MSSQL2008.Query += "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
-                                        "VALUES ('" & CSVValue(1) & "','" & CSVValue(0) & "','" & CSVValue(2).Replace("'", "''") & "','" & CSVValue(3).Replace("'", "''") & "','" & CSVValue(4) & "');"
+                            DisplayLogs.AppendText("Processing Line : " & varCSVrow & ". ")
+                            If varCSVrow = 2 Then
+                                If varCalculate.TotalRows(varSearch, varCSVvalue(1)) = 0 Then
+                                    varDBdisplay_mssql2008.Query += "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
+                                        "VALUES ('" & varCSVvalue(1) & "','" & varCSVvalue(0) & "','" & varCSVvalue(2).Replace("'", "''") & "','" & varCSVvalue(3).Replace("'", "''") & "','" & varCSVvalue(4) & "');"
                                     DisplayLogs.AppendText("NEW." & Environment.NewLine)
                                 Else
-                                    _DBP_MSSQL2008.Query += "UPDATE dbo.[[log]]material] SET material_materialtype='" & CSVValue(0) & "',material_description='" & CSVValue(2).Replace("'", "''") & "', " &
-                                        "material_potext='" & CSVValue(3).Replace("'", "''") & "',material_materialgroup='" & CSVValue(4) & "' WHERE material_id='" & CSVValue(1) & "';"
+                                    varDBdisplay_mssql2008.Query += "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
+                                        "material_potext='" & varCSVvalue(3).Replace("'", "''") & "',material_materialgroup='" & varCSVvalue(4) & "' WHERE material_id='" & varCSVvalue(1) & "';"
                                     DisplayLogs.AppendText("UPDATE." & Environment.NewLine)
                                 End If
                             Else
-                                If _CAL.TotalRows(Search, CSVValue(1)) = 0 Then
-                                    _DBP_MSSQL2008.Query += vbCrLf & "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
-                                        "VALUES ('" & CSVValue(1) & "','" & CSVValue(0) & "','" & CSVValue(2).Replace("'", "''") & "','" & CSVValue(3).Replace("'", "''") & "','" & CSVValue(4) & "');"
+                                If varCalculate.TotalRows(varSearch, varCSVvalue(1)) = 0 Then
+                                    varDBdisplay_mssql2008.Query += vbCrLf & "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
+                                        "VALUES ('" & varCSVvalue(1) & "','" & varCSVvalue(0) & "','" & varCSVvalue(2).Replace("'", "''") & "','" & varCSVvalue(3).Replace("'", "''") & "','" & varCSVvalue(4) & "');"
                                     DisplayLogs.AppendText("NEW." & Environment.NewLine)
                                 Else
-                                    _DBP_MSSQL2008.Query += vbCrLf & "UPDATE dbo.[[log]]material] SET material_materialtype='" & CSVValue(0) & "',material_description='" & CSVValue(2).Replace("'", "''") & "', " &
-                                        "material_potext='" & CSVValue(3).Replace("'", "''") & "',material_materialgroup='" & CSVValue(4) & "' WHERE material_id='" & CSVValue(1) & "';"
+                                    varDBdisplay_mssql2008.Query += vbCrLf & "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
+                                        "material_potext='" & varCSVvalue(3).Replace("'", "''") & "',material_materialgroup='" & varCSVvalue(4) & "' WHERE material_id='" & varCSVvalue(1) & "';"
                                     DisplayLogs.AppendText("UPDATE." & Environment.NewLine)
                                 End If
                             End If
                         End If
                     Else
-                        If CSVRow = 1 Then
-                            If _CAL.TotalRows(Search, CSVValue(1)) = 0 Then
-                                _DBP_MSSQL2008.Query += "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
-                                    "VALUES ('" & CSVValue(1) & "','" & CSVValue(0) & "','" & CSVValue(2).Replace("'", "''") & "','" & CSVValue(3).Replace("'", "''") & "','" & CSVValue(4) & "');"
+                        If varCSVrow = 1 Then
+                            If varCalculate.TotalRows(varSearch, varCSVvalue(1)) = 0 Then
+                                varDBdisplay_mssql2008.Query += "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
+                                    "VALUES ('" & varCSVvalue(1) & "','" & varCSVvalue(0) & "','" & varCSVvalue(2).Replace("'", "''") & "','" & varCSVvalue(3).Replace("'", "''") & "','" & varCSVvalue(4) & "');"
                                 DisplayLogs.AppendText("NEW." & Environment.NewLine)
                             Else
-                                _DBP_MSSQL2008.Query += "UPDATE dbo.[[log]]material] SET material_materialtype='" & CSVValue(0) & "',material_description='" & CSVValue(2).Replace("'", "''") & "', " &
-                                    "material_potext='" & CSVValue(3).Replace("'", "''") & "',material_materialgroup='" & CSVValue(4) & "' WHERE material_id='" & CSVValue(1) & "';"
+                                varDBdisplay_mssql2008.Query += "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
+                                    "material_potext='" & varCSVvalue(3).Replace("'", "''") & "',material_materialgroup='" & varCSVvalue(4) & "' WHERE material_id='" & varCSVvalue(1) & "';"
                                 DisplayLogs.AppendText("UPDATE." & Environment.NewLine)
                             End If
                         Else
-                            If _CAL.TotalRows(Search, CSVValue(1)) = 0 Then
-                                _DBP_MSSQL2008.Query += vbCrLf & "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
-                                    "VALUES ('" & CSVValue(1) & "','" & CSVValue(0) & "','" & CSVValue(2).Replace("'", "''") & "','" & CSVValue(3).Replace("'", "''") & "','" & CSVValue(4) & "');"
+                            If varCalculate.TotalRows(varSearch, varCSVvalue(1)) = 0 Then
+                                varDBdisplay_mssql2008.Query += vbCrLf & "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
+                                    "VALUES ('" & varCSVvalue(1) & "','" & varCSVvalue(0) & "','" & varCSVvalue(2).Replace("'", "''") & "','" & varCSVvalue(3).Replace("'", "''") & "','" & varCSVvalue(4) & "');"
                                 DisplayLogs.AppendText("NEW." & Environment.NewLine)
                             Else
-                                _DBP_MSSQL2008.Query += vbCrLf & "UPDATE dbo.[[log]]material] SET material_materialtype='" & CSVValue(0) & "',material_description='" & CSVValue(2).Replace("'", "''") & "', " &
-                                    "material_potext='" & CSVValue(3).Replace("'", "''") & "',material_materialgroup='" & CSVValue(4) & "' WHERE material_id='" & CSVValue(1) & "';"
+                                varDBdisplay_mssql2008.Query += vbCrLf & "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
+                                    "material_potext='" & varCSVvalue(3).Replace("'", "''") & "',material_materialgroup='" & varCSVvalue(4) & "' WHERE material_id='" & varCSVvalue(1) & "';"
                                 DisplayLogs.AppendText("UPDATE." & Environment.NewLine)
                             End If
                         End If
                     End If
-                    CSVRow += 1
+                    varCSVrow += 1
                 End While
                 Try
-                    V_DBE_MSSQL2008.PUSHDATA(_DBP_MSSQL2008.Query)
+                    varDBengine_mssql2008.PUSHDATA(varDBdisplay_mssql2008.Query, "db_universe_erp")
                 Catch ex As Exception
-                    IsSuccess = False
+                    varISsuccess = False
                 End Try
             Else
-                IsSuccess = False
+                varISsuccess = False
                 DisplayLogs.AppendText("Failed." & Environment.NewLine)
                 DisplayLogs.AppendText("Your file is missing." & Environment.NewLine)
             End If
 
-            Return IsSuccess
+            Return varISsuccess
         End Function
     End Class
 End Namespace
