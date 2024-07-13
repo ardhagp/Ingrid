@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class frmErrorReporting
+Public Class frmERerrorreporting
     'Private Catcher As New Catcher.Error.Fields
     Public ResumeNext As Boolean
 
@@ -17,26 +17,26 @@ Public Class frmErrorReporting
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Public Sub New(ByVal ErrorCatcher As Catcher.Error.Fields, Optional ByVal DBEngine As Database.Engine.SQLiteV3 = Nothing)
+    Public Sub New(ByVal clsECerrorcatcher As Catcher.Error.Fields, Optional ByVal DBEngine As Database.Engine.SQLiteV3 = Nothing)
         InitializeComponent()
-        TxtErrorType.Text = TypeOfFaultiesConverter(ErrorCatcher)
-        TxtErrorMessage.Text = ErrorCatcher.Message & System.Environment.NewLine & System.Environment.NewLine & "Sender: " & ErrorCatcher.FromSender
-        TxtErrorNumber.Text = ErrorCatcher.Number
-        TxtAppBuild.Text = ErrorCatcher.AppVersion
-        ChkErrorReporting.Enabled = ErrorCatcher.EnableErrorReporting
-        ResumeNext = ErrorCatcher.ResumeNext
+        TxtErrorType.Text = TypeOfFaultiesConverter(clsECerrorcatcher)
+        TxtErrorMessage.Text = clsECerrorcatcher.Message & System.Environment.NewLine & System.Environment.NewLine & "Sender: " & clsECerrorcatcher.FromSender
+        TxtErrorNumber.Text = clsECerrorcatcher.Number
+        TxtAppBuild.Text = clsECerrorcatcher.AppVersion
+        ChkErrorReporting.Enabled = clsECerrorcatcher.EnableErrorReporting
+        ResumeNext = clsECerrorcatcher.ResumeNext
 
         'Send Error to Ingrid Log Center
         Bridge.Security.WRITELOG.SENDLOG(TxtErrorMessage.Text & Environment.NewLine & "Error Number: " & TxtErrorNumber.Text & Environment.NewLine & "Error Type: " & TxtErrorType.Text & Environment.NewLine & "App Build: " & TxtAppBuild.Text, Bridge.Security.WRITELOG.LogType.Error)
 
         'Record Error into local database
-        If (ErrorCatcher.SaveError) Then
+        If (clsECerrorcatcher.SaveError) Then
             If DBEngine Is Nothing Then
                 Return
             End If
             varERL = DBEngine
             varERL.Open()
-            varERL.SaveErrorData(ErrorCatcher)
+            varERL.SaveErrorData(clsECerrorcatcher)
         End If
 
 
@@ -44,20 +44,20 @@ Public Class frmErrorReporting
 
     End Sub
 
-    Private Function TypeOfFaultiesConverter(ByVal ErrorCatcher As Catcher.Error.Fields) As String
-        Dim Result As String = ""
-        Select Case ErrorCatcher.Type
+    Private Function TypeOfFaultiesConverter(ByVal clsECerrorcatcher As Catcher.Error.Fields) As String
+        Dim varResult As String = ""
+        Select Case clsECerrorcatcher.Type
             Case CType(20010102, Catcher.Error.Fields.TypeOfFaulties)
-                Result = "SupportServiceDatabaseEngine"
+                varResult = "SupportServiceDatabaseEngine"
             Case CType(200102, Catcher.Error.Fields.TypeOfFaulties)
-                Result = "SupportServiceSOAP"
+                varResult = "SupportServiceSOAP"
             Case CType(200103, Catcher.Error.Fields.TypeOfFaulties)
-                Result = "SupportServiceWeb"
+                varResult = "SupportServiceWeb"
             Case CType(100100, Catcher.Error.Fields.TypeOfFaulties)
-                Result = "ApplicationRunTime"
+                varResult = "ApplicationRunTime"
         End Select
 
-        Return Result
+        Return varResult
     End Function
 
     Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click

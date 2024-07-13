@@ -14,7 +14,7 @@ Public Class Dgn
     Public Sub New()
         InitializeComponent()
         Call ActivateLicenses()
-        'MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.WarnaAcakBaru(190, 190, 190, 255, 255, 255)
+        'MyBase.AlternatingRowsDefaultCellStyle.BackColor = clsCodebase.WarnaAcakBaru(190, 190, 190, 255, 255, 255)
         MyBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         MyBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         MyBase.ColumnHeadersHeightSizeMode = Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing

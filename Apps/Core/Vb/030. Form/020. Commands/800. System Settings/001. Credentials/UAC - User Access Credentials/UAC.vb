@@ -3,7 +3,7 @@ Imports CMCv
 
 Public Class UAC
 #Region "Variables"
-    Private clsSQLview As New Commands.UAC.View
+    Private varSQLview As New Commands.UAC.View
     Private WithEvents frmUACeditor As UAC_Editor
     Private WithEvents clsMMSmenu As New CMCv.UI.View.MenuStrip
 #End Region
@@ -16,10 +16,10 @@ Public Class UAC
     End Sub
 
     Private Sub GETTableID()
-        frmAttribute.RowID = "-1"
+        varFORMAttribute.RowID = "-1"
 
         If DgnUAC.RowCount > 0 Then
-            frmAttribute.RowID = DgnUAC.CurrentRow.Cells("user_id").Value.ToString
+            varFORMAttribute.RowID = DgnUAC.CurrentRow.Cells("user_id").Value.ToString
         End If
     End Sub
 #End Region
@@ -28,38 +28,39 @@ Public Class UAC
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles clsMMSmenu.EventDataAddNew
-        frmAttribute.IsChangePasswordForm = False
+        varFORMAttribute.IsChangePasswordForm = False
 
-        If Not (varUSERaccess.User("UAC", varUSERattribute.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
-            Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+        If Not (varUSRaccess.User("UAC", varUSERAttribute.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+            Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
-        With frmAttribute
+        With varFORMAttribute
             .IsNew = True
             .RowID = "-1"
             .Hash = Security.Encrypt.MD5()
         End With
+
         frmUACeditor = New UAC_Editor
         DISPLAY(frmUACeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new credential data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles clsMMSmenu.EventDataEdit
-        frmAttribute.IsChangePasswordForm = False
+        varFORMAttribute.IsChangePasswordForm = False
 
-        If Not (varUSERaccess.User("UAC", varUSERattribute.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
-            Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+        If Not (varUSRaccess.User("UAC", varUSERAttribute.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+            Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GETTableID()
-        frmAttribute.IsNew = False
+        varFORMAttribute.IsNew = False
 
-        If frmAttribute.RowID = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+        If varFORMAttribute.RowID = "-1" Then
+            Decision("No record selected", "Error", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
         Else
-            frmAttribute.IsNew = False
+            varFORMAttribute.IsNew = False
             frmUACeditor = New UAC_Editor
             DISPLAY(frmUACeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
         End If
@@ -67,23 +68,21 @@ Public Class UAC
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles clsMMSmenu.EventDataDelete
-        If Not (varUSERaccess.User("UAC", varUSERattribute.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
-            Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+        If Not (varUSRaccess.User("UAC", varUSERAttribute.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+            Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GETTableID()
 
-        If frmAttribute.RowID = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+        If varFORMAttribute.RowID = "-1" Then
+            Decision("No record selected", "Error", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
         Else
-            If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.UAC.View.DELETEData(frmAttribute.RowID)) Then
-                    Call GETDATA(True)
-                    Mainframe_n_6.Ts_status.Text = "Success"
-                Else
-                    Mainframe_n_6.Ts_status.Text = "Delete failed"
-                End If
+            If Decision("Do you want to delete this record?", "Delete", CMCv.frmDBdialogbox.MessageIcon.Question, CMCv.frmDBdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes AndAlso (Commands.UAC.View.DELETEData(varFORMAttribute.RowID)) Then
+                Call GETDATA(True)
+                Mainframe_n_6.Ts_status.Text = "Success"
+            Else
+                Mainframe_n_6.Ts_status.Text = "Delete failed"
             End If
         End If
     End Sub
@@ -108,7 +107,9 @@ Public Class UAC
         With clsMMSmenu
             .LoadIn(Me)
             .ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
+
         End With
+
         DgnUAC.XOGETNewColor()
         Call GETDATA()
         TxtFind.ClearSearch()

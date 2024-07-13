@@ -40,23 +40,23 @@ Public Class LOGIN
             RaiseEvent LoginFailed()
             varLoginwrong += 1
             SLFStatus.Items(0).Text = "Login Failed"
-            varLoguser.LoginFailed(TxtUsername.XOSQLText)
+            varLOGUser.LoginFailed(TxtUsername.XOSQLText)
             Bridge.Security.Writelog.Sendlog(TxtUsername.XOSQLText & " failed to login.", Bridge.Security.Writelog.LogType.Error)
             tmr_status.Enabled = True
             If varLoginwrong = 3 Then
                 tmr_control.Enabled = True
             End If
         Else
-            With varUSERattribute
-                .EID = Commands.UAC.Login.GETEID(varUSERattribute.UID)
-                .FirstName = Commands.UAC.Login.GETFirstName(varUSERattribute.UID)
-                .EmployeeNumber = Commands.UAC.Login.GETEmployeeNumber(varUSERattribute.UID)
-                .Gender = Commands.UAC.Login.GETGender(varUSERattribute.UID)
-                .Position = Commands.UAC.Login.GETPosition(varUSERattribute.UID)
-                .IsAdministrator = Commands.UAC.Login.GETAdministrator(varUSERattribute.UID)
+            With varUSERAttribute
+                .EID = Commands.UAC.Login.GETEID(varUSERAttribute.UID)
+                .FirstName = Commands.UAC.Login.GETFirstName(varUSERAttribute.UID)
+                .EmployeeNumber = Commands.UAC.Login.GETEmployeeNumber(varUSERAttribute.UID)
+                .Gender = Commands.UAC.Login.GETGender(varUSERAttribute.UID)
+                .Position = Commands.UAC.Login.GETPosition(varUSERAttribute.UID)
+                .IsAdministrator = Commands.UAC.Login.GETAdministrator(varUSERAttribute.UID)
             End With
 
-            varLoguser.LoginSuccess(varUSERattribute.EID)
+            varLOGUser.LoginSuccess(varUSERAttribute.EID)
             Bridge.Security.Writelog.Sendlog(varUSERattribute.FirstName & " is login.", Bridge.Security.Writelog.LogType.Information)
             RaiseEvent LoginSuccess()
             Me.Close()

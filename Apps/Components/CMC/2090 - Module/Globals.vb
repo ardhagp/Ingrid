@@ -14,60 +14,62 @@ Module Globals
 
 #Region "Security Globals"
     <SupportedOSPlatform("windows")>
-    Public V_BRIDGE_KEY As New Bridge.Security.GETKEY
+    Public clsBridgekey As New Bridge.Security.Getkey
 
     <SupportedOSPlatform("windows")>
-    Public varBridgelog As New Bridge.Security.WRITELOG
+    Public clsBridgelog As New Bridge.Security.Writelog
 
     <SupportedOSPlatform("windows")>
-    Public V_SALT As String = V_BRIDGE_KEY.SALT()
+    Public varSalt As String = clsBridgekey.Salt()
 
     <SupportedOSPlatform("windows")>
-    Public V_SyncfusionKey As String = V_BRIDGE_KEY.SYNCFUSION
+    Public varSyncfusionkey As String = clsBridgekey.Syncfusion
 
     ''' <summary>
     ''' This security will be retired
     ''' </summary>
-    Public varSecurityencrypt As New Security.Encrypt
+    Public clsSecurityencrypt As New Security.Encrypt
 
     ''' <summary>
     ''' This security will be retired
     ''' </summary>
-    Public varSecuritydecrypt As New Security.Decrypt
+    Public clsSecuritydecrypt As New Security.Decrypt
 
     'new security
-    Public varSecurity_aes As System.Security.Cryptography.Aes
-    Public varSecurity_md5 As System.Security.Cryptography.MD5
-    Public varSecurity_crc32 As New System.IO.Hashing.Crc32
+    Public clsSecurity_aes As System.Security.Cryptography.Aes
+    Public clsSecurity_md5 As System.Security.Cryptography.MD5
+    Public clsSecurity_crc32 As New System.IO.Hashing.Crc32
 
 #End Region
 
 #Region "Class Globals"
-    Public varControlcodebase As New ControlCodeBase
-    Public varClassfileinfo As New OperatingSystem.File.Info
+    Public clsCodebase As New ControlCodeBase
+    Public clsFileinfo As New OperatingSystem.File.Info
 
 #End Region
 
 #Region "Variabel Global"
     Public varRandomcolor As New Random
-    Public varAutotrim As Boolean
-    Public varHarusdiisi As Boolean
+    Public varAutoTrim As Boolean
+    Public varHarusDiisi As Boolean
 
-    Public frmError As New frmErrorReporting
-    Public varERL As New Database.Engine.LocalDB
-    Public clsErrorcatcher As Catcher.Error.Fields
+    'Public SEC As New Security.Engine
 
-    Public _APPVer As String
+    Public frmERC As New frmERerrorreporting
+    Public clsDBsqlite As New Database.Engine.SQLiteV3
+    Public clsECerrorcatcher As Catcher.Error.Fields
+
+    Public varVersionapplication As String
 #End Region
 
     Public Function GETAPPVERSION() As String
-        Dim varVersionmajor, varVersionminor, varVersionbuild, varVersionrevision As Integer
-        varVersionmajor = My.Application.Info.Version.Major
-        varVersionminor = My.Application.Info.Version.Minor
-        varVersionbuild = My.Application.Info.Version.Build
-        varVersionrevision = My.Application.Info.Version.Revision
-        _APPVer = varVersionmajor & "." & varVersionminor & "." & varVersionbuild & "." & varVersionrevision
-        Return _APPVer
+        Dim varMajor, varMinor, varBuild, varRevision As Integer
+        varMajor = My.Application.Info.Version.Major
+        varMinor = My.Application.Info.Version.Minor
+        varBuild = My.Application.Info.Version.Build
+        varRevision = My.Application.Info.Version.Revision
+        varVersionapplication = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
+        Return varVersionapplication
     End Function
 
     <SupportedOSPlatform("windows")>
@@ -75,7 +77,7 @@ Module Globals
         'License for Syncfusion
 
         'nuget version : 21.2.9
-        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(V_SyncfusionKey)
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(varSyncfusionkey)
     End Sub
 
     Public Sub GETMACHINENAME()
@@ -83,7 +85,7 @@ Module Globals
     End Sub
 
     Public Sub PUSHERRORDATA(ByVal FromSender As String, ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As String, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
-        With clsErrorcatcher
+        With clsECerrorcatcher
             .FromSender = FromSender
             .Type = ErrorType
             .Message = ErrorMessage
@@ -98,13 +100,17 @@ Module Globals
 
     <SupportedOSPlatform("windows")>
     Public Sub PUSHERRORDATASHOW()
-        frmError = New frmErrorReporting(clsErrorcatcher, )
-        frmError.SLFNamaForm.Text = "Lady Bug (Error Catcher)"
-        frmError.SLFSubNamaForm.Text = "Please check detail below and report to system administrator."
-        frmError.ShowDialog()
-        If Not (frmError.ResumeNext) Then
+        frmERC = New frmERerrorreporting(clsECerrorcatcher, )
+
+        With frmERC
+            .SLFNamaForm.Text = "Lady Bug (Error Catcher)"
+            .SLFSubNamaForm.Text = "Please check detail below and report to system administrator."
+            .ShowDialog()
+        End With
+
+        If Not (frmERC.ResumeNext) Then
             Process.GetCurrentProcess.Kill()
         End If
-        frmError.Dispose()
+        frmERC.Dispose()
     End Sub
 End Module

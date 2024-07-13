@@ -33,7 +33,7 @@ Namespace Security
 
         <SupportedOSPlatform("windows")>
         Public Shared Function AES(Message As String) As String
-            Dim varEmessage As String = EncryptProvider.AESEncrypt(Message, V_SALT)
+            Dim varEmessage As String = EncryptProvider.AESEncrypt(Message, varSalt)
             Return varEmessage
         End Function
     End Class
@@ -41,7 +41,7 @@ Namespace Security
     Public Class Decrypt
         <SupportedOSPlatform("windows")>
         Public Shared Function AES(Message As String) As String
-            Dim varEmessage As String = EncryptProvider.AESDecrypt(Message, V_SALT)
+            Dim varEmessage As String = EncryptProvider.AESDecrypt(Message, varSalt)
             Return varEmessage
         End Function
     End Class

@@ -35,7 +35,7 @@ Namespace Tools.Import.MaterialMaster
                 .Delimiters = New String() {";"}
                 }
 
-                'varDBdisplay_mssql2008.Query = "INSERT INTO dbo.material(material_id,material_materialtype,material_description,material_potext,material_materialgroup) VALUES "
+                'varDBadapter_mssql2008.Query = "INSERT INTO dbo.material(material_id,material_materialtype,material_description,material_potext,material_materialgroup) VALUES "
                 varCSVrow = 1
                 While Not varCSVparser.EndOfData
                     varCSVvalue = varCSVparser.ReadFields
@@ -47,21 +47,21 @@ Namespace Tools.Import.MaterialMaster
                             DisplayLogs.AppendText("Processing Line : " & varCSVrow & ". ")
                             If varCSVrow = 2 Then
                                 If varCalculate.TotalRows(varSearch, varCSVvalue(1)) = 0 Then
-                                    varDBdisplay_mssql2008.Query += "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
+                                    varDBadapter_mssql2008.Query += "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
                                         "VALUES ('" & varCSVvalue(1) & "','" & varCSVvalue(0) & "','" & varCSVvalue(2).Replace("'", "''") & "','" & varCSVvalue(3).Replace("'", "''") & "','" & varCSVvalue(4) & "');"
                                     DisplayLogs.AppendText("NEW." & Environment.NewLine)
                                 Else
-                                    varDBdisplay_mssql2008.Query += "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
+                                    varDBadapter_mssql2008.Query += "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
                                         "material_potext='" & varCSVvalue(3).Replace("'", "''") & "',material_materialgroup='" & varCSVvalue(4) & "' WHERE material_id='" & varCSVvalue(1) & "';"
                                     DisplayLogs.AppendText("UPDATE." & Environment.NewLine)
                                 End If
                             Else
                                 If varCalculate.TotalRows(varSearch, varCSVvalue(1)) = 0 Then
-                                    varDBdisplay_mssql2008.Query += vbCrLf & "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
+                                    varDBadapter_mssql2008.Query += vbCrLf & "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
                                         "VALUES ('" & varCSVvalue(1) & "','" & varCSVvalue(0) & "','" & varCSVvalue(2).Replace("'", "''") & "','" & varCSVvalue(3).Replace("'", "''") & "','" & varCSVvalue(4) & "');"
                                     DisplayLogs.AppendText("NEW." & Environment.NewLine)
                                 Else
-                                    varDBdisplay_mssql2008.Query += vbCrLf & "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
+                                    varDBadapter_mssql2008.Query += vbCrLf & "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
                                         "material_potext='" & varCSVvalue(3).Replace("'", "''") & "',material_materialgroup='" & varCSVvalue(4) & "' WHERE material_id='" & varCSVvalue(1) & "';"
                                     DisplayLogs.AppendText("UPDATE." & Environment.NewLine)
                                 End If
@@ -70,21 +70,21 @@ Namespace Tools.Import.MaterialMaster
                     Else
                         If varCSVrow = 1 Then
                             If varCalculate.TotalRows(varSearch, varCSVvalue(1)) = 0 Then
-                                varDBdisplay_mssql2008.Query += "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
+                                varDBadapter_mssql2008.Query += "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
                                     "VALUES ('" & varCSVvalue(1) & "','" & varCSVvalue(0) & "','" & varCSVvalue(2).Replace("'", "''") & "','" & varCSVvalue(3).Replace("'", "''") & "','" & varCSVvalue(4) & "');"
                                 DisplayLogs.AppendText("NEW." & Environment.NewLine)
                             Else
-                                varDBdisplay_mssql2008.Query += "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
+                                varDBadapter_mssql2008.Query += "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
                                     "material_potext='" & varCSVvalue(3).Replace("'", "''") & "',material_materialgroup='" & varCSVvalue(4) & "' WHERE material_id='" & varCSVvalue(1) & "';"
                                 DisplayLogs.AppendText("UPDATE." & Environment.NewLine)
                             End If
                         Else
                             If varCalculate.TotalRows(varSearch, varCSVvalue(1)) = 0 Then
-                                varDBdisplay_mssql2008.Query += vbCrLf & "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
+                                varDBadapter_mssql2008.Query += vbCrLf & "INSERT INTO dbo.[[log]]material](material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
                                     "VALUES ('" & varCSVvalue(1) & "','" & varCSVvalue(0) & "','" & varCSVvalue(2).Replace("'", "''") & "','" & varCSVvalue(3).Replace("'", "''") & "','" & varCSVvalue(4) & "');"
                                 DisplayLogs.AppendText("NEW." & Environment.NewLine)
                             Else
-                                varDBdisplay_mssql2008.Query += vbCrLf & "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
+                                varDBadapter_mssql2008.Query += vbCrLf & "UPDATE dbo.[[log]]material] SET material_materialtype='" & varCSVvalue(0) & "',material_description='" & varCSVvalue(2).Replace("'", "''") & "', " &
                                     "material_potext='" & varCSVvalue(3).Replace("'", "''") & "',material_materialgroup='" & varCSVvalue(4) & "' WHERE material_id='" & varCSVvalue(1) & "';"
                                 DisplayLogs.AppendText("UPDATE." & Environment.NewLine)
                             End If
@@ -93,7 +93,7 @@ Namespace Tools.Import.MaterialMaster
                     varCSVrow += 1
                 End While
                 Try
-                    varDBengine_mssql2008.PUSHDATA(varDBdisplay_mssql2008.Query, "db_universe_erp")
+                    varDBengine_mssql2008.PUSHDATA(varDBadapter_mssql2008.Query, "db_universe_erp")
                 Catch ex As Exception
                     varISsuccess = False
                 End Try

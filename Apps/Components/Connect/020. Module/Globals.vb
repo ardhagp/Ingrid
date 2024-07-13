@@ -12,24 +12,24 @@ Module Globals
     Public varDBengine_mssql2008 As New CMCv.Database.Engine.Mssql2008
     Public varDBengine_sqlite As New SQLiteV3
     Public varDBproperties(1) As Fields
-    Public varBridgelog As New Writelog
+    Public clsBridgelog As New Writelog
 
     Public varDBreader_sqlite(1) As SQLite.Display.Request
-    Public varDBdisplay_sqlite As New SQLite.Execute
+    Public V_DBP_SQLITE As New SQLite.Execute
 
     Public varSecurityencrypt As New Security.Encrypt
 
-    Public varVersionmajor As Integer = My.Application.Info.Version.Major
-    Public varVersionminor As Integer = My.Application.Info.Version.Minor
-    Public varVersionbuild As Integer = My.Application.Info.Version.Build
-    Public varVersionrevision As Integer = My.Application.Info.Version.Revision
-    Public varVersionapplication As String = varVersionmajor & "." & varVersionminor & "." & varVersionbuild & "." & varVersionrevision
+    Public varMajor As Integer = My.Application.Info.Version.Major
+    Public varMinor As Integer = My.Application.Info.Version.Minor
+    Public varBuild As Integer = My.Application.Info.Version.Build
+    Public varRevision As Integer = My.Application.Info.Version.Revision
+    Public varVersionapplication As String = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
 
-    Public WithEvents frmMessage As New frmDialogBox
-    Public WithEvents frmError As New frmErrorReporting
-    Public clsErrorcatcher As New Catcher.Error.Fields
+    Public WithEvents frmMSG As New frmDBdialogbox
+    Public WithEvents frmERC As New frmERerrorreporting
+    Public clsECerrorcatcher As New Catcher.Error.Fields
 
-    Public frmAttribute As New Connect.Main.GlobalRecord
+    Public varFORMAttribute As New Connect.Main.GlobalRecord
 
 #Region "Custom Message Box"
     ''' <summary>
@@ -41,10 +41,10 @@ Module Globals
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
-    Public Function Decision(ByVal Message As String, ByVal Title As String, ByVal MessageIcon As CMCv.frmDialogBox.MessageIcon, ByVal ButtonType As CMCv.frmDialogBox.MessageTypes) As System.Windows.Forms.DialogResult
-        frmMessage = New CMCv.frmDialogBox(Message, Title, MessageIcon, ButtonType)
-        Return frmMessage.ShowDialog()
-        frmMessage.Dispose()
+    Public Function Decision(ByVal Message As String, ByVal Title As String, ByVal MessageIcon As CMCv.frmDBdialogbox.MessageIcon, ByVal ButtonType As CMCv.frmDBdialogbox.MessageTypes) As System.Windows.Forms.DialogResult
+        frmMSG = New CMCv.frmDBdialogbox(Message, Title, MessageIcon, ButtonType)
+        Return frmMSG.ShowDialog()
+        frmMSG.Dispose()
     End Function
 #End Region
 
@@ -99,12 +99,12 @@ Module Globals
     ''' <remarks></remarks>
     Public Function GETAPPVERSION() As String
         Try
-            Dim varVersionmajor, varVersionminor, varVersionbuild, varVersionrevision As Integer
-            varVersionmajor = My.Application.Info.Version.Major
-            varVersionminor = My.Application.Info.Version.Minor
-            varVersionbuild = My.Application.Info.Version.Build
-            varVersionrevision = My.Application.Info.Version.Revision
-            varVersionapplication = varVersionmajor & "." & varVersionminor & "." & varVersionbuild & "." & varVersionrevision
+            Dim varMajor, varMinor, varBuild, varRevision As Integer
+            varMajor = My.Application.Info.Version.Major
+            varMinor = My.Application.Info.Version.Minor
+            varBuild = My.Application.Info.Version.Build
+            varRevision = My.Application.Info.Version.Revision
+            varVersionapplication = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
             Return varVersionapplication
         Catch ex As Exception
             PUSHERRORDATA("[GETAPPVERSION] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, "0.0.0", False, True, True)
@@ -131,7 +131,7 @@ Module Globals
     ''' <param name="ResumeNext">Lanjutkan saat terjadi kesalahan</param>
     ''' <remarks></remarks>
     Public Sub PUSHERRORDATA(ByVal FromSender As String, ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As String, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
-        With clsErrorcatcher
+        With clsECerrorcatcher
             .FromSender = FromSender
             .Type = ErrorType
             .Message = ErrorMessage
@@ -149,10 +149,10 @@ Module Globals
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub PUSHERRORDATASHOW()
-        frmError = New CMCv.frmErrorReporting(clsErrorcatcher, varDBengine_sqlite)
-        frmError.ShowDialog()
-        If Not (frmError.ResumeNext) Then
-            Exit Sub
+        frmERC = New CMCv.frmERerrorreporting(clsECerrorcatcher, varDBengine_sqlite)
+        frmERC.ShowDialog()
+        If Not (frmERC.ResumeNext) Then
+            End
         End If
     End Sub
 #End Region

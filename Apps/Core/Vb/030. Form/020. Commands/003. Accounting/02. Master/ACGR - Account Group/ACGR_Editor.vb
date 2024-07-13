@@ -5,7 +5,7 @@ Public Class ACGR_Editor
 
 #Region "Variables"
     Private varSize As New Size(566, 445)
-    Private clsSQL As New Commands.ACGR.Editor
+    Private varSQLeditor As New Commands.ACGR.Editor
     Private varISfirstload As Boolean
     Public Event RecordSaved()
 #End Region
@@ -36,18 +36,18 @@ Public Class ACGR_Editor
         'Fill Account Group
         Commands.ACGR.Editor.FILLAccountGroup(CboAccountGroup)
 
-        If (frmAttribute.IsNew) Then
+        If (varFORMAttribute.IsNew) Then
             ChkEnable.Checked = True
             ChkAddNew.Visible = True
         Else
             ChkAddNew.Visible = False
-            CboCompany.SelectedValue = Commands.ACGR.Editor.GETCompanyID(frmAttribute.RowID)
+            CboCompany.SelectedValue = Commands.ACGR.Editor.GETCompanyID(varFORMAttribute.RowID)
             Commands.ACGR.Editor.FILLAccountingBook(CboAccountingBook, CboCompany)
-            CboAccountingBook.SelectedValue = Commands.ACGR.Editor.GETAccountBookID(frmAttribute.RowID)
-            CboAccountGroup.SelectedValue = Commands.ACGR.Editor.GETAccountGroupID(frmAttribute.RowID)
-            TxtAccountNumber.Text = Commands.ACGR.Editor.GETAccountNumber(frmAttribute.RowID)
-            TxtAccountName.Text = Commands.ACGR.Editor.GETAccountName(frmAttribute.RowID)
-            ChkEnable.Checked = Commands.ACGR.Editor.GETEnableTransaction(frmAttribute.RowID)
+            CboAccountingBook.SelectedValue = Commands.ACGR.Editor.GETAccountBookID(varFORMAttribute.RowID)
+            CboAccountGroup.SelectedValue = Commands.ACGR.Editor.GETAccountGroupID(varFORMAttribute.RowID)
+            TxtAccountNumber.Text = Commands.ACGR.Editor.GETAccountNumber(varFORMAttribute.RowID)
+            TxtAccountName.Text = Commands.ACGR.Editor.GETAccountName(varFORMAttribute.RowID)
+            ChkEnable.Checked = Commands.ACGR.Editor.GETEnableTransaction(varFORMAttribute.RowID)
 
             'Disable all combobox
             CboCompany.Enabled = False
@@ -72,17 +72,17 @@ Public Class ACGR_Editor
         Call CheckAllInput()
 
         If (TxtAccountName.Text = String.Empty) OrElse (TxtAccountNumber.Text = String.Empty) OrElse (CboAccountingBook.Items.Count = 0) Then
-            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Account Book selected, Account Number & Account Name properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Account Book selected, Account Number & Account Name properly filled.", "Alert", frmDBdialogbox.MessageIcon.Alert, frmDBdialogbox.MessageTypes.OkOnly)
             Return
-        ElseIf (frmAttribute.IsNew) AndAlso (Commands.ACGR.Editor.IsDuplicate(CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText)) Then
-            Decision("Cannot save your record." & Environment.NewLine & "This Account Number already registered.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+        ElseIf (varFORMAttribute.IsNew) AndAlso (Commands.ACGR.Editor.IsDuplicate(CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText)) Then
+            Decision("Cannot save your record." & Environment.NewLine & "This Account Number already registered.", "Alert", frmDBdialogbox.MessageIcon.Alert, frmDBdialogbox.MessageTypes.OkOnly)
             Return
-        ElseIf Not (frmAttribute.IsNew) AndAlso (Commands.ACGR.Editor.IsDuplicate(CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText, frmAttribute.RowID)) Then
-            Decision("Cannot save your record." & Environment.NewLine & "This Account Number already registered.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+        ElseIf Not (varFORMAttribute.IsNew) AndAlso (Commands.ACGR.Editor.IsDuplicate(CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText, varFORMAttribute.RowID)) Then
+            Decision("Cannot save your record." & Environment.NewLine & "This Account Number already registered.", "Alert", frmDBdialogbox.MessageIcon.Alert, frmDBdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (Commands.ACGR.Editor.PUSHData(CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText, TxtAccountName.XOSQLText, ChkEnable.Checked, frmAttribute.RowID)) Then
+        If (Commands.ACGR.Editor.PUSHData(CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText, TxtAccountName.XOSQLText, ChkEnable.Checked, varFORMAttribute.RowID)) Then
             Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else
@@ -102,5 +102,4 @@ Public Class ACGR_Editor
         Me.Close()
     End Sub
 #End Region
-
 End Class
