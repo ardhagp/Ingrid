@@ -13,7 +13,7 @@ Public Class Mainframe_n_6
     End Interface
 
     Public Interface ICommandName
-        ReadOnly Property TCODE As String
+        ReadOnly Property varTCode As String
     End Interface
 #End Region
 
@@ -121,11 +121,11 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EnterCommand(ByVal TCode As String)
+    Private Sub EnterCommand(ByVal varTCode As String)
 
         'For Modules That Not Required Login
-        If (TCode.ToUpper.Trim = "RESET") OrElse (TCode.ToUpper.Trim = "PHTRZ") Then
-            Globals.varWorkspace.Open(Me, TCode.ToUpper.Trim, St_mainframe)
+        If (varTCode.ToUpper.Trim = "RESET") OrElse (varTCode.ToUpper.Trim = "PHTRZ") Then
+            Globals.varWorkspace.Open(Me, varTCode.ToUpper.Trim, St_mainframe)
             Txt_shortcut.Clear()
             Return
         Else
@@ -133,30 +133,29 @@ Public Class Mainframe_n_6
         End If
 
         'For Module That Required Login
-        If Not (Application.Modules.IsModuleReady(TCode.ToUpper.Trim)) Then
-            St_mainframe.Items(0).Text = "Module " & TCode.ToUpper.Trim & " not found."
+        If Not (Application.Modules.IsModuleReady(varTCode.ToUpper.Trim)) Then
+            St_mainframe.Items(0).Text = "Module " & varTCode.ToUpper.Trim & " not found."
             Return
-        ElseIf (Application.Modules.IsModuleLocked(TCode.ToUpper.Trim)) Then
-            St_mainframe.Items(0).Text = "[" & TCode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
-            Bridge.Security.Writelog.Sendlog(varUSERAttribute.FirstName & " trying to open Under Maintenance Module " & TCode.ToUpper.Trim, Bridge.Security.Writelog.LogType.Error)
-            Decision("[" & TCode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDBdialogbox.MessageIcon.Information, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
+        ElseIf (Application.Modules.IsModuleLocked(varTCode.ToUpper.Trim)) Then
+            St_mainframe.Items(0).Text = "[" & varTCode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
+            Bridge.Security.Writelog.Sendlog(varUSERAttribute.FirstName & " trying to open Under Maintenance Module " & varTCode.ToUpper.Trim, Bridge.Security.Writelog.LogType.Error)
+            Decision("[" & varTCode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDBdialogbox.MessageIcon.Information, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
 
             System.Media.SystemSounds.Beep.Play()
 
             Return
-        ElseIf Not (varUSRaccess.User(TCode.ToUpper.Trim, varUSERAttribute.UID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then
+        ElseIf Not (varUSRaccess.User(varTCode.ToUpper.Trim, varUSERAttribute.UID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then
 
-            St_mainframe.Items(0).Text = "You are not authorized to access : " & TCode.ToUpper.Trim
+            St_mainframe.Items(0).Text = "You are not authorized to access : " & varTCode.ToUpper.Trim
 
-            Bridge.Security.Writelog.Sendlog(varUSERAttribute.FirstName & " trying to open Restricted Module " & TCode.ToUpper.Trim, Bridge.Security.Writelog.LogType.Error)
+            Bridge.Security.Writelog.Sendlog(varUSERAttribute.FirstName & " trying to open Restricted Module " & varTCode.ToUpper.Trim, Bridge.Security.Writelog.LogType.Error)
 
             System.Media.SystemSounds.Beep.Play()
 
             Return
         Else
-            'tmdi_.AttachedTo = Me
-            Bridge.Security.Writelog.Sendlog(varUSERAttribute.FirstName & " opening Module " & TCode.ToUpper.Trim, Bridge.Security.Writelog.LogType.Information)
-            Globals.varWorkspace.Open(Me, TCode.ToUpper.Trim, St_mainframe)
+            Globals.varWorkspace.Open(Me, varTCode.ToUpper.Trim, St_mainframe)
+            Bridge.Security.Writelog.Sendlog(varUSERAttribute.FirstName & " opening Module " & varTCode.ToUpper.Trim, Bridge.Security.Writelog.LogType.Information)
             Txt_shortcut.Clear()
         End If
     End Sub
