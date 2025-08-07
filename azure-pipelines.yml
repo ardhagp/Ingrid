@@ -57,14 +57,15 @@ steps:
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
     webhookKey: '$(var_g_Discord_WebhookKey)'
-    content: 'Build is starting...'
+    content: 'Start compiling Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for Platform $(var_Platform).\n '
 
-- task: fizzcode-discordhook@1
-  inputs:
-    DiscordChannelID: '$(var_g_Discord_WebhookID)'
-    DiscordToken: '$(var_g_Discord_WebhookKey)'
-    Title: '$Build $(Build.BuildNumber) succeeded ($(Build.Reason))'
-    Message: '$(Build.SourceVersionMessage)'
+#- task: fizzcode-discordhook@1
+#  inputs:
+#    DiscordChannelID: '$(var_g_Discord_WebhookID)'
+#    DiscordToken: '$(var_g_Discord_WebhookKey)'
+#    Title: '$Build $(Build.BuildNumber) succeeded ($(Build.Reason))'
+#    Message: '$(Build.SourceVersionMessage)'
+
 
 #Installing Nuget
 - task: NuGetToolInstaller@1
