@@ -53,16 +53,16 @@ variables:
 steps:
 
 #Sent notification to Discord
-#- task: ado-discord-webhook@2
-#  inputs:
-#    webhookId: '$[variables.var_g_Discord_WebhookID]'
-#    webhookKey: '$[variables.var_g_Discord_WebhookKey]'
-#    content: 'Build is starting...'
+- task: ado-discord-webhook@2
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    content: 'Build is starting...'
 
 - task: fizzcode-discordhook@1
   inputs:
-    DiscordChannelID: '$[variables.var_g_Discord_WebhookID]'
-    DiscordToken: '$[variables.var_g_Discord_WebhookKey]'
+    DiscordChannelID: '$(var_g_Discord_WebhookID)'
+    DiscordToken: '$(var_g_Discord_WebhookKey)'
     Title: '$Build $(Build.BuildNumber) succeeded ($(Build.Reason))'
     Message: '$(Build.SourceVersionMessage)'
 
