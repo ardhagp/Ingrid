@@ -175,10 +175,9 @@ steps:
 #Sent notification to Discord
 - task: ado-discord-webhook@2
   inputs:
-    webhookId: '$(var_g_Discord_WebhookID)'
-    webhookKey: '$(var_g_Discord_WebhookKey)'
-    content: 'av'
-    embeds: 'ae'
+    webhookId: '$[variables.var_g_Discord_WebhookID]'
+    webhookKey: '$[variables.var_g_Discord_WebhookKey]'
+    content: 'Build is starting...'
 
 #Build Ingrid App
 - task: VSBuild@1
