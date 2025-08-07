@@ -172,6 +172,14 @@ steps:
       echo "---------------------------"
       more ".\Apps\Core\Vb\020. Module\Globals.vb"
 
+#Sent notification to Discord
+- task: ado-discord-webhook@2
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    content: 'av'
+    embeds: 'ae'
+
 #Build Ingrid App
 - task: VSBuild@1
   displayName: 'VSBuild - CI'
