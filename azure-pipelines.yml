@@ -63,8 +63,8 @@ steps:
   inputs:
     DiscordChannelID: '$(var_g_Discord_WebhookID)'
     DiscordToken: '$(var_g_Discord_WebhookKey)'
-    UserName: 'Bot-Info'
-    Title: 'Start compiling'
+    UserName: 'Dev.Azure'
+    Title: 'Start compiling $(Build.SourceBranchName)'
     Message: 'Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for Platform $(var_Platform).'
 
 #Installing Nuget
