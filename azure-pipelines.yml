@@ -57,7 +57,7 @@ steps:
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
     webhookKey: '$(var_g_Discord_WebhookKey)'
-    content: 'Start compiling Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for Platform $(var_Platform).\n '
+    content: 'Start compiling Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for Platform $(var_Platform).'
 
 #- task: fizzcode-discordhook@1
 #  inputs:
