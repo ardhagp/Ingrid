@@ -53,12 +53,19 @@ variables:
 steps:
 
 #Sent notification to Discord
-- task: ado-discord-webhook@2
+#- task: ado-discord-webhook@2
+#  inputs:
+#    webhookId: '$[variables.var_g_Discord_WebhookID]'
+#    webhookKey: '$[variables.var_g_Discord_WebhookKey]'
+#    content: 'Build is starting...'
+
+- task: fizzcode-discordhook@1
   inputs:
-    webhookId: '$[variables.var_g_Discord_WebhookID]'
-    webhookKey: '$[variables.var_g_Discord_WebhookKey]'
-    content: 'Build is starting...'
-    
+    DiscordChannelID: '$[variables.var_g_Discord_WebhookID]'
+    DiscordToken: '$[variables.var_g_Discord_WebhookKey]'
+    Title: '$Build $(Build.BuildNumber) succeeded ($(Build.Reason))'
+    Message: '$(Build.SourceVersionMessage)'
+
 #Installing Nuget
 - task: NuGetToolInstaller@1
   displayName: 'Nuget Install'
