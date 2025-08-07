@@ -52,6 +52,13 @@ variables:
 
 steps:
 
+#Sent notification to Discord
+- task: ado-discord-webhook@2
+  inputs:
+    webhookId: '$[variables.var_g_Discord_WebhookID]'
+    webhookKey: '$[variables.var_g_Discord_WebhookKey]'
+    content: 'Build is starting...'
+    
 #Installing Nuget
 - task: NuGetToolInstaller@1
   displayName: 'Nuget Install'
@@ -171,13 +178,6 @@ steps:
       echo "Reading Apps\Core\Module\Globals.vb"
       echo "---------------------------"
       more ".\Apps\Core\Vb\020. Module\Globals.vb"
-
-#Sent notification to Discord
-- task: ado-discord-webhook@2
-  inputs:
-    webhookId: '$[variables.var_g_Discord_WebhookID]'
-    webhookKey: '$[variables.var_g_Discord_WebhookKey]'
-    content: 'Build is starting...'
 
 #Build Ingrid App
 - task: VSBuild@1
