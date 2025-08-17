@@ -214,12 +214,21 @@ steps:
       more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
 
 #Updating Version for next build
-- task: update-variablegroup-variable@0
-  displayName: 'Prepare Versioning For Next Build'
+#- task: update-variablegroup-variable@0
+#  displayName: 'Prepare Versioning For Next Build'
+#  inputs:
+#    variableGroupName: 'global_variables'
+#    variableName: 'var_g_Ingridversion_revision'
+#    variableDataType: 'int'
+#    newVariableValueInInt: 1
+#    usePAT: true
+#    patValue: '$(var_g_TOKEN_AZURE)'
+
+- task: update-build-pipeline-variable@0
   inputs:
-    variableGroupName: 'global_variables'
     variableName: 'var_g_Ingridversion_revision'
     variableDataType: 'int'
     newVariableValueInInt: 1
+    pipelineUpdateComment: 'Prepare Versioning For Next Build'
     usePAT: true
     patValue: '$(var_g_TOKEN_AZURE)'
