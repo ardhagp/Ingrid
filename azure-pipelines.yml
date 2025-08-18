@@ -53,13 +53,42 @@ variables:
 steps:
 
 #Sent notification to Discord
-- task: fizzcode-discordhook@1
+#- task: fizzcode-discordhook@1
+#  inputs:
+#    DiscordChannelID: '$(var_g_Discord_WebhookID)'
+#    DiscordToken: '$(var_g_Discord_WebhookKey)'
+#    UserName: 'Azure Devops'
+#    Title: 'Start Compiling [$(System.TeamProject):$(Build.SourceBranchName)]'
+#    Message: 'Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform on $(Build.StartTime)'
+
+- task: ado-discord-webhook@2
+  displayName: 'Compile Start'
+  condition: always()
   inputs:
-    DiscordChannelID: '$(var_g_Discord_WebhookID)'
-    DiscordToken: '$(var_g_Discord_WebhookKey)'
-    UserName: 'Azure Devops'
-    Title: 'Start compiling [$(System.TeamProject):$(Build.SourceBranchName)]'
-    Message: 'Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.'
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "Start Compiling [$(System.TeamProject):$(Build.SourceBranchName)]",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform on $(Build.StartTime)",
+          "color": 0x0000ff,
+          "fields": [
+            {
+              "name": "Build.Pipeline",
+              "value": "$(Build.Repository.Name)",
+              "inline": true
+            },
+            {
+              "name": "Build.Number",
+              "value": "$(Build.BuildNumber)",
+              "inline": true
+            }
+          ],
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
 
 #Installing Nuget
 - task: NuGetToolInstaller@1
