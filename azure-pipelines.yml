@@ -224,11 +224,16 @@ steps:
 #    usePAT: true
 #    patValue: '$(var_g_TOKEN_AZURE)'
 
-- task: update-build-pipeline-variable@0
+#- task: update-build-pipeline-variable@0
+#  inputs:
+#    variableName: 'var_g_Ingridversion_revision'
+#    variableDataType: 'int'
+#    newVariableValueInInt: 1
+#    pipelineUpdateComment: 'Prepare Versioning For Next Build'
+#    usePAT: true
+#    patValue: '$(var_g_TOKEN_AZURE)'
+
+- task: version-increment-task@2
   inputs:
-    variableName: 'var_g_Ingridversion_revision'
-    variableDataType: 'int'
-    newVariableValueInInt: 1
-    pipelineUpdateComment: 'Prepare Versioning For Next Build'
-    usePAT: true
-    patValue: '$(var_g_TOKEN_AZURE)'
+    versionVariable: 'var_g_Ingridversion_revision'
+    previewName: ''
