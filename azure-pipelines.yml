@@ -72,7 +72,7 @@ steps:
       [
         {
           "type": "rich",
-          "title": "Start Compiling [$(System.TeamProject):$(Build.SourceBranchName)]",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] 🞂 Start Compiling",
           "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
           "color": 0xffde59,
           "fields": [
@@ -254,7 +254,7 @@ steps:
       [
         {
           "type": "rich",
-          "title": "Compile Success! [$(System.TeamProject):$(Build.SourceBranchName)]",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] 🞂 Compile Success!",
           "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
           "color": 0x00ff00,
           "fields": [
@@ -275,7 +275,7 @@ steps:
 
 
 - task: ado-discord-webhook@2
-  displayName: 'Compile Success'
+  displayName: 'Compile Failed'
   condition: failed()
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
@@ -285,7 +285,7 @@ steps:
       [
         {
           "type": "rich",
-          "title": "Compile Failed! [$(System.TeamProject):$(Build.SourceBranchName)]",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] 🞂 Compile Failed!",
           "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
           "color": 0xff0000,
           "fields": [
@@ -311,7 +311,7 @@ steps:
   displayName: 'Prepare Version For Next Build'
   inputs:
     variableGroupName: 'global_variables'
-    variableName: 'var_g_Ingridversion_revision'
+    variableName: 'var_g_Ingridversion_build'
     variableDataType: 'int'
     newVariableValueInInt: 1
     usePAT: true
