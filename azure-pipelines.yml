@@ -72,7 +72,7 @@ steps:
       [
         {
           "type": "rich",
-          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] 🞂 Start Compiling",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] >> Start Compiling",
           "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
           "color": 0xffde59,
           "fields": [
@@ -254,7 +254,7 @@ steps:
       [
         {
           "type": "rich",
-          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] 🞂 Compile Success!",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] >> Compile Success!",
           "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
           "color": 0x00ff00,
           "fields": [
@@ -285,7 +285,7 @@ steps:
       [
         {
           "type": "rich",
-          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] 🞂 Compile Failed!",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] >> Compile Failed!",
           "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
           "color": 0xff0000,
           "fields": [
