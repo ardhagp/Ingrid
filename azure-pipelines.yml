@@ -59,7 +59,7 @@ steps:
     DiscordToken: '$(var_g_Discord_WebhookKey)'
     UserName: 'Azure Devops'
     Title: 'Start compiling [$(System.TeamProject):$(Build.SourceBranchName)]'
-    Message: 'Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for Platform $(var_Platform).'
+    Message: 'Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.'
 
 #Installing Nuget
 - task: NuGetToolInstaller@1
@@ -213,8 +213,39 @@ steps:
       echo "---------------------------"
       more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
 
+
+- task: ado-discord-webhook@2
+  displayName: 'Compile Success'
+  condition: succeeded()
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "Compile Success! [$(System.TeamProject):$(Build.SourceBranchName)]",
+          "description": "Build success!",
+          "color": 0xff0000,
+          "fields": [
+            {
+              "name": "Build.RequestedFor",
+              "value": "$(Build.RequestedFor)",
+              "inline": true
+            },
+            {
+              "name": "Build.Reason",
+              "value": "$(Build.Reason)",
+              "inline": true
+            }
+          ],
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
+
 #Updating Version for next build
 - task: update-variablegroup-variable@0
+  condition: succeeded()
   displayName: 'Prepare Version For Next Build'
   inputs:
     variableGroupName: 'global_variables'
@@ -246,4 +277,3 @@ steps:
 #    echo ##vso[task.setvariable variable=var_g_Ingridversion_build;isOutput=true]%next%
 #  displayName: 'Increment and Save Next Version'
 #  name: incrementStep
-
