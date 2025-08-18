@@ -67,13 +67,14 @@ steps:
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
     webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
     embeds: |
       [
         {
           "type": "rich",
           "title": "Start Compiling [$(System.TeamProject):$(Build.SourceBranchName)]",
-          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform on $(Build.StartTime)",
-          "color": 0x0000ff,
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0xffde59,
           "fields": [
             {
               "name": "Build.Pipeline",
@@ -248,6 +249,7 @@ steps:
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
     webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
     embeds: |
       [
         {
@@ -278,6 +280,7 @@ steps:
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
     webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
     embeds: |
       [
         {
