@@ -218,7 +218,7 @@ steps:
   displayName: 'Prepare Version For Next Build'
   inputs:
     variableGroupName: 'global_variables'
-    variableName: 'var_g_Ingridversion_build'
+    variableName: 'var_g_Ingridversion_revision'
     variableDataType: 'int'
     newVariableValueInInt: 1
     usePAT: true
