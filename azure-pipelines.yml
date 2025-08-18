@@ -239,10 +239,11 @@ steps:
 #    previewName: ''
 
 - script: |
-    echo "Current revision: $(var_g_Ingridversion_revision)"
-    current=$(var_g_Ingridversion_revision)
-    next=$((current + 1))
-    echo "Next revision: $next"
-    echo "##vso[task.setvariable variable=var_g_Ingridversion_revision;isOutput=true]$next"
+    echo Current revision: $(var_g_Ingridversion_revision)
+    set current=$(var_g_Ingridversion_revision)
+    set /a next=%current% + 1
+    echo Next revision: %next%
+    echo ##vso[task.setvariable variable=var_g_Ingridversion_revision;isOutput=true]%next%
   displayName: 'Increment and Save Ingrid Revision'
   name: incrementStep
+
