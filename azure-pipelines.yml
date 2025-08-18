@@ -235,5 +235,5 @@ steps:
 
 - task: version-increment-task@2
   inputs:
-    versionVariable: 'var_g_Ingridversion_revision'
+    versionVariable: '$(VAR_G_INGRIDVERSION_BUILD)'
     previewName: ''
